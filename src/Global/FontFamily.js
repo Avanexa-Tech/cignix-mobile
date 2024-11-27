@@ -1,0 +1,18 @@
+export const Mulish = {
+  Black: 'Mulish-Black',
+  BlackItalic: 'Mulish-BlackItalic',
+  Bold: 'Mulish-Bold',
+  BoldItalic: 'Mulish-BoldItalic',
+  ExtraBold: 'Mulish-ExtraBold',
+  ExtraBoldItalic: 'Mulish-ExtraBoldItalic',
+  ExtraLight: 'Mulish-ExtraLight',
+  ExtraLightItalic: 'Mulish-ExtraLightItalic',
+  Italic: 'Mulish-Italic',
+  Light: 'Mulish-Light',
+  LightItalic: 'Mulish-LightItalic',
+  Medium: 'Mulish-Medium',
+  MediumItalic: 'Mulish-MediumItalic',
+  Regular: 'Mulish-Regular',
+  SemiBold: 'Mulish-SemiBold',
+  SemiBoldItalic: 'Mulish-SemiBoldItalic',
+};
