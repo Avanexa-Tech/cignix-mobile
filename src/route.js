@@ -11,7 +11,6 @@ import ContactUs from './screens/SideMenu/ContactUs';
 import TermsandConditions from './screens/SideMenu/TermsandConditions';
 import PrivacyPolicy from './screens/SideMenu/PrivacyPolicy';
 import Timeline from './screens/TimeLine/Timeline';
-import Summary from './screens/SummaryTab/Summary';
 import Profile from './screens/ProfileTab/Profile';
 import Login from './screens/Auth/Login';
 import OTPScreen from './screens/Auth/OTPScreen';
@@ -20,6 +19,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Mulish } from './Global/FontFamily';
 import { scr_width } from './Components/Dimensions';
 import { Iconviewcomponent } from './Components/Icontag';
+import EmailPassword from './screens/Auth/EmailPassword';
+import Register from './screens/Auth/Register';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -30,20 +31,20 @@ export const HomeStack = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        // options={{ headerShown: false }}
-        options={({ navigation }) => ({
-          headerTitle: 'Home Screen',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            // fontFamily: Manrope.Bold,
-            fontSize: 18,
-          },
-          headerStyle: { backgroundColor: Color.white },
-          headerLeft: () => (
-            <></>
-          ),
-        })}
+        options={{ headerShown: false }}
+      // options={({ navigation }) => ({
+      //   headerTitle: 'Home Screen',
+      //   headerTitleAlign: 'center',
+      //   headerTitleStyle: {
+      //     color: Color.black,
+      //     // fontFamily: Manrope.Bold,
+      //     fontSize: 18,
+      //   },
+      //   headerStyle: { backgroundColor: Color.white },
+      //   headerLeft: () => (
+      //     <></>
+      //   ),
+      // })}
       />
 
       <Stack.Screen
@@ -153,60 +154,27 @@ export const TimeLineStack = () => {
       <Stack.Screen
         name="Timeline"
         component={Timeline}
-        options={({ navigation }) => ({
-          headerTitle: 'Time Line',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            // fontFamily: Manrope.Bold,
-            fontSize: 18,
-          },
-          headerStyle: { backgroundColor: Color.white },
-          headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
-              <Icon
-                name="arrow-back"
-                size={30}
-                color={Color.black}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export const SummaryStack = () => {
-  const notificationCount = useSelector(
-    state => state.UserReducer.notificationCount,
-  );
-  return (
-    <Stack.Navigator initialRouteName="Summary">
-      <Stack.Screen
-        name="Summary"
-        component={Summary}
-        options={({ navigation }) => ({
-          headerTitle: 'Summary',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            // fontFamily: Manrope.Bold,
-            fontSize: 18,
-          },
-          headerStyle: { backgroundColor: Color.white },
-          headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
-              <Icon
-                name="arrow-back"
-                size={30}
-                color={Color.black}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-          ),
-        })}
+        options={{ headerShown: false }}
+      // options={({ navigation }) => ({
+      //   headerTitle: 'Time Line',
+      //   headerTitleAlign: 'center',
+      //   headerTitleStyle: {
+      //     color: Color.black,
+      //     // fontFamily: Manrope.Bold,
+      //     fontSize: 18,
+      //   },
+      //   headerStyle: { backgroundColor: Color.white },
+      //   headerLeft: () => (
+      //     <View style={{ marginHorizontal: 10 }}>
+      //       <Icon
+      //         name="arrow-back"
+      //         size={30}
+      //         color={Color.black}
+      //         onPress={() => navigation.goBack()}
+      //       />
+      //     </View>
+      //   ),
+      // })}
       />
     </Stack.Navigator>
   );
@@ -257,6 +225,16 @@ export const Auth = () => {
       <Stack.Screen
         name="OTPScreen"
         component={OTPScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EmailPassword"
+        component={EmailPassword}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -337,7 +315,7 @@ const TabNavigator = () => {
                   /> */}
                   <Image
                     source={require('../src/assets/Images/home.png')}
-                    style={{ width: 30, height: 30, resizeMode: 'contain' }}
+                    style={{ width: 32, height: 32, resizeMode: 'contain' }}
                   />
                 </View>
               </View>
@@ -365,7 +343,7 @@ const TabNavigator = () => {
                   /> */}
                   <Image
                     source={require('../src/assets/Images/up_arrow.png')}
-                    style={{ width: 35, height: 35, resizeMode: 'contain' }}
+                    style={{ width: 32, height: 32, resizeMode: 'contain' }}
                   />
                 </View>
               </View>
@@ -389,60 +367,8 @@ const TabNavigator = () => {
                 </View>
               </View>
             );
-          } else if (route.name === 'SummaryTab') {
-            return focused ? (
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: Color.primary,
-                    width: 55,
-                    height: 55,
-                    borderRadius: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: -30,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="Feather"
-                    icon_size={35}
-                    icon_color={Color.white}
-                    iconname="bar-chart-2"
-                  /> */}
-                  <Image
-                    source={require('../src/assets/Images/summary.png')}
-                    style={{ width: 35, height: 35, resizeMode: 'contain' }}
-                  />
-                </View>
-              </View>
-            ) : (
-              <View style={{ flex: 1, bottom: -25, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: 'transparent',
-                    width: 50,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: 0,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="Feather"
-                    icon_size={30}
-                    icon_color={Color.white}
-                    iconname="bar-chart"
-                  /> */}
-                  <Image
-                    source={require('../src/assets/Images/summary.png')}
-                    style={{ width: 30, height: 30, resizeMode: 'contain' }}
-                  />
-                </View>
-              </View>
-            );
-          } else if (route.name === 'ProfileTab') {
+          }
+          else if (route.name === 'ProfileTab') {
             return focused ? (
               <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <View
@@ -490,7 +416,7 @@ const TabNavigator = () => {
                   /> */}
                   <Image
                     source={require('../src/assets/Images/user.png')}
-                    style={{ width: 30, height: 30, resizeMode: 'contain' }}
+                    style={{ width: 25, height: 25, resizeMode: 'contain' }}
                   />
                 </View>
               </View>
@@ -509,11 +435,6 @@ const TabNavigator = () => {
       <Tab.Screen
         name="TimelineTab"
         component={TimeLineStack}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="SummaryTab"
-        component={SummaryStack}
         options={{ headerShown: false }}
       />
       <Tab.Screen

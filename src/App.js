@@ -115,26 +115,6 @@ const MainApp = () => {
           component={TabNavigator}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="Timeline"
-          component={Timeline}
-          options={({ navigation, route }) => ({
-            headerTitle: 'Wish List',
-            headerTitleAlign: 'center',
-            headerTitleStyle: { color: Color.black },
-            headerStyle: { backgroundColor: Color.white },
-            headerLeft: () => (
-              <View style={{ marginHorizontal: 10 }}>
-                <Icon
-                  name="arrow-back"
-                  size={30}
-                  color={Color.black}
-                  onPress={() => navigation.goBack()}
-                />
-              </View>
-            ),
-          })}
-        />
 
         <Stack.Screen
           name="TermsandConditions"
@@ -227,30 +207,6 @@ const MainApp = () => {
           })}
         />
 
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={({ navigation, route }) => ({
-            headerTitle: 'Profile',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              color: Color.black,
-              fontSize: 18,
-              // fontFamily: Manrope.Bold,
-            },
-            headerStyle: { backgroundColor: Color.white },
-            headerLeft: () => (
-              <View style={{ marginHorizontal: 10 }}>
-                <Icon
-                  name="arrow-back"
-                  size={30}
-                  color={Color.black}
-                  onPress={() => navigation.goBack()}
-                />
-              </View>
-            ),
-          })}
-        />
       </Stack.Navigator>
     </>
   );

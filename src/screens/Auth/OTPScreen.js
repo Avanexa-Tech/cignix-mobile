@@ -69,9 +69,15 @@ const OTPScreen = ({ route }) => {
         };
     }, [seconds]);
 
+    const isMobile = input => {
+        // const mobileRegex = /^[0-9]{10}$/;
+        const mobileRegex = /^[6-9][0-9]{10}$/;
+        return mobileRegex.test(input);
+    };
+
     const ResendOTP = async number => {
         setSeconds(30);
-        alert('OTP Sent Successfully');
+        // alert('OTP Sent Successfully');
         // const ResendOtpVerify = await fetchData.login({ mobile_number: number });
         // var { message, user_id } = ResendOtpVerify;
         // if (user_id) {
@@ -247,6 +253,29 @@ const OTPScreen = ({ route }) => {
                                 marginVertical: 10,
                             }}>
                             Enter OTP
+                        </Text>
+                        <Text
+                            style={{
+                                fontSize: 14,
+                                color: Color.cloudyGrey,
+                                fontFamily: Mulish.Regular,
+                                letterSpacing: 0.5,
+                                paddingTop: 10,
+                                textAlign: 'center',
+                            }}>
+                            Enter the verification code we sent to your number{' '}
+                            <Text
+                                style={{
+                                    fontSize: 16,
+                                    color: Color.lightBlack,
+                                    fontFamily: Mulish.Medium,
+                                    letterSpacing: 0.5,
+                                }}>
+                                {isMobile(number) && countryCode?.mobile_prefix}
+                                {number?.substring(0, 2).concat('*** **') +
+                                    number.substring(7, 9) +
+                                    number.substring(9)}
+                            </Text>
                         </Text>
                         <Text style={styles.invalidLogin}>{error}</Text>
                         <View style={styles.otpInputView}>

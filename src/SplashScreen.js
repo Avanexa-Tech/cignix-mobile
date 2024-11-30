@@ -41,11 +41,9 @@ const SplashScreen = () => {
     }).start();
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar
                 hidden={true} // Hides the status bar
-                backgroundColor="#0B1215" // Matches background color
-                translucent={true}
             />
             <Animated.Image
                 // source={{
@@ -54,7 +52,7 @@ const SplashScreen = () => {
                 source={require('../src/assets/Logos/cignix_white.png')}
                 style={[styles.image, { transform: [{ scale: imageScale }] }]}
             />
-        </SafeAreaView>
+        </View>
     );
 };
 

@@ -1,5 +1,7 @@
 export default {
-  primary: '#F36E21',
+  primary: '#4254B6',
+  // primary: '#4259B7',
+  // primary: '#F36E21',
   secondary: '#0033A0',
   shop_green: '#0FAD45',
   // primary: '#0033A0',00339A
@@ -9,7 +11,8 @@ export default {
   routeColor: '#655F5F',
   cloudyGrey: '#666666',
   Venus: '#888888',
-  red: '#DA0000',
+  red: '#FF0000',
+  notify:'#FF5200',
   transparantBlack: '#00000050',
   lightgrey: '#d9d9d9',
   softGrey: '#EAEAEF',

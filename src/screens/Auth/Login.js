@@ -7,6 +7,7 @@ import {
     StatusBar, Image,
     SafeAreaView, ImageBackground,
     TouchableOpacity, TextInput, Keyboard, TouchableWithoutFeedback,
+    ScrollView,
 } from 'react-native';
 import Color from '../../Global/Color';
 import { scr_height, scr_width } from '../../Components/Dimensions';
@@ -14,6 +15,8 @@ import { Mulish } from '../../Global/FontFamily';
 import { useDispatch } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import common_fn from '../../Components/common_fn';
+import { Platform } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 
 const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -34,23 +37,40 @@ const Login = () => {
 
 
     const chkNumber = number => {
-        setNumber(number);
-        if (number.length == 10) {
+        // setNumber(number);
+        // if (number.length == 10) {
+        //     Keyboard.dismiss();
+        // }
+        const filteredText = number.replace(/[^0-9]/g, '');
+        setNumber(filteredText);
+
+        if (filteredText.length === 10) {
             Keyboard.dismiss();
         }
     };
 
     const chkNumberError = number => {
-        let reg = /^[6-9][0-9]*$/;
+        // let reg = /^[6-9][0-9]*$/;
+
+        // if (number.length === 0) {
+        //     setError('Enter Your Mobile Number');
+        // } else if (reg.test(number) === false) {
+        //     setError(false);
+        //     setError(false);
+        // } else if (reg.test(number) === true) {
+        //     setError('');
+        // }
+
+        let reg = /^[6-9][0-9]*$/; // Starts with 6-9 and contains digits only
 
         if (number.length === 0) {
             setError('Enter Your Mobile Number');
-        } else if (reg.test(number) === false) {
-            setError(false);
-            setError(false);
-        } else if (reg.test(number) === true) {
-            setError('');
+        } else if (!reg.test(number)) {
+            setError('Enter a valid mobile number');
+        } else {
+            setError(''); // Clear the error if the input is valid
         }
+
     };
 
     const login = async () => {
@@ -82,8 +102,13 @@ const Login = () => {
     };
 
     return (
-        <DismissKeyboard>
-            <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            style={styles.container}>
+            <ScrollView
+                contentContainerStyle={styles.scrollContent}
+                keyboardShouldPersistTaps="handled" >
+
                 <StatusBar
                     hidden={false} // Hides the status bar
                     backgroundColor={Color.white} // Matches background color
@@ -91,7 +116,7 @@ const Login = () => {
                     barStyle={'dark-content'}
                 />
 
-                <View style={{ flex: 1, width: scr_width, alignItems: 'center' }}>
+                <View style={{ width: scr_width, height: scr_height, justifyContent: 'center', alignItems: 'center' }}>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}></View>
                     <View style={{ flex: 4, width: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
                         <View style={{ width: '100%', justifyContent: 'flex-start', alignItems: 'flex-start', paddingHorizontal: 20 }}>
@@ -117,7 +142,7 @@ const Login = () => {
                                         placeholder="Mobile Number"
                                         placeholderTextColor={Color.black}
                                         value={number}
-                                        keyboardType="phone-pad"
+                                        keyboardType="numeric"
                                         maxLength={10}
                                         autoFocus={number.length == 10 ? false : true}
                                         onChangeText={number => {
@@ -151,7 +176,9 @@ const Login = () => {
                                     <Text style={{ fontSize: 20, color: Color.cloudyGrey, fontFamily: Mulish.SemiBold, paddingHorizontal: 10 }}>Google</Text>
                                 </TouchableOpacity>
                                 <View style={{ width: 20, height: '100%', backgroundColor: Color.white }}></View>
-                                <TouchableOpacity style={{ flex: 1, height: 55, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 30, borderWidth: 1, borderColor: '#C5C5C5' }}>
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate("EmailPassword")}
+                                    style={{ flex: 1, height: 55, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 30, borderWidth: 1, borderColor: '#C5C5C5' }}>
                                     <Image
                                         source={require('../../assets/Images/pass.png')}
                                         style={{ width: 25, height: 25, resizeMode: 'contain' }}
@@ -162,7 +189,7 @@ const Login = () => {
 
                             <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: 20 }}>
                                 <Text style={{ fontSize: 18, color: Color.Venus, fontFamily: Mulish.Medium, paddingHorizontal: 5 }}>Don’t have an account? </Text>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("Register")}>
                                     <Text style={{ fontSize: 20, color: Color.primary, fontFamily: Mulish.SemiBold }}>Sign up</Text>
                                 </TouchableOpacity>
                             </View>
@@ -172,17 +199,22 @@ const Login = () => {
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}></View>
                 </View>
 
-            </SafeAreaView>
-        </DismissKeyboard>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 };
 
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1, width: scr_width,
         alignItems: 'center',
         backgroundColor: Color.white,
+    },
+    scrollContent: {
+        width: scr_width, alignItems: 'center',
+        padding: 20,
+        justifyContent: 'center',
     },
     image: {
         width: 160, height: 80, resizeMode: 'contain'
