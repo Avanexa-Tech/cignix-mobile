@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import Color from './Global/Color';
 import { useNavigation } from '@react-navigation/native';
 // import { SvgUri } from 'react-native-svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // create a component
 const SplashScreen = () => {
@@ -18,15 +20,27 @@ const SplashScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const [loading, setLoading] = useState(false);
-
+    const GetUserdata = async()=>{
+        try {
+            const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN');
+           if((ACCESS_TOKEN !== null)){
+            navigation.replace("Tab")
+           }else{
+            navigation.replace("OnboardScreen")
+           }
+       
+        } catch (error) {
+            console.log('catch in splash_Screen ', error);  
+        }
+    }
     useEffect(() => {
         try {
             const SplashLoad = setTimeout(() => {
                 // getloginData();
                 // getUserData();
-                navigation.navigate("OnboardScreen")
-                console.log("******************* LOADING ********************");
-
+                // navigation.navigate("OnboardScreen")
+                // navigation.navigate("Tab")
+                GetUserdata();
             }, 3000);
             return () => clearInterval(SplashLoad);
         } catch (error) {
@@ -43,13 +57,15 @@ const SplashScreen = () => {
     return (
         <View style={styles.container}>
             <StatusBar
-                hidden={true} // Hides the status bar
+                hidden={false}
+                backgroundColor={"#fff"}
+                // Hides the status bar
             />
             <Animated.Image
                 // source={{
                 //     uri: 'https://shopeasey.s3.ap-south-1.amazonaws.com/mobile/assets/logos/main.png',
                 // }}
-                source={require('../src/assets/Logos/cignix_white.png')}
+                source={require('../src/assets/Logos/cignix.png')}
                 style={[styles.image, { transform: [{ scale: imageScale }] }]}
             />
         </View>
@@ -62,7 +78,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0B1215',
+        backgroundColor: '#fff',
     },
 
     image: {

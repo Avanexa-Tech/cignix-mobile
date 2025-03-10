@@ -5,7 +5,7 @@ import {Media} from '../Global/Media';
 export const LottieCheck = () => {
   return (
     <Lottie
-      source={Media.LottieCheck}
+      source={Media?.LottieCheck}
       style={{width: 120, height: 120}}
       autoPlay
       loop
@@ -15,7 +15,7 @@ export const LottieCheck = () => {
 export const LottieCancelled = () => {
   return (
     <Lottie
-      source={Media.LottieCancelled}
+      source={Media?.LottieCancelled}
       style={{width: 120, height: 120}}
       autoPlay
       loop

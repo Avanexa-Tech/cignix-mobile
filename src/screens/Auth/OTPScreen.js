@@ -11,6 +11,7 @@ import {
     Keyboard,
     PermissionsAndroid,
     Modal,
+    ActivityIndicator,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,7 +27,9 @@ import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
 import OTPInput from '../../Components/OTPInput';
 import common_fn from '../../Components/common_fn';
-;;
+import fetchData from '../../Config/fetchData';
+import { scr_height } from '../../Components/Dimensions';
+
 
 const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -35,6 +38,10 @@ const DismissKeyboard = ({ children }) => (
 );
 
 const OTPScreen = ({ route }) => {
+    const routeName = route.params;
+    console.log('====================================');
+    console.log("ffffffffffff", routeName);
+    console.log('====================================');
     const navigation = useNavigation();
     const [number] = useState(route.params.number);
     const inputRef = useRef();
@@ -44,8 +51,8 @@ const OTPScreen = ({ route }) => {
     const [error, setError] = useState(false);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(30);
-    const [loading, setLoading] = useState(false);
-    const [token, setToken] = useState('');
+    const [loader, setLoading] = useState(false);
+    const [token, setToken] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -75,22 +82,41 @@ const OTPScreen = ({ route }) => {
         return mobileRegex.test(input);
     };
 
-    const ResendOTP = async number => {
-        setSeconds(30);
-        // alert('OTP Sent Successfully');
-        // const ResendOtpVerify = await fetchData.login({ mobile_number: number });
-        // var { message, user_id } = ResendOtpVerify;
-        // if (user_id) {
-        //     if (Platform.OS === 'android') {
-        //         common_fn.showToast('OTP Sent Successfully');
-        //     } else {
-        //         alert('OTP Sent Successfully');
-        //     }
-        // } else {
-        //     var msg = 'message';
-        //     setError(msg);
-        // }
+    // const ResendOTP = async number => {
+    //     setSeconds(30);
+
+    //     const ResendOtpVerify = await fetchData.login({ mobile_number: number });
+    //     var { message, user_id } = ResendOtpVerify;
+    //     if (user_id) {
+    //         if (Platform.OS === 'android') {
+    //             common_fn.showToast('OTP Sent Successfully');
+    //         } else {
+    //             alert('OTP Sent Successfully');
+    //         }
+    //     } else {
+    //         var msg = 'message';
+    //         setError(msg);
+    //     }
+    // };
+    const ResendOtp = async data => {
+        try {
+            setSeconds(30);
+            if (number.length == 10) {
+                const login = await fetchData?.login({
+                    mobile: routeName?.number
+                });
+                if (login?.success == true) {
+                    common_fn.showToast(login?.message);
+                    setToken(login?.token);
+                } else {
+                    common_fn.showToast(login?.message);
+                }
+            }
+        } catch (error) {
+            console.log('CATCH IN RESEND OTP', error);
+        }
     };
+
 
     const chkOTPError = OTP => {
         let reg = /^[6-9][0-9]*$/;
@@ -105,63 +131,50 @@ const OTPScreen = ({ route }) => {
         }
     };
 
-
+    //    VERIFY OTP :
     const VerifyOTP = async () => {
         setLoading(true);
-        console.log("otpCode ============== : ", otpCode);
-
-        if (otpCode.length == 4) {
-            console.log("Success ============== : ", otpCode);
-            navigation.navigate('TabNavigator');
-            // const VerifyOTP = await fetchData.verify_OTP({
-            //     mobile_number: number,
-            //     otp: otpCode,
-            //     token: token,
-            // });
-            // // var {user_id} = VerifyOTP?.data;
-            // console.log('navigation.replace', navigation.replace);
-            // if (VerifyOTP?.message == 'Success') {
-            //     var { user_id, username, mobile_number, email } = VerifyOTP?.data;
-            //     const percentage = profileCompletion(
-            //         user_id,
-            //         username,
-            //         mobile_number,
-            //         email,
-            //     );
-            //     setPercentage(percentage);
-            //     const UserLogin = { ...VerifyOTP?.data, };
-            //     await AsyncStorage.setItem('user_data', JSON.stringify(VerifyOTP?.data),);
-            //     await AsyncStorage.setItem('action_login_type', JSON.stringify({ login_type: 'properties' }),);
-            //     // dispatch(setLoginType('properties'));
-            //     if (percentage == 100) {
-            //         // navigation.replace('TabNavigator', UserLogin);
-            //         navigation.dispatch(StackActions.replace('TabNavigator'));
-            //     } else {
-            //         navigation.dispatch(StackActions.replace('TabNavigator'));
-            //     }
-            //     if (Platform.OS === 'android') {
-            //         common_fn.showToast(`Welcome to Wall360 ${VerifyOTP?.data?.username}`);
-            //     } else {
-            //         alert(`Welcome to Wall360 ${VerifyOTP?.data?.username}`);
-            //     }
-
-            //     setLoading(false);
-            // } else {
-            //     setOTPCode('');
-            //     inputRef.current.focus();
-            //     var msg = VerifyOTP?.message;
-            //     setError(msg);
-            //     setLoading(false);
-            // }
-        } else {
-            if (Platform.OS === 'android') {
-                common_fn.showToast('Invalid OTP Code Please Enter Your 4 Digit OTP Code');
+        try {
+            if (otpCode.length == 6) {
+                const data = {
+                    otp: otpCode
+                }
+                const verify = await fetchData?.User_Login_OTP_Verify({
+                    otp: data,
+                    token: token == null ? routeName?.token : token,
+                })
+                console.log("otp resp --------------- :",verify);
+                
+                if (verify?.success == true) {
+                    await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(verify?.token));
+                    await AsyncStorage.setItem('USERDATA', JSON.stringify(verify?.data));
+                    common_fn.showToast(verify?.message);
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'Tab' }],
+                    })
+                    setLoading(false);
+                } else {
+                    common_fn.showToast(verify?.message);
+                    console.log(verify?.message, 'oooo');
+                    setLoading(false);
+                }
             } else {
-                alert('Invalid OTP Code Please Enter Your 4 Digit OTP Code');
-                setLoading(false);
+                if (Platform.OS === 'android') {
+                    common_fn.showToast('Invalid OTP Code Please Enter Your 6 Digit OTP Code');
+                    setLoading(false);
+                } else {
+                    alert('Invalid OTP Code Please Enter Your 6 Digit OTP Code');
+                    setLoading(false);
+                }
             }
+        } catch (error) {
+            console.log("error ============== : ", error);
+            setLoading(false);
         }
+
     };
+
 
     // useEffect(() => {
     //     if (Platform.OS === 'android') {
@@ -215,8 +228,9 @@ const OTPScreen = ({ route }) => {
     // };
     return (
         <ScrollView
-            contentContainerStyle={{ justifyContent: 'center', flex: 1 }}
-            keyboardShouldPersistTaps="handled">
+            contentContainerStyle={{ flex: 1 }}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}>
             <DismissKeyboard>
                 <View
                     style={{
@@ -224,51 +238,40 @@ const OTPScreen = ({ route }) => {
                         backgroundColor: Color.white,
                         padding: 20,
                     }}>
-
-                    <View
-                        style={{
-                            width: '100%',
-                            alignItems: 'center',
-                            paddingVertical: 20,
-                        }}>
-                        <Image
-                            source={{ uri: Media.otp }}
-                            style={{ width: 200, height: 200, resizeMode: 'contain' }}
-                        />
-                    </View>
                     <View
                         style={{
                             width: '100%',
                             marginVertical: 20,
+                            marginTop:scr_height/5,
                             justifyContent: 'center', alignItems: 'center'
                         }}>
                         <Text
                             style={{
                                 fontFamily: Mulish.SemiBold,
-                                fontSize: 20,
-                                fontWeight: 'bold',
+                                fontSize: 25,
                                 textAlign: 'center',
                                 color: Color.black,
                                 marginRight: 10,
                                 marginVertical: 10,
+                    
                             }}>
-                            Enter OTP
+                            Verify Your Login
                         </Text>
                         <Text
                             style={{
                                 fontSize: 14,
                                 color: Color.cloudyGrey,
-                                fontFamily: Mulish.Regular,
+                                fontFamily: Mulish.Medium,
                                 letterSpacing: 0.5,
                                 paddingTop: 10,
                                 textAlign: 'center',
                             }}>
-                            Enter the verification code we sent to your number{' '}
+                            Enter the verification code we sent to your number{' +91 '}
                             <Text
                                 style={{
                                     fontSize: 16,
                                     color: Color.lightBlack,
-                                    fontFamily: Mulish.Medium,
+                                    fontFamily: Mulish.SemiBold,
                                     letterSpacing: 0.5,
                                 }}>
                                 {isMobile(number) && countryCode?.mobile_prefix}
@@ -283,11 +286,18 @@ const OTPScreen = ({ route }) => {
                                 inputRef={inputRef}
                                 code={otpCode}
                                 setCode={setOTPCode}
-                                maximumLength={4}
+                                maximumLength={6}
                                 setIsPinReady={setIsPinReady}
                                 chkOTPError={chkOTPError}
                             />
                         </View>
+
+                        <TouchableOpacity onPress={() => VerifyOTP()} style={{ width: '95%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.primary, borderRadius: 30, marginVertical: 20 }}>
+                            {loader == true ? (
+                                <ActivityIndicator size={'small'} color={Color.white} />
+                            ) : (<Text style={{ fontSize: 18, color: Color.white, fontFamily: Mulish.SemiBold }}>Verfiy OTP</Text>)}
+                        </TouchableOpacity>
+
                         {seconds > 0 || minutes > 0 ? (
                             <View style={styles.noReceivecodeView}>
                                 <Text style={styles.noReceiveText}>
@@ -297,8 +307,13 @@ const OTPScreen = ({ route }) => {
                             </View>
                         ) : (
                             <View style={styles.noReceivecodeView}>
-                                <TouchableOpacity onPress={() => ResendOTP(number)}>
-                                    <Text style={styles.resendOtp}>Resend OTP</Text>
+                                <TouchableOpacity onPress={() => ResendOtp(number)} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Text style={{
+                                        color: Color.cloudyGrey,
+                                        fontSize: 14,
+                                        fontFamily: Mulish.Medium,
+                                    }}>Didn’t get the code? </Text>
+                                    <Text style={styles.resendOtp}>Resend </Text>
                                 </TouchableOpacity>
                             </View>
                         )}
@@ -318,9 +333,6 @@ const OTPScreen = ({ route }) => {
                             loading={loading}
                         /> */}
 
-                        <TouchableOpacity onPress={() => VerifyOTP()} style={{ width: '95%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.primary, borderRadius: 30, marginVertical: 20 }}>
-                            <Text style={{ fontSize: 20, color: Color.white, fontFamily: Mulish.SemiBold }}>Submit</Text>
-                        </TouchableOpacity>
 
                     </View>
                 </View>
@@ -332,6 +344,7 @@ const OTPScreen = ({ route }) => {
 export default OTPScreen;
 const styles = StyleSheet.create({
     otpInputView: {
+        marginHorizontal: 0,
         marginVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
@@ -340,9 +353,8 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         marginVertical: 15,
-        marginRight: 30,
     },
     noReceiveText: {
         color: Color.black,
@@ -351,10 +363,9 @@ const styles = StyleSheet.create({
     },
     resendOtp: {
         color: Color.primary,
-        fontSize: 14,
+        fontSize: 16,
         fontFamily: Mulish.SemiBold,
         fontWeight: 'bold',
-        textDecorationLine: 'underline',
         textAlign: 'right',
     },
     invalidLogin: {

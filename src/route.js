@@ -17,10 +17,19 @@ import OTPScreen from './screens/Auth/OTPScreen';
 import Color from './Global/Color';
 import LinearGradient from 'react-native-linear-gradient';
 import { Mulish } from './Global/FontFamily';
-import { scr_width } from './Components/Dimensions';
+import { scr_height, scr_width } from './Components/Dimensions';
 import { Iconviewcomponent } from './Components/Icontag';
 import EmailPassword from './screens/Auth/EmailPassword';
 import Register from './screens/Auth/Register';
+import EditProfile from './screens/ProfileTab/EditProfile';
+import Membership from './screens/ProfileTab/Membership';
+import ChangePassword from './screens/ProfileTab/ChangePassword';
+import NotificationSettings from './screens/ProfileTab/NotificationSettings';
+import SimTest from './screens/Auth/SimTest';
+import SimTestScreen from './screens/Home/SimTestScreen';
+import SuccesScreen from './screens/Auth/SuccesScreen';
+import Blogs from './screens/SideMenu/Blogs';
+import NewsandMedia from './screens/SideMenu/NewsandMedia';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -46,7 +55,7 @@ export const HomeStack = () => {
       //   ),
       // })}
       />
-
+      
       <Stack.Screen
         name="AboutUs"
         component={AboutUs}
@@ -99,51 +108,60 @@ export const HomeStack = () => {
       <Stack.Screen
         name="TermsandConditions"
         component={TermsandConditions}
-        options={({ navigation, route }) => ({
-          headerTitle: 'Terms & Conditions',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            fontSize: 18,
-            // fontFamily: Manrope.Bold,
-          },
-          headerStyle: { backgroundColor: Color.white },
-          headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
-              <Icon
-                name="arrow-back"
-                size={30}
-                color={Color.black}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-          ),
-        })}
+        // options={({ navigation, route }) => ({
+        //   headerTitle: 'Terms & Conditions',
+        //   headerTitleAlign: 'center',
+        //   headerTitleStyle: {
+        //     color: Color.black,
+        //     fontSize: 18,
+        //     // fontFamily: Manrope.Bold,
+        //   },
+        //   headerStyle: { backgroundColor: Color.white },
+        //   headerLeft: () => (
+        //     <View style={{ marginHorizontal: 10 }}>
+        //       <Icon
+        //         name="arrow-back"
+        //         size={30}
+        //         color={Color.black}
+        //         onPress={() => navigation.goBack()}
+        //       />
+        //     </View>
+        //   ),
+        // })}
+        options={{headerShown: false}}
       />
+       <Stack.Screen
+          name="SimTestScreen"
+          component={SimTestScreen}
+          options={{headerShown: false}}
+        />
+
       <Stack.Screen
         name="PrivacyPolicy"
         component={PrivacyPolicy}
-        options={({ navigation, route }) => ({
-          headerTitle: 'Privacy Policy',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            fontSize: 18,
-            // fontFamily: Manrope.Bold,
-          },
-          headerStyle: { backgroundColor: Color.white },
-          headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
-              <Icon
-                name="arrow-back"
-                size={30}
-                color={Color.black}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-          ),
-        })}
+        // options={({ navigation, route }) => ({
+        //   headerTitle: 'Privacy Policy',
+        //   headerTitleAlign: 'center',
+        //   headerTitleStyle: {
+        //     color: Color.black,
+        //     fontSize: 18,
+        //     // fontFamily: Manrope.Bold,
+        //   },
+        //   headerStyle: { backgroundColor: Color.white },
+        //   headerLeft: () => (
+        //     <View style={{ marginHorizontal: 10 }}>
+        //       <Icon
+        //         name="arrow-back"
+        //         size={30}
+        //         color={Color.black}
+        //         onPress={() => navigation.goBack()}
+        //       />
+        //     </View>
+        //   ),
+        // })}
+        options={{ headerShown: false }}
       />
+      
     </Stack.Navigator>
   );
 };
@@ -190,26 +208,8 @@ export const ProfileStack = () => {
         name="Profile"
         component={Profile}
         options={{ headerShown: false }}
-      // options={({ navigation }) => ({
-      //   headerTitle: 'Profile',
-      //   headerTitleAlign: 'center',
-      //   headerTitleStyle: {
-      //     color: Color.black,
-      //     fontSize: 18,
-      //   },
-      //   headerStyle: { backgroundColor: Color.white },
-      //   headerLeft: () => (
-      //     <View style={{ marginHorizontal: 10 }}>
-      //       <Icon
-      //         name="arrow-back"
-      //         size={30}
-      //         color={Color.black}
-      //         onPress={() => navigation.goBack()}
-      //       />
-      //     </View>
-      //   )
-      // })}
       />
+    
     </Stack.Navigator>
   );
 };
@@ -237,27 +237,42 @@ export const Auth = () => {
         component={Register}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="Simtest"
+        component={SimTest}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SuccesScreen"
+        component={SuccesScreen}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
+          name="SimTest"    
+          component={SimTest}
+          options={{ headerShown: false }}
+        />
     </Stack.Navigator>
   );
 };
 
 const TabNavigator = () => {
-
   const dispatch = useDispatch();
-
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        
         tabBarStyle: {
           position: 'absolute',
-          left: 10, right: 10, bottom: 10,
+          marginLeft: scr_width/5.9,
+          marginBottom:scr_height/70,
           shadowColor: 'transparent',
           shadowOffset: { width: 0, height: 2 },
           shadowOpacity: 0.5,
           shadowRadius: 2,
           borderRadius: 100,
-          width: '100%',
-          height: 70,
+          width: scr_width/1.44,
+          height:scr_height/12,
           alignItems: 'center', justifyContent: 'center',
           backgroundColor: '#0B1215',
         },

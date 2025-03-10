@@ -1,0 +1,120 @@
+{
+    "profile": {
+      "Account Settings": "खाते सेटिंग्ज",
+      "Edit Profile": "प्रोफाइल संपादित करा",
+      "Manage Subscription": "सदस्यता व्यवस्थापित करा",
+      "Change Password": "पासवर्ड बदला",
+      "Notification Settings": "सूचना सेटिंग्ज",
+      "Other Settings": "इतर सेटिंग्ज",
+      "Blogs": "ब्लॉग्स",
+      "News and Media": "बातम्या आणि मीडिया",
+      "Help Center": "मदत केंद्र",
+      "Contact Support": "संपर्क समर्थन",
+      "Privacy Policy": "गोपनीयता धोरण",
+      "Terms and Conditions": "अटी व शर्ती",
+      "Logout": "बाहेर पडा",
+      "free user": "मोफत वापरकर्ता",
+      "premium user": "प्रिमियम वापरकर्ता"
+    },
+    "Edit profile": {
+      "Edit Profile": "प्रोफाइल संपादित करा",
+      "Edit profile Picture": "प्रोफाइल चित्र संपादित करा",
+      "Profile Information": "प्रोफाइल माहिती",
+      "Edit Info": "माहिती संपादित करा",
+      "Full Name": "पूर्ण नाव",
+      "Email Address": "ई-मेल पत्ता",
+      "Phone Number": "फोन नंबर",
+      "Date of Birth / Age": "जन्म तारीख / वय",
+      "Gender": "लिंग",
+      "Update Profile": "प्रोफाइल अद्यतनित करा"
+    },
+    "Change Password": {
+      "Change Password": "पासवर्ड बदला",
+      "Enter Current Password": "सध्याचा पासवर्ड प्रविष्ट करा",
+      "Enter New Password": "नवीन पासवर्ड प्रविष्ट करा",
+      "Retype New Password": "नवीन पासवर्ड पुन्हा प्रविष्ट करा",
+      "description": "सुरक्षिततेसाठी मजबूत पासवर्ड आवश्यक आहे: 12-16 वर्णांचा वापर करा, ज्यामध्ये मोठे आणि लहान अक्षरे, संख्या आणि चिन्हे असावीत. सामान्य शब्द आणि वैयक्तिक माहिती टाळा."
+    },
+    "Notification Settings": {
+      "Notification Settings": "सूचना सेटिंग्ज",
+      "Choose Notification Channels": "सूचना वाहिन्या निवडा",
+      "Email Notification": "ई-मेल सूचना",
+      "Email description": "सर्व संदेश, व्हिडिओ आणि प्रगती अद्यतने मिळवा.",
+      "Push Notification": "पुश सूचना",
+      "Push description": "सर्व संदेश, व्हिडिओ आणि प्रगती अद्यतने मिळवा.",
+      "Whatsapp Notification": "व्हॉट्सअॅप सूचना",
+      "Whatsapp description": "सर्व संदेश, व्हिडिओ आणि प्रगती अद्यतने मिळवा.",
+      "Types of Notification": "सूचनांचे प्रकार",
+      "Remainder": "स्मरणपत्र",
+      "Community Updates": "समुदाय अद्यतने"
+    },
+    "Membership": {
+      "Cignix": "Cignix",
+      "Prime": "प्राईम",
+      "Active": {
+        "Active membership": "सक्रिय सदस्यता",
+        "Active description": "CIGNIX परिवाराचा एक मौल्यवान सदस्य असल्याबद्दल धन्यवाद",
+        "Cignix Pro": "Cignix प्रो",
+        "Cignix Pro description": "सर्व व्हिडिओ मालिका, लेख आणि मार्गदर्शकांची संपूर्ण प्रवेश",
+        "Next due date": "पुढील देय तारीख",
+        "Cancel membership": "सदस्यत्व रद्द करा",
+        "Upgrade Plan": "योजना सुधारित करा"
+      },
+      "normal": {}
+    },
+    "mobilelogin": {
+      "Welcome Back": "परत स्वागत आहे",
+      "Welcome description": "आपल्या मोबाइल क्रमांकासह लॉगिन करा",
+      "Mobile Number": "मोबाइल नंबर",
+      "Get Otp": "OTP मिळवा",
+      "or Login With": "किंवा लॉगिन करा",
+      "Google": "गूगल",
+      "Password": "पासवर्ड",
+      "Don't have an account?": "खाते नाही?",
+      "Sign Up": "साइन अप करा"
+    },
+    "Onboarding": {
+      "Your smoke-free life Begins now": "तुमचे धूम्रपान-मुक्त जीवन आता सुरू होते!",
+      "description": "दररोज एक सिगारेट तुमचे आयुष्य कमी करू शकते. तंबाखूमुक्त व्हा आणि आजच चांगले जीवन जगा!",
+      "Get Started": "सुरु करा",
+      "Already have an account?": "आधीच खाते आहे?"
+    },
+    "Passwordlogin": {
+      "Welcome Back": "परत स्वागत आहे",
+      "Welcome description": "आपल्या ई-मेल आणि पासवर्डने लॉगिन करा",
+      "Email Your Email ID": "आपला ई-मेल ID प्रविष्ट करा",
+      "Password": "पासवर्ड",
+      "Log in": "लॉग इन करा",
+      "forgot Password": "पासवर्ड विसरलात?",
+      "or Login With": "किंवा लॉगिन करा",
+      "Google": "गूगल",
+      "Phone": "फोन",
+      "Don't have an account?": "खाते नाही?",
+      "Sign Up": "साइन अप करा"
+    },
+    "Sim1": {
+      "Sim Test 1": "SIM चाचणी 1",
+      "Discover Your Score": "तुमचा स्कोअर शोधा"
+    },
+    "Congts": {
+      "Congrats": "अभिनंदन",
+      "Congratulations": "क्विझ पूर्ण केल्याबद्दल अभिनंदन!",
+      "description": "तुमचे स्कोअर पाहण्यासाठी आणि तुमच्या प्रदर्शनाचे मूल्यांकन करण्यासाठी कृपया साइन अप किंवा लॉगिन करा!",
+      "Sign Up to View scores": "स्कोअर पाहण्यासाठी साइन अप करा"
+    },
+    "Otp": {
+      "Verify Your Login": "तुमच्या लॉगिनची पडताळणी करा",
+      "Enter the verification code we sent to your Number": "आम्ही पाठवलेला सत्यापन कोड तुमच्या नंबरवर प्रविष्ट करा",
+      "Verify otp": "OTP सत्यापित करा",
+      "Didn't get the code?": "कोड मिळाला नाही?",
+      "Resend": "पुन्हा पाठवा"
+    },
+    "Roadmap": {
+      "Complete the SIM Test": "SIM चाचणी पूर्ण करा",
+      "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "तुमच्या धूम्रपान सवयी आणि सोडण्याच्या तयारीचे मूल्यमापन करण्यासाठी SIM चाचणी घ्या",
+      "Upgrade to premium": "प्रिमियमसाठी अपग्रेड करा",
+      "Go Premium": "प्रिमियम व्हा",
+      "See Plans": "योजना पहा"
+    }
+  }
+  

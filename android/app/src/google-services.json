@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542915280674",
+    "project_id": "cignix-912de",
+    "storage_bucket": "cignix-912de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542915280674:android:871c228395852547e5af7b",
+        "android_client_info": {
+          "package_name": "com.cignix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-61fszLkagkKIEtP6W5kMVStWGIrxOQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,119 @@
+{
+  "profile": {
+    "Account Settings": "கணக்கு அமைப்புகள்",
+    "Edit Profile": "சுயவிவரத்தை திருத்தவும்",
+    "Manage Subscription": "சந்தாவை நிர்வகிக்கவும்",
+    "Change Password": "கடவுச்சொல்லை மாற்றவும்",
+    "Notification Settings": "அறிவிப்பு அமைப்புகள்",
+    "Other Settings": "பிற அமைப்புகள்",
+    "Blogs": "வலைப்பதிவுகள்",
+    "News and Media": "செய்திகள் மற்றும் ஊடகம்",
+    "Help Center": "உதவி மையம்",
+    "Contact Support": "ஆதரவுடன் தொடர்பு கொள்ளவும்",
+    "Privacy Policy": "தனியுரிமை கொள்கை",
+    "Terms and Conditions": "விதிமுறைகள் மற்றும் நிபந்தனைகள்",
+    "Logout": "வெளியேறு",
+    "free user": "இலவச பயனர்",
+    "premium user": "பிரீமியம் பயனர்"
+  },
+  "Edit profile": {
+    "Edit Profile": "சுயவிவரத்தை திருத்தவும்",
+    "Edit profile Picture": "சுயவிவரப் படத்தை திருத்தவும்",
+    "Profile Information": "சுயவிவர தகவல்",
+    "Edit Info": "தகவலை திருத்தவும்",
+    "Full Name": "முழு பெயர்",
+    "Email Address": "மின்னஞ்சல் முகவரி",
+    "Phone Number": "தொலைபேசி எண்",
+    "Date of Birth / Age": "பிறந்த தேதி / வயது",
+    "Gender": "பாலினம்",
+    "Update Profile": "சுயவிவரத்தை புதுப்பிக்கவும்"
+  },
+  "Change Password": {
+    "Change Password": "கடவுச்சொல்லை மாற்றவும்",
+    "Enter Current Password": "தற்போதைய கடவுச்சொல்லை உள்ளிடவும்",
+    "Enter New Password": "புதிய கடவுச்சொல்லை உள்ளிடவும்",
+    "Retype New Password": "புதிய கடவுச்சொல்லை மீண்டும் உள்ளிடவும்",
+    "description": "பாதுகாப்புக்கு வலுவான கடவுச்சொல் முக்கியம்: 12-16 எழுத்துகள் கொண்ட, பெரிய எழுத்து, சிறிய எழுத்து, எண்கள் மற்றும் குறியீடுகளின் கலவையை பயன்படுத்தவும். பொதுவான வார்த்தைகள் மற்றும் தனிப்பட்ட தகவல்களை தவிர்க்கவும்."
+  },
+  "Notification Settings": {
+    "Notification Settings": "அறிவிப்பு அமைப்புகள்",
+    "Choose Notification Channels": "அறிவிப்பு சேனல்களை தேர்வு செய்யவும்",
+    "Email Notification": "மின்னஞ்சல் அறிவிப்பு",
+    "Email description": "அனைத்து செய்திகள், வீடியோக்கள், முன்னேற்ற புதுப்பிப்புகளுக்கான அறிவிப்புகளைப் பெறவும்.",
+    "Push Notification": "புஷ் அறிவிப்பு",
+    "Push description": "அனைத்து செய்திகள், வீடியோக்கள், முன்னேற்ற புதுப்பிப்புகளுக்கான அறிவிப்புகளைப் பெறவும்.",
+    "Whatsapp Notification": "வாட்ஸ்அப் அறிவிப்பு",
+    "Whatsapp description": "அனைத்து செய்திகள், வீடியோக்கள், முன்னேற்ற புதுப்பிப்புகளுக்கான அறிவிப்புகளைப் பெறவும்.",
+    "Types of Notification": "அறிவிப்பு வகைகள்",
+    "Remainder": "நினைவூட்டல்",
+    "Community Updates": "சமூக புதுப்பிப்புகள்"
+  },
+  "Membership": {
+    "Cignix": "Cignix",
+    "Prime": "பிரைம்",
+    "Active": {
+      "Active membership": "செயலில் உள்ள உறுப்பினர்",
+      "Active description": "CIGNIX குடும்பத்தில் மதிப்புமிக்க உறுப்பினராக இருப்பதற்காக நன்றி",
+      "Cignix Pro": "Cignix ப்ரோ",
+      "Cignix Pro description": "அனைத்து வீடியோ தொடர்கள், கட்டுரைகள் மற்றும் வழிகாட்டுதல்களுக்கு முழு அணுகல்",
+      "Next due date": "அடுத்த செலுத்த வேண்டிய தேதி",
+      "Cancel membership": "உறுப்பினரை ரத்து செய்யவும்",
+      "Upgrade Plan": "திட்டத்தை மேம்படுத்தவும்"
+    },
+    "normal": {}
+  },
+  "mobilelogin": {
+    "Welcome Back": "மீண்டும் வருக",
+    "Welcome description": "உங்கள் கைப்பேசி எண்ணுடன் உள்நுழையவும்",
+    "Mobile Number": "கைபேசி எண்",
+    "Get Otp": "OTP பெறவும்",
+    "or Login With": "அல்லது உள்நுழையவும்",
+    "Google": "கூகுள்",
+    "Password": "கடவுச்சொல்",
+    "Don't have an account?": "கணக்கு இல்லையா?",
+    "Sign Up": "பதிவு செய்யவும்"
+  },
+  "Onboarding": {
+    "Your smoke-free life Begins now": "உங்கள் புகைச்சல் இல்லாத வாழ்க்கை இப்போது தொடங்குகிறது!",
+    "description": "ஒரு சிகரெட் ஒரு நாளுக்கு உங்கள் வாழ்க்கையை குறைக்கிறது. புகையிலை விடுவித்து இன்று சிறப்பாக வாழத் தொடங்குங்கள்!",
+    "Get Started": "தொடங்கவும்",
+    "Already have an account?": "ஏற்கனவே கணக்கு உள்ளதா?"
+  },
+  "Passwordlogin": {
+    "Welcome Back": "மீண்டும் வருக",
+    "Welcome description": "உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லுடன் உள்நுழையவும்",
+    "Email Your Email ID": "உங்கள் மின்னஞ்சல் ஐடி",
+    "Password": "கடவுச்சொல்",
+    "Log in": "உள்நுழையவும்",
+    "forgot Password": "கடவுச்சொல் மறந்துவிட்டதா?",
+    "or Login With": "அல்லது உள்நுழையவும்",
+    "Google": "கூகுள்",
+    "Phone": "தொலைபேசி",
+    "Don't have an account?": "கணக்கு இல்லையா?",
+    "Sign Up": "பதிவு செய்யவும்"
+  },
+  "Sim1": {
+    "Sim Test 1": "SIM சோதனை 1",
+    "Discover Your Score": "உங்கள் மதிப்பெண்களை கண்டறியவும்"
+  },
+  "Congts": {
+    "Congrats": "வாழ்த்துகள்",
+    "Congratulations": "க்விஸ் முடித்ததற்காக வாழ்த்துகள்!",
+    "description": "உங்கள் மதிப்பெண்களை பார்க்கவும் மற்றும் எப்படி செயல்பட்டீர்கள் என்பதை அறியவும், தயவுசெய்து உள்நுழையுங்கள் அல்லது பதிவு செய்யுங்கள்!",
+    "Sign Up to View scores": "மதிப்பெண்களைப் பார்க்க பதிவு செய்யவும்"
+  },
+  "Otp": {
+    "Verify Your Login": "உங்கள் உள்நுழைவைச் சரிபார்க்கவும்",
+    "Enter the verification code we sent to your Number": "உங்கள் எண்ணிற்கு அனுப்பிய சரிபார்ப்பு குறியீட்டை உள்ளிடவும்",
+    "Verify otp": "OTP சரிபார்க்கவும்",
+    "Didn't get the code?": "குறியீடு கிடைக்கவில்லையா?",
+    "Resend": "மறுபடியும் அனுப்பவும்"
+  },
+  "Roadmap": {
+    "Complete the SIM Test": "SIM சோதனையை முடிக்கவும்",
+    "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "உங்கள் புகைப்பழக்கங்களை மதிப்பீடு செய்ய மற்றும் விடுவிக்க தயாராக உள்ளீர்களா என்பதை சரிபார்க்க SIM சோதனையை தொடங்குங்கள்",
+    "Upgrade to premium": "பிரீமியமாக மேம்படுத்தவும்",
+    "Go Premium": "பிரீமியமாக செல்லவும்",
+    "See Plans": "திட்டங்களைப் பார்க்கவும்"
+  }
+}

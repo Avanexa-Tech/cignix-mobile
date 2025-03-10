@@ -1,0 +1,155 @@
+{
+  "profile":{
+      "Account Settings": "Account Settings",
+      "Edit Profile": "Edit Profile",
+      "Manage Subscription": "Manage Subscription",
+      "Change Password": "Change Password",
+      "Notification Settings": "Notification Settings",
+      "Other Settings": "Other Settings",
+      "Blogs": "Blogs",
+      "News and Media": "News and Media",
+      "Help Center": "Help Center",
+      "Contact Support": "Contact Support",
+      "Privacy Policy": "Privacy Policy",
+      "Terms and Conditions": "Terms and Conditions",
+      "Logout": "Logout",
+      "free user": "free user",
+      "premium user": "premium user"
+  },
+  "Edit profile":{
+      "Edit Profile": "Edit Profile",
+      "Edit profile Picture": "Edit profile Picture",
+      "Profile Information":"Profile Information",
+      "Edit Info":"Edit Info",
+      "Full Name":"Full Name", 
+      "Email Address":"Email Address",
+      "Phone Number":"Phone Number",
+      "Date of Birth / Age":"Date of Birth / Age",  
+      "Gender":"Gender",
+      "Update Profile":"Update Profile" 
+  },
+  "Change Password":{
+    "Change Password":"Change Password",
+    "Enter Current Password":"Enter Current Password",
+    "Enter New Password":"Enter New Password",
+    "Retype New Password":"Retype New Password",
+    "description":"A Strong Password is Key for security: use 12-16 characters with a mix of uppercase, lowercase, numbers, and symbols. Avoid common words and personal info."
+  },
+  "Notification Settings":{
+    "Notification Settings":"Notification Settings",
+    "Choose Notification Channels":"Choose Notification Channels",
+    "Email Notification":"Email Notification",
+    "Email description":"Receive notification all of the messages, videos, progress Updates.",
+    "Push Notification":"Push Notification",
+    "Push description":"Receive notification all of the messages, videos, progress Updates.",
+    "Whatsapp Notification":"Whatsapp Notification",
+    "Whatsapp description":"Receive notification all of the messages, videos, progress Updates.",
+    "Types of Notification":"Types of Notification",
+    "Remainder":"Remainder",
+    "Community Updates":"Community Updates"
+  },
+  "Membership":{
+      "Cignix":"Cignix",
+      "Prime":"Prime",
+    "Active":{
+        "Active membership":"Active membership",
+        "Active description":" Thank you for being a valued member of the CIGNIX family",
+        "Cignix Pro":"Cignix Pro",
+        "Cignix Pro description":"Full access to all video series, articles, and quitting guides",
+        "Next due date":"Next due date",
+        "Cancel membership":"Cancel membership",
+        "Upgrade Plan":"Upgrade Plan"
+    },
+    "normal":{
+
+    }
+  },
+  "mobilelogin":{
+    "Welcome Back":"Welcome Back",
+    "Welcome description":"Login with your Mobile Number",
+    "Mobile Number":"Mobile Number",
+    "Get Otp":"Get OTP",
+    "or Login With":"or Login With",
+    "Google":"Google",
+    "Password":"Password",
+    "Don't have an account?":"Don't have an account?",
+    "Sign Up":"Sign Up"
+  },
+  "Onboarding":{ 
+    "Your smoke-free life Begins now":"Your  Smoke-Free Life Begins Now!",
+    "description":"A Cigarette a day takes yours life away. Break free from tobacco and start living better today!",
+    "Get Started":"Get Started",
+    "Already have an account?":"Already Have an account?"
+},
+"Passwordlogin":{
+    "Welcome Back":"Welcome Back",
+    "Welcome description":"Login with your Email and Password",
+    "Email Your Email ID ":"Email Your Email ID",
+    "Password":"Password",
+    "Log in":"Log in",
+    "forgot Password":"forgot Password?",
+    "or Login With":"or Login With",
+    "Google":"Google",
+    "Phone":"Phone",
+    "Don't have an account?":"Don't have an account?",
+    "Sign Up":"Sign Up"
+},
+"Sim1":{
+    "Sim Test 1":"SIM Test",
+    "Discover Your Score":"Discover Your Score"
+},
+"Congts":{
+    "Congrats":"Congratulations on",
+    "Congratulations":"Completing the Quiz",
+    "description":"To check your scores and see how you did, please sign up or log in!",
+    "Sign Up to View scores":"Sign Up to View scores"
+},
+"Register":{
+    "Let's Get Started":"Let's Get Started",
+    "description":"Create an account to Unlock personalised videos and support to help you quit smoking.",
+    "Enter your Name":"Enter your Name",
+    "Enter your Email ID":"Enter your Email ID",
+    "Enter your Mobile Number":"Enter your Mobile Number",
+    "DD//MM//YYYY":"DD/MM/YYYY",
+    "Select Gender":"Select Gender",
+    "Password":"Password",
+    "By signing up, you agree to our":"By signing up, you agree to our",
+    "Terms & Conditions":"Terms & Conditions",
+    "and":"and",
+    "Privacy Policy":"Privacy Policy",
+    "Get Started":"Get Started",
+    "Already have an account?":"Already have an account?",
+    "Log in":"Log in"
+},
+ "Otp":{
+ "Verify Your Login":"Verify Your Login",
+ "Enter the verification code we sent to your Number":"Enter the verification code we sent to your Number",
+ "Verify otp":"Verify otp",
+ "Didn't get the code?":"Didn't get the code?",
+ "Resend":"Resend"
+ },
+ "Roadmap":{
+  "Complete the SIM Test":"Complete the SIM Test",
+  "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit":"Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit",
+  "Watch All 7 Videos":"Watch All 7 Videos",
+  "Each video is designed to guide you through the quitting process":"Each video is designed to guide you through the quitting process",
+  "Retake the SIM Test (SIM Test 2)":"Retake the SIM Test (SIM Test 2)",
+  "Each Video is designed to Guide you through the quitting process":"Each Video is designed to Guide you through the quitting process",
+  "Upgrade to premium":"Upgrade to premium",
+  "Upgrade to premium for advanced resources , personal coaching to support your smoke-free journey":"Upgrade to premium for advanced resources , personal coaching to support your smoke-free journey",
+  "Go Premium":"Go Premium",
+  "For Extra Benefits":"For Extra Benefits",
+  "See Plans":"See Plans"
+ },
+ "Homescreen":{
+  "hello":"Hello",
+  "Here is Your SIM Test Score":"Here is Your SIM Test Score",
+  "Start Video Course":"Start Video Course",
+  "Complete Our Free Video Course to improve score":"Complete our free Video Course to improve score",
+  "Address":"Address"
+ },
+ "Sim2":{
+  "Sim Test 2":"SIM Test 2",
+  "Discover Your Score":"Discover Your Score"
+ }
+}

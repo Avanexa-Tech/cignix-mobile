@@ -1,6 +1,7 @@
 export default {
-  primary: '#4254B6',
-  // primary: '#4259B7',
+  primary: '#4254B7',
+  // primary: '#4259B7'
+  // #4259B7,
   // primary: '#F36E21',
   secondary: '#0033A0',
   shop_green: '#0FAD45',

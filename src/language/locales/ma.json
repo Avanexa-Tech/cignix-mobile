@@ -1,0 +1,91 @@
+{
+    "profile": {
+      "Account Settings": "അക്കൗണ്ട് സെറ്റിങ്ങുകൾ",
+      "Edit Profile": "പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക",
+      "Manage Subscription": "സബ്സ്ക്രിപ്ഷൻ മാനേജുചെയ്യുക",
+      "Change Password": "പാസ്‌വേഡ് മാറ്റുക",
+      "Notification Settings": "അറിയിപ്പ് സെറ്റിങ്ങുകൾ",
+      "Other Settings": "മറ്റ് സെറ്റിങ്ങുകൾ",
+      "Blogs": "ബ്ലോഗുകൾ",
+      "News and Media": "വാർത്തകളും മീഡിയയും",
+      "Help Center": "സഹായ കേന്ദ്രം",
+      "Contact Support": "സപ്പോർട്ടുമായി ബന്ധപ്പെടുക",
+      "Privacy Policy": "സ്വകാര്യതാനയം",
+      "Terms and Conditions": "നിയമങ്ങളും നിബന്ധനകളും",
+      "Logout": "ലോഗൗട്ട് ചെയ്യുക",
+      "free user": "ഉಚಿತ ഉപയോക്താവ്",
+      "premium user": "പ്രീമിയം ഉപയോക്താവ്"
+    },
+    "Edit profile": {
+      "Edit Profile": "പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക",
+      "Edit profile Picture": "പ്രൊഫൈൽ ചിത്രം എഡിറ്റ് ചെയ്യുക",
+      "Profile Information": "പ്രൊഫൈൽ വിവരം",
+      "Edit Info": "വിവരങ്ങൾ എഡിറ്റ് ചെയ്യുക",
+      "Full Name": "പൂർണ്ണ പേര്",
+      "Email Address": "ഇമെയിൽ വിലാസം",
+      "Phone Number": "ഫോൺ നമ്പർ",
+      "Date of Birth / Age": "ജനനത്തീയതി / പ്രായം",
+      "Gender": "ലിംഗം",
+      "Update Profile": "പ്രൊഫൈൽ അപ്‌ഡേറ്റ് ചെയ്യുക"
+    },
+    "Change Password": {
+      "Change Password": "പാസ്‌വേഡ് മാറ്റുക",
+      "Enter Current Password": "നിലവിലുള്ള പാസ്‌വേഡ് നൽകുക",
+      "Enter New Password": "പുതിയ പാസ്‌വേഡ് നൽകുക",
+      "Retype New Password": "പുതിയ പാസ്‌വേഡ് വീണ്ടും നൽകുക",
+      "description": "സുരക്ഷയ്ക്കായി ശക്തമായ പാസ്‌വേഡ് പ്രധാനമാണ്: 12-16 അക്ഷരങ്ങളുള്ള, ക്യാപിറ്റൽ, സ്മാൾ ലെറ്ററുകൾ, നമ്പറുകൾ, സിംബോളുകൾ ഉൾപ്പെടുത്തുക. പൊതുവായ പദങ്ങളും വ്യക്തിപരമായ വിവരങ്ങളും ഒഴിവാക്കുക."
+    },
+    "Notification Settings": {
+      "Notification Settings": "അറിയിപ്പ് സെറ്റിങ്ങുകൾ",
+      "Choose Notification Channels": "അറിയിപ്പ് ചാനലുകൾ തിരഞ്ഞെടുക്കുക",
+      "Email Notification": "ഇമെയിൽ അറിയിപ്പ്",
+      "Email description": "എല്ലാ സന്ദേശങ്ങൾ, വീഡിയോകൾ, പുരോഗതി അപ്‌ഡേറ്റുകൾ എന്നിവയുടെ അറിയിപ്പുകൾ സ്വീകരിക്കുക.",
+      "Push Notification": "പുഷ് അറിയിപ്പ്",
+      "Push description": "എല്ലാ സന്ദേശങ്ങൾ, വീഡിയോകൾ, പുരോഗതി അപ്‌ഡേറ്റുകൾ എന്നിവയുടെ അറിയിപ്പുകൾ സ്വീകരിക്കുക.",
+      "Whatsapp Notification": "വാട്ട്സാപ്പ് അറിയിപ്പ്",
+      "Whatsapp description": "എല്ലാ സന്ദേശങ്ങൾ, വീഡിയോകൾ, പുരോഗതി അപ്‌ഡേറ്റുകൾ എന്നിവയുടെ അറിയിപ്പുകൾ സ്വീകരിക്കുക.",
+      "Types of Notification": "അറിയിപ്പ് തരം",
+      "Remainder": "റിമൈണ്ടർ",
+      "Community Updates": "കമ്മ്യൂണിറ്റി അപ്‌ഡേറ്റുകൾ"
+    },
+    "Membership": {
+      "Cignix": "Cignix",
+      "Prime": "പ്രൈം",
+      "Active": {
+        "Active membership": "സജീവ അംഗത്വം",
+        "Active description": "CIGNIX കുടുംബത്തിലെ വിലപ്പെട്ട അംഗമായതിന് നന്ദി",
+        "Cignix Pro": "Cignix പ്രോ",
+        "Cignix Pro description": "എല്ലാ വീഡിയോ പരമ്പരകൾ, ലേഖനങ്ങൾ, മാർഗ്ഗനിർദേശങ്ങൾ എന്നിവയിലേക്ക് പൂർണ്ണ ആക്സസ്",
+        "Next due date": "അടുത്ത പേയ്‌മെന്റ് തീയതി",
+        "Cancel membership": "അംഗത്വം റദ്ദാക്കുക",
+        "Upgrade Plan": "പ്ലാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക"
+      },
+      "normal": {}
+    },
+    "mobilelogin": {
+      "Welcome Back": "തിരികെ വരൂ",
+      "Welcome description": "നിങ്ങളുടെ മൊബൈൽ നമ്പറോടെ ലോഗിൻ ചെയ്യുക",
+      "Mobile Number": "മൊബൈൽ നമ്പർ",
+      "Get Otp": "OTP നേടുക",
+      "or Login With": "അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക",
+      "Google": "ഗൂഗിൾ",
+      "Password": "പാസ്‌വേഡ്",
+      "Don't have an account?": "അക്കൗണ്ട് ഇല്ലേ?",
+      "Sign Up": "സൈൻ അപ്പ് ചെയ്യുക"
+    },
+    "Otp": {
+      "Verify Your Login": "ലോഗിൻ സ്ഥിരീകരിക്കുക",
+      "Enter the verification code we sent to your Number": "നിങ്ങളുടെ നമ്പറിലേക്ക് അയച്ച സ്ഥിരീകരണ കോഡ് നൽകുക",
+      "Verify otp": "OTP സ്ഥിരീകരിക്കുക",
+      "Didn't get the code?": "കോഡ് ലഭിച്ചില്ലേ?",
+      "Resend": "വീണ്ടും അയയ്ക്കുക"
+    },
+    "Roadmap": {
+      "Complete the SIM Test": "SIM ടെസ്റ്റ് പൂർത്തിയാക്കുക",
+      "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "നിങ്ങളുടെ പുകവലി ശീലങ്ങൾ വിലയിരുത്താനും ഉപേക്ഷിക്കാൻ തയ്യാറാണോ എന്നതറിയാനുമുള്ള SIM ടെസ്റ്റിന്റെ തുടക്കം കുറിക്കുക",
+      "Upgrade to premium": "പ്രീമിയത്തിൽ അപ്‌ഗ്രേഡ് ചെയ്യുക",
+      "Go Premium": "പ്രീമിയം ആയി മാറ്റുക",
+      "See Plans": "പ്ലാനുകൾ കാണുക"
+    }
+  }
+  

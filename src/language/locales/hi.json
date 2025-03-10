@@ -1,0 +1,139 @@
+{
+    "profile": {
+      "Account Settings": "खाता सेटिंग्स",
+      "Edit Profile": "प्रोफ़ाइल संपादित करें",
+      "Manage Subscription": "सदस्यता प्रबंधित करें",
+      "Change Password": "पासवर्ड बदलें",
+      "Notification Settings": "सूचना सेटिंग्स",
+      "Other Settings": "अन्य सेटिंग्स",
+      "Blogs": "ब्लॉग्स",
+      "News and Media": "समाचार और मीडिया",
+      "Help Center": "सहायता केंद्र",
+      "Contact Support": "समर्थन से संपर्क करें",
+      "Privacy Policy": "गोपनीयता नीति",
+      "Terms and Conditions": "नियम और शर्तें",
+      "Logout": "लॉगआउट",
+      "free user": "मुफ्त उपयोगकर्ता",
+      "premium user": "प्रीमियम उपयोगकर्ता"
+    },
+    "Edit profile": {
+      "Edit Profile": "प्रोफ़ाइल संपादित करें",
+      "Edit profile Picture": "प्रोफ़ाइल चित्र संपादित करें",
+      "Profile Information": "प्रोफ़ाइल जानकारी",
+      "Edit Info": "जानकारी संपादित करें",
+      "Full Name": "पूरा नाम",
+      "Email Address": "ईमेल पता",
+      "Phone Number": "फ़ोन नंबर",
+      "Date of Birth / Age": "जन्म तिथि / आयु",
+      "Gender": "लिंग",
+      "Update Profile": "प्रोफ़ाइल अपडेट करें"
+    },
+    "Change Password": {
+      "Change Password": "पासवर्ड बदलें",
+      "Enter Current Password": "वर्तमान पासवर्ड दर्ज करें",
+      "Enter New Password": "नया पासवर्ड दर्ज करें",
+      "Retype New Password": "नया पासवर्ड पुनः लिखें",
+      "description": "सुरक्षा के लिए एक मजबूत पासवर्ड महत्वपूर्ण है: 12-16 अक्षरों का उपयोग करें, जिसमें बड़े अक्षर, छोटे अक्षर, संख्याएँ और प्रतीक हों। सामान्य शब्दों और व्यक्तिगत जानकारी से बचें।"
+    },
+    "Notification Settings": {
+      "Notification Settings": "सूचना सेटिंग्स",
+      "Choose Notification Channels": "सूचना चैनल चुनें",
+      "Email Notification": "ईमेल सूचना",
+      "Email description": "सभी संदेशों, वीडियो और प्रगति अपडेट की सूचनाएँ प्राप्त करें।",
+      "Push Notification": "पुश सूचना",
+      "Push description": "सभी संदेशों, वीडियो और प्रगति अपडेट की सूचनाएँ प्राप्त करें।",
+      "Whatsapp Notification": "व्हाट्सएप सूचना",
+      "Whatsapp description": "सभी संदेशों, वीडियो और प्रगति अपडेट की सूचनाएँ प्राप्त करें।",
+      "Types of Notification": "सूचना के प्रकार",
+      "Remainder": "अनुस्मारक",
+      "Community Updates": "समुदाय अपडेट"
+    },
+    "Membership": {
+      "Cignix": "Cignix",
+      "Prime": "प्राइम",
+      "Active": {
+        "Active membership": "सक्रिय सदस्यता",
+        "Active description": "CIGNIX परिवार का एक मूल्यवान सदस्य होने के लिए धन्यवाद",
+        "Cignix Pro": "Cignix प्रो",
+        "Cignix Pro description": "सभी वीडियो श्रृंखला, लेख, और गाइड तक पूर्ण पहुंच",
+        "Next due date": "अगली नियत तिथि",
+        "Cancel membership": "सदस्यता रद्द करें",
+        "Upgrade Plan": "योजना उन्नत करें"
+      },
+      "normal": {}
+    },
+    "mobilelogin": {
+      "Welcome Back": "फिर से स्वागत है",
+      "Welcome description": "अपने मोबाइल नंबर से लॉगिन करें",
+      "Mobile Number": "मोबाइल नंबर",
+      "Get Otp": "ओटीपी प्राप्त करें",
+      "or Login With": "या लॉगिन करें",
+      "Google": "गूगल",
+      "Password": "पासवर्ड",
+      "Don't have an account?": "खाता नहीं है?",
+      "Sign Up": "साइन अप करें"
+    },
+    "Onboarding": {
+      "Your smoke-free life Begins now": "आपका धूम्रपान-मुक्त जीवन अब शुरू होता है!",
+      "description": "एक सिगरेट आपके जीवन को छोटा कर सकती है। तंबाकू से छुटकारा पाएं और आज ही बेहतर जीवन शुरू करें!",
+      "Get Started": "शुरू करें",
+      "Already have an account?": "पहले से ही खाता है?"
+    },
+    "Passwordlogin": {
+      "Welcome Back": "फिर से स्वागत है",
+      "Welcome description": "अपने ईमेल और पासवर्ड से लॉगिन करें",
+      "Email Your Email ID": "अपना ईमेल आईडी दर्ज करें",
+      "Password": "पासवर्ड",
+      "Log in": "लॉग इन करें",
+      "forgot Password": "पासवर्ड भूल गए?",
+      "or Login With": "या लॉगिन करें",
+      "Google": "गूगल",
+      "Phone": "फ़ोन",
+      "Don't have an account?": "खाता नहीं है?",
+      "Sign Up": "साइन अप करें"
+    },
+    "Sim1": {
+      "Sim Test 1": "सिम टेस्ट",
+      "Discover Your Score": "अपना स्कोर जानें"
+    },
+    "Congts": {
+      "Congrats": "बधाई हो",
+      "Congratulations": "क्विज़ पूरा करने पर बधाई!",
+      "description": "अपने स्कोर देखने और अपने प्रदर्शन का मूल्यांकन करने के लिए कृपया साइन अप करें या लॉग इन करें।",
+      "Sign Up to View scores": "स्कोर देखने के लिए साइन अप करें"
+    },
+    "Register": {
+      "Let's Get Started": "आइए शुरू करें",
+      "description": "व्यक्तिगत वीडियो और समर्थन अनलॉक करने के लिए एक खाता बनाएँ और धूम्रपान छोड़ने में सहायता प्राप्त करें।",
+      "Enter your Name": "अपना नाम दर्ज करें",
+      "Enter your Email ID": "अपना ईमेल आईडी दर्ज करें",
+      "Enter your Mobile Number": "अपना मोबाइल नंबर दर्ज करें",
+      "DD//MM//YYYY": "DD/MM/YYYY",
+      "Select Gender": "लिंग चुनें",
+      "Password": "पासवर्ड",
+      "By signing up, you agree to our": "साइन अप करके, आप हमारी शर्तों से सहमत हैं",
+      "Terms & Conditions": "नियम और शर्तें",
+      "and": "और",
+      "Privacy Policy": "गोपनीयता नीति",
+      "Get Started": "शुरू करें",
+      "Already have an account?": "पहले से ही खाता है?",
+      "Log in": "लॉग इन करें"
+    },
+    "Otp": {
+      "Verify Your Login": "अपना लॉगिन सत्यापित करें",
+      "Enter the verification code we sent to your Number": "हमने आपके नंबर पर जो सत्यापन कोड भेजा है उसे दर्ज करें",
+      "Verify otp": "ओटीपी सत्यापित करें",
+      "Didn't get the code?": "कोड प्राप्त नहीं हुआ?",
+      "Resend": "पुनः भेजें"
+    },
+    "Roadmap": {
+      "Complete the SIM Test": "सिम टेस्ट पूरा करें",
+      "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "अपनी धूम्रपान की आदतों का मूल्यांकन करने और छोड़ने की तत्परता का आकलन करने के लिए सिम टेस्ट लें",
+      "Watch All 7 Videos": "सभी 7 वीडियो देखें",
+      "Each video is designed to guide you through the quitting process": "हर वीडियो आपको धूम्रपान छोड़ने की प्रक्रिया में मार्गदर्शन देने के लिए डिज़ाइन किया गया है",
+      "Upgrade to premium": "प्रीमियम में अपग्रेड करें",
+      "Go Premium": "प्रीमियम लें",
+      "See Plans": "योजनाएँ देखें"
+    }
+  }
+  
