@@ -175,7 +175,7 @@ const Profile = ({ navigation }) => {
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20 }}>
           <Text
             style={{
               fontSize: 20,
@@ -189,7 +189,6 @@ const Profile = ({ navigation }) => {
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
           <TouchableOpacity
-            style={{ marginHorizontal: 10 }}
             onPress={() => navigation.navigate('NotificationsList')}
           >
             <Iconviewcomponent
