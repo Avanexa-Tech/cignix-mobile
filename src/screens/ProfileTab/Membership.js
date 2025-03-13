@@ -596,7 +596,7 @@ const Membership = () => {
                 borderRadius: 10,
               }}>
               <TextInput
-                placeholder="Enter Coupon Code"
+                placeholder={t("PlaceHolder.Enter Coupon Code")}
                 placeholderTextColor={'#999999'}
                 maxLength={6}
                 value={Couponcode}

@@ -1805,7 +1805,7 @@ const HomeScreen = () => {
                     padding: 10,
                   }}>
                   <TextInput
-                    placeholder="Type your question here..."
+                    placeholder={t("PlaceHolder.Type your question here...")}
                     numberOfLines={4}
                     multiline
                     value={Feedback}
@@ -2091,7 +2091,7 @@ const HomeScreen = () => {
                 {Change ? t('Homescreen.Enter 6 Digit Otp') : t('Homescreen.Enter Your Whatsapp Number')}
               </Text>
               <TextInput
-                placeholder={Change ? ' Enter Otp ' : 'Whatsapp Number'}
+                placeholder={Change ? t("PlaceHolder.Enter Otp") : t('PlaceHolder.Whatsapp Number')}
                 style={{
                   color: Color?.black,
                   fontFamily: Mulish?.Regular,

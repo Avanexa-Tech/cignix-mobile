@@ -554,5 +554,19 @@
     "We are Cignix ('Company', 'we', 'us', or 'our'), a company registered in India at": "We are Cignix ('Company', 'we', 'us', or 'our'), a company registered in India at",
     "AGREEMENT TO OUR LEGAL TERMS": "AGREEMENT TO OUR LEGAL TERMS",
     "About Cignix": "About Cignix"
+  },
+  "PlaceHolder": {
+    "Type your question here...": "Type your question here...",
+    "Enter Current Password": "Enter Current Password",
+    "Enter New Password": "Enter New Password",
+    "Retype New Password": "Retype New Password",
+    "Full Name": "Full Name",
+    "Email Address": "Email Address",
+    "Phone Number": "Phone Number",
+    "Date of Birth / Age": "Date of Birth / Age",
+    "Gender": "Gender",
+    "Enter Coupon Code": "Enter Coupon Code",
+    "Enter Otp": "Enter Otp",
+    "Whatsapp Number": "Whatsapp Number"
   }
 }

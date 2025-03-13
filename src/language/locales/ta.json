@@ -531,5 +531,19 @@
     "We are Cignix ('Company', 'we', 'us', or 'our'), a company registered in India at": "நாங்கள் சிக்னிக்ஸ் ('நிறுவனம்', 'நாங்கள்', 'எங்களுக்கு', அல்லது 'எங்கள்'), இந்தியாவில் பதிவு செய்யப்பட்ட ஒரு நிறுவனம்",
     "AGREEMENT TO OUR LEGAL TERMS": "எங்கள் சட்ட விதிமுறைகளுக்கு ஒப்பந்தம்",
     "About Cignix": "சிக்னிக்ஸ் பற்றி"
+  },
+  "PlaceHolder": {
+    "Type your question here...": "உங்கள் கேள்வியை இங்கே தட்டச்சு செய்யவும்...",
+    "Enter Current Password": "தற்போதைய கடவுச்சொல்லை உள்ளிடவும்",
+    "Enter New Password": "புதிய கடவுச்சொல்லை உள்ளிடவும்",
+    "Retype New Password": "புதிய கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்யவும்",
+    "Full Name": "முழு பெயர்",
+    "Email Address": "மின்னஞ்சல் முகவரி",
+    "Phone Number": "தொலைபேசி எண்",
+    "Date of Birth / Age": "பிறந்த தேதி / வயது",
+    "Gender": "பாலினம்",
+    "Enter Coupon Code": "கூப்பன் குறியீட்டை உள்ளிடவும்",
+    "Enter Otp": "OTP உள்ளிடவும்",
+    "Whatsapp Number": "வாட்ஸ்அப் எண்"
   }
 }

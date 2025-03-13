@@ -531,5 +531,19 @@
     "We are Cignix ('Company', 'we', 'us', or 'our'), a company registered in India at": "आम्ही Cignix ('कंपनी', 'आम्ही', 'आम्हाला', किंवा 'आमच्या') आहोत, एक कंपनी जी भारतात नोंदणीकृत आहे",
     "AGREEMENT TO OUR LEGAL TERMS": "आमच्या कायदेशीर अटींशी करार",
     "About Cignix": "सिग्निक्स बद्दल"
+  },
+  "PlaceHolder": {
+    "Type your question here...": "तुमचा प्रश्न इथे टाइप करा...",
+    "Enter Current Password": "सध्याचा पासवर्ड टाका",
+    "Enter New Password": "नवीन पासवर्ड टाका",
+    "Retype New Password": "नवीन पासवर्ड पुन्हा टाइप करा",
+    "Full Name": "पूर्ण नाव",
+    "Email Address": "ईमेल पत्ता",
+    "Phone Number": "फोन नंबर",
+    "Date of Birth / Age": "जन्मतारीख / वय",
+    "Gender": "लिंग",
+    "Enter Coupon Code": "कूपन कोड टाका",
+    "Enter Otp": "OTP टाका",
+    "Whatsapp Number": "व्हॉट्सअॅप नंबर"
   }
 }

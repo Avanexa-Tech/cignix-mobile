@@ -432,7 +432,7 @@ const EditProfile = ({navigation}) => {
         </View>
 
         <TextInput
-          label="Full Name"
+          label={t("PlaceHolder.Full Name")}
           value={Uservalue?.Name}
           editable={isEditable == true ? true : false} // Make the TextInput non-editable
           // editable={isEditable} // Toggle edit mode
@@ -461,7 +461,7 @@ const EditProfile = ({navigation}) => {
           }}
         />
         <TextInput
-          label="Email Address"
+          label={t("PlaceHolder.Email Address")}
           value={Uservalue?.Email?.toLowerCase()}
           editable={isEditable == true ? true : false} // Make the TextInput non-editable
           onChangeText={text => setuservalue({...Uservalue, Email: text})}
@@ -489,7 +489,7 @@ const EditProfile = ({navigation}) => {
           }}
         />
         <TextInput
-          label="Phone Number"
+          label={t("PlaceHolder.Phone Number")}
           value={Uservalue?.Phone}
           editable={isEditable == true ? true : false} // Make the TextInput non-editable
           onChangeText={text => setuservalue({...Uservalue, Phone: text})}
@@ -533,7 +533,7 @@ const EditProfile = ({navigation}) => {
           }
         />
         <TextInput
-          label="Date of Birth / Age"
+          label={t("PlaceHolder.Date of Birth / Age")}
           value={Uservalue?.DOB}
           editable={isEditable == true ? true : false} // Make the TextInput non-editable
           onChangeText={text => setuservalue({...Uservalue, DOB: text})}
@@ -581,7 +581,7 @@ const EditProfile = ({navigation}) => {
         />
 
         <TextInput
-          label="Gender"
+          label={t("PlaceHolder.Gender")}
           value={Uservalue?.Gender}    
           // autoCapitalize='words'      
           editable={isEditable == true ? true : false} // Make the TextInput non-editable

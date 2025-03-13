@@ -195,7 +195,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.currentPassword && styles.errorBorder,
                 ]}
-                placeholder="Enter Current Password"
+                placeholder={t("PlaceHolder.Enter Current Password")}
                 placeholderTextColor={Color.lightgrey}
                 secureTextEntry={!password_visible}
                 value={currentPassword}
@@ -231,7 +231,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.newPassword && styles.errorBorder,
                 ]}
-                placeholder="Enter New Password"
+                placeholder={t("PlaceHolder.Enter New Password")}
                 placeholderTextColor={Color.lightgrey}
                 secureTextEntry={!newpassword_visible}
                 value={newPassword}
@@ -268,7 +268,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.confirmPassword && styles.errorBorder,
                 ]}
-                placeholder="Retype New Password"
+                placeholder={t("PlaceHolder.Retype New Password")}
                 placeholderTextColor={Color.lightgrey}
                 value={confirmPassword}
                 secureTextEntry={!confirmnewpassword_visible}
