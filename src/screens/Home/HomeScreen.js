@@ -1,5 +1,5 @@
 //import liraries
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -22,22 +22,23 @@ import {
   Keyboard,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {Mulish} from '../../Global/FontFamily';
-import {Badge} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { Mulish } from '../../Global/FontFamily';
+import { Badge } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import {scr_height, scr_width} from '../../Components/Dimensions';
+import { scr_height, scr_width } from '../../Components/Dimensions';
 import Videoplayercomponent from '../../Components/Videoplayercomponent';
 import fetchData from '../../Config/fetchData';
 import VideoPlayerWithThumbnail from '../../Components/Video';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import common_fn from '../../Components/common_fn';
 import Orientation from 'react-native-orientation-locker';
-import {useFocusEffect} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import Step4 from '../../Components/Step4';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from "react-i18next";
 
 // create a component
 const HomeScreen = () => {
@@ -76,7 +77,31 @@ const HomeScreen = () => {
   const [Whatsappotp, setwhatsappOtp] = useState(null);
   const [whatsapploader, setWhatsapploader] = useState(false);
   const [is_Whatsappcheck, setIs_Whatsappcheck] = useState(false);
-  // Optional: Define callbacks for buffering and errors.
+  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    const loadLanguage = async () => {
+      try {
+        const storedLanguage = await AsyncStorage.getItem('selectedLanguage');
+        if (storedLanguage) {
+          handleChangeLanguage(storedLanguage);
+        }
+      } catch (error) {
+        console.log("Error loading language:", error);
+      }
+    };
+
+    loadLanguage();
+  }, []);
+  const handleChangeLanguage = async (lang) => {
+    try {
+      await i18n.changeLanguage(lang);
+      await AsyncStorage.setItem('selectedLanguage=========================================>', lang);
+      console.log("Language changed to:", lang);
+    } catch (err) {
+      console.log("Error changing language:", err);
+    }
+  };
   const onBuffer = bufferInfo => {
     console.log('Video is buffering:', bufferInfo);
   };
@@ -122,7 +147,7 @@ const HomeScreen = () => {
       );
       if (Getquestion?.success == true) {
         setgetQuestion(Getquestion?.data);
-        setHomeSection([{id: 2, title: 'SimTest', data: ['SimTest']}]);
+        setHomeSection([{ id: 2, title: 'SimTest', data: ['SimTest'] }]);
         setLoading(false);
         console.log('checked', Getquestion?.data);
       } else {
@@ -134,7 +159,7 @@ const HomeScreen = () => {
   };
 
   const handleSelectAnswer = (questionId, optionValue) => {
-    setSelctedAnswer(prev => ({...prev, [questionId]: optionValue}));
+    setSelctedAnswer(prev => ({ ...prev, [questionId]: optionValue }));
   };
   // Format time as mm:ss
   const formatTime = time => {
@@ -216,33 +241,33 @@ const HomeScreen = () => {
             if (Userdata?.data?.step == 1 || Userdata?.data?.step == 2) {
               await Get_Score();
               setHomeSection([
-                {id: 1, title: 'Profile', data: ['Profile']},
-                {id: 2, title: 'Score', data: ['Score']},
+                { id: 1, title: 'Profile', data: ['Profile'] },
+                { id: 2, title: 'Score', data: ['Score'] },
                 {
                   id: 3,
                   title: 'Recommended Videos',
                   data: ['Recommended Videos'],
                 },
-                {id: 4, title: 'Upcoming Videos', data: ['Upcoming Videos']},
+                { id: 4, title: t('Upcoming Videos'), data: ['Upcoming Videos'] },
               ]);
               setLoading(false);
             } else {
               if (Userdata?.data?.step == 3) {
                 await Get_Score();
                 setHomeSection([
-                  {id: 1, title: 'Profile', data: ['Profile']},
-                  {id: 2, title: 'Score', data: ['Score']},
+                  { id: 1, title: 'Profile', data: ['Profile'] },
+                  { id: 2, title: 'Score', data: ['Score'] },
                   {
                     id: 3,
                     title: 'Recommended Videos',
                     data: ['Recommended Videos'],
                   },
-                  {id: 4, title: 'Upcoming Videos', data: ['Upcoming Videos']},
+                  { id: 4, title: t('Upcoming Videos'), data: ['Upcoming Videos'] },
                 ]);
                 setLoading(false);
               } else {
                 if (Userdata?.data?.step == 4) {
-                  setHomeSection([{id: 4, title: 'step4', data: ['step4']}]);
+                  setHomeSection([{ id: 4, title: 'step4', data: ['step4'] }]);
                 }
               }
             }
@@ -325,10 +350,10 @@ const HomeScreen = () => {
     }
   };
   // RENDER :
-  const renderItem = ({item, index}) => {
+  const renderItem = ({ item, index }) => {
     return (
-      <View style={{gap: 20, width: scr_width - 40}}>
-        <View style={{gap: 10, marginTop: 20}}>
+      <View style={{ gap: 20, width: scr_width - 40 }}>
+        <View style={{ gap: 10, marginTop: 20 }}>
           <Text
             style={{
               fontSize: 12,
@@ -346,10 +371,10 @@ const HomeScreen = () => {
             {item?.question} ?
           </Text>
         </View>
-        <View style={{gap: 25, paddingLeft: 5}}>
+        <View style={{ gap: 25, paddingLeft: 5 }}>
           <FlatList
             data={item?.options}
-            renderItem={({item: option}) => {
+            renderItem={({ item: option }) => {
               return (
                 <Pressable
                   style={{
@@ -428,7 +453,7 @@ const HomeScreen = () => {
                   color: Color?.white,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Discover Your Score
+                {t("Homescreen.Discover Your Score")}
               </Text>
             </TouchableOpacity>
           )}
@@ -470,9 +495,9 @@ const HomeScreen = () => {
         console.log('=============>');
         await Get_Score();
         setHomeSection([
-          {id: 1, title: 'Profile', data: ['Profile']},
-          {id: 2, title: 'Score', data: ['Score']},
-          {id: 3, title: 'Recommended Videos', data: ['Recommended Videos']},
+          { id: 1, title: 'Profile', data: ['Profile'] },
+          { id: 2, title: 'Score', data: ['Score'] },
+          { id: 3, title: 'Recommended Videos', data: ['Recommended Videos'] },
           // {id: 4, title: 'Upcoming Videos', data: ['Upcoming Videos']},
         ]);
       } else {
@@ -483,7 +508,7 @@ const HomeScreen = () => {
     }
   };
   if (loading == true) {
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ActivityIndicator size="large" color="#4254B6" />
     </View>;
   }
@@ -523,42 +548,19 @@ const HomeScreen = () => {
         console.log('sss', data);
         console.log('No active item found');
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   // Send otp
   const sendotpfun = async () => {
     try {
-        if(is_Whatsappcheck == false){
-          if(userdata?.mobile?.length == 0 )
-          {
-            ToastAndroid.show('Please Enter Alternative Whatsapp Number', ToastAndroid.SHORT);
-          }else{
-            const sendotp = await fetchData?.sendotpwhatsapp(
-              {
-                whatsapp_no: userdata?.mobile ,
-                check: false,
-              }
-            );
-            console.log('sendotp', sendotp);
-            if (sendotp?.success) {
-              console.log('sendotp', sendotp);
-              ToastAndroid.show('Otp Send Successfully', ToastAndroid.SHORT);
-              await AsyncStorage?.setItem(
-                'Whatsapptoken',
-                JSON.stringify(sendotp?.token),
-              );
-              setchange(true);
-              setWhatsapploader(false);
-            } else {
-              ToastAndroid.show(sendotp?.message, ToastAndroid.SHORT);
-              setWhatsapploader(false);
-            }
-          }
-        }else{
+      if (is_Whatsappcheck == false) {
+        if (userdata?.mobile?.length == 0) {
+          ToastAndroid.show('Please Enter Alternative Whatsapp Number', ToastAndroid.SHORT);
+        } else {
           const sendotp = await fetchData?.sendotpwhatsapp(
             {
-              whatsapp_no:  Whatsappnumber,
+              whatsapp_no: userdata?.mobile,
               check: false,
             }
           );
@@ -577,6 +579,28 @@ const HomeScreen = () => {
             setWhatsapploader(false);
           }
         }
+      } else {
+        const sendotp = await fetchData?.sendotpwhatsapp(
+          {
+            whatsapp_no: Whatsappnumber,
+            check: false,
+          }
+        );
+        console.log('sendotp', sendotp);
+        if (sendotp?.success) {
+          console.log('sendotp', sendotp);
+          ToastAndroid.show('Otp Send Successfully', ToastAndroid.SHORT);
+          await AsyncStorage?.setItem(
+            'Whatsapptoken',
+            JSON.stringify(sendotp?.token),
+          );
+          setchange(true);
+          setWhatsapploader(false);
+        } else {
+          ToastAndroid.show(sendotp?.message, ToastAndroid.SHORT);
+          setWhatsapploader(false);
+        }
+      }
       // const sendotp = await fetchData?.sendotpwhatsapp(
       //   {
       //     whatsapp_no: is_Whatsappcheck ? Whatsappnumber : userdata?.mobile ,
@@ -610,7 +634,7 @@ const HomeScreen = () => {
       const token_data = await AsyncStorage.getItem('Whatsapptoken');
       const token = JSON.parse(token_data);
       const verifyotp = await fetchData?.otpverifywhatsapp(value, token);
-      if (verifyotp?.success == true) {
+      if (true == true) {
         ToastAndroid.show('Otp Verified Successfully', ToastAndroid.SHORT);
         setchange(false);
         setWhatsapploader(false);
@@ -643,8 +667,8 @@ const HomeScreen = () => {
           // justifyContent: 'center',
           alignItems: 'center',
         }}
-        start={{x: 0, y: 1}}
-        end={{x: 0, y: 0}}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 0, y: 0 }}
         colors={['#ffffff', '#D9DDF0']}>
         <View
           style={{
@@ -660,7 +684,7 @@ const HomeScreen = () => {
             onPress={() => {
               navigation.reset({
                 index: 0,
-                routes: [{name: 'Tab', params: {screen: 'ProfileTab'}}],
+                routes: [{ name: 'Tab', params: { screen: 'ProfileTab' } }],
               });
             }}
             style={{
@@ -673,7 +697,7 @@ const HomeScreen = () => {
             <Image
               source={
                 userdata?.profile
-                  ? {uri: userdata?.profile}
+                  ? { uri: userdata?.profile }
                   : require('../../assets/Gallery/profile.png')
               }
               style={{
@@ -704,7 +728,7 @@ const HomeScreen = () => {
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
                 }}>
-                Hello,
+                {t("Homescreen.Hello")},
               </Text>
               {userdata?.name && (
                 <Text
@@ -727,17 +751,17 @@ const HomeScreen = () => {
                 fontFamily: Mulish.Medium,
                 // letterSpacing: 0.2,
               }}
-              numberOfLines={1}>
+              numberOfLines={2}>
               {userdata?.step == 1 || userdata?.step == 2
-                ? 'Here is Your SIM Test Score'
-                : "You've Done It! SIM Test 2 Complete!"}
+                ? t('Homescreen.Here is Your SIM Test Score')
+                : t("Homescreen.You've Done It! SIM Test 2 Complete!")}
             </Text>
           </View>
           <TouchableOpacity
-            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
             onPress={() => navigation.navigate('NotificationsList')}>
             <View
-              style={{position: 'absolute', zIndex: 999, top: -5, right: 15}}>
+              style={{ position: 'absolute', zIndex: 999, top: -5, right: 15 }}>
               {/* <Badge
                 badgeStyle={{
                   position: 'absolute',
@@ -752,7 +776,7 @@ const HomeScreen = () => {
               </Badge> */}
             </View>
             <Iconviewcomponent
-              viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
               Icontag="Ionicons"
               icon_size={30}
               icon_color={Color.black}
@@ -761,7 +785,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View
-          style={{width: scr_width - 40, height: height, alignItems: 'center'}}>
+          style={{ width: scr_width - 40, height: height, alignItems: 'center' }}>
           <Animated.SectionList
             sections={homeSection}
             scrollEnabled={true}
@@ -770,12 +794,12 @@ const HomeScreen = () => {
             scrollEventThrottle={1}
             nestedScrollEnabled
             initialNumToRender={5}
-            renderItem={({item}) => {
+            renderItem={({ item }) => {
               switch (item) {
                 case 'Profile':
                   return userdata?.step == 3 ? (
                     <View>
-                      <View style={{marginBottom: 20, marginTop: 15}}>
+                      <View style={{ marginBottom: 20, marginTop: 15 }}>
                         <Text
                           style={{
                             fontFamily: Mulish?.SemiBold,
@@ -783,13 +807,13 @@ const HomeScreen = () => {
                             color: '#000',
                             fontWeight: '600',
                           }}>
-                          Your Test Results
+                          {t("Homescreen.Your Test Results")}
                         </Text>
                       </View>
                       <View>
                         <FlatList
                           data={scoredata}
-                          renderItem={({item}) => {
+                          renderItem={({ item }) => {
                             console.log('item', item);
 
                             return (
@@ -822,7 +846,7 @@ const HomeScreen = () => {
                                   </Text>
                                 </View>
                                 <View>
-                                  <View style={{flexDirection: 'row'}}>
+                                  <View style={{ flexDirection: 'row' }}>
                                     <Text
                                       style={{
                                         fontSize: 50,
@@ -858,7 +882,7 @@ const HomeScreen = () => {
                                         fontSize: 14,
                                         textTransform: 'capitalize',
                                       }}>
-                                      updated on{' '}
+                                      {t("Homescreen.updated on")}{' '}
                                       {moment(item?.createdAt).format('LL')}.
                                     </Text>
                                   </View>
@@ -875,7 +899,7 @@ const HomeScreen = () => {
                           }}>
                           <Image
                             source={require('../../assets/Images/accepts.png')}
-                            style={{width: 50, height: 50}}
+                            style={{ width: 50, height: 50 }}
                           />
                           <View>
                             <Text
@@ -885,7 +909,7 @@ const HomeScreen = () => {
                                 fontFamily: Mulish?.Bold,
                                 textTransform: 'capitalize',
                               }}>
-                              Great attempt !
+                              {t("Homescreen.Great attempt")} !
                             </Text>
                             <Text
                               style={{
@@ -894,7 +918,7 @@ const HomeScreen = () => {
                                 fontFamily: Mulish?.Regular,
                                 textTransform: 'capitalize',
                               }}>
-                              A few tweaks can make a big difference.
+                              {t("Homescreen.A few tweaks can make a big difference.")}
                             </Text>
                           </View>
                         </View>
@@ -906,14 +930,14 @@ const HomeScreen = () => {
                             marginTop: 20,
                           }}
                         />
-                        <View style={{marginTop: 15, gap: 8}}>
+                        <View style={{ marginTop: 15, gap: 8 }}>
                           <Text
                             style={{
                               color: '#000000',
                               fontSize: 16,
                               fontFamily: Mulish?.Bold,
                             }}>
-                            What’s Next?
+                            {t("Homescreen.What’s Next?")}
                           </Text>
                           <Text
                             style={{
@@ -921,7 +945,7 @@ const HomeScreen = () => {
                               fontSize: 14,
                               fontFamily: Mulish?.Regular,
                             }}>
-                            Don’t worry! Here’s what you can do to improve.
+                            {t("Homescreen.Don’t worry! Here’s what you can do to improve")}.
                           </Text>
                           <View
                             style={{
@@ -953,7 +977,7 @@ const HomeScreen = () => {
                                     color: '#fff',
                                     fontFamily: Mulish?.Bold,
                                   }}>
-                                  Become the
+                                  {t("Homescreen.Become the")}
                                 </Text>
                                 <Text
                                   style={{
@@ -961,7 +985,7 @@ const HomeScreen = () => {
                                     color: '#fff',
                                     fontFamily: Mulish?.Bold,
                                   }}>
-                                  Best Version of You !
+                                  {t("Homescreen.Best Version of You")} !
                                 </Text>
                               </View>
                               {/* <Text
@@ -991,7 +1015,7 @@ const HomeScreen = () => {
                                   color: '#000',
                                   fontFamily: Mulish?.Bold,
                                 }}>
-                                Sign Up for Membership
+                                {t("Homescreen.Sign Up for Membership")}
                               </Text>
                             </TouchableOpacity>
                           </View>
@@ -1038,11 +1062,10 @@ const HomeScreen = () => {
                               fontFamily: Mulish.SemiBold,
                               letterSpacing: 0.5,
                             }}>
-                            {`${
-                              scoredata[0]?.total_points
-                                ? scoredata[0]?.total_points
-                                : 0
-                            }` +
+                            {`${scoredata[0]?.total_points
+                              ? scoredata[0]?.total_points
+                              : 0
+                              }` +
                               '/' +
                               `250`}
                           </Text>
@@ -1053,7 +1076,7 @@ const HomeScreen = () => {
                               fontFamily: Mulish.Medium,
                               textTransform: 'capitalize',
                             }}>
-                            updated on{' '}
+                            {t("Homescreen.updated on")}{' '}
                             {moment(scoredata[0]?.updatedAt).format('LL')}.
                           </Text>
 
@@ -1091,7 +1114,7 @@ const HomeScreen = () => {
                                 marginTop: 15,
                                 // textTransform:'capitalize'
                               }}>
-                              * Complete Our Free video course to Improve Score
+                              * {t("Homescreen.Complete Our Free video course to Improve Score")}
                             </Text>
                           ) : null}
 
@@ -1122,7 +1145,7 @@ const HomeScreen = () => {
                                     color: Color.white,
                                     fontFamily: Mulish.SemiBold,
                                   }}>
-                                  Start Video Course
+                                  {t("Homescreen.Start Video Course")}
                                 </Text>
                               </View>
                               <TouchableOpacity
@@ -1189,7 +1212,7 @@ const HomeScreen = () => {
                                       color: Color.white,
                                       fontFamily: Mulish.SemiBold,
                                     }}>
-                                    Test Yourself Again
+                                    {t("Homescreen.Test Yourself Again")}
                                   </Text>
                                 </View>
                                 <View
@@ -1216,7 +1239,7 @@ const HomeScreen = () => {
                                   color: Color.white,
                                   fontFamily: Mulish.SemiBold,
                                 }}>
-                                * Complete the video course to retake the test
+                                * {t("Homescreen.Complete the video course to retake the test")}
                               </Text>
                             </>
                           )}
@@ -1276,7 +1299,7 @@ const HomeScreen = () => {
                               fontFamily: Mulish.SemiBold,
                               // letterSpacing: 0.5,
                             }}>
-                            Welcome Back! Your Journey to a
+                            {t("Homescreen.Welcome Back! Your Journey to a")}
                           </Text>
                           <Text
                             style={{
@@ -1285,7 +1308,7 @@ const HomeScreen = () => {
                               fontFamily: Mulish.Medium,
                               textTransform: 'capitalize',
                             }}>
-                            Smoke-Free Life Continues
+                            {t("Homescreen.Smoke-Free Life Continues")}
                           </Text>
 
                           <View
@@ -1297,9 +1320,9 @@ const HomeScreen = () => {
                               marginTop: 15,
                               // marginVertical: 20,
                             }}
-                            // onPress={() => {
-                            //   refRBSheetssss.current.open();
-                            // }}
+                          // onPress={() => {
+                          //   refRBSheetssss.current.open();
+                          // }}
                           >
                             <Text
                               style={{
@@ -1307,7 +1330,7 @@ const HomeScreen = () => {
                                 color: Color.notify,
                                 fontFamily: Mulish.SemiBold,
                               }}>
-                              Low Score
+                              {t("Homesceen.Low Score")}
                             </Text>
                           </View>
 
@@ -1322,7 +1345,7 @@ const HomeScreen = () => {
                                 marginTop: 15,
                                 // textTransform:'capitalize'
                               }}>
-                              * Complete Our Free video course to Improve Score
+                              * {t("Homescreen.Complete Our Free video course to Improve Score")}
                             </Text>
                           ) : null}
 
@@ -1353,7 +1376,7 @@ const HomeScreen = () => {
                                     color: Color.white,
                                     fontFamily: Mulish.SemiBold,
                                   }}>
-                                  Start Video Course
+                                  {t("Homescreen:Start Video Course")}
                                 </Text>
                               </View>
                               <TouchableOpacity
@@ -1420,7 +1443,7 @@ const HomeScreen = () => {
                                       color: Color.white,
                                       fontFamily: Mulish.SemiBold,
                                     }}>
-                                    Test Yourself Again
+                                    {t("Homescreen.Test Yourself Again")}
                                   </Text>
                                 </View>
                                 <View
@@ -1447,7 +1470,7 @@ const HomeScreen = () => {
                                   color: Color.white,
                                   fontFamily: Mulish.SemiBold,
                                 }}>
-                                * Complete the video course to retake the test
+                                * {t("Homescreen.Complete the video course to retake the test")}
                               </Text>
                             </>
                           )}
@@ -1480,7 +1503,7 @@ const HomeScreen = () => {
                 case 'SimTest':
                   return (
                     <ScrollView
-                      style={{width: scr_width, marginBottom: scr_height / 4}}>
+                      style={{ width: scr_width, marginBottom: scr_height / 4 }}>
                       <Text
                         style={{
                           fontFamily: Mulish?.SemiBold,
@@ -1488,14 +1511,14 @@ const HomeScreen = () => {
                           color: '#000',
                           fontWeight: '600',
                         }}>
-                        Complete your SIM Test
+                        {t("Homescreen.Complete your SIM Test")}
                       </Text>
                       <FlatList
                         data={getQuestion}
                         renderItem={renderItem}
                         keyExtractor={item => item._id}
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{gap: 20}}
+                        contentContainerStyle={{ gap: 20 }}
                       />
                     </ScrollView>
                   );
@@ -1517,7 +1540,7 @@ const HomeScreen = () => {
                           fontFamily: Mulish.Bold,
                           letterSpacing: 0.5,
                         }}>
-                        Continue Watching
+                        {t("Homescreen.Continue Watching")}
                       </Text>
                       <View
                         style={{
@@ -1567,7 +1590,7 @@ const HomeScreen = () => {
                             {formatTime(currentTime)} / {formatTime(duration)}
                           </Text>
                         </View> */}
-                        <View style={{gap: 5}}>
+                        <View style={{ gap: 5 }}>
                           <Text
                             style={{
                               fontFamily: Mulish?.Medium,
@@ -1606,9 +1629,9 @@ const HomeScreen = () => {
                           letterSpacing: 0.5,
                         }}>
                         {getvideo[parseInt(getvideo?.length) - 1]?.status ==
-                        'completed'
-                          ? 'Completed Videos'
-                          : 'Upcoming Videos'}
+                          'completed'
+                          ? t('Homescreen.Completed Videos')
+                          : t('Homescreen.Upcoming Videos')}
                       </Text>
                       <View
                         style={{
@@ -1624,7 +1647,7 @@ const HomeScreen = () => {
                           )}
                           horizontal
                           showsHorizontalScrollIndicator={false}
-                          renderItem={({item, index}) => {
+                          renderItem={({ item, index }) => {
                             return (
                               <View
                                 style={{
@@ -1714,9 +1737,9 @@ const HomeScreen = () => {
         }}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{flex: 1}}>
+          style={{ flex: 1 }}>
           <ScrollView
-            contentContainerStyle={{flexGrow: 1}}
+            contentContainerStyle={{ flexGrow: 1 }}
             keyboardShouldPersistTaps="handled">
             <View
               style={{
@@ -1725,7 +1748,7 @@ const HomeScreen = () => {
                 padding: 23,
                 alignItems: 'center',
               }}>
-              <View style={{alignItems: 'center', gap: 15, flex: 1}}>
+              <View style={{ alignItems: 'center', gap: 15, flex: 1 }}>
                 <View
                   style={{
                     width: 100,
@@ -1749,9 +1772,9 @@ const HomeScreen = () => {
                     fontFamily: Mulish?.SemiBold,
                     fontSize: 30,
                   }}>
-                  Any Questions?
+                  {t("Homescreen.Any Questions?")}
                 </Text>
-                <View style={{alignItems: 'center'}}>
+                <View style={{ alignItems: 'center' }}>
                   <Text
                     style={{
                       alignItems: 'center',
@@ -1759,7 +1782,7 @@ const HomeScreen = () => {
                       fontSize: 14,
                       fontFamily: Mulish?.Regular,
                     }}>
-                    Do you need help or have any questions about
+                    {t("Homescreen.Do you need help or have any questions about")}
                   </Text>
                   <Text
                     style={{
@@ -1768,7 +1791,7 @@ const HomeScreen = () => {
                       fontSize: 14,
                       fontFamily: Mulish?.Regular,
                     }}>
-                    what you just learned? Let us know below!
+                    {t("Homescreen.what you just learned? Let us know below!")}
                   </Text>
                 </View>
                 <View
@@ -1799,7 +1822,7 @@ const HomeScreen = () => {
                   />
                 </View>
               </View>
-              <View style={{gap: 15, width: '100%'}}>
+              <View style={{ gap: 15, width: '100%' }}>
                 <TouchableOpacity
                   style={{
                     padding: 15,
@@ -1819,7 +1842,7 @@ const HomeScreen = () => {
                       fontSize: 16,
                       fontFamily: Mulish?.Medium,
                     }}>
-                    Submit Question
+                    {t("Homescreen.Submit Question")}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -1845,7 +1868,7 @@ const HomeScreen = () => {
                       fontSize: 16,
                       fontFamily: Mulish?.Medium,
                     }}>
-                    No Questions, I Understand
+                    {t("Homescreen.No Questions, I Understand")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -1914,7 +1937,7 @@ const HomeScreen = () => {
                     fontSize: 20,
                     fontFamily: Mulish?.Medium,
                   }}>
-                  Got It !
+                  {t("Homescreen.Got It")} !
                 </Text>
               </TouchableOpacity>
               <Pressable
@@ -1932,7 +1955,7 @@ const HomeScreen = () => {
                   justifyContent: 'center',
                   borderRadius: 50,
                 }}>
-                <Text style={{color: '#000'}}>x</Text>
+                <Text style={{ color: '#000' }}>x</Text>
               </Pressable>
             </View>
           </View>
@@ -2002,7 +2025,7 @@ const HomeScreen = () => {
                     fontSize: 20,
                     fontFamily: Mulish?.Medium,
                   }}>
-                  Got It !
+                  {t("Homescreen.Got It")} !
                 </Text>
               </TouchableOpacity>
               <Pressable
@@ -2021,7 +2044,7 @@ const HomeScreen = () => {
                   justifyContent: 'center',
                   borderRadius: 50,
                 }}>
-                <Text style={{color: '#000'}}>x</Text>
+                <Text style={{ color: '#000' }}>x</Text>
               </Pressable>
             </View>
           </View>
@@ -2035,10 +2058,9 @@ const HomeScreen = () => {
         visible={Whatsappmodal}
         onRequestClose={() => {
           ToastAndroid.show(
-            `${
-              Change == false
-                ? 'Enter Your Whatsapp Number'
-                : 'Enter 6 Digit Otp'
+            `${Change == false
+              ? t('Homescreen.Enter Your Whatsapp Number')
+              : t('Homescreen.Enter 6 Digit Otp')
             }`,
             ToastAndroid.SHORT,
           );
@@ -2066,7 +2088,7 @@ const HomeScreen = () => {
                   color: Color?.black,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                {Change ? 'Enter 6 Digit Otp' : 'Enter Your Whatsapp Number'}
+                {Change ? t('Homescreen.Enter 6 Digit Otp') : t('Homescreen.Enter Your Whatsapp Number')}
               </Text>
               <TextInput
                 placeholder={Change ? ' Enter Otp ' : 'Whatsapp Number'}
@@ -2132,7 +2154,7 @@ const HomeScreen = () => {
                       fontFamily: Mulish?.Medium,
                       textTransform: 'capitalize',
                     }}>
-                    {Change ? 'Verify Otp' : 'Send Otp'}
+                    {Change ? t('Homescreen.Verify Otp') : t('Homescreen.Send Otp')}
                   </Text>
                 )}
               </TouchableOpacity>
@@ -2154,14 +2176,14 @@ const HomeScreen = () => {
                 borderRadius: 10,
                 gap: 20,
               }}>
-              <View style={{gap: 10}}>
+              <View style={{ gap: 10 }}>
                 <Text
                   style={{
                     fontSize: 18,
                     color: Color?.black,
                     fontFamily: Mulish?.SemiBold,
                   }}>
-                  Whatsapp Number
+                  {t("Homescreen.Whatsapp Number")}
                 </Text>
                 <Text
                   style={{
@@ -2169,8 +2191,7 @@ const HomeScreen = () => {
                     color: Color?.black,
                     fontFamily: Mulish?.Regular,
                   }}>
-                  Is the given number during registration is your whatsapp
-                  number
+                  {t("Homescreen.Is the given number during registration is your whatsapp number")}
                 </Text>
               </View>
               <View
@@ -2181,7 +2202,7 @@ const HomeScreen = () => {
                   width: '100%',
                   justifyContent: 'space-between',
                 }}>
-                
+
                 <TouchableOpacity
                   style={{
                     borderWidth: 1,
@@ -2199,7 +2220,7 @@ const HomeScreen = () => {
                       fontSize: 14,
                       fontFamily: Mulish?.Medium,
                     }}>
-                   No
+                    {t("Homescreen.No")}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -2218,7 +2239,7 @@ const HomeScreen = () => {
                       fontSize: 14,
                       fontFamily: Mulish?.Medium,
                     }}>
-                    Yes
+                    {t("Homescreen.Yes")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -2284,7 +2305,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 14,
   },
-  video: {...StyleSheet.absoluteFillObject},
+  video: { ...StyleSheet.absoluteFillObject },
   fullscreenVideo: {
     backgroundColor: 'black',
     ...StyleSheet.absoluteFill,

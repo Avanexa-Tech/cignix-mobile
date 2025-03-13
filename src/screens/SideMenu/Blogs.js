@@ -18,11 +18,13 @@ import {Iconviewcomponent} from '../../Components/Icontag';
 import fetchData from '../../Config/fetchData';
 import moment from 'moment';
 import RenderHtml from 'react-native-render-html';
+import { useTranslation } from 'react-i18next';
 
 const Blogs = ({navigation}) => {
   const [data, setData] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedvalue, setSelectedvalue] = useState(null);
+  const { t } = useTranslation();
   const getblogs = async () => {
     try {
       const Blogs = await fetchData?.getblogs();
@@ -57,7 +59,7 @@ const Blogs = ({navigation}) => {
         <View>
           <Text
             style={{fontFamily: Mulish?.SemiBold, fontSize: 18, color: '#000'}}>
-            Blogs
+            {t("profile.Blogs")}
           </Text>
         </View>
       </View>
@@ -141,7 +143,7 @@ const Blogs = ({navigation}) => {
                           fontFamily: Mulish?.Regular,
                           color: '#3b84f6',
                         }}>
-                        Read More
+                        {t("profile.Read More")}
                       </Text>
                       <Iconviewcomponent
                         Icontag={'AntDesign'}

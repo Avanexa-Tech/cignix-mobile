@@ -33,6 +33,7 @@ import {Iconviewcomponent} from '../../Components/Icontag';
 import {scr_width} from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const NotificationSettings = () => {
@@ -44,6 +45,7 @@ const NotificationSettings = () => {
   const [isRemainderSwitchOn, setIsRemainderSwitchOn] = useState(false);
   const [isCommunitySwitchOn, setIsCommunitySwitchOn] = useState(false);
   const [getdata, setgetdata] = useState('');
+  const { t } = useTranslation();
   useEffect(() => {
     Getnotification();
   }, []);
@@ -192,7 +194,7 @@ const NotificationSettings = () => {
         <View>
           <Text
             style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Notification Settings
+            {t("NotificationSettings.Notification Settings")}
           </Text>
         </View>
       </View>
@@ -205,7 +207,7 @@ const NotificationSettings = () => {
           fontFamily: Mulish.Bold,
           // letterSpacing: 0.5,
         }}>
-        Choose Notification Channels
+        {t("NotificationSettings.Choose Notification Channels")}
       </Text>
 
       <View style={{padding: 10, gap: 10}}>
@@ -216,7 +218,7 @@ const NotificationSettings = () => {
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Email Notification
+            {t("NotificationSettings.Email Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -239,7 +241,7 @@ const NotificationSettings = () => {
               fontSize: 16,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -260,7 +262,7 @@ const NotificationSettings = () => {
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Push Notification
+            {t("NotificationSettings.Push Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -281,7 +283,7 @@ const NotificationSettings = () => {
               fontSize: 16,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -302,7 +304,7 @@ const NotificationSettings = () => {
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Whatsapp Notifaction
+            {t("NotificationSettings.Whatsapp Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -323,7 +325,7 @@ const NotificationSettings = () => {
               fontSize: 16,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -346,7 +348,7 @@ const NotificationSettings = () => {
           fontFamily: Mulish.Bold,
           letterSpacing: 0.5,
         }}>
-        Types of Notification
+        {t("NotificationSettings.Types of Notification")}
       </Text>
 
       <View
@@ -369,7 +371,7 @@ const NotificationSettings = () => {
               letterSpacing: 0.5,
               padding: 3,
             }}>
-            Remainder
+            {t("NotificationSettings.Remainder")}
           </Text>
         </View>
         <View style={styles.switchContainer}>
@@ -412,7 +414,7 @@ const NotificationSettings = () => {
               letterSpacing: 0.5,
               padding: 3,
             }}>
-            Community Updates
+            {t("NotificationSettings.Community Updates")}
           </Text>
         </View>
         <View style={styles.switchContainer}>

@@ -32,10 +32,12 @@ import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import { BottomSheet } from 'react-native-btr';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const EditProfile = ({navigation}) => {
   const [isEditable, setIsEditable] = useState(false);
+  const { t } = useTranslation();
   const [selectGenderbottomSheetVisible, setSelectGenderbottomSheetVisible] =
     useState(false);
   const [Uservalue, setuservalue] = useState({
@@ -229,7 +231,7 @@ const EditProfile = ({navigation}) => {
                     color: Color.lightBlack,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Select Gender
+                  {t("Editprofile.Select Gender")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => setSelectGenderbottomSheetVisible(false)}>
@@ -318,7 +320,7 @@ const EditProfile = ({navigation}) => {
         <View>
           <Text
             style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Edit Profile
+            {t("Editprofile.Edit Profile")}
           </Text>
         </View>
       </View>
@@ -374,7 +376,7 @@ const EditProfile = ({navigation}) => {
               fontSize: 16,
               fontFamily: Mulish?.Medium,
             }}>
-            Edit Profile Picture
+            {t("Editprofile.Edit Profile Picture")}
           </Text>
         </TouchableOpacity>
         <View
@@ -410,7 +412,7 @@ const EditProfile = ({navigation}) => {
                 fontFamily: Mulish.ExtraBold,
                 letterSpacing: 0.5,
               }}>
-              Profile Information
+              {t("Editprofile.Profile Information")}
             </Text>
           </View>
           <TouchableOpacity
@@ -424,7 +426,7 @@ const EditProfile = ({navigation}) => {
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
               }}>
-              Edit Info
+              {t("Editprofile.Edit Info")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -657,7 +659,7 @@ const EditProfile = ({navigation}) => {
           }}>
           <Text
             style={{color: Color.white, fontSize: 16, fontFamily: Mulish.Bold}}>
-            Update Profile
+            {t("Editprofile.Update Profile")}
           </Text>
         </TouchableOpacity>
       </View>

@@ -1,6 +1,6 @@
 //import liraries
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect, useCallback} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,13 +25,13 @@ import {
   Pressable,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {scr_height, scr_width} from '../../Components/Dimensions';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { scr_height, scr_width } from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
-import {ActivityIndicator} from 'react-native-paper';
-// import { TextInput, Provider as PaperProvider } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const ChangePassword = () => {
@@ -44,6 +44,7 @@ const ChangePassword = () => {
 
   const [password_visible, setPasswordvisibility] = useState(false);
   const [newpassword_visible, setNewPasswordvisibility] = useState(false);
+  const { t } = useTranslation();
   const [confirmnewpassword_visible, setConfirmNewPasswordvisibility] =
     useState(false);
   // PASSWORD VALIDATION
@@ -119,7 +120,7 @@ const ChangePassword = () => {
     <ScrollView
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
-      style={{padding: 10, backgroundColor: '#fff'}}>
+      style={{ padding: 10, backgroundColor: '#fff' }}>
       <View
         style={{
           backgroundColor: Color?.white,
@@ -128,7 +129,7 @@ const ChangePassword = () => {
           marginVertical: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 5}}
+          style={{ width: scr_width / 5 }}
           onPress={() => {
             navigation?.goBack();
           }}>
@@ -142,8 +143,8 @@ const ChangePassword = () => {
         </Pressable>
         <View>
           <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Change Password
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+            {t("ChangePassword.Change Password")}
           </Text>
         </View>
       </View>
@@ -165,11 +166,9 @@ const ChangePassword = () => {
               lineHeight: 25,
               paddingVertical: 10,
             }}>
-            A strong password is key for security: use 12-16 characters with a
-            mix of uppercase, lowercase, numbers, and symbols. Avoid common
-            words and personal info.
+            {t("ChangePassword.A strong password is key for security")}:{t("ChangePassword.use 12-16 characters with a mix of uppercase, lowercase, numbers, and symbols. Avoid common words and personal info.")}
           </Text>
-          <View style={{width: '95%', marginVertical: 10}}>
+          <View style={{ width: '95%', marginVertical: 10 }}>
             <View style={styles.NumberBoxConatiner}>
               <View
                 style={{
@@ -183,7 +182,7 @@ const ChangePassword = () => {
                   onPress={() => setPasswordvisibility(!password_visible)}
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -219,7 +218,7 @@ const ChangePassword = () => {
                   onPress={() => setNewPasswordvisibility(!newpassword_visible)}
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -256,7 +255,7 @@ const ChangePassword = () => {
                   }
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -317,7 +316,7 @@ const ChangePassword = () => {
                   color: Color.white,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                Change Password
+                {t("ChangePassword.Change Password")}
               </Text>
             )}
           </TouchableOpacity>

@@ -1,6 +1,6 @@
 //import liraries
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,20 +15,22 @@ import {
   ToastAndroid,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {scr_width} from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { scr_width } from '../../Components/Dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import RazorpayCheckout from 'react-native-razorpay';
-import {ActivityIndicator} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {CommonActions} from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const Membership = () => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
   const [data, setdata] = useState([
     {
       _id: '67384564541b7f8679e39faa',
@@ -134,7 +136,7 @@ const Membership = () => {
         setplan(GetMembership?.data);
         setSelectedPlan(GetMembership?.data[1]);
         setafterdiscountamt(
-          GetMembership?.data[1]?.special_price ?GetMembership?.data[1]?.special_price : GetMembership?.data[1]?.price,
+          GetMembership?.data[1]?.special_price ? GetMembership?.data[1]?.special_price : GetMembership?.data[1]?.price,
         );
         console.log('setplan', GetMembership?.data);
       } else {
@@ -150,17 +152,17 @@ const Membership = () => {
       if (getcurrentplan?.success == true) {
         setcurrentplan(getcurrentplan?.data);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   //  Item :
-  const Item = ({title, index}) => {
+  const Item = ({ title, index }) => {
     console.log('title', title);
     const isSelected = selectedPlan?._id === title?._id;
     console.log('selcted ', isSelected, title);
 
     return (
       <TouchableOpacity
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         onPress={() => {
           console.log('Click user plan', title);
           if (title?.price != 0) {
@@ -192,7 +194,7 @@ const Membership = () => {
                 textTransform: 'capitalize',
                 fontFamily: Mulish?.SemiBold,
               }}>
-              {title?.name == 'Free Plan' ? 'basic Plan' : 'Cignix Pro'}
+              {title?.name == 'Free Plan' ? t('Membership.basic Plan') : t('Membership.Cignix Pro')}
             </Text>
           </View>
           <View>
@@ -203,7 +205,7 @@ const Membership = () => {
                 fontSize: 40,
               }}>
               {title?.price == 0 ? '₹0' : '₹' + title?.special_price}
-              <Text style={{fontSize: 16}}>/ year</Text>
+              <Text style={{ fontSize: 16 }}>/ {t("Membership.year")}</Text>
             </Text>
           </View>
           {title?.price != 0 ? (
@@ -219,11 +221,11 @@ const Membership = () => {
               </Text>
             </View>
           ) : null}
-          <View style={{gap: 15, marginTop: 20}}>
+          <View style={{ gap: 15, marginTop: 20 }}>
             {title?.features?.map((item, index) => {
               return (
                 <View
-                  style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}
+                  style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}
                   key={index}>
                   <Iconviewcomponent
                     Icontag={'AntDesign'}
@@ -264,7 +266,7 @@ const Membership = () => {
                 color: '#fff',
                 fontSize: 12,
               }}>
-              {title?.name == 'Free Plan' ? 'Free' : 'Prime'}
+              {title?.name == 'Free Plan' ? t('Membership.Free') : t('Membership.Prime')}
             </Text>
           </View>
         </LinearGradient>
@@ -333,13 +335,13 @@ const Membership = () => {
 
   const refundrequest = async (val) => {
     try {
-      console.log("currentplan",val);
-      
+      console.log("currentplan", val);
+
       const data = {
         id: val?._id,
       };
-      console.log("booknow",data);
-      
+      console.log("booknow", data);
+
       const requestApi = await fetchData?.Get_Refund_Request(
         JSON.stringify(data),
       );
@@ -408,7 +410,7 @@ const Membership = () => {
     <ScrollView
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
-      style={{backgroundColor: '#fff', flex: 1}}>
+      style={{ backgroundColor: '#fff', flex: 1 }}>
       <View
         style={{
           backgroundColor: Color?.white,
@@ -418,7 +420,7 @@ const Membership = () => {
           paddingBottom: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 4}}
+          style={{ width: scr_width / 4 }}
           onPress={() => {
             navigation?.goBack();
           }}>
@@ -437,21 +439,21 @@ const Membership = () => {
               fontSize: 22,
               color: '#000',
             }}>
-            Cignix <Text style={{color: '#D09B37'}}>Prime</Text>
+            Cignix <Text style={{ color: '#D09B37' }}>{t("Membership.Prime")}</Text>
           </Text>
         </View>
       </View>
       {userdata?.step !== 4 ? (
         <View>
-          <View style={{padding: 20}}>
-            <View style={{gap: 10}}>
+          <View style={{ padding: 20 }}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   fontSize: 22,
                   color: '#000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Choose Your Plan
+                {t("Membership.Choose Your Plan")}
               </Text>
               <Text
                 style={{
@@ -459,22 +461,21 @@ const Membership = () => {
                   color: '#666666',
                   fontFamily: Mulish?.Regular,
                 }}>
-                Access essential features to help you begin your quit-smoking
-                journey.
+                {t("Membership.Access essential features to help you begin your quit - journey.")}
               </Text>
             </View>
             <FlatList
               data={plan ? plan : []}
               keyExtractor={item => item?._id}
-              renderItem={({item, index}) => (
+              renderItem={({ item, index }) => (
                 <Item title={item} indxe={index} />
               )}
               // numColumns={1}
               contentContainerStyle={styles.listContainer}
               ItemSeparatorComponent={() => <View style={styles.separator} />}
-              // ListFooterComponent={() => (
-              //   <View style={{ height: 50,backgroundColor:"red" }} />
-              // )}
+            // ListFooterComponent={() => (
+            //   <View style={{ height: 50,backgroundColor:"red" }} />
+            // )}
             />
           </View>
           <View
@@ -484,7 +485,7 @@ const Membership = () => {
               marginRight: 25,
               backgroundColor: '#F9F9F9',
             }}></View>
-          <View style={{padding: 25, gap: 20}}>
+          <View style={{ padding: 25, gap: 20 }}>
             <View>
               <Text
                 style={{
@@ -492,12 +493,12 @@ const Membership = () => {
                   fontSize: 22,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Cignix Pro Plan Benefits
+                {t("Membership.Cignix Pro Plan Benefits")}
               </Text>
             </View>
-            <View style={{gap: 15, width: scr_width / 1.18}}>
+            <View style={{ gap: 15, width: scr_width / 1.18 }}>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -512,11 +513,11 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Work progress metrics
+                  {t("Membership.Work progress metrics")}
                 </Text>
               </View>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -531,11 +532,11 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Daily reminders and milestone notifications
+                  {t("Membership.Daily reminders and milestone notifications")}
                 </Text>
               </View>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -550,7 +551,7 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Limited access to videos{' '}
+                  {t("Membership.Limited access to videos")}{' '}
                 </Text>
               </View>
             </View>
@@ -562,15 +563,15 @@ const Membership = () => {
               marginRight: 25,
               backgroundColor: '#F9F9F9',
             }}></View>
-          <View style={{margin: 25, gap: 20}}>
-            <View style={{gap: 10}}>
+          <View style={{ margin: 25, gap: 20 }}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   fontSize: 22,
                   color: '#000000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Have a coupon code ?
+                {t("Membership.Have a coupon code ?")}
               </Text>
               <Text
                 style={{
@@ -580,8 +581,7 @@ const Membership = () => {
                   textTransform: 'capitalize',
                   fontWeight: '400',
                 }}>
-                Access essential features to help you begin your quit-smoking
-                journey.
+                {t("Membership.Access essential features to help you begin your quit-smoking journey.")}
               </Text>
             </View>
 
@@ -621,7 +621,7 @@ const Membership = () => {
                       fontWeight: '700',
                       fontFamily: Mulish?.Bold,
                     }}>
-                    Apply
+                    {t("Membership.Apply")}
                   </Text>
                 </TouchableOpacity>
               ) : (
@@ -641,7 +641,7 @@ const Membership = () => {
                         fontFamily: Mulish?.Bold,
                         textTransform: 'capitalize',
                       }}>
-                      Applied
+                      {t("Membership.Applied")}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -655,7 +655,7 @@ const Membership = () => {
                         fontWeight: '700',
                         fontFamily: Mulish?.Bold,
                       }}>
-                      Edit
+                      {t("Membership.Edit")}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -716,7 +716,7 @@ const Membership = () => {
                           navigation.dispatch(
                             CommonActions.reset({
                               index: 0,
-                              routes: [{name: 'Tab'}],
+                              routes: [{ name: 'Tab' }],
                             }),
                           );
                           // }else{
@@ -747,7 +747,7 @@ const Membership = () => {
                     fontFamily: Mulish?.Medium,
                     fontSize: 16,
                   }}>
-                  Buy Now for ₹{Afterdiscountamt} + 18% GST
+                  {t("Membership.Buy Now for")} ₹{Afterdiscountamt} + 18% GST
                 </Text>
               )}
             </TouchableOpacity>
@@ -774,23 +774,23 @@ const Membership = () => {
                     fontFamily: Mulish?.Medium,
                     fontSize: 16,
                   }}>
-                  Select Premium plan
+                  {t("Membership.Select Premium plan")}
                 </Text>
               )}
             </TouchableOpacity>
           )}
-          <View style={{padding: 40, height: 100}}></View>
+          <View style={{ padding: 40, height: 100 }}></View>
         </View>
       ) : (
-        <View style={{margin: 20, gap: 30}}>
-          <View style={{gap: 15}}>
+        <View style={{ margin: 20, gap: 30 }}>
+          <View style={{ gap: 15 }}>
             <Text
               style={{
                 fontSize: 18,
                 fontFamily: Mulish?.SemiBold,
                 color: '#000',
               }}>
-              Active membership
+              {t("Membership.Active membership")}
             </Text>
             <Text
               style={{
@@ -798,7 +798,7 @@ const Membership = () => {
                 fontSize: 16,
                 fontFamily: Mulish?.Regular,
               }}>
-              Thank you for being a valued member of the CIGNIX family.
+              {t("Membership.Thank you for being a valued member of the CIGNIX family.")}
             </Text>
           </View>
           <LinearGradient
@@ -814,14 +814,14 @@ const Membership = () => {
               width: scr_width / 1.188,
               // margin: 20,
             }}>
-            <View style={{gap: 10}}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   color: '#000',
                   fontSize: 18,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Cignix Pro
+                {t("Membership.Cignix Pro")}
               </Text>
               <Text
                 style={{
@@ -829,13 +829,13 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Full access to all video series, articles, and quitting guides.
+                {t("Membership.Full access to all video series, articles, and quitting guides.")}
               </Text>
             </View>
-            <Text style={{color: '#000', fontSize: 16}}>
-              Next due date - 29-10-2025
+            <Text style={{ color: '#000', fontSize: 16 }}>
+              {t("Membership.Next due date")} - 29-10-2025
             </Text>
-            <View style={{height: 2, width: '93%', backgroundColor: '#fff'}} />
+            <View style={{ height: 2, width: '93%', backgroundColor: '#fff' }} />
             <View
               style={{
                 flexDirection: 'row',
@@ -852,16 +852,16 @@ const Membership = () => {
                 onPress={() => {
                   currentplan?.status == 'refund_requested'
                     ? ToastAndroid.show(
-                        'Refund request already requested',
-                        ToastAndroid.SHORT,
-                      )
+                      'Refund request already requested',
+                      ToastAndroid.SHORT,
+                    )
                     : refundrequest(currentplan);
                 }}>
                 {currentplan?.status == 'refund_requested'
-                  ? ' refund in process'
+                  ? t('Membership.refund in process')
                   : currentplan?.status == 'refund_rejected'
-                  ? ' refund rejected'
-                  : 'Cancel membership'}
+                    ? t('Membership.refund rejected')
+                    : t('Membership.Cancel membership')}
               </Text>
               <Pressable
                 style={{
@@ -880,7 +880,7 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontFamily: Mulish?.Regular,
                   }}>
-                  Upgrade Plan
+                  {t("Membership.Upgrade Plan")}
                 </Text>
                 <Iconviewcomponent
                   Icontag="AntDesign"
@@ -910,7 +910,7 @@ const Membership = () => {
             backgroundColor: '#00000088',
           }}>
           <View
-            style={{backgroundColor: '#fff', padding: 10, borderRadius: 10}}>
+            style={{ backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>
             <View
               style={{
                 backgroundColor: Color?.white,
@@ -933,7 +933,7 @@ const Membership = () => {
               </Pressable>
             </View>
             <View
-              style={{justifyContent: 'center', alignItems: 'center', gap: 15}}>
+              style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
                 // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
@@ -947,7 +947,7 @@ const Membership = () => {
                   fontSize: 20,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Failed
+                {t("Membership.Failed")}
               </Text>
               <Text
                 style={{
@@ -955,10 +955,10 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Unfortunately payment was rejected
+                {t("Membership.Unfortunately payment was rejected")}
               </Text>
             </View>
-            <View style={{marginTop: 50}}>
+            <View style={{ marginTop: 50 }}>
               <TouchableOpacity
                 style={{
                   padding: 10,
@@ -999,7 +999,7 @@ const Membership = () => {
             backgroundColor: '#00000088',
           }}>
           <View
-            style={{backgroundColor: '#fff', padding: 10, borderRadius: 10}}>
+            style={{ backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>
             <View
               style={{
                 backgroundColor: Color?.white,
@@ -1022,7 +1022,7 @@ const Membership = () => {
               </Pressable>
             </View>
             <View
-              style={{justifyContent: 'center', alignItems: 'center', gap: 15}}>
+              style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
                 // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
@@ -1036,7 +1036,7 @@ const Membership = () => {
                   fontSize: 20,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Success
+                {t("Membership.Success")}
               </Text>
               <Text
                 style={{
@@ -1044,10 +1044,10 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Your payment has been processed Successfully
+                {t("Membership.Your payment has been processed Successfully")}
               </Text>
             </View>
-            <View style={{marginTop: 50}}>
+            <View style={{ marginTop: 50 }}>
               <TouchableOpacity
                 style={{
                   padding: 10,
@@ -1065,7 +1065,7 @@ const Membership = () => {
                     fontSize: 16,
                     fontFamily: Mulish?.Regular,
                   }}>
-                  Done
+                  {t("Membership.Done")}
                 </Text>
               </TouchableOpacity>
             </View>

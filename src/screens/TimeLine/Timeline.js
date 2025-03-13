@@ -1,5 +1,5 @@
 //import liraries
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -22,25 +22,27 @@ import {
   ImageBackground,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {Badge} from 'react-native-paper';
-import {scr_height, scr_width} from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { Badge } from 'react-native-paper';
+import { scr_height, scr_width } from '../../Components/Dimensions';
 import StepIndicator from 'react-native-step-indicator';
 import moment from 'moment';
 import MIcon from 'react-native-vector-icons/Feather';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import MMIcon from 'react-native-vector-icons/MaterialIcons';
 import FIcon from 'react-native-vector-icons/Fontisto';
-import {Button} from 'react-native-elements';
-import {useNavigation} from '@react-navigation/native';
+import { Button } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 import fetchData from '../../Config/fetchData';
-import {useFocusEffect} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const Timeline = () => {
   const navigation = useNavigation();
   const [currentPosition, setCurrentPosition] = useState();
+  const { t } = useTranslation();
 
   const customStyles = {
     stepIndicatorSize: 30,
@@ -51,28 +53,28 @@ const Timeline = () => {
 
   const steps = [
     {
-      label: 'Complete the SIM Test',
+      label: t('Roadmap.Complete the SIM Test'),
       subtext:
-        'Start by taking the SIM Test to evaluate your Smoking habits  and readiness to quit',
-      status: 'Completed',
+        t('Roadmap.Start by taking the SIM Test to evaluate your Smoking habits  and readiness to quit'),
+      status: t('Roadmap.Completed'),
     },
     {
-      label: 'Watch All 7 Videos',
+      label: t('Roadmap.Watch All 7 Videos'),
       subtext:
-        'Each video is designed to guide you through the quitting process',
-      status: 'Pending',
+        t('Roadmap.Each video is designed to guide you through the quitting process'),
+      status: t('Roadmap.Pending'),
     },
     {
-      label: 'Retake the SIM Test (SIM Test 2)',
+      label: t('Roadmap.Retake the SIM Test (SIM Test 2)'),
       subtext:
-        'Each video is designed to guide you through the quitting process',
-      status: 'Pending',
+        t('Roadmap.Each video is designed to guide you through the quitting process'),
+      status: t('Roadmap.Pending'),
     },
     {
-      label: 'Upgrade to premium',
+      label: t('Roadmap.Upgrade to premium'),
       subtext:
-        'Upgrade to premium for advanced resources , personal coaching to support your smoke-free journey ',
-      status: 'Pending',
+        t('Roadmap.Upgrade to premium for advanced resources , personal coaching to support your smoke-free journey'),
+      status: t('Roadmap.Pending'),
     },
   ];
 
@@ -107,7 +109,7 @@ const Timeline = () => {
   useFocusEffect(
     React.useCallback(() => {
       GetSimTest();
-      return () => {};
+      return () => { };
     }, []),
   );
   return (
@@ -129,7 +131,7 @@ const Timeline = () => {
         }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+            viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={26}
             icon_color={Color.black}
@@ -138,14 +140,14 @@ const Timeline = () => {
         </TouchableOpacity>
         <View>
           <Text
-            style={{fontSize: 20, color: Color.black, fontFamily: Mulish.Bold}}>
-            Roadmap
+            style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold }}>
+            {t("Roadmap.Roadmap")}
           </Text>
         </View>
         <TouchableOpacity
-          style={{marginHorizontal: 10}}
+          style={{ marginHorizontal: 10 }}
           onPress={() => navigation.navigate('NotificationsList')}>
-          <View style={{position: 'absolute', zIndex: 999, top: -5, right: -5}}>
+          <View style={{ position: 'absolute', zIndex: 999, top: -5, right: -5 }}>
             {/* <Badge
               badgeStyle={{
                 position: 'absolute',
@@ -159,7 +161,7 @@ const Timeline = () => {
             </Badge> */}
           </View>
           <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+            viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={25}
             icon_color={Color.black}
@@ -167,7 +169,7 @@ const Timeline = () => {
           />
         </TouchableOpacity>
       </View>
-      <View style={{flex: 1, width: scr_width - 30, alignItems: 'center'}}>
+      <View style={{ flex: 1, width: scr_width - 30, alignItems: 'center' }}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
@@ -211,12 +213,12 @@ const Timeline = () => {
             //   </View>
             // ))}
             labels={steps.map(step => step.label)}
-            renderLabel={({position}) => {
+            renderLabel={({ position }) => {
               const step = steps[position]; // Access the current step object
               const labelStyle =
                 position === currentPosition
-                  ? {color: '#4aae4f', fontSize: 18, fontWeight: 'bold'} // Style for the current step
-                  : {color: '#999999', fontSize: 16}; // Style for other steps
+                  ? { color: '#4aae4f', fontSize: 18, fontWeight: 'bold' } // Style for the current step
+                  : { color: '#999999', fontSize: 16 }; // Style for other steps
               const subtextStyle = {
                 color: '#aaaaaa',
                 fontSize: 14,
@@ -256,7 +258,7 @@ const Timeline = () => {
             }}
             stepCount={steps.length}
             direction="vertical"
-            renderStepIndicator={({position}) => {
+            renderStepIndicator={({ position }) => {
               console.log('gggggggggg', position);
               console.log('currentPosition', currentPosition);
 
@@ -319,7 +321,7 @@ const Timeline = () => {
                     color: '#fff',
                     fontFamily: Mulish?.Bold,
                   }}>
-                  Go Premium
+                  {t("Roadmap.Go Premium")}
                 </Text>
                 <Text
                   style={{
@@ -327,7 +329,7 @@ const Timeline = () => {
                     color: '#fff',
                     fontFamily: Mulish?.Bold,
                   }}>
-                  For Extra Benefits!
+                  {t("Roadmap.For Extra Benefits")}!
                 </Text>
               </View>
               {/* <Text
@@ -358,7 +360,7 @@ const Timeline = () => {
                   color: '#000',
                   fontFamily: Mulish?.Bold,
                 }}>
-                See Plans
+                {t("Roadmap.See Plans")}
               </Text>
             </TouchableOpacity>
           </View>

@@ -1,5 +1,5 @@
 //import liraries
-import React, {useState, useEffect, useCallback, useRef} from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -23,31 +23,33 @@ import {
   Pressable,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {useNavigation} from '@react-navigation/native';
+import { Mulish } from '../../Global/FontFamily';
+import { useNavigation } from '@react-navigation/native';
 import fetchData from '../../Config/fetchData';
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import { scr_width } from '../../Components/Dimensions';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const NotificationsList = () => {
   const navigation = useNavigation();
   const [selectItem, setSelectedItem] = useState('');
   const [notificationData, setNotificationData] = useState([]);
-//   const onSelectedItem = item => {
-//     try {
-//       setNotificationData(prevData =>
-//         prevData.map(notification =>
-//           notification.id === item.id
-//             ? {...notification, read: true} // Mark as read
-//             : notification,
-//         ),
-//       );
-//       setSelectedItem(item.id); // Optional: Keep track of the selected item
-//     } catch (error) {
-//       console.log('catch in onSelected_Item :', error);
-//     }
-//   };
+  const { t } = useTranslation();
+  //   const onSelectedItem = item => {
+  //     try {
+  //       setNotificationData(prevData =>
+  //         prevData.map(notification =>
+  //           notification.id === item.id
+  //             ? {...notification, read: true} // Mark as read
+  //             : notification,
+  //         ),
+  //       );
+  //       setSelectedItem(item.id); // Optional: Keep track of the selected item
+  //     } catch (error) {
+  //       console.log('catch in onSelected_Item :', error);
+  //     }
+  //   };
   // GET NOTIFICATION LIST :
   const getNotificationList = async () => {
     try {
@@ -65,36 +67,36 @@ const NotificationsList = () => {
   }, []);
   return (
     <View style={styles.container}>
-        <View
-              style={{
-                backgroundColor: Color?.white,
-                flexDirection: 'row',
-                paddingLeft: 0,
-                paddingTop: 20,
-                paddingBottom: 20,
-              }}>
-              <Pressable
-                style={{ width: scr_width / 4 }}
-                onPress={() => {
-                  navigation?.goBack();
-                }}>
-                <Iconviewcomponent
-                  Icontag="Ionicons"
-                  icon_size={25}
-                  icon_color={'#000'}
-                  iconname={'chevron-back'}
-                />
-              </Pressable>
-              <View>
-                <Text
-                  style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
-                 Notifications List
-                </Text>
-              </View>
-            </View>
+      <View
+        style={{
+          backgroundColor: Color?.white,
+          flexDirection: 'row',
+          paddingLeft: 0,
+          paddingTop: 20,
+          paddingBottom: 20,
+        }}>
+        <Pressable
+          style={{ width: scr_width / 4 }}
+          onPress={() => {
+            navigation?.goBack();
+          }}>
+          <Iconviewcomponent
+            Icontag="Ionicons"
+            icon_size={25}
+            icon_color={'#000'}
+            iconname={'chevron-back'}
+          />
+        </Pressable>
+        <View>
+          <Text
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+            {t("Notifications List")}
+          </Text>
+        </View>
+      </View>
       <FlatList
         data={notificationData}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <View
             key={index}
             style={{
@@ -105,7 +107,7 @@ const NotificationsList = () => {
             <Pressable
               onPress={() =>
                 console.log("fdf")
-                
+
               }
               style={{
                 width: '97%',
@@ -114,12 +116,12 @@ const NotificationsList = () => {
                 borderRadius: 5,
                 margin: 5,
                 padding: 10,
-            
+
                 // borderWidth:1,
                 borderColor: Color.cloudyGrey,
                 backgroundColor: Color?.white,
                 shadowColor: '#383840',
-                shadowOffset: {width: 0, height: 7},
+                shadowOffset: { width: 0, height: 7 },
                 shadowOpacity: 0.2,
                 shadowRadius: 4.65,
                 elevation: 10,
@@ -185,7 +187,7 @@ const NotificationsList = () => {
             {/* <View style={{ width: '100%', height: 1, backgroundColor: '#F9F9F9', marginVertical: 5 }}></View> */}
           </View>
         )}
-        style={{width: '100%'}}
+        style={{ width: '100%' }}
         showsVerticalScrollIndicator={false}
       />
     </View>

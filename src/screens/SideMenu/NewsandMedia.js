@@ -7,9 +7,11 @@ import {useNavigation} from '@react-navigation/native';
 import {Iconviewcomponent} from '../../Components/Icontag';
 import fetchData from '../../Config/fetchData';
 import moment from 'moment';
-import RenderHtml from 'react-native-render-html';
+import { useTranslation } from 'react-i18next';
+
 const NewsandMedia = ({navigation}) => {
    const [data, setData] = useState(null);
+   const { t } = useTranslation();
     const getnewsandmedia = async () => {
       try {
         const newsandmedia = await fetchData?.getnewsandmedia();
@@ -44,7 +46,7 @@ const NewsandMedia = ({navigation}) => {
         <View>
           <Text
             style={{fontFamily: Mulish?.SemiBold, fontSize: 18, color: '#000'}}>
-           News and Media
+           {t("profile.News and Media")}
           </Text>
         </View>
       </View>
@@ -106,7 +108,7 @@ const NewsandMedia = ({navigation}) => {
                     Linking?.openURL(item?.link)
                   }}
                   >
-                    <Text style={{fontSize:14,fontFamily:Mulish?.Regular,color:'#3b84f6'}}>Read More</Text>
+                    <Text style={{fontSize:14,fontFamily:Mulish?.Regular,color:'#3b84f6'}}>{t("profile.Read More")}</Text>
                     <Iconviewcomponent 
                      Icontag={"AntDesign"}
                      iconname={"arrowright"}

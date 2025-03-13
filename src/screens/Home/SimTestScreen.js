@@ -8,18 +8,20 @@ import {
   View,
 } from 'react-native';
 import React, { useEffect } from 'react';
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import Color from '../../Global/Color';
-import {scr_width} from '../../Components/Dimensions';
-import {Mulish} from '../../Global/FontFamily';
+import { scr_width } from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
+import { useTranslation } from 'react-i18next';
 
-const SimTestScreen = ({navigation}) => {
+const SimTestScreen = ({ navigation }) => {
+  const { t } = useTranslation();
   const valuewwww = [
     {
       _id: '6738353e9c6fcbba05fe6ef6',
-      question: 'Smoking gives me a new energy whenever I feel low',
+      question: t('Sim1.Smoking gives me a new energy whenever I feel low'),
       question_type: 'radio',
       options: [
         {
@@ -70,7 +72,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '673835499c6fcbba05fe6f0e',
-      question: 'Smoking clears my thoughts and gives me new ideas',
+      question: t('Sim1.Smoking clears my thoughts and gives me new ideas'),
       question_type: 'radio',
       options: [
         {
@@ -121,7 +123,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '6738355a9c6fcbba05fe6f18',
-      question: " I don't have enough willpower to quit smoking",
+      question: t("Sim1.I don't have enough willpower to quit smoking"),
       question_type: 'radio',
       options: [
         {
@@ -173,7 +175,7 @@ const SimTestScreen = ({navigation}) => {
     {
       _id: '673835859c6fcbba05fe6f32',
       question:
-        'Cigarette is not that bad as Nicotine has medicinal values too',
+        t('Sim1.Cigarette is not that bad as Nicotine has medicinal values too'),
       question_type: 'radio',
       options: [
         {
@@ -224,7 +226,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '6738359c9c6fcbba05fe6f34',
-      question: 'Smoking helps me manage my anger',
+      question: t('Sim1.Smoking helps me manage my anger'),
       question_type: 'radio',
       options: [
         {
@@ -275,7 +277,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '673835a99c6fcbba05fe6f36',
-      question: 'Once a smoker, always a smoker',
+      question: t('Sim1.Once a smoker, always a smoker'),
       question_type: 'radio',
       options: [
         {
@@ -326,7 +328,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '673835b69c6fcbba05fe6f38',
-      question: 'Even if I quit smoking for some days, I will surely relapse',
+      question: t('Sim1.Even if I quit smoking for some days, I will surely relapse'),
       question_type: 'radio',
       options: [
         {
@@ -377,7 +379,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '673835c19c6fcbba05fe6f3a',
-      question: 'Cigarette is my best friend',
+      question: t('Sim1.Cigarette is my best friend'),
       question_type: 'radio',
       options: [
         {
@@ -428,7 +430,7 @@ const SimTestScreen = ({navigation}) => {
     },
     {
       _id: '673835ce9c6fcbba05fe6f3c',
-      question: 'Cigarette helps me cope better with life',
+      question: t('Sim1.Cigarette helps me cope better with life'),
       question_type: 'radio',
       options: [
         {
@@ -481,7 +483,7 @@ const SimTestScreen = ({navigation}) => {
   const [getQuestion, setgetQuestion] = React.useState([]);
   const [selctedAnswer, setSelctedAnswer] = React.useState([]);
   // const SetAnswer =async(item)=>{
-    const [loader, setLoader] = React.useState(false);
+  const [loader, setLoader] = React.useState(false);
 
   //   try {
   //     console.log("cccccccc",item);
@@ -512,12 +514,11 @@ const SimTestScreen = ({navigation}) => {
     GetQustion();
   }, [])
   const handleSelectAnswer = (questionId, optionValue) => {
-    setSelctedAnswer(prev => ({...prev, [questionId]: optionValue}));
+    setSelctedAnswer(prev => ({ ...prev, [questionId]: optionValue }));
   };
-  if(loader)
-  {
-    return(
-      <View style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
+  if (loader) {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
         <ActivityIndicator size="large" color={'#4254B6'} />
       </View>
     )
@@ -540,26 +541,26 @@ const SimTestScreen = ({navigation}) => {
       console.log('Catch in SIMTEST_UPDATE_SCORE', error);
     }
   };
-    const UserStep = async () => {
-      try {
-        const data = {
-          step : 3
-        }
-        const Stepupdate = await fetchData?.UpdateProfile(JSON?.stringify(data));
-        if (Stepupdate?.success == true) {
-          console.log('Stepupdate', Stepupdate);
-          navigation.goBack();
-        } else {
-          console.log('Stepupdate', Stepupdate);
-        }
-      } catch (error) {
-        console.log('Catch in UserStep', error);
+  const UserStep = async () => {
+    try {
+      const data = {
+        step: 3
       }
-    };
-  const renderItem = ({item, index}) => {
+      const Stepupdate = await fetchData?.UpdateProfile(JSON?.stringify(data));
+      if (Stepupdate?.success == true) {
+        console.log('Stepupdate', Stepupdate);
+        navigation.goBack();
+      } else {
+        console.log('Stepupdate', Stepupdate);
+      }
+    } catch (error) {
+      console.log('Catch in UserStep', error);
+    }
+  };
+  const renderItem = ({ item, index }) => {
     return (
-      <View style={{gap: 20}}>
-        <View style={{gap: 10}}>
+      <View style={{ gap: 20 }}>
+        <View style={{ gap: 10 }}>
           <Text
             style={{
               fontSize: 12,
@@ -577,10 +578,10 @@ const SimTestScreen = ({navigation}) => {
             {item?.question} ?
           </Text>
         </View>
-        <View style={{gap: 25, paddingLeft: 15}}>
+        <View style={{ gap: 25, paddingLeft: 15 }}>
           <FlatList
             data={item?.options}
-            renderItem={({item: option}) => {
+            renderItem={({ item: option }) => {
               return (
                 <Pressable
                   style={{
@@ -636,27 +637,27 @@ const SimTestScreen = ({navigation}) => {
                 padding: 15,
                 backgroundColor: '#4254B6',
                 borderRadius: 100,
-                marginBottom:70,
+                marginBottom: 70,
                 justifyContent: 'center',
                 alignItems: 'center',
                 // marginBottom: 70,
               }}
-              onPress={()=>{
-                if(Object.keys(selctedAnswer)?.length == getQuestion?.length){
+              onPress={() => {
+                if (Object.keys(selctedAnswer)?.length == getQuestion?.length) {
                   const total = Object.values(selctedAnswer).reduce(
                     (sum, value) => sum + Number(value),
                     0,
                   );
-                  SIMTEST_UPDATE_SCORE(total);                  
+                  SIMTEST_UPDATE_SCORE(total);
                   common_fn.showToast('Answer Submited Successfully');
-                }else{
-                  console.log("selctedAnswer",selctedAnswer);
+                } else {
+                  console.log("selctedAnswer", selctedAnswer);
                   common_fn.showToast('Please Answer All Questions');
                 }
               }}
-              >
-              <Text style={{fontSize: 18, color: Color?.white,fontFamily:Mulish?.SemiBold}}>
-                Discover Your Score
+            >
+              <Text style={{ fontSize: 18, color: Color?.white, fontFamily: Mulish?.SemiBold }}>
+                {t("Sim1.Discover Your Score")}
               </Text>
             </TouchableOpacity>
           )}
@@ -665,17 +666,17 @@ const SimTestScreen = ({navigation}) => {
     );
   };
   return (
-    <View style={{flex: 1, backgroundColor: '#fff', padding: 25,gap:10}}>
-      <View style={{flexDirection: 'row', paddingBottom: 20}}>
+    <View style={{ flex: 1, backgroundColor: '#fff', padding: 25, gap: 10 }}>
+      <View style={{ flexDirection: 'row', paddingBottom: 20 }}>
         <Pressable
           style={{
             width: scr_width / 3,
             paddingLeft: 10,
           }}
-          onPress={()=>{
+          onPress={() => {
             navigation.goBack();
           }}
-          >
+        >
           <Iconviewcomponent
             Icontag="AntDesign"
             icon_size={25}
@@ -689,7 +690,7 @@ const SimTestScreen = ({navigation}) => {
             color: Color?.black,
             fontFamily: Mulish.SemiBold,
           }}>
-          SIM Test
+          {t("Sim1.SIM Test")}
         </Text>
       </View>
       <FlatList
@@ -697,7 +698,7 @@ const SimTestScreen = ({navigation}) => {
         renderItem={renderItem}
         keyExtractor={item => item._id}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{gap: 20}}
+        contentContainerStyle={{ gap: 20 }}
       />
     </View>
   );
