@@ -140,34 +140,34 @@ const Timeline = () => {
         </TouchableOpacity>
         <View>
           <Text
-            style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold }}>
+            style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold,flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20  }}>
             {t("Roadmap.Roadmap")}
           </Text>
         </View>
-        <TouchableOpacity
-          style={{ marginHorizontal: 10 }}
-          onPress={() => navigation.navigate('NotificationsList')}>
-          <View style={{ position: 'absolute', zIndex: 999, top: -5, right: -5 }}>
-            {/* <Badge
-              badgeStyle={{
-                position: 'absolute',
-                zIndex: 999,
-                backgroundColor: Color.red,
-                color: Color.white,
-                fontSize: 12,
-              }}
-              maxLength={3}>
-              10
-            </Badge> */}
-          </View>
-          <Iconviewcomponent
-            viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-            Icontag="Ionicons"
-            icon_size={25}
-            icon_color={Color.black}
-            iconname="notifications-outline"
-          />
-        </TouchableOpacity>
+        <View style={{flexDirection:"row"}}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('NotificationsList')}>
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={25}
+              icon_color={Color.black}
+              iconname="notifications-outline"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ marginHorizontal: 10 }}
+            onPress={() => navigation.navigate("LanguageSelector")}
+          >
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={25}
+              icon_color={Color.black}
+              iconname="language-outline"
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{ flex: 1, width: scr_width - 30, alignItems: 'center' }}>
         <ScrollView

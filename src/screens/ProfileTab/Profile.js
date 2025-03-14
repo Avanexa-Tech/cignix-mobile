@@ -48,15 +48,7 @@ const Profile = ({ navigation }) => {
     { id: 3, title: 'Other Settings', data: ['Other Settings'] },
   ]);
   const { t, i18n } = useTranslation();
-  const [modalVisible, setModalVisible] = useState(false);
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'ta', name: 'Tamil' },
-    { code: 'mr', name: 'Marathi' },
-    { code: 'ma', name: 'Malayalam' },
-    { code: 'te', name: 'Telugu' },
-    { code: 'hi', name: 'Hindi' },
-  ];
+
   const User_Function = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
@@ -132,21 +124,6 @@ const Profile = ({ navigation }) => {
     }
   };
 
-  const handleChangeLanguage = (lang) => {
-    i18n.changeLanguage(lang)
-      .then(async () => {
-        await AsyncStorage.setItem('selectedLanguage', lang);
-        console.log("Language changed to:", lang);
-      })
-      .catch((err) => {
-        console.log("Error changing language:", err);
-      });
-  };
-
-  const handleLanguageSelect = (lang) => {
-    handleChangeLanguage(lang);
-    setModalVisible(false);
-  };
   console.log('Current language:', i18n.language);
   return (
     <SafeAreaView style={styles.container}>
@@ -175,7 +152,7 @@ const Profile = ({ navigation }) => {
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20 }}>
+        <View style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold,flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20}}>
           <Text
             style={{
               fontSize: 20,
@@ -201,7 +178,7 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginHorizontal: 10 }}
-            onPress={() => setModalVisible(true)}
+            onPress={() => navigation.navigate("LanguageSelector")}
           >
             <Iconviewcomponent
               viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
@@ -1138,33 +1115,6 @@ const Profile = ({ navigation }) => {
           }
         }}
       />
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalTitle}>{t("profile.Select Language")}</Text>
-            {languages.map((language) => (
-              <TouchableOpacity
-                key={language.code}
-                onPress={() => handleLanguageSelect(language.code)}
-                style={styles.languageOption}
-              >
-                <Text style={styles.languageText}>{language.name}</Text>
-              </TouchableOpacity>
-            ))}
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.closeButtonText}>Close</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
     </SafeAreaView>
   );
 };

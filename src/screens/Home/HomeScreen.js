@@ -757,32 +757,31 @@ const HomeScreen = () => {
                 : t("Homescreen.You've Done It! SIM Test 2 Complete!")}
             </Text>
           </View>
-          <TouchableOpacity
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-            onPress={() => navigation.navigate('NotificationsList')}>
-            <View
-              style={{ position: 'absolute', zIndex: 999, top: -5, right: 15 }}>
-              {/* <Badge
-                badgeStyle={{
-                  position: 'absolute',
-                  zIndex: 999,
-                  backgroundColor: Color.notify,
-                  color: Color.white,
-                  // fontFamily: Manrope.Bold,
-                  fontSize: 12,
-                }}
-                maxLength={3}>
-                
-              </Badge> */}
-            </View>
-            <Iconviewcomponent
-              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-              Icontag="Ionicons"
-              icon_size={30}
-              icon_color={Color.black}
-              iconname="notifications-outline"
-            />
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('NotificationsList')}
+            >
+              <Iconviewcomponent
+                viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+                Icontag="Ionicons"
+                icon_size={30}
+                icon_color={Color.black}
+                iconname="notifications-outline"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ marginHorizontal: 10 }}
+              onPress={() => navigation.navigate("LanguageSelector")}
+            >
+              <Iconviewcomponent
+                viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+                Icontag="Ionicons"
+                icon_size={30}
+                icon_color={Color.black}
+                iconname="language-outline"
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <View
           style={{ width: scr_width - 40, height: height, alignItems: 'center' }}>
