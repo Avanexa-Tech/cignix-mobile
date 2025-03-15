@@ -21,9 +21,11 @@ import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
 import { Iconviewcomponent } from '../../Components/Icontag';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const HelpCenter = () => {
+  const { t } = useTranslation();
   const navigation = useNavigation();
   return (
     <ScrollView
@@ -32,33 +34,33 @@ const HelpCenter = () => {
       showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <View
-                style={{
-                  backgroundColor: Color?.white,
-                  flexDirection: 'row',
-                  // paddingLeft: 5,
-                  paddingTop: 20,
-                  paddingBottom: 20,
-                }}>
-                <Pressable
-                  style={{width: scr_width / 5}}
-                  onPress={() => {
-                    navigation?.goBack();
-                  }}>
-                  <Iconviewcomponent
-                    // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="Ionicons"
-                    icon_size={25}
-                    icon_color={'#000'}
-                    iconname={'chevron-back'}
-                  />
-                </Pressable>
-                <View>
-                  <Text
-                    style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-                   Help Center
-                  </Text>
-                </View>
-              </View>
+          style={{
+            backgroundColor: Color?.white,
+            flexDirection: 'row',
+            // paddingLeft: 5,
+            paddingTop: 20,
+            paddingBottom: 20,
+          }}>
+          <Pressable
+            style={{ width: scr_width / 5 }}
+            onPress={() => {
+              navigation?.goBack();
+            }}>
+            <Iconviewcomponent
+              // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={25}
+              icon_color={'#000'}
+              iconname={'chevron-back'}
+            />
+          </Pressable>
+          <View>
+            <Text
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+              {t("HelpCenter.Help Center")}
+            </Text>
+          </View>
+        </View>
         <View style={{ width: '100%' }}>
           <Text
             style={{
@@ -68,7 +70,7 @@ const HelpCenter = () => {
               fontFamily: Mulish.Bold,
               letterSpacing: 0.5, paddingVertical: 5
             }}>
-            Welcome to the Cignix Help Center!
+            {t("HelpCenter.Welcome to the Cignix Help Center!")}
           </Text>
           <Text
             style={{
@@ -80,12 +82,7 @@ const HelpCenter = () => {
               letterSpacing: 0.5,
               paddingVertical: 5,
             }}>
-            We're so glad you're here. Quitting smoking is a journey, and you
-            don’t have to do it alone. Whether you're looking for guidance,
-            helpful tips, or answers to your questions, we’re here to support
-            you every step of the way. Browse the sections below to get the help
-            you need and take your first step toward a healthier, smoke-free
-            life.
+            {t("HelpCenter.We're so glad you're here. Quitting smoking is a journey, and you don’t have to do it alone. Whether you're looking for guidance, helpful tips, or answers to your questions, we’re here to support you every step of the way. Browse the sections below to get the help you need and take your first step toward a healthier, smoke-free life.")}
           </Text>
 
           <View
@@ -127,7 +124,7 @@ const HelpCenter = () => {
                   paddingVertical: 5,
                 }}
                 numberOfLines={2}>
-                Get Started With Cignix
+                {t("HelpCenter.Get Started With Cignix")}
               </Text>
               <Text
                 style={{
@@ -138,7 +135,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                Embark on your journey to quit smoking with Cignix
+                {t("HelpCenter.Embark on your journey to quit smoking with Cignix")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -181,7 +178,7 @@ const HelpCenter = () => {
                   paddingVertical: 5,
                 }}
                 numberOfLines={2}>
-                Frequently Asked Questions
+                {t("HelpCenter.Frequently Asked Questions")}
               </Text>
               <Text
                 style={{
@@ -192,7 +189,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                Find answers to help you quit smoking with Cignix
+                {t("HelpCenter.Find answers to help you quit smoking with Cignix")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -236,7 +233,7 @@ const HelpCenter = () => {
                   paddingVertical: 5,
                 }}
                 numberOfLines={2}>
-                Pricing and Payment
+                {t("HelpCenter.Pricing and Payment")}
               </Text>
               <Text
                 style={{
@@ -247,7 +244,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                Want to know about plans and payment methods? Lear more here.
+                {t("HelpCenter.Want to know about plans and payment methods? Lear more here.")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -291,7 +288,7 @@ const HelpCenter = () => {
                   paddingVertical: 5,
                 }}
                 numberOfLines={2}>
-                Technical Support
+                {t("HelpCenter.Technical Support")}
               </Text>
               <Text
                 style={{
@@ -302,8 +299,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                Get help with login, app errors, syncing, and restoring
-                progress.
+                {t("HelpCenter.Get help with login, app errors, syncing, and restoring progress.")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -347,7 +343,7 @@ const HelpCenter = () => {
                   paddingVertical: 5,
                 }}
                 numberOfLines={2}>
-                Ways to Contact Us
+                {t("HelpCenter.Ways to Contact Us")}
               </Text>
               <Text
                 style={{
@@ -358,7 +354,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                Discover how to reach us and connect with our support team
+                {t("HelpCenter.Discover how to reach us and connect with our support team")}
               </Text>
             </TouchableOpacity>
           </View>

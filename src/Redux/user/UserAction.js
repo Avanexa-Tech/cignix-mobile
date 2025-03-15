@@ -6,6 +6,7 @@ import {
   SET_NOTIFICATION_COUNT,
   SET_ONBOARD,
   SET_USER_DATA,
+  SET_LANGUAGE
 } from './UserActionTypes';
 
 export const setUserData = param => {
@@ -56,3 +57,12 @@ export const setDataCount = param => {
     payload: param,
   };
 };
+
+export const setLangugage = param => {
+  return {
+    type: SET_LANGUAGE,
+    payload: param,
+  };
+};
+
+

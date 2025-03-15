@@ -1,6 +1,6 @@
 //import liraries
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,93 +11,28 @@ import {
   TextInput,
   Pressable,
   Modal,
-  Image,
   ToastAndroid,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {scr_width} from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { scr_width } from '../../Components/Dimensions';
 import LinearGradient from 'react-native-linear-gradient';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import RazorpayCheckout from 'react-native-razorpay';
-import {ActivityIndicator} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {CommonActions} from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import {translateText} from '../Context/userContext';
 
-// create a component
 const Membership = () => {
   const navigation = useNavigation();
-  const [data, setdata] = useState([
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Free Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Premium Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Premium Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67357ab223774fd7b6cba916',
-      name: 'Premium Plan',
-      price: '4999',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      duration: 12,
-      createdAt: '2024-11-14T04:21:06.133Z',
-      updatedAt: '2024-11-22T11:04:49.102Z',
-      duration_type: 'month',
-      special_price: '4000',
-    },
-  ]);
-  const [Amount, setAmount] = useState(null);
+  const { t } = useTranslation();
   const [Coupondata, setCouponData] = useState('');
   const [Couponcode, setCouponcode] = useState('');
   const [plan, setplan] = useState([]);
-  const [selected, setSelected] = useState(null);
   const [btnloader, setBtnloader] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [Afterdiscountamt, setafterdiscountamt] = useState(null);
@@ -114,7 +49,6 @@ const Membership = () => {
   const Userdata = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
-      console.log(' refundrequest();', Userdata?.data);
       if (Userdata?.success) {
         setUserdata(Userdata?.data);
         if (Userdata?.data?.step == 4) {
@@ -125,18 +59,30 @@ const Membership = () => {
       console.log('Catch in Userdata', error);
     }
   };
-  // Get_Membership :
   const Get_Membership = async () => {
     try {
       const GetMembership = await fetchData?.Get_Member_Screen();
-      console.log('Get_Member_Screen', GetMembership?.data);
-      if (GetMembership?.success == true) {
-        setplan(GetMembership?.data);
-        setSelectedPlan(GetMembership?.data[1]);
-        setafterdiscountamt(
-          GetMembership?.data[1]?.special_price ?GetMembership?.data[1]?.special_price : GetMembership?.data[1]?.price,
+      if (GetMembership?.success === true) {
+        const translatedPlans = await Promise.all(
+          GetMembership?.data.map(async (plan) => {
+            const translatedFeatures = await Promise.all(
+              plan.features.map((feature) =>
+                translateText(feature, t) 
+              )
+            );
+            return {
+              ...plan,
+              features: translatedFeatures, 
+            };
+          })
         );
-        console.log('setplan', GetMembership?.data);
+        setplan(translatedPlans);
+        setSelectedPlan(translatedPlans[1]);
+        setafterdiscountamt(
+          translatedPlans[1]?.special_price
+            ? translatedPlans[1]?.special_price
+            : translatedPlans[1]?.price
+        );
       } else {
         setplan([]);
       }
@@ -150,19 +96,16 @@ const Membership = () => {
       if (getcurrentplan?.success == true) {
         setcurrentplan(getcurrentplan?.data);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   //  Item :
-  const Item = ({title, index}) => {
-    console.log('title', title);
+  const Item = ({ title, index }) => {
     const isSelected = selectedPlan?._id === title?._id;
-    console.log('selcted ', isSelected, title);
 
     return (
       <TouchableOpacity
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         onPress={() => {
-          console.log('Click user plan', title);
           if (title?.price != 0) {
             setSelectedPlan(title);
             setafterdiscountamt(
@@ -192,7 +135,7 @@ const Membership = () => {
                 textTransform: 'capitalize',
                 fontFamily: Mulish?.SemiBold,
               }}>
-              {title?.name == 'Free Plan' ? 'basic Plan' : 'Cignix Pro'}
+              {title?.name == 'Free Plan' ? t('Membership.basic Plan') : t('Membership.Cignix Pro')}
             </Text>
           </View>
           <View>
@@ -203,7 +146,7 @@ const Membership = () => {
                 fontSize: 40,
               }}>
               {title?.price == 0 ? '₹0' : '₹' + title?.special_price}
-              <Text style={{fontSize: 16}}>/ year</Text>
+              <Text style={{ fontSize: 16 }}>/ {t("Membership.year")}</Text>
             </Text>
           </View>
           {title?.price != 0 ? (
@@ -219,11 +162,11 @@ const Membership = () => {
               </Text>
             </View>
           ) : null}
-          <View style={{gap: 15, marginTop: 20}}>
+          <View style={{ gap: 15, marginTop: 20 }}>
             {title?.features?.map((item, index) => {
               return (
                 <View
-                  style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}
+                  style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}
                   key={index}>
                   <Iconviewcomponent
                     Icontag={'AntDesign'}
@@ -264,28 +207,22 @@ const Membership = () => {
                 color: '#fff',
                 fontSize: 12,
               }}>
-              {title?.name == 'Free Plan' ? 'Free' : 'Prime'}
+              {title?.name == 'Free Plan' ? t('Membership.Free') : t('Membership.Prime')}
             </Text>
           </View>
         </LinearGradient>
       </TouchableOpacity>
     );
   };
-  // COUPONCALCULATION :
   const couponvalue = (planamount, coupondata, planid) => {
     try {
-      console.log('PLAN DATA', planamount);
-      console.log('COUPON DATA', coupondata);
-      console.log('PLANID', planid);
       if (coupondata?.type == 'off') {
         const discount = parseInt(planamount) - parseInt(coupondata?.value);
-        console.log('discount', discount);
         setafterdiscountamt(discount);
       } else {
         const discount =
           parseInt(planamount) -
           (parseInt(planamount) * coupondata?.value) / 100;
-        console.log('PER Discount', discount);
         setafterdiscountamt(discount);
       }
     } catch (error) {
@@ -333,82 +270,25 @@ const Membership = () => {
 
   const refundrequest = async (val) => {
     try {
-      console.log("currentplan",val);
-      
       const data = {
         id: val?._id,
       };
-      console.log("booknow",data);
-      
       const requestApi = await fetchData?.Get_Refund_Request(
         JSON.stringify(data),
       );
-      console.log('SSS', requestApi);
       if (requestApi?.success == true) {
-        console.log('requestApi', requestApi);
         common_fn?.showToast(requestApi?.message);
       }
     } catch (error) {
-      console.log('====================================');
       console.log('ERROR IN CATCH IN REFUND REQUEST', error);
-      console.log('====================================');
     }
   };
-  // callRazorpay :
-  // const callRazorpay = async () => {
-  //   setBtnloader(true);
-  //   try {
-  //     const optionvalue = {
-  //       plan_id: '67357ab223774fd7b6cba916',
-  //       amount: '4999',
-  //     };
-  //     const Optiondata = await fetchData?.Get_Razorpay_Option(optionvalue);
-  //     if (Optiondata?.success == true) {
-  //       console.log('Razorpay amount', Optiondata?.data?.payment);
-  //       RazorpayCheckout.open(Optiondata?.data?.payment)
-  //         .then(data => {
-  //           console.dir('Razorpay Success: ', data);
-  //           setBtnloader(false);
-  //         })
-  //         .catch(error => {
-  //           console.dir('Razorpay Error: ', error);
-  //           alert(
-  //             `Payment failed: ${
-  //               error?.description || 'Unknown error occurred'
-  //             }`,
-  //           );
-  //           setBtnloader(false);
-  //         });
-  //     }
-  //   } catch (error) {
-  //     console.error('Catch in callRazorpay: ', error);
-  //   }
-  // };
-  const callRazorpay = async () => {
-    try {
-      const razorPayBackend = await fetchData.Get_Razorpay_Option({
-        plan_id: selectedPlan._id,
-        coupon_id: null,
-        amount: 4999,
-      });
-      console.dir(razorPayBackend, '12345');
-      var razorpayOptions = razorPayBackend.data.payment;
-      RazorpayCheckout.open(razorpayOptions)
-        .then(data => {
-          console.log('Payment Success:', data);
-        })
-        .catch(error => {
-          console.error('Payment Failed:', error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
-      style={{backgroundColor: '#fff', flex: 1}}>
+      style={{ backgroundColor: '#fff', flex: 1 }}>
       <View
         style={{
           backgroundColor: Color?.white,
@@ -418,12 +298,11 @@ const Membership = () => {
           paddingBottom: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 4}}
+          style={{ width: scr_width / 4 }}
           onPress={() => {
             navigation?.goBack();
           }}>
           <Iconviewcomponent
-            // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={25}
             icon_color={'#000'}
@@ -437,21 +316,21 @@ const Membership = () => {
               fontSize: 22,
               color: '#000',
             }}>
-            Cignix <Text style={{color: '#D09B37'}}>Prime</Text>
+            Cignix <Text style={{ color: '#D09B37' }}>{t("Membership.Prime")}</Text>
           </Text>
         </View>
       </View>
       {userdata?.step !== 4 ? (
         <View>
-          <View style={{padding: 20}}>
-            <View style={{gap: 10}}>
+          <View style={{ padding: 20 }}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   fontSize: 22,
                   color: '#000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Choose Your Plan
+                {t("Membership.Choose Your Plan")}
               </Text>
               <Text
                 style={{
@@ -459,22 +338,17 @@ const Membership = () => {
                   color: '#666666',
                   fontFamily: Mulish?.Regular,
                 }}>
-                Access essential features to help you begin your quit-smoking
-                journey.
+                {t("Membership.Access essential features to help you begin your quit - journey.")}
               </Text>
             </View>
             <FlatList
               data={plan ? plan : []}
               keyExtractor={item => item?._id}
-              renderItem={({item, index}) => (
+              renderItem={({ item, index }) => (
                 <Item title={item} indxe={index} />
               )}
-              // numColumns={1}
               contentContainerStyle={styles.listContainer}
               ItemSeparatorComponent={() => <View style={styles.separator} />}
-              // ListFooterComponent={() => (
-              //   <View style={{ height: 50,backgroundColor:"red" }} />
-              // )}
             />
           </View>
           <View
@@ -484,7 +358,7 @@ const Membership = () => {
               marginRight: 25,
               backgroundColor: '#F9F9F9',
             }}></View>
-          <View style={{padding: 25, gap: 20}}>
+          <View style={{ padding: 25, gap: 20 }}>
             <View>
               <Text
                 style={{
@@ -492,12 +366,12 @@ const Membership = () => {
                   fontSize: 22,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Cignix Pro Plan Benefits
+                {t("Membership.Cignix Pro Plan Benefits")}
               </Text>
             </View>
-            <View style={{gap: 15, width: scr_width / 1.18}}>
+            <View style={{ gap: 15, width: scr_width / 1.18 }}>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -512,11 +386,11 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Work progress metrics
+                  {t("Membership.Work progress metrics")}
                 </Text>
               </View>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -531,11 +405,11 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Daily reminders and milestone notifications
+                  {t("Membership.Daily reminders and milestone notifications")}
                 </Text>
               </View>
               <View
-                style={{gap: 13, flexDirection: 'row', alignItems: 'center'}}>
+                style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}>
                 <Iconviewcomponent
                   Icontag={'AntDesign'}
                   icon_size={24}
@@ -550,7 +424,7 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  Limited access to videos{' '}
+                  {t("Membership.Limited access to videos")}{' '}
                 </Text>
               </View>
             </View>
@@ -562,15 +436,15 @@ const Membership = () => {
               marginRight: 25,
               backgroundColor: '#F9F9F9',
             }}></View>
-          <View style={{margin: 25, gap: 20}}>
-            <View style={{gap: 10}}>
+          <View style={{ margin: 25, gap: 20 }}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   fontSize: 22,
                   color: '#000000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Have a coupon code ?
+                {t("Membership.Have a coupon code ?")}
               </Text>
               <Text
                 style={{
@@ -580,8 +454,7 @@ const Membership = () => {
                   textTransform: 'capitalize',
                   fontWeight: '400',
                 }}>
-                Access essential features to help you begin your quit-smoking
-                journey.
+                {t("Membership.Access essential features to help you begin your quit-smoking journey.")}
               </Text>
             </View>
 
@@ -596,7 +469,7 @@ const Membership = () => {
                 borderRadius: 10,
               }}>
               <TextInput
-                placeholder="Enter Coupon Code"
+                placeholder={t("PlaceHolder.Enter Coupon Code")}
                 placeholderTextColor={'#999999'}
                 maxLength={6}
                 value={Couponcode}
@@ -621,7 +494,7 @@ const Membership = () => {
                       fontWeight: '700',
                       fontFamily: Mulish?.Bold,
                     }}>
-                    Apply
+                    {t("Membership.Apply")}
                   </Text>
                 </TouchableOpacity>
               ) : (
@@ -641,7 +514,7 @@ const Membership = () => {
                         fontFamily: Mulish?.Bold,
                         textTransform: 'capitalize',
                       }}>
-                      Applied
+                      {t("Membership.Applied")}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -655,7 +528,7 @@ const Membership = () => {
                         fontWeight: '700',
                         fontFamily: Mulish?.Bold,
                       }}>
-                      Edit
+                      {t("Membership.Edit")}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -706,22 +579,12 @@ const Membership = () => {
                         });
                         const result = await response.json();
                         if (response.ok && result.success) {
-                          console.log('Payment verified successfully:', result);
-                          // let formData = {
-                          //   step: 4
-                          // };
-                          // const Stepupdate = await fetchData.UpdateProfile(formData);
-                          // console.log("Stepupdate",Stepupdate);
-                          // if (Stepupdate?.success == true) {
                           navigation.dispatch(
                             CommonActions.reset({
                               index: 0,
-                              routes: [{name: 'Tab'}],
+                              routes: [{ name: 'Tab' }],
                             }),
                           );
-                          // }else{
-                          //   console.log("Stepupdate in Razorpay",Stepupdate);
-                          // }
                         } else {
                           console.error('Payment verification failed:', result);
                           setFailuremodal(true);
@@ -731,9 +594,7 @@ const Membership = () => {
                       }
                     })
                     .catch(error => {
-                      // handle failure
                       console.log('ERROR', error);
-
                       setFailuremodal(true);
                     });
                 }
@@ -747,7 +608,7 @@ const Membership = () => {
                     fontFamily: Mulish?.Medium,
                     fontSize: 16,
                   }}>
-                  Buy Now for ₹{Afterdiscountamt} + 18% GST
+                  {t("Membership.Buy Now for")} ₹{Afterdiscountamt} + 18% GST
                 </Text>
               )}
             </TouchableOpacity>
@@ -763,7 +624,6 @@ const Membership = () => {
               }}
               onPress={() => {
                 common_fn?.showToast('Please select a plan');
-                // setFailuremodal(true);
               }}>
               {btnloader ? (
                 <ActivityIndicator size={'small'} color={'#fff'} />
@@ -774,23 +634,23 @@ const Membership = () => {
                     fontFamily: Mulish?.Medium,
                     fontSize: 16,
                   }}>
-                  Select Premium plan
+                  {t("Membership.Select Premium plan")}
                 </Text>
               )}
             </TouchableOpacity>
           )}
-          <View style={{padding: 40, height: 100}}></View>
+          <View style={{ padding: 40, height: 100 }}></View>
         </View>
       ) : (
-        <View style={{margin: 20, gap: 30}}>
-          <View style={{gap: 15}}>
+        <View style={{ margin: 20, gap: 30 }}>
+          <View style={{ gap: 15 }}>
             <Text
               style={{
                 fontSize: 18,
                 fontFamily: Mulish?.SemiBold,
                 color: '#000',
               }}>
-              Active membership
+              {t("Membership.Active membership")}
             </Text>
             <Text
               style={{
@@ -798,7 +658,7 @@ const Membership = () => {
                 fontSize: 16,
                 fontFamily: Mulish?.Regular,
               }}>
-              Thank you for being a valued member of the CIGNIX family.
+              {t("Membership.Thank you for being a valued member of the CIGNIX family.")}
             </Text>
           </View>
           <LinearGradient
@@ -812,16 +672,15 @@ const Membership = () => {
               paddingBottom: 30,
               gap: 15,
               width: scr_width / 1.188,
-              // margin: 20,
             }}>
-            <View style={{gap: 10}}>
+            <View style={{ gap: 10 }}>
               <Text
                 style={{
                   color: '#000',
                   fontSize: 18,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Cignix Pro
+                {t("Membership.Cignix Pro")}
               </Text>
               <Text
                 style={{
@@ -829,13 +688,13 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Full access to all video series, articles, and quitting guides.
+                {t("Membership.Full access to all video series, articles, and quitting guides.")}
               </Text>
             </View>
-            <Text style={{color: '#000', fontSize: 16}}>
-              Next due date - 29-10-2025
+            <Text style={{ color: '#000', fontSize: 16 }}>
+              {t("Membership.Next due date")} - 29-10-2025
             </Text>
-            <View style={{height: 2, width: '93%', backgroundColor: '#fff'}} />
+            <View style={{ height: 2, width: '93%', backgroundColor: '#fff' }} />
             <View
               style={{
                 flexDirection: 'row',
@@ -852,16 +711,16 @@ const Membership = () => {
                 onPress={() => {
                   currentplan?.status == 'refund_requested'
                     ? ToastAndroid.show(
-                        'Refund request already requested',
-                        ToastAndroid.SHORT,
-                      )
+                      'Refund request already requested',
+                      ToastAndroid.SHORT,
+                    )
                     : refundrequest(currentplan);
                 }}>
                 {currentplan?.status == 'refund_requested'
-                  ? ' refund in process'
+                  ? t('Membership.refund in process')
                   : currentplan?.status == 'refund_rejected'
-                  ? ' refund rejected'
-                  : 'Cancel membership'}
+                    ? t('Membership.refund rejected')
+                    : t('Membership.Cancel membership')}
               </Text>
               <Pressable
                 style={{
@@ -880,7 +739,7 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontFamily: Mulish?.Regular,
                   }}>
-                  Upgrade Plan
+                  {t("Membership.Upgrade Plan")}
                 </Text>
                 <Iconviewcomponent
                   Icontag="AntDesign"
@@ -893,8 +752,6 @@ const Membership = () => {
           </LinearGradient>
         </View>
       )}
-
-      {/* Payment Success Screen */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -910,7 +767,7 @@ const Membership = () => {
             backgroundColor: '#00000088',
           }}>
           <View
-            style={{backgroundColor: '#fff', padding: 10, borderRadius: 10}}>
+            style={{ backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>
             <View
               style={{
                 backgroundColor: Color?.white,
@@ -924,7 +781,6 @@ const Membership = () => {
                   setFailuremodal(false);
                 }}>
                 <Iconviewcomponent
-                  // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                   Icontag="AntDesign"
                   icon_size={25}
                   icon_color={'#000'}
@@ -933,9 +789,8 @@ const Membership = () => {
               </Pressable>
             </View>
             <View
-              style={{justifyContent: 'center', alignItems: 'center', gap: 15}}>
+              style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
-                // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
                 icon_size={100}
                 icon_color={'red'}
@@ -947,7 +802,7 @@ const Membership = () => {
                   fontSize: 20,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Failed
+                {t("Membership.Failed")}
               </Text>
               <Text
                 style={{
@@ -955,10 +810,10 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Unfortunately payment was rejected
+                {t("Membership.Unfortunately payment was rejected")}
               </Text>
             </View>
-            <View style={{marginTop: 50}}>
+            <View style={{ marginTop: 50 }}>
               <TouchableOpacity
                 style={{
                   padding: 10,
@@ -983,7 +838,6 @@ const Membership = () => {
           </View>
         </View>
       </Modal>
-      {/* payment failure Screen */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -999,7 +853,7 @@ const Membership = () => {
             backgroundColor: '#00000088',
           }}>
           <View
-            style={{backgroundColor: '#fff', padding: 10, borderRadius: 10}}>
+            style={{ backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>
             <View
               style={{
                 backgroundColor: Color?.white,
@@ -1013,7 +867,6 @@ const Membership = () => {
                   setSuccessmodal(false);
                 }}>
                 <Iconviewcomponent
-                  // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                   Icontag="AntDesign"
                   icon_size={25}
                   icon_color={'#000'}
@@ -1022,9 +875,8 @@ const Membership = () => {
               </Pressable>
             </View>
             <View
-              style={{justifyContent: 'center', alignItems: 'center', gap: 15}}>
+              style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
-                // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
                 icon_size={100}
                 icon_color={'green'}
@@ -1036,7 +888,7 @@ const Membership = () => {
                   fontSize: 20,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Success
+                {t("Membership.Success")}
               </Text>
               <Text
                 style={{
@@ -1044,10 +896,10 @@ const Membership = () => {
                   fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
-                Your payment has been processed Successfully
+                {t("Membership.Your payment has been processed Successfully")}
               </Text>
             </View>
-            <View style={{marginTop: 50}}>
+            <View style={{ marginTop: 50 }}>
               <TouchableOpacity
                 style={{
                   padding: 10,
@@ -1065,7 +917,7 @@ const Membership = () => {
                     fontSize: 16,
                     fontFamily: Mulish?.Regular,
                   }}>
-                  Done
+                  {t("Membership.Done")}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -1092,5 +944,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default Membership;

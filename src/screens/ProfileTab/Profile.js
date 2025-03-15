@@ -1,5 +1,5 @@
 //import liraries
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,27 +25,30 @@ import {
   Alert,
 } from 'react-native';
 
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Badge} from 'react-native-paper';
+import { Mulish } from '../../Global/FontFamily';
+import { Badge } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
-import {useNavigation} from '@react-navigation/native';
-import {scr_height} from '../../Components/Dimensions';
+import { useNavigation } from '@react-navigation/native';
+import { scr_height } from '../../Components/Dimensions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
-import {useFocusEffect} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // create a component
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   // const navigation = useNavigation();
   const [Uservalue, setuserdata] = useState(null);
   const [shopSection] = useState([
-    {id: 1, title: 'Profile', data: ['Profile']},
-    {id: 2, title: 'Account', data: ['Account']},
-    {id: 3, title: 'Other Settings', data: ['Other Settings']},
+    { id: 1, title: 'Profile', data: ['Profile'] },
+    { id: 2, title: 'Account', data: ['Account'] },
+    { id: 3, title: 'Other Settings', data: ['Other Settings'] },
   ]);
+  const { t, i18n } = useTranslation();
+
   const User_Function = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
@@ -63,7 +66,7 @@ const Profile = ({navigation}) => {
   useFocusEffect(
     React.useCallback(() => {
       User_Function();
-      return () => {};
+      return () => { };
     }, []),
   );
   useEffect(() => {
@@ -79,7 +82,7 @@ const Profile = ({navigation}) => {
         await AsyncStorage.removeItem('USERDATA');
         navigation.reset({
           index: 0,
-          routes: [{name: 'Auth'}],
+          routes: [{ name: 'Auth' }],
         });
       } else {
         console.log('error');
@@ -111,7 +114,7 @@ const Profile = ({navigation}) => {
             await AsyncStorage.clear();
             navigation.reset({
               index: 0,
-              routes: [{name: 'Auth'}],
+              routes: [{ name: 'Auth' }],
             });
           },
         },
@@ -120,6 +123,8 @@ const Profile = ({navigation}) => {
       console.log('catch in RemoveAccount : ', error);
     }
   };
+
+  console.log('Current language:', i18n.language);
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -136,47 +141,54 @@ const Profile = ({navigation}) => {
           alignItems: 'center',
           padding: 15,
           paddingHorizontal: 15,
-        }}>
+        }}
+      >
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+            viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={30}
             icon_color={Color.black}
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View>
+        <View style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold,flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20}}>
           <Text
-            style={{fontSize: 20, color: Color.black, fontFamily: Mulish.Bold}}>
-            Profile
+            style={{
+              fontSize: 20,
+              color: Color.black,
+              fontFamily: Mulish.Bold,
+              textAlign: 'center',
+            }}
+          >
+            {t("profile.Profile")}
           </Text>
         </View>
-        <TouchableOpacity
-          style={{marginHorizontal: 10}}
-          onPress={() => navigation.navigate('NotificationsList')}>
-          <View style={{position: 'absolute', zIndex: 999, top: -5, right: -5}}>
-            {/* <Badge
-              badgeStyle={{
-                position: 'absolute',
-                zIndex: 999,
-                backgroundColor: Color.red,
-                color: Color.white,
-                // fontFamily: Manrope.Bold,
-                fontSize: 12,
-              }}
-              maxLength={3}>
-              10
-            </Badge> */}
-          </View>
-          <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
-            Icontag="Ionicons"
-            icon_size={30}
-            icon_color={Color.black}
-            iconname="notifications-outline"
-          />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('NotificationsList')}
+          >
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={30}
+              icon_color={Color.black}
+              iconname="notifications-outline"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ marginHorizontal: 10 }}
+            onPress={() => navigation.navigate("LanguageSelector")}
+          >
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={30}
+              icon_color={Color.black}
+              iconname="language-outline"
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <Animated.SectionList
@@ -187,12 +199,13 @@ const Profile = ({navigation}) => {
         scrollEventThrottle={1}
         nestedScrollEnabled
         initialNumToRender={5}
-        renderItem={({item}) => {
+        renderItem={({ item }) => {
           switch (item) {
             case 'Profile':
               return (
+
                 <View
-                  style={{width: '100%', alignItems: 'center', marginTop: 20}}>
+                  style={{ width: '100%', alignItems: 'center', marginTop: 20 }}>
                   <View
                     style={{
                       width: '95%',
@@ -214,7 +227,7 @@ const Profile = ({navigation}) => {
                         <Image
                           source={
                             Uservalue?.profile
-                              ? {uri: Uservalue?.profile}
+                              ? { uri: Uservalue?.profile }
                               : require('../../assets/Logos/cignix_black.png')
                           }
                           style={{
@@ -286,10 +299,10 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.Medium,
                           }}>
                           {Uservalue?.step == 1 ||
-                          Uservalue?.step == 2 ||
-                          Uservalue?.step == 3
-                            ? 'Free User'
-                            : 'Premium User'}
+                            Uservalue?.step == 2 ||
+                            Uservalue?.step == 3
+                            ? t('profile.Free User')
+                            : t('profile.Premium User')}
                         </Text>
                       </View>
                     </View>
@@ -305,8 +318,8 @@ const Profile = ({navigation}) => {
               );
             case 'Account':
               return (
-                <View style={{width: '100%', alignItems: 'center'}}>
-                  <View style={{width: '95%'}}>
+                <View style={{ width: '100%', alignItems: 'center' }}>
+                  <View style={{ width: '95%' }}>
                     <Text
                       style={{
                         fontSize: 18,
@@ -315,7 +328,7 @@ const Profile = ({navigation}) => {
                         fontFamily: Mulish.Bold,
                         letterSpacing: 0.5,
                       }}>
-                      Account Settings
+                      {t('profile.Account Settings')}
                     </Text>
 
                     <TouchableOpacity
@@ -358,7 +371,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Edit Profile
+                          {t('profile.Edit Profile')}
                         </Text>
                       </View>
                       <View
@@ -420,7 +433,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Manage Subscription
+                          {t('profile.Manage Subscription')}
                         </Text>
                       </View>
                       <View
@@ -482,7 +495,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Change Password
+                          {t('profile.Change Password')}
                         </Text>
                       </View>
                       <View
@@ -546,7 +559,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Notification Settings
+                          {t('profile.Notification Settings')}
                         </Text>
                       </View>
                       <View
@@ -586,7 +599,7 @@ const Profile = ({navigation}) => {
                     alignItems: 'center',
                     paddingBottom: scr_height / 9,
                   }}>
-                  <View style={{width: '95%', marginTop: 20}}>
+                  <View style={{ width: '95%', marginTop: 20 }}>
                     <Text
                       style={{
                         fontSize: 18,
@@ -595,7 +608,7 @@ const Profile = ({navigation}) => {
                         fontFamily: Mulish.Bold,
                         letterSpacing: 0.5,
                       }}>
-                      Other Settings
+                      {t('profile.Other Settings')}
                     </Text>
 
                     <TouchableOpacity
@@ -638,7 +651,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                         Blogs
+                          {t('profile.Blogs')}
                         </Text>
                       </View>
                       <View
@@ -699,7 +712,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                         News and Media
+                          {t('profile.News and Media')}
                         </Text>
                       </View>
                       <View
@@ -760,7 +773,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Help Center
+                          {t("profile.Help Center")}
                         </Text>
                       </View>
                       <View
@@ -821,7 +834,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Contact Support
+                          {t("profile.Contact Support")}
                         </Text>
                       </View>
                       <View
@@ -883,7 +896,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Privacy Policy
+                          {t("profile.Privacy Policy")}
                         </Text>
                       </View>
                       <View
@@ -929,7 +942,7 @@ const Profile = ({navigation}) => {
                                                 /> */}
                         <Image
                           source={require('../../assets/Images/terms.png')}
-                          style={{width: 25, height: 25, resizeMode: 'contain'}}
+                          style={{ width: 25, height: 25, resizeMode: 'contain' }}
                         />
                       </View>
                       <View
@@ -946,7 +959,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Terms and Conditions
+                          {t("profile.Terms and Conditions")}
                         </Text>
                       </View>
                       <View
@@ -968,7 +981,7 @@ const Profile = ({navigation}) => {
                       </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() =>RemoveAccount()}
+                      onPress={() => RemoveAccount()}
                       style={{
                         width: '100%',
                         flexDirection: 'row',
@@ -1007,7 +1020,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                    Remove Account
+                          {t("profile.Remove Account")}
                         </Text>
                       </View>
                       <View
@@ -1075,7 +1088,7 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Logout
+                          {t("profile.Logout")}
                         </Text>
                       </View>
                       <View
@@ -1112,6 +1125,51 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: Color.white,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 20,
+    marginBottom: 15,
+    fontFamily: Mulish.Bold,
+  },
+  languageOption: {
+    padding: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  languageText: {
+    fontSize: 16,
+    color: Color.lightBlack,
+  },
+  closeButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: Color.red,
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
 

@@ -13,6 +13,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Text} from 'react-native';
 import {Mulish} from '../Global/FontFamily';
 import common_fn from './common_fn';
+import { useTranslation } from "react-i18next";
 
 const VideoPlayerWithThumbnail = ({
   videoUri,
@@ -25,6 +26,7 @@ const VideoPlayerWithThumbnail = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const videoPlayerRef = useRef(null);
+   const { t } = useTranslation();
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -87,7 +89,7 @@ const VideoPlayerWithThumbnail = ({
                 }
               }}>
               <Text style={{fontSize: 13, fontFamily: Mulish.Bold , color:'#000'}}>
-              {data?._id == currentdata?._id ? 'Current' : 'Watched'}
+              {data?._id == currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Watched')}
               </Text>
             </Pressable>
           ) : (
@@ -109,7 +111,7 @@ const VideoPlayerWithThumbnail = ({
                 }
               }}>
               <Text style={{fontSize: 13, fontFamily: Mulish.Bold , color:'#000'}}>
-              {data?._id == currentdata?._id ? 'Current' : 'Recently Unlocked'} 
+              {data?._id == currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Recently Unlocked')} 
               </Text>
             </Pressable>
           )}
