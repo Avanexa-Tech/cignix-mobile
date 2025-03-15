@@ -39,7 +39,8 @@ import Step4 from '../../Components/Step4';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from "react-i18next";
-
+import { translateText } from '../Context/userContext'
+import { useSelector } from 'react-redux';
 // create a component
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -79,6 +80,10 @@ const HomeScreen = () => {
   const [is_Whatsappcheck, setIs_Whatsappcheck] = useState(false);
   const { t } = useTranslation();
   const { i18n } = useTranslation();
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   useEffect(() => {
     const loadLanguage = async () => {
       try {
@@ -214,16 +219,39 @@ const HomeScreen = () => {
   const Getvideo = async () => {
     try {
       const Getvideo = await fetchData?.UserLesson();
-      const filterdata = Getvideo?.data?.sort(
+
+      let filterdata = Getvideo?.data?.sort(
         (a, b) =>
           a?.lesson_details?.video_order - b?.lesson_details?.video_order,
       );
-      setgetvideo(filterdata);
-      console.log('=======> Videos <======', filterdata);
+
+      const translatedData = await Promise.all(
+        filterdata.map(async (item) => {
+          const translatedTitle = await translateText(item.lesson_details.title);
+          const translatedContent = await translateText(item.lesson_details.content);
+
+          return {
+            ...item,
+            lesson_details: {
+              ...item.lesson_details,
+              title: translatedTitle,
+              content: translatedContent,
+            },
+          };
+        })
+      );
+
+      setgetvideo(translatedData);
+
     } catch (error) {
       console.log('Catch in Getvideo', error);
     }
   };
+
+  useEffect(()=>{
+    Getvideo();
+  },[language])
+  
   // USERDATA :
   const Userdata = async () => {
     try {

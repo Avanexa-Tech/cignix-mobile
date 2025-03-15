@@ -11,7 +11,6 @@ import {
   TextInput,
   Pressable,
   Modal,
-  Image,
   ToastAndroid,
 } from 'react-native';
 import Color from '../../Global/Color';
@@ -26,80 +25,14 @@ import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import {translateText} from '../Context/userContext';
 
-// create a component
 const Membership = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
-  const [data, setdata] = useState([
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Free Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Premium Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67384564541b7f8679e39faa',
-      name: 'Premium Plan',
-      price: '0',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      duration: 0,
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      createdAt: '2024-11-16T07:10:28.236Z',
-      updatedAt: '2024-11-21T07:02:17.733Z',
-    },
-    {
-      _id: '67357ab223774fd7b6cba916',
-      name: 'Premium Plan',
-      price: '4999',
-      description:
-        'Access essential features to help you begin your quit-smoking journey.',
-      features: [
-        'Limited access to videos',
-        'smoke-free days and basic progress metrics',
-        'Daily reminders and milestone notifications',
-      ],
-      duration: 12,
-      createdAt: '2024-11-14T04:21:06.133Z',
-      updatedAt: '2024-11-22T11:04:49.102Z',
-      duration_type: 'month',
-      special_price: '4000',
-    },
-  ]);
-  const [Amount, setAmount] = useState(null);
   const [Coupondata, setCouponData] = useState('');
   const [Couponcode, setCouponcode] = useState('');
   const [plan, setplan] = useState([]);
-  const [selected, setSelected] = useState(null);
   const [btnloader, setBtnloader] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [Afterdiscountamt, setafterdiscountamt] = useState(null);
@@ -116,7 +49,6 @@ const Membership = () => {
   const Userdata = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
-      console.log(' refundrequest();', Userdata?.data);
       if (Userdata?.success) {
         setUserdata(Userdata?.data);
         if (Userdata?.data?.step == 4) {
@@ -127,18 +59,30 @@ const Membership = () => {
       console.log('Catch in Userdata', error);
     }
   };
-  // Get_Membership :
   const Get_Membership = async () => {
     try {
       const GetMembership = await fetchData?.Get_Member_Screen();
-      console.log('Get_Member_Screen', GetMembership?.data);
-      if (GetMembership?.success == true) {
-        setplan(GetMembership?.data);
-        setSelectedPlan(GetMembership?.data[1]);
-        setafterdiscountamt(
-          GetMembership?.data[1]?.special_price ? GetMembership?.data[1]?.special_price : GetMembership?.data[1]?.price,
+      if (GetMembership?.success === true) {
+        const translatedPlans = await Promise.all(
+          GetMembership?.data.map(async (plan) => {
+            const translatedFeatures = await Promise.all(
+              plan.features.map((feature) =>
+                translateText(feature, t) 
+              )
+            );
+            return {
+              ...plan,
+              features: translatedFeatures, 
+            };
+          })
         );
-        console.log('setplan', GetMembership?.data);
+        setplan(translatedPlans);
+        setSelectedPlan(translatedPlans[1]);
+        setafterdiscountamt(
+          translatedPlans[1]?.special_price
+            ? translatedPlans[1]?.special_price
+            : translatedPlans[1]?.price
+        );
       } else {
         setplan([]);
       }
@@ -156,15 +100,12 @@ const Membership = () => {
   };
   //  Item :
   const Item = ({ title, index }) => {
-    console.log('title', title);
     const isSelected = selectedPlan?._id === title?._id;
-    console.log('selcted ', isSelected, title);
 
     return (
       <TouchableOpacity
         style={{ flex: 1 }}
         onPress={() => {
-          console.log('Click user plan', title);
           if (title?.price != 0) {
             setSelectedPlan(title);
             setafterdiscountamt(
@@ -273,21 +214,15 @@ const Membership = () => {
       </TouchableOpacity>
     );
   };
-  // COUPONCALCULATION :
   const couponvalue = (planamount, coupondata, planid) => {
     try {
-      console.log('PLAN DATA', planamount);
-      console.log('COUPON DATA', coupondata);
-      console.log('PLANID', planid);
       if (coupondata?.type == 'off') {
         const discount = parseInt(planamount) - parseInt(coupondata?.value);
-        console.log('discount', discount);
         setafterdiscountamt(discount);
       } else {
         const discount =
           parseInt(planamount) -
           (parseInt(planamount) * coupondata?.value) / 100;
-        console.log('PER Discount', discount);
         setafterdiscountamt(discount);
       }
     } catch (error) {
@@ -335,77 +270,20 @@ const Membership = () => {
 
   const refundrequest = async (val) => {
     try {
-      console.log("currentplan", val);
-
       const data = {
         id: val?._id,
       };
-      console.log("booknow", data);
-
       const requestApi = await fetchData?.Get_Refund_Request(
         JSON.stringify(data),
       );
-      console.log('SSS', requestApi);
       if (requestApi?.success == true) {
-        console.log('requestApi', requestApi);
         common_fn?.showToast(requestApi?.message);
       }
     } catch (error) {
-      console.log('====================================');
       console.log('ERROR IN CATCH IN REFUND REQUEST', error);
-      console.log('====================================');
     }
   };
-  // callRazorpay :
-  // const callRazorpay = async () => {
-  //   setBtnloader(true);
-  //   try {
-  //     const optionvalue = {
-  //       plan_id: '67357ab223774fd7b6cba916',
-  //       amount: '4999',
-  //     };
-  //     const Optiondata = await fetchData?.Get_Razorpay_Option(optionvalue);
-  //     if (Optiondata?.success == true) {
-  //       console.log('Razorpay amount', Optiondata?.data?.payment);
-  //       RazorpayCheckout.open(Optiondata?.data?.payment)
-  //         .then(data => {
-  //           console.dir('Razorpay Success: ', data);
-  //           setBtnloader(false);
-  //         })
-  //         .catch(error => {
-  //           console.dir('Razorpay Error: ', error);
-  //           alert(
-  //             `Payment failed: ${
-  //               error?.description || 'Unknown error occurred'
-  //             }`,
-  //           );
-  //           setBtnloader(false);
-  //         });
-  //     }
-  //   } catch (error) {
-  //     console.error('Catch in callRazorpay: ', error);
-  //   }
-  // };
-  const callRazorpay = async () => {
-    try {
-      const razorPayBackend = await fetchData.Get_Razorpay_Option({
-        plan_id: selectedPlan._id,
-        coupon_id: null,
-        amount: 4999,
-      });
-      console.dir(razorPayBackend, '12345');
-      var razorpayOptions = razorPayBackend.data.payment;
-      RazorpayCheckout.open(razorpayOptions)
-        .then(data => {
-          console.log('Payment Success:', data);
-        })
-        .catch(error => {
-          console.error('Payment Failed:', error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -425,7 +303,6 @@ const Membership = () => {
             navigation?.goBack();
           }}>
           <Iconviewcomponent
-            // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={25}
             icon_color={'#000'}
@@ -470,12 +347,8 @@ const Membership = () => {
               renderItem={({ item, index }) => (
                 <Item title={item} indxe={index} />
               )}
-              // numColumns={1}
               contentContainerStyle={styles.listContainer}
               ItemSeparatorComponent={() => <View style={styles.separator} />}
-            // ListFooterComponent={() => (
-            //   <View style={{ height: 50,backgroundColor:"red" }} />
-            // )}
             />
           </View>
           <View
@@ -706,22 +579,12 @@ const Membership = () => {
                         });
                         const result = await response.json();
                         if (response.ok && result.success) {
-                          console.log('Payment verified successfully:', result);
-                          // let formData = {
-                          //   step: 4
-                          // };
-                          // const Stepupdate = await fetchData.UpdateProfile(formData);
-                          // console.log("Stepupdate",Stepupdate);
-                          // if (Stepupdate?.success == true) {
                           navigation.dispatch(
                             CommonActions.reset({
                               index: 0,
                               routes: [{ name: 'Tab' }],
                             }),
                           );
-                          // }else{
-                          //   console.log("Stepupdate in Razorpay",Stepupdate);
-                          // }
                         } else {
                           console.error('Payment verification failed:', result);
                           setFailuremodal(true);
@@ -731,9 +594,7 @@ const Membership = () => {
                       }
                     })
                     .catch(error => {
-                      // handle failure
                       console.log('ERROR', error);
-
                       setFailuremodal(true);
                     });
                 }
@@ -763,7 +624,6 @@ const Membership = () => {
               }}
               onPress={() => {
                 common_fn?.showToast('Please select a plan');
-                // setFailuremodal(true);
               }}>
               {btnloader ? (
                 <ActivityIndicator size={'small'} color={'#fff'} />
@@ -812,7 +672,6 @@ const Membership = () => {
               paddingBottom: 30,
               gap: 15,
               width: scr_width / 1.188,
-              // margin: 20,
             }}>
             <View style={{ gap: 10 }}>
               <Text
@@ -893,8 +752,6 @@ const Membership = () => {
           </LinearGradient>
         </View>
       )}
-
-      {/* Payment Success Screen */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -924,7 +781,6 @@ const Membership = () => {
                   setFailuremodal(false);
                 }}>
                 <Iconviewcomponent
-                  // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                   Icontag="AntDesign"
                   icon_size={25}
                   icon_color={'#000'}
@@ -935,7 +791,6 @@ const Membership = () => {
             <View
               style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
-                // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
                 icon_size={100}
                 icon_color={'red'}
@@ -983,7 +838,6 @@ const Membership = () => {
           </View>
         </View>
       </Modal>
-      {/* payment failure Screen */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -1013,7 +867,6 @@ const Membership = () => {
                   setSuccessmodal(false);
                 }}>
                 <Iconviewcomponent
-                  // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                   Icontag="AntDesign"
                   icon_size={25}
                   icon_color={'#000'}
@@ -1024,7 +877,6 @@ const Membership = () => {
             <View
               style={{ justifyContent: 'center', alignItems: 'center', gap: 15 }}>
               <Iconviewcomponent
-                // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                 Icontag="AntDesign"
                 icon_size={100}
                 icon_color={'green'}
@@ -1092,5 +944,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default Membership;

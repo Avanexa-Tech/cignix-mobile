@@ -25,63 +25,35 @@ import Color from '../../Global/Color';
 import { CommonActions, useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { translateText } from '../Context/userContext';
+import { useTranslation } from 'react-i18next';
 
 const { width, height } = Dimensions.get('window');
 LogBox.ignoreAllLogs();
 
 const SimTest = ({ navigation }) => {
+  const { t } = useTranslation();
   const [getQuestion, setgetQuestion] = React.useState([]);
   const [loader, setLoader] = React.useState(false);
   const [index, setIndex] = React.useState(0);
   const [selctedAnswer, setSelctedAnswer] = React.useState([]);
-  const [currentLanguage, setCurrentLanguage] = useState('en');
-  const appState = useRef(AppState.currentState);
+  const [currentLanguage, setCurrentLanguage] = useState('');
 
-  // Check language when component mounts and when screen comes into focus
   useFocusEffect(
     React.useCallback(() => {
       const checkLanguage = async () => {
         const storedLanguage = await AsyncStorage.getItem('selectedLanguage') || 'en';
         if (storedLanguage !== currentLanguage) {
           setCurrentLanguage(storedLanguage);
-          GetQustion(); // Reload questions if language changed
+          GetQustion();
         }
       };
 
       checkLanguage();
 
-      return () => { }; // Cleanup function
+      return () => { };
     }, [currentLanguage])
   );
 
-  // Check language when app comes back to foreground
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        // App has come to the foreground, check if language changed
-        const checkLanguage = async () => {
-          const storedLanguage = await AsyncStorage.getItem('selectedLanguage') || 'en';
-          if (storedLanguage !== currentLanguage) {
-            setCurrentLanguage(storedLanguage);
-            GetQustion(); // Reload questions if language changed
-          }
-        };
-
-        checkLanguage();
-      }
-
-      appState.current = nextAppState;
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, [currentLanguage]);
-
-  // Initial load of questions
   useEffect(() => {
     const initializeApp = async () => {
       const storedLanguage = await AsyncStorage.getItem('selectedLanguage') || 'en';
@@ -101,23 +73,15 @@ const SimTest = ({ navigation }) => {
       setLoader(true);
       const GetQustion = await fetchData.GetQusetion(0);
       if (GetQustion?.success == true) {
-        console.log("GetQustion.data================>", GetQustion?.data);
-
-        // Translate all questions before setting to state
         const translatedData = await Promise.all(
           GetQustion?.data.map(async (item) => {
-            // Translate the question text
             const translatedQuestion = await translateText(item.question);
-
-            // Return the item with translated question
             return {
               ...item,
               question: translatedQuestion
             };
           })
         );
-
-        // Set the translated data to state
         setgetQuestion(translatedData);
 
         if (translatedData.length !== 0) {
@@ -147,7 +111,7 @@ const SimTest = ({ navigation }) => {
               color: '#4254B6',
               fontFamily: Mulish.Regular,
             }}>
-            {`Question ${index + 1} of ${getQuestion?.length}`}
+            {t("Sim1.Question")} {index + 1} {t("Sim1.of")} {getQuestion?.length}
           </Text>
           <Text
             style={{
@@ -248,7 +212,7 @@ const SimTest = ({ navigation }) => {
                   color: Color?.white,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Discover Your Score
+                {t("Homescreen.Discover Your Score")}
               </Text>
             </TouchableOpacity>
           )}
@@ -286,9 +250,9 @@ const SimTest = ({ navigation }) => {
             color: Color?.black,
             fontFamily: Mulish.SemiBold,
           }}>
-          SIM Test
+          {t("Sim1.SIM Test")}
         </Text>
-        <View>
+        <View style={{ flex: 1, position: "absolute", right: 1 }} >
           <TouchableOpacity
             style={{ marginHorizontal: 10 }}
             onPress={() => navigation.navigate("LanguageSelector")}
@@ -305,9 +269,22 @@ const SimTest = ({ navigation }) => {
       </View>
       {loader ? (
         <SkeletonPlaceholder>
-          <View style={styles.placeholderText} />
-          <View style={styles.placeholderText} />
-          <View style={styles.placeholderText} />
+          <View style={{ height: 30, width: '100%', borderRadius: 4, marginBottom: 10 }} />
+          <View style={{ height: 30, width: '50%', borderRadius: 4, marginBottom: 10 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '100%', borderRadius: 4, marginTop: 10 }} />
+          <View style={{ height: 30, width: '50%', borderRadius: 4, marginTop: 10 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+          <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
         </SkeletonPlaceholder>
       ) : (
         <FlatList
@@ -330,11 +307,5 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     marginRight: 16,
-  },
-  placeholderText: {
-    height: 50,
-    width: '100%',
-    borderRadius: 4,
-    marginBottom: 10,
-  },
+  }
 });

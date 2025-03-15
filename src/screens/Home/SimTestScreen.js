@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { Iconviewcomponent } from '../../Components/Icontag';
 import Color from '../../Global/Color';
 import { scr_width } from '../../Components/Dimensions';
@@ -15,514 +16,50 @@ import { Mulish } from '../../Global/FontFamily';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
 import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext';
+import { useSelector } from 'react-redux';
 
 const SimTestScreen = ({ navigation }) => {
   const { t } = useTranslation();
-  const valuewwww = [
-    {
-      _id: '6738353e9c6fcbba05fe6ef6',
-      question: t('Sim1.Smoking gives me a new energy whenever I feel low'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 10,
-      event: '1',
-      createdAt: '2024-11-16T06:01:34.145Z',
-      updatedAt: '2024-11-16T06:01:34.145Z',
-    },
-    {
-      _id: '673835499c6fcbba05fe6f0e',
-      question: t('Sim1.Smoking clears my thoughts and gives me new ideas'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 11,
-      event: '1',
-      createdAt: '2024-11-16T06:01:45.285Z',
-      updatedAt: '2024-11-16T06:01:45.285Z',
-    },
-    {
-      _id: '6738355a9c6fcbba05fe6f18',
-      question: t("Sim1.I don't have enough willpower to quit smoking"),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 12,
-      event: '1',
-      createdAt: '2024-11-16T06:02:02.213Z',
-      updatedAt: '2024-11-16T06:02:02.213Z',
-    },
-    {
-      _id: '673835859c6fcbba05fe6f32',
-      question:
-        t('Sim1.Cigarette is not that bad as Nicotine has medicinal values too'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 13,
-      event: '1',
-      createdAt: '2024-11-16T06:02:45.801Z',
-      updatedAt: '2024-11-16T06:02:45.801Z',
-    },
-    {
-      _id: '6738359c9c6fcbba05fe6f34',
-      question: t('Sim1.Smoking helps me manage my anger'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 14,
-      event: '1',
-      createdAt: '2024-11-16T06:03:08.404Z',
-      updatedAt: '2024-11-16T06:03:08.404Z',
-    },
-    {
-      _id: '673835a99c6fcbba05fe6f36',
-      question: t('Sim1.Once a smoker, always a smoker'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 15,
-      event: '1',
-      createdAt: '2024-11-16T06:03:21.245Z',
-      updatedAt: '2024-11-16T06:03:21.245Z',
-    },
-    {
-      _id: '673835b69c6fcbba05fe6f38',
-      question: t('Sim1.Even if I quit smoking for some days, I will surely relapse'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 16,
-      event: '1',
-      createdAt: '2024-11-16T06:03:34.508Z',
-      updatedAt: '2024-11-16T06:03:34.508Z',
-    },
-    {
-      _id: '673835c19c6fcbba05fe6f3a',
-      question: t('Sim1.Cigarette is my best friend'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 17,
-      event: '1',
-      createdAt: '2024-11-16T06:03:45.943Z',
-      updatedAt: '2024-11-16T06:03:45.943Z',
-    },
-    {
-      _id: '673835ce9c6fcbba05fe6f3c',
-      question: t('Sim1.Cigarette helps me cope better with life'),
-      question_type: 'radio',
-      options: [
-        {
-          value: '1',
-          point: '1',
-        },
-        {
-          value: '2',
-          point: '2',
-        },
-        {
-          value: '3',
-          point: '3',
-        },
-        {
-          value: '4',
-          point: '4',
-        },
-        {
-          value: '5',
-          point: '5',
-        },
-        {
-          value: '6',
-          point: '6',
-        },
-        {
-          value: '7',
-          point: '7',
-        },
-        {
-          value: '8',
-          point: '8',
-        },
-        {
-          value: '9',
-          point: '9',
-        },
-        {
-          value: '10',
-          point: '10',
-        },
-      ],
-      order: 18,
-      event: '1',
-      createdAt: '2024-11-16T06:03:58.661Z',
-      updatedAt: '2024-11-16T06:03:58.661Z',
-    },
-  ];
-  const [getQuestion, setgetQuestion] = React.useState([]);
-  const [selctedAnswer, setSelctedAnswer] = React.useState([]);
-  // const SetAnswer =async(item)=>{
-  const [loader, setLoader] = React.useState(false);
+  const [getQuestion, setgetQuestion] = useState([]);
+  const [selctedAnswer, setSelctedAnswer] = useState([]);
+  const [loader, setLoader] = useState(false);
+  const language = useSelector((state) => {
+    return state.UserReducer.language;
+  });
 
-  //   try {
-  //     console.log("cccccccc",item);
-  //   } catch (error) {
-  //     console.log("catch in SetAnswer : ", error);
-  //   }
-
-  // }
   const GetQustion = async () => {
     try {
       setLoader(true);
       const GetQustion = await fetchData.GetQusetion(1);
-      console.log("SSSSSS", GetQustion);
-      if (GetQustion?.success == true) {
-        setgetQuestion(GetQustion?.data);
-        setLoader(false);
+      if (GetQustion?.success === true) {
+        const translatedData = await Promise.all(
+          GetQustion?.data.map(async (item) => {
+            const translatedQuestion = await translateText(item.question);
+            return {
+              ...item,
+              question: translatedQuestion
+            };
+          })
+        );
+        setgetQuestion(translatedData);
       } else {
         setgetQuestion([]);
-        setLoader(false);
       }
-
     } catch (error) {
       console.log("Catch in GetQuestion", error);
+    } finally {
       setLoader(false);
     }
-  }
+  };
+
   useEffect(() => {
     GetQustion();
-  }, [])
+  }, [language]);
+
   const handleSelectAnswer = (questionId, optionValue) => {
     setSelctedAnswer(prev => ({ ...prev, [questionId]: optionValue }));
   };
-  if (loader) {
-    return (
-      <View style={{ flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
-        <ActivityIndicator size="large" color={'#4254B6'} />
-      </View>
-    )
-  }
 
   const SIMTEST_UPDATE_SCORE = async val => {
     try {
@@ -530,10 +67,9 @@ const SimTestScreen = ({ navigation }) => {
         total_points: val,
       };
       const SIMTEST_UPDATE_SCORE = await fetchData?.POST_USER_LESSON(data);
-      console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
-      if (SIMTEST_UPDATE_SCORE?.success == true) {
+      if (SIMTEST_UPDATE_SCORE?.success === true) {
         UserStep();
-        common_fn.showToast('Answer Submited Successfully');
+        common_fn.showToast('Answer Submitted Successfully');
       } else {
         console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       }
@@ -541,13 +77,14 @@ const SimTestScreen = ({ navigation }) => {
       console.log('Catch in SIMTEST_UPDATE_SCORE', error);
     }
   };
+
   const UserStep = async () => {
     try {
       const data = {
         step: 3
       }
       const Stepupdate = await fetchData?.UpdateProfile(JSON?.stringify(data));
-      if (Stepupdate?.success == true) {
+      if (Stepupdate?.success === true) {
         console.log('Stepupdate', Stepupdate);
         navigation.goBack();
       } else {
@@ -557,6 +94,7 @@ const SimTestScreen = ({ navigation }) => {
       console.log('Catch in UserStep', error);
     }
   };
+
   const renderItem = ({ item, index }) => {
     return (
       <View style={{ gap: 20 }}>
@@ -567,7 +105,7 @@ const SimTestScreen = ({ navigation }) => {
               color: '#4254B6',
               fontFamily: Mulish.Regular,
             }}>
-            {`Question ${index + 1} of ${getQuestion?.length}`}
+            {t('Sim1.Question')} {index + 1} {t("Sim1.of")} {getQuestion?.length}
           </Text>
           <Text
             style={{
@@ -621,7 +159,7 @@ const SimTestScreen = ({ navigation }) => {
             }}
             keyExtractor={(option, idx) => `${item._id}-${idx}`}
           />
-          {index + 1 == getQuestion?.length ? null : (
+          {index + 1 === getQuestion?.length ? null : (
             <View
               style={{
                 width: '100%',
@@ -631,7 +169,7 @@ const SimTestScreen = ({ navigation }) => {
               }}
             />
           )}
-          {index + 1 == getQuestion?.length && (
+          {index + 1 === getQuestion?.length && (
             <TouchableOpacity
               style={{
                 padding: 15,
@@ -640,16 +178,15 @@ const SimTestScreen = ({ navigation }) => {
                 marginBottom: 70,
                 justifyContent: 'center',
                 alignItems: 'center',
-                // marginBottom: 70,
               }}
               onPress={() => {
-                if (Object.keys(selctedAnswer)?.length == getQuestion?.length) {
+                if (Object.keys(selctedAnswer)?.length === getQuestion?.length) {
                   const total = Object.values(selctedAnswer).reduce(
                     (sum, value) => sum + Number(value),
                     0,
                   );
                   SIMTEST_UPDATE_SCORE(total);
-                  common_fn.showToast('Answer Submited Successfully');
+                  common_fn.showToast('Answer Submitted Successfully');
                 } else {
                   console.log("selctedAnswer", selctedAnswer);
                   common_fn.showToast('Please Answer All Questions');
@@ -665,6 +202,28 @@ const SimTestScreen = ({ navigation }) => {
       </View>
     );
   };
+
+  const renderSkeleton = () => (
+    <SkeletonPlaceholder>
+      <View style={{ height: 30, width: '100%', borderRadius: 4, marginBottom: 10 }} />
+      <View style={{ height: 30, width: '50%', borderRadius: 4, marginBottom: 10 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '100%', borderRadius: 4, marginTop: 10 }} />
+      <View style={{ height: 30, width: '50%', borderRadius: 4, marginTop: 10 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+      <View style={{ height: 30, width: '10%', borderRadius: 4, marginTop: 15 }} />
+    </SkeletonPlaceholder>
+  );
+
   return (
     <View style={{ flex: 1, backgroundColor: '#fff', padding: 25, gap: 10 }}>
       <View style={{ flexDirection: 'row', paddingBottom: 20 }}>
@@ -693,17 +252,22 @@ const SimTestScreen = ({ navigation }) => {
           {t("Sim1.SIM Test")}
         </Text>
       </View>
-      <FlatList
-        data={getQuestion}
-        renderItem={renderItem}
-        keyExtractor={item => item._id}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ gap: 20 }}
-      />
+      {loader ? (
+        renderSkeleton()
+      ) : (
+        <FlatList
+          data={getQuestion}
+          renderItem={renderItem}
+          keyExtractor={item => item._id}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ gap: 20 }}
+        />
+      )}
     </View>
   );
 };
 
-export default SimTestScreen;
+const styles = StyleSheet.create({
+});
 
-const styles = StyleSheet.create({});
+export default SimTestScreen;

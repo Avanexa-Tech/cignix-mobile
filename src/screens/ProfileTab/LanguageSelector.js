@@ -9,10 +9,15 @@ import { useTranslation } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
+
 import { Iconviewcomponent } from '../../Components/Icontag'; 
+import { useDispatch } from 'react-redux';
+import { setLangugage } from '../../Redux/user/UserAction';
 
 const LanguageSelector = ({navigation }) => {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  
   
   const languages = [
     { code: 'en', name: 'English' },
@@ -27,6 +32,7 @@ const LanguageSelector = ({navigation }) => {
     try {
       await i18n.changeLanguage(lang);
       await AsyncStorage.setItem('selectedLanguage', lang);
+      dispatch(setLangugage(lang));
       navigation.goBack(); 
     } catch (err) {
       console.log("Error changing language:", err);
