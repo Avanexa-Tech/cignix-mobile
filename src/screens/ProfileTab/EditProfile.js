@@ -443,6 +443,7 @@ const EditProfile = ({navigation}) => {
             paddingHorizontal: 20,
             backgroundColor: Color.white,
             marginVertical: 10,
+            color: Color.black
           }}
           cursorColor={Color.primary}
           mode="outlined"
@@ -471,6 +472,7 @@ const EditProfile = ({navigation}) => {
             paddingHorizontal: 20,
             backgroundColor: Color.white,
             marginVertical: 10,
+            color: Color.black
           }}
           cursorColor={Color.primary}
           mode="outlined"
@@ -499,6 +501,7 @@ const EditProfile = ({navigation}) => {
             paddingHorizontal: 20,
             backgroundColor: Color.white,
             marginVertical: 10,
+            color: Color.black
           }}
           keyboardType='numeric'
           maxLength={10}
@@ -543,6 +546,7 @@ const EditProfile = ({navigation}) => {
             paddingHorizontal: 20,
             backgroundColor: Color.white,
             marginVertical: 10,
+            color: Color.black
           }}
           cursorColor={Color.primary}
           mode="outlined"
@@ -593,6 +597,7 @@ const EditProfile = ({navigation}) => {
             paddingHorizontal: 20,
             backgroundColor: Color.white,
             marginVertical: 10,
+            color: Color.black
           }}
           
           autoCapitalize='characters'

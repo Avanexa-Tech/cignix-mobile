@@ -1,4 +1,3 @@
-//import liraries
 import React, { useEffect, useState } from 'react';
 import {
     View,
@@ -15,7 +14,7 @@ import Color from '../../Global/Color';
 import { useNavigation } from '@react-navigation/native';
 import { Mulish } from '../../Global/FontFamily';
 import { Iconviewcomponent } from '../../Components/Icontag';
-import { scr_width } from '../../Components/Dimensions';
+import { scr_width, scr_height } from '../../Components/Dimensions';
 import { useTranslation } from 'react-i18next';
 
 const privacyData = [
@@ -30,14 +29,14 @@ const privacyData = [
 const PrivacyPolicy = () => {
 
     const navigation = useNavigation();
-    const { t} = useTranslation();
+    const { t } = useTranslation();
     const [height, setHeight] = useState(undefined);
 
     const renderHeaderItem = () => {
         try {
             return (
-                <View style={{ width: '100%', alignItems: 'center' }}>
-                    <View style={{ width: '100%', marginTop: 5 }}>
+                <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: '100%', alignSelf: 'center', marginTop: 5 }}>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.This Privacy Notice for Cignix ('we', 'us', or 'our'), describes how and why we might access, collect, store, use, and/or share ('process') your personal information when you use our services ('Services'), including when you")}: {t("PrivacyPolicy.Visit our website at")} https://www.cignix.com {t("PrivacyPolicy.or any website of ours that links to this Privacy Notice.")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Use Cignix. Cignix is a dedicated platform designed to help smokers quit and embrace a healthier, smoke-free life. Through interactive quizzes and engaging videos, we assess your level of nicotine dependence, providing you with insights and guidance. Our personalized approach supports you every step of the way, helping you overcome cravings, build healthy habits, and achieve a lasting, smoke-free lifestyle.")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Engage with us in other related ways, including any sales, marketing, or events Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at")} quit@cignix.com.</Text>
@@ -46,7 +45,7 @@ const PrivacyPolicy = () => {
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5 }}>{t("PrivacyPolicy.SUMMARY OF KEY POINTS")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our table of contents below to find the section you are looking for.")}</Text>
 
-                        <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{("PrivacyPolicy.Do we process any sensitive personal information?")} </Text>
+                        <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.Do we process any sensitive personal information?")} </Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22 }}>{t("PrivacyPolicy.Some of the information may be considered 'special' or 'sensitive' in certain jurisdictions, for example, your racial or ethnic origins, sexual orientation, and religious beliefs. We may process sensitive personal information when necessary with your consent or as otherwise permitted by applicable law. Learn more about the sensitive information we process.")}</Text>
 
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.What personal information do we process?")} </Text>
@@ -312,8 +311,8 @@ const PrivacyPolicy = () => {
     const renderFooterItem = () => {
         try {
             return (
-                <View style={{ width: '100%', alignItems: 'center' }}>
-                    <View style={{ width: '100%', marginTop: 0 }}>
+                <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: '100%', alignSelf: 'center', marginTop: 0 }}>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, marginTop: 10 }}>6. {t("PrivacyPolicy.HOW LONG DO WE KEEP YOUR INFORMATION?")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.In Short")}:</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.We keep your information for as long as necessary to fulfil the purposes outlined in this Privacy Notice unless otherwise required by law. We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements). No purpose in this notice will require us to keep your personal information for longer than the period of time in which users have an account with us.")}</Text>
@@ -338,7 +337,7 @@ const PrivacyPolicy = () => {
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.You may review, change, or terminate your account at any time, depending on your country, province, or state of residence.")}</Text>
 
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.Withdrawing your consent")}:</Text>
-                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us using the contact details provided in the section")} <Text style={{ fontSize: 15, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.</Text></Text>
+                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us using the contact details provided in the section")} <Text style={{ fontSize: 15, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>{t("'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.")}</Text></Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.However, please note that this will not affect the lawfulness of the processing before its withdrawal nor when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.")}</Text>
 
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.Account Information")}</Text>
@@ -367,23 +366,19 @@ const PrivacyPolicy = () => {
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Cookies and similar technologies")}: {t("PrivacyPolicy.Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services.")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If you have questions or comments about your privacy rights, you may email us at")} <Text style={{ fontSize: 15, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>quit@cignix.com</Text>.</Text>
                     </View>
-
                     <View style={{ width: '100%', marginTop: 0 }}>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, marginTop: 10 }}>10. {t("PrivacyPolicy.CONTROLS FOR DO-NOT-TRACK FEATURES")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ('DNT') feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognising and implementing DNT signals has been finalised. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice.")}</Text>
                     </View>
-
                     <View style={{ width: '100%', marginTop: 10 }}>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, marginTop: 10 }}>11. {t("PrivacyPolicy.DO WE MAKE UPDATES TO THIS NOTICE?")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.In Short")}:</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Yes, we will update this notice as necessary to stay compliant with relevant laws.")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.We may update this Privacy Notice from time to time. The updated version will be indicated by an updated 'Revised' date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.")}</Text>
                     </View>
-
                     <View style={{ width: '100%', marginTop: 10 }}>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, marginTop: 10 }}>12. {t("PrivacyPolicy.HOW CAN YOU CONTACT US ABOUT THIS NOTICE?")}</Text>
-                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If you have questions or comments about this notice, you may email us at")} <Text style={{ fontSize: 15, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>quit@cignix.com</Text> or contact us by post at:</Text>
-
+                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If you have questions or comments about this notice, you may email us at")} <Text style={{ fontSize: 15, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>quit@cignix.com</Text> {t("PrivacyPolicy.or contact us by post at")}:</Text>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5 }}>Cignix</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 5 }}>{t("ContactUs.Unit No. 105, First Floor,")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 5 }}>{t("ContactUs.Iris Tech Park, Sector-48,")}</Text>
@@ -393,7 +388,6 @@ const PrivacyPolicy = () => {
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 5 }}>{t("ContactUs.Phone")}: <Text style={{ fontSize: 15, color: Color.primary, fontFamily: Mulish.SemiBold }}>+91 9873832002</Text></Text>
                         <Text style={{ textAlign: 'justify', fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 5, textDecorationLine: 'underline' }}>quit@cignix.com</Text>
                     </View>
-
                     <View style={{ width: '100%', marginTop: 10 }}>
                         <Text style={{ textAlign: 'left', fontSize: 18, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, marginTop: 10 }}>13. {t("PrivacyPolicy.HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?")}</Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a data subject access request.")}</Text>
@@ -405,7 +399,6 @@ const PrivacyPolicy = () => {
 
         }
     }
-
     return (
         <View style={styles.container}>
             <View
@@ -422,7 +415,6 @@ const PrivacyPolicy = () => {
                         navigation?.goBack();
                     }}>
                     <Iconviewcomponent
-                        // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                         Icontag="Ionicons"
                         icon_size={25}
                         icon_color={'#000'}
@@ -436,14 +428,13 @@ const PrivacyPolicy = () => {
                     </Text>
                 </View>
             </View>
-            <View style={{ width: '95%', height: height, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, }}>
+            <View style={{ width: '90%', height: scr_height / 1.17, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, alignSelf: 'center', marginLeft: 5 }}>
                 <FlatList
                     data={privacyData}
                     keyExtractor={(item, index) => item + index}
                     ListHeaderComponent={() => renderHeaderItem()}
-                    // renderItem={({ item, index }) => renderFreeRentalItem(item, index)}
                     ListFooterComponent={() => renderFooterItem()}
-                    style={{ width: '95%' }}
+                    style={{ width: '100%' }}
                     showsVerticalScrollIndicator={false}
                 />
             </View>
@@ -451,14 +442,11 @@ const PrivacyPolicy = () => {
     );
 };
 
-// define your styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
         backgroundColor: Color.white
     },
 });
 
-//make this component available to the app
 export default PrivacyPolicy;

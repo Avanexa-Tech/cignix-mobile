@@ -1,4 +1,3 @@
-//import liraries
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
@@ -49,6 +48,8 @@ const Timeline = () => {
     currentStepIndicatorSize: 40,
     separatorStrokeWidth: 1,
     currentStepStrokeWidth: 0,
+    labelAlign: 'flex-start',
+    labelFlex: 1
   };
 
   const steps = [
@@ -140,11 +141,11 @@ const Timeline = () => {
         </TouchableOpacity>
         <View>
           <Text
-            style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold,flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20  }}>
+            style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold, flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
             {t("Roadmap.Roadmap")}
           </Text>
         </View>
-        <View style={{flexDirection:"row"}}>
+        <View style={{ flexDirection: "row" }}>
           <TouchableOpacity
             onPress={() => navigation.navigate('NotificationsList')}>
             <Iconviewcomponent
@@ -173,122 +174,33 @@ const Timeline = () => {
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-          style={{}}>
-          <StepIndicator
-            customStyles={customStyles}
-            currentPosition={currentPosition}
-            // labels={steps.map((step, index) => (
-            //   <View
-            //     style={{
-            //       width: '70%',
-            //       justifyContent: 'flex-start',
-            //       alignItems: 'flex-start',
-            //       padding: 5,
-            //       paddingVertical: 20,
-            //     }}
-            //     key={index} // Use key for React list rendering
-            //   >
-            //     <Text
-            //       style={{
-            //         textAlign: 'left',
-            //         paddingVertical: 5,
-            //         fontSize: 18,
-            //         color: Color.black,
-            //         fontFamily: Mulish.SemiBold,
-            //         letterSpacing: 0.5,
-            //       }}>
-            //       {step.label}
-            //     </Text>
-            //     <Text
-            //       style={{
-            //         textAlign: 'justify',
-            //         fontSize: 14,
-            //         color: Color.cloudyGrey,
-            //         fontFamily: Mulish.Medium,
-            //         letterSpacing: 0.5,
-            //       }}>
-            //       {step.subtext}
-            //     </Text>
-            //   </View>
-            // ))}
-            labels={steps.map(step => step.label)}
-            renderLabel={({ position }) => {
-              const step = steps[position]; // Access the current step object
-              const labelStyle =
-                position === currentPosition
-                  ? { color: '#4aae4f', fontSize: 18, fontWeight: 'bold' } // Style for the current step
-                  : { color: '#999999', fontSize: 16 }; // Style for other steps
-              const subtextStyle = {
-                color: '#aaaaaa',
-                fontSize: 14,
-                textAlign: 'justify',
-              };
-
-              return (
-                <View
-                  style={{
-                    // backgroundColor:'red',
-                    width: scr_width / 1.3,
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    padding: 5,
-                    paddingVertical: 20,
-                    gap: 10,
-                  }}>
-                  <Text
-                    style={{
-                      color: '#000',
-                      fontSize: 16,
-                      // textTransform: 'capitalize',
-                      fontFamily: Mulish?.Bold,
-                    }}>
-                    {step.label}
-                  </Text>
-                  <Text
-                    style={{
-                      color: '#666666',
-                      fontSize: 14,
-                      fontFamily: Mulish?.Regular,
-                    }}>
-                    {step.subtext}
-                  </Text>
+          showsVerticalScrollIndicator={false}>
+          <View style={styles.stepContainer}>
+            {steps.map((step, index) => (
+              <View key={index} style={styles.stepRow}>
+                <View style={styles.stepIndicatorContainer}>
+                  {index <= currentPosition ? (
+                    <View style={styles.completedIndicator}>
+                      <Text style={styles.indicatorimg}>✓</Text>
+                    </View>
+                  ) : (
+                    <View style={styles.pendingIndicator}>
+                      <Text style={styles.indicatorText}>{index + 1}</Text>
+                    </View>
+                  )}
+                  
+                  {index < steps.length - 1 && (
+                    <View style={styles.stepConnector} />
+                  )}
                 </View>
-              );
-            }}
-            stepCount={steps.length}
-            direction="vertical"
-            renderStepIndicator={({ position }) => {
-              console.log('gggggggggg', position);
-              console.log('currentPosition', currentPosition);
-
-              if (position == currentPosition) {
-                return (
-                  <View style={styles.completedIndicator}>
-                    <Text style={styles.indicatorimg}>✓</Text>
-                  </View>
-                );
-              }
-              //   else if (step.status === 'In Progress') {
-              //     return (
-              //       <View style={styles.inProgressIndicator}>
-              //         <Text style={styles.indicatorText}>{position + 1}</Text>
-              //       </View>
-              //     );
-              //   }
-              else {
-                return (
-                  <View style={styles.pendingIndicator}>
-                    <Text style={styles.indicatorText}>{position + 1}</Text>
-                  </View>
-                );
-              }
-            }}
-            onPress={position => {
-              // console.log('dddd', position);
-              // setCurrentPosition(position);
-            }} // Optional: Handle step click
-          />
+                
+                <View style={styles.stepTextContainer}>
+                  <Text style={styles.label}>{step.label}</Text>
+                  <Text style={styles.stepLabel}>{step.subtext}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
 
           <View
             style={{
@@ -297,6 +209,7 @@ const Timeline = () => {
               borderRadius: 30,
               position: 'relative',
               marginBottom: scr_height / 8,
+              marginTop: 10,
             }}>
             <Image
               source={require('../../assets/Images/Cropedimage.jpg')}
@@ -332,14 +245,6 @@ const Timeline = () => {
                   {t("Roadmap.For Extra Benefits")}!
                 </Text>
               </View>
-              {/* <Text
-                                         style={{
-                                           fontSize: 13,
-                                           color: '#fff',
-                                           fontFamily: Mulish?.Regular,
-                                         }}>
-                                         Lorem ipsum dolor sit amet
-                                       </Text> */}
             </View>
             <TouchableOpacity
               style={{
@@ -384,27 +289,44 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
   },
-  labelContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
+  stepContainer: {
+    width: '95%',
+    marginTop:20
+  },
+  stepRow: {
+    flexDirection: 'row',
+    marginBottom: 10,
     alignItems: 'flex-start',
-    marginLeft: 10,
-    marginRight: 20,
+  },
+  stepIndicatorContainer: {
+    alignItems: 'center',
+    marginRight: 10,
+  },
+  stepConnector: {
+    width: 1,
+    height: 50,
+    backgroundColor: '#D9DDF0',
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  stepTextContainer: {
+    flex: 1,
+    paddingVertical: 5,
   },
   label: {
     textAlign: 'justify',
-    fontSize: 16,
+    fontSize: 18,
     color: Color.black,
     fontFamily: Mulish.Bold,
+    marginBottom: 5,
   },
   stepLabel: {
     textAlign: 'justify',
-    fontSize: 14,
+    fontSize: 16,
     color: Color.cloudyGrey,
     fontFamily: Mulish.Medium,
     paddingVertical: 5,
   },
-
   completedIndicator: {
     width: 30,
     height: 30,
@@ -439,5 +361,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default Timeline;

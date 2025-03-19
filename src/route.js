@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -31,6 +31,14 @@ import SuccesScreen from './screens/Auth/SuccesScreen';
 import Blogs from './screens/SideMenu/Blogs';
 import NewsandMedia from './screens/SideMenu/NewsandMedia';
 
+const wp = (percentage) => {
+  return (percentage * scr_width) / 100;
+};
+
+const hp = (percentage) => {
+  return (percentage * scr_height) / 100;
+};
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -41,38 +49,21 @@ export const HomeStack = () => {
         name="Home"
         component={HomeScreen}
         options={{ headerShown: false }}
-      // options={({ navigation }) => ({
-      //   headerTitle: 'Home Screen',
-      //   headerTitleAlign: 'center',
-      //   headerTitleStyle: {
-      //     color: Color.black,
-      //     // fontFamily: Manrope.Bold,
-      //     fontSize: 18,
-      //   },
-      //   headerStyle: { backgroundColor: Color.white },
-      //   headerLeft: () => (
-      //     <></>
-      //   ),
-      // })}
       />
-      
+
       <Stack.Screen
         name="AboutUs"
         component={AboutUs}
         options={({ navigation, route }) => ({
           headerTitle: 'About Us',
           headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            fontSize: 18,
-            // fontFamily: Manrope.Bold,
-          },
-          headerStyle: { backgroundColor: Color.white },
+          headerTitleStyle: styles.headerTitleStyle,
+          headerStyle: styles.headerStyle,
           headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
+            <View style={styles.headerLeftContainer}>
               <Icon
                 name="arrow-back"
-                size={30}
+                size={wp(8)}
                 color={Color.black}
                 onPress={() => navigation.goBack()}
               />
@@ -80,23 +71,20 @@ export const HomeStack = () => {
           ),
         })}
       />
+
       <Stack.Screen
         name="ContactUs"
         component={ContactUs}
         options={({ navigation, route }) => ({
           headerTitle: 'Contact Us',
           headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: Color.black,
-            fontSize: 18,
-            // fontFamily: Manrope.Bold,
-          },
-          headerStyle: { backgroundColor: Color.white },
+          headerTitleStyle: styles.headerTitleStyle,
+          headerStyle: styles.headerStyle,
           headerLeft: () => (
-            <View style={{ marginHorizontal: 10 }}>
+            <View style={styles.headerLeftContainer}>
               <Icon
                 name="arrow-back"
-                size={30}
+                size={wp(8)}
                 color={Color.black}
                 onPress={() => navigation.goBack()}
               />
@@ -108,60 +96,20 @@ export const HomeStack = () => {
       <Stack.Screen
         name="TermsandConditions"
         component={TermsandConditions}
-        // options={({ navigation, route }) => ({
-        //   headerTitle: 'Terms & Conditions',
-        //   headerTitleAlign: 'center',
-        //   headerTitleStyle: {
-        //     color: Color.black,
-        //     fontSize: 18,
-        //     // fontFamily: Manrope.Bold,
-        //   },
-        //   headerStyle: { backgroundColor: Color.white },
-        //   headerLeft: () => (
-        //     <View style={{ marginHorizontal: 10 }}>
-        //       <Icon
-        //         name="arrow-back"
-        //         size={30}
-        //         color={Color.black}
-        //         onPress={() => navigation.goBack()}
-        //       />
-        //     </View>
-        //   ),
-        // })}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
-       <Stack.Screen
-          name="SimTestScreen"
-          component={SimTestScreen}
-          options={{headerShown: false}}
-        />
+
+      <Stack.Screen
+        name="SimTestScreen"
+        component={SimTestScreen}
+        options={{ headerShown: false }}
+      />
 
       <Stack.Screen
         name="PrivacyPolicy"
         component={PrivacyPolicy}
-        // options={({ navigation, route }) => ({
-        //   headerTitle: 'Privacy Policy',
-        //   headerTitleAlign: 'center',
-        //   headerTitleStyle: {
-        //     color: Color.black,
-        //     fontSize: 18,
-        //     // fontFamily: Manrope.Bold,
-        //   },
-        //   headerStyle: { backgroundColor: Color.white },
-        //   headerLeft: () => (
-        //     <View style={{ marginHorizontal: 10 }}>
-        //       <Icon
-        //         name="arrow-back"
-        //         size={30}
-        //         color={Color.black}
-        //         onPress={() => navigation.goBack()}
-        //       />
-        //     </View>
-        //   ),
-        // })}
         options={{ headerShown: false }}
       />
-      
     </Stack.Navigator>
   );
 };
@@ -173,26 +121,6 @@ export const TimeLineStack = () => {
         name="Timeline"
         component={Timeline}
         options={{ headerShown: false }}
-      // options={({ navigation }) => ({
-      //   headerTitle: 'Time Line',
-      //   headerTitleAlign: 'center',
-      //   headerTitleStyle: {
-      //     color: Color.black,
-      //     // fontFamily: Manrope.Bold,
-      //     fontSize: 18,
-      //   },
-      //   headerStyle: { backgroundColor: Color.white },
-      //   headerLeft: () => (
-      //     <View style={{ marginHorizontal: 10 }}>
-      //       <Icon
-      //         name="arrow-back"
-      //         size={30}
-      //         color={Color.black}
-      //         onPress={() => navigation.goBack()}
-      //       />
-      //     </View>
-      //   ),
-      // })}
       />
     </Stack.Navigator>
   );
@@ -209,7 +137,6 @@ export const ProfileStack = () => {
         component={Profile}
         options={{ headerShown: false }}
       />
-    
     </Stack.Navigator>
   );
 };
@@ -247,11 +174,11 @@ export const Auth = () => {
         component={SuccesScreen}
         options={{ headerShown: false }}
       />
-       <Stack.Screen
-          name="SimTest"    
-          component={SimTest}
-          options={{ headerShown: false }}
-        />
+      <Stack.Screen
+        name="SimTest"
+        component={SimTest}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -261,183 +188,64 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        
-        tabBarStyle: {
-          position: 'absolute',
-          marginLeft: scr_width/5.9,
-          marginBottom:scr_height/70,
-          shadowColor: 'transparent',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.5,
-          shadowRadius: 2,
-          borderRadius: 100,
-          width: scr_width/1.44,
-          height:scr_height/12,
-          alignItems: 'center', justifyContent: 'center',
-          backgroundColor: '#0B1215',
-        },
+        tabBarStyle: styles.tabBarStyle,
         tabBarShowLabel: false,
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
           if (route.name === 'HomeTab') {
             return focused ? (
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: Color.primary,
-                    width: 55,
-                    height: 55,
-                    borderRadius: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: -30,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="FontAwesome"
-                    icon_size={35}
-                    icon_color={Color.white}
-                    iconname="home"
-                  /> */}
-
+              <View style={styles.tabIconContainer}>
+                <View style={styles.activeTabIcon}>
                   <Image
                     source={require('../src/assets/Images/home.png')}
-                    style={{ width: 35, height: 35, resizeMode: 'contain' }}
+                    style={styles.activeIconImage}
                   />
-
                 </View>
               </View>
             ) : (
-              <View style={{ flex: 1, bottom: -25, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: 'transparent',
-                    width: 50,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: 0,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="FontAwesome"
-                    icon_size={30}
-                    icon_color={Color.white}
-                    iconname="home"
-                  /> */}
-                  <Image
-                    source={require('../src/assets/Images/home.png')}
-                    style={{ width: 32, height: 32, resizeMode: 'contain' }}
-                  />
-                </View>
+              <View style={styles.inactiveTabContainer}>
+                <Image
+                  source={require('../src/assets/Images/home.png')}
+                  style={styles.inactiveIconImage}
+                />
               </View>
             );
           } else if (route.name === 'TimelineTab') {
             return focused ? (
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: Color.primary,
-                    width: 55,
-                    height: 55,
-                    borderRadius: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: -30,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="FontAwesome"
-                    icon_size={25}
-                    icon_color={Color.white}
-                    iconname="home"
-                  /> */}
+              <View style={styles.tabIconContainer}>
+                <View style={styles.activeTabIcon}>
                   <Image
                     source={require('../src/assets/Images/up_arrow.png')}
-                    style={{ width: 32, height: 32, resizeMode: 'contain' }}
+                    style={styles.activeIconImage}
                   />
                 </View>
               </View>
             ) : (
-              <View style={{ flex: 1, bottom: -25, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: 'transparent',
-                    width: 50,
-                    height: 50,
-                    // borderRadius: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: 0,
-                  }}>
-                  <Image
-                    source={require('../src/assets/Images/up_arrow.png')}
-                    style={{ width: 30, height: 30, resizeMode: 'contain' }}
-                  />
-                </View>
+              <View style={styles.inactiveTabContainer}>
+                <Image
+                  source={require('../src/assets/Images/up_arrow.png')}
+                  style={styles.inactiveIconImage}
+                />
               </View>
             );
-          }
-          else if (route.name === 'ProfileTab') {
+          } else if (route.name === 'ProfileTab') {
             return focused ? (
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: Color.primary,
-                    width: 55,
-                    height: 55,
-                    borderRadius: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: -30,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="AntDesign"
-                    icon_size={30}
-                    icon_color={Color.white}
-                    iconname="user"
-                  /> */}
+              <View style={styles.tabIconContainer}>
+                <View style={styles.activeTabIcon}>
                   <Image
                     source={require('../src/assets/Images/user.png')}
-                    style={{ width: 30, height: 30, resizeMode: 'contain' }}
+                    style={styles.activeIconImage}
                   />
                 </View>
               </View>
             ) : (
-              <View style={{ flex: 1, bottom: -25, alignItems: 'center', justifyContent: 'center' }}>
-                <View
-                  style={{
-                    backgroundColor: 'transparent',
-                    width: 50,
-                    height: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: 0,
-                  }}>
-                  {/* <Iconviewcomponent
-                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                    Icontag="AntDesign"
-                    icon_size={25}
-                    icon_color={Color.white}
-                    iconname="user"
-                  /> */}
-                  <Image
-                    source={require('../src/assets/Images/user.png')}
-                    style={{ width: 25, height: 25, resizeMode: 'contain' }}
-                  />
-                </View>
+              <View style={styles.inactiveTabContainer}>
+                <Image
+                  source={require('../src/assets/Images/user.png')}
+                  style={styles.inactiveIconImage}
+                />
               </View>
             );
           }
-          // You can return any component that you like here!
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}
@@ -460,5 +268,69 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  headerTitleStyle: {
+    color: Color.black,
+    fontSize: wp(4.5),
+  },
+  headerStyle: {
+    backgroundColor: Color.white,
+  },
+  headerLeftContainer: {
+    marginHorizontal: wp(2.5),
+  },
+  tabBarStyle: {
+    position: 'absolute',
+    marginLeft: scr_width / 6.5,
+    marginBottom: hp(3),
+    shadowColor: 'transparent',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    borderRadius: 100,
+    width: scr_width / 1.45,
+    height: hp(8),
+    backgroundColor: '#0B1215',
+    alignItems: 'center', 
+  },
+  tabIconContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center', 
+    top:hp(2)
+  },
+  inactiveTabContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center', 
+    top:hp(2)
+  },
+  activeTabIcon: {
+    backgroundColor: Color.primary,
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(8),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inactiveTabIcon: {
+    backgroundColor: 'transparent',
+    width: wp(13),
+    height: wp(13),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activeIconImage: {
+    width: wp(8),
+    height: wp(8),
+    resizeMode: 'contain',
+  },
+  inactiveIconImage: {
+    width: wp(7),
+    height: wp(7),
+    resizeMode: 'contain',
+  },
+});
 
 export default TabNavigator;

@@ -128,5 +128,6 @@ const styles = StyleSheet.create({
     opacity: 0,
     alignItems: 'center',
     justifyContent: 'center',
+    color:'#000'
   },
 });

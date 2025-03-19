@@ -1,5 +1,5 @@
 //import liraries
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,12 +17,12 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
-import {color} from 'react-native-elements/dist/helpers';
+import { color } from 'react-native-elements/dist/helpers';
 import Color from '../../Global/Color';
-import {scr_height, scr_width} from '../../Components/Dimensions';
-import {Mulish} from '../../Global/FontFamily';
-import {useNavigation} from '@react-navigation/native';
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { scr_height, scr_width } from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { useNavigation } from '@react-navigation/native';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import { useTranslation } from 'react-i18next';
 const termsData = [
   {
@@ -36,13 +36,13 @@ const termsData = [
 const TermsandConditions = () => {
   const navigation = useNavigation();
   const [height, setHeight] = useState(undefined);
-  const { t }=useTranslation()
+  const { t } = useTranslation()
 
   const renderHeaderItem = () => {
     try {
       return (
-        <View style={{width: '100%', alignItems: 'center'}}>
-          <View style={{width: '100%', marginTop: 10}}>
+        <View style={{ width: '100%', alignItems: 'center' }}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -78,7 +78,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We operate the website")} https://www.cignix.com {t("TermsandConditions.(the 'Site'), as well as any other related products and services that refer or link to these legal terms (the 'Legal Terms') (collectively, the 'Services').")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -135,7 +135,7 @@ const TermsandConditions = () => {
               </Text>
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -206,7 +206,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We recommend that you print a copy of these Legal Terms for your records.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -230,7 +230,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Services from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -289,7 +289,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.The Content and Marks are provided in or through the Services 'AS IS' for your personal, non-commercial use only.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'justify',
@@ -350,7 +350,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.Any breach of these Intellectual Property Rights will constitute a material breach of our Legal Terms and your right to use our Services will terminate immediately.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'justify',
@@ -376,7 +376,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.Please review this section and the 'PROHIBITED ACTIVITIES' section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'justify',
@@ -438,7 +438,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.warrant and represent that your Submissions do not constitute confidential information. You are solely responsible for your Submissions and you expressly agree to reimburse us for any and all losses that we may suffer because of your breach of (a) this section, (b) any third party’s intellectual property rights, or (c) applicable law.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 0}}>
+          <View style={{ width: '100%', paddingVertical: 0 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -462,7 +462,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.By using the Services, you represent and warrant that")}: {t("TermsandConditions.(1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Legal Terms; (4) you are not under the age of 18; (5) you are not a minor in the jurisdiction in which you reside, or if a minor, you have received parental permission to use the Services; (6) you will not access the Services through automated or non-human means, whether through a bot, script or otherwise; (7) you will not use the Services for any illegal or unauthorised purpose; and (8) your use of the Services will not violate any applicable law or regulation. If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Services (or any portion thereof).")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -486,7 +486,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.You may be required to register to use the Services. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -572,7 +572,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We may, from time to time, make changes to the subscription fee and will communicate any price changes to you in accordance with applicable law.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -596,7 +596,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.All products are subject to availability. We reserve the right to discontinue any products at any time for any reason. Prices for all products are subject to change.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -632,7 +632,7 @@ const TermsandConditions = () => {
                 iconname={'checkcircle'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -660,7 +660,7 @@ const TermsandConditions = () => {
                 iconname={'checkcircle'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -688,7 +688,7 @@ const TermsandConditions = () => {
                 iconname={'checkcircle'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -716,7 +716,7 @@ const TermsandConditions = () => {
                 iconname={'checkcircle'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -744,7 +744,7 @@ const TermsandConditions = () => {
                 iconname={'checkcircle'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -798,7 +798,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We reserve the right to refuse any order placed through the Services. We may, in our sole discretion, limit or cancel quantities purchased per person, per household, or per order. These restrictions may include orders placed by or under the same customer account, the same payment method, and/or orders that use the same billing or shipping address. We reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by dealers, resellers, or distributors.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -884,7 +884,7 @@ const TermsandConditions = () => {
             </Text>
           </View>
 
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -908,7 +908,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.All sales are final and no refund will be issued.")}
             </Text>
           </View>
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -956,7 +956,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -984,7 +984,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1012,7 +1012,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1040,7 +1040,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1068,7 +1068,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1096,7 +1096,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1124,7 +1124,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1152,7 +1152,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1180,7 +1180,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1208,7 +1208,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1236,7 +1236,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1264,7 +1264,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1292,7 +1292,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1320,7 +1320,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1348,7 +1348,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1376,7 +1376,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1404,7 +1404,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1432,7 +1432,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1460,7 +1460,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1488,7 +1488,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1516,7 +1516,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1544,7 +1544,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1572,7 +1572,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1600,7 +1600,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1618,7 +1618,7 @@ const TermsandConditions = () => {
             </View>
           </View>
 
-          <View style={{width: '100%', paddingVertical: 10}}>
+          <View style={{ width: '100%', paddingVertical: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -1690,7 +1690,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1718,7 +1718,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1746,7 +1746,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1774,7 +1774,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1802,7 +1802,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1830,7 +1830,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1858,7 +1858,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1886,7 +1886,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1914,7 +1914,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1942,7 +1942,7 @@ const TermsandConditions = () => {
                 iconname={'dot-single'}
                 icon_size={22}
                 icon_color={Color.primary}
-                iconstyle={{marginTop: 0}}
+                iconstyle={{ marginTop: 0 }}
               />
               <Text
                 style={{
@@ -1981,8 +1981,8 @@ const TermsandConditions = () => {
   const renderFooterItem = () => {
     try {
       return (
-        <View style={{width: '100%', alignItems: 'center', marginBottom: 30}}>
-          <View style={{width: '100%'}}>
+        <View style={{ width: '100%', alignItems: 'center', marginBottom: 30 }}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2018,7 +2018,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions. We are not liable for any statements or representations in your Contributions provided by you in any area of the Services. You are solely responsible for your Contributions to the Services and you expressly agree to exonerate us from any and all responsibility and to refrain from any legal action against us regarding your Contributions.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2079,7 +2079,7 @@ const TermsandConditions = () => {
             </Text>
           </View>
 
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2103,7 +2103,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We reserve the right, but not the obligation, to")}: {t("TermsandConditions.(1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Legal Terms, including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability, to remove from the Services or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems, and (5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate the proper functioning of the Services.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2124,7 +2124,7 @@ const TermsandConditions = () => {
                 lineHeight: 22,
                 paddingVertical: 10,
               }}>
-             {t("TermsandConditions.THESE LEGAL TERMS SHALL REMAIN IN FULL FORCE AND EFFECT WHILE YOU USE THE SERVICES. WITHOUT LIMITING ANY OTHER PROVISION OF THESE LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.")}
+              {t("TermsandConditions.THESE LEGAL TERMS SHALL REMAIN IN FULL FORCE AND EFFECT WHILE YOU USE THE SERVICES. WITHOUT LIMITING ANY OTHER PROVISION OF THESE LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.")}
             </Text>
             <Text
               style={{
@@ -2136,10 +2136,10 @@ const TermsandConditions = () => {
                 lineHeight: 22,
                 paddingVertical: 10,
               }}>
-             {t("TermsandConditions.If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.")}
+              {t("TermsandConditions.If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2175,7 +2175,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Services, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, discontinue, or otherwise modify the Services at any time or for any reason without notice to you. You agree that we have no liability whatsoever for any loss, damage, or inconvenience caused by your inability to access or use the Services during any downtime or discontinuance of the Services. Nothing in these Legal Terms will be construed to obligate us to maintain and support the Services or to supply any corrections, updates, or releases in connection therewith.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2200,7 +2200,7 @@ const TermsandConditions = () => {
             </Text>
           </View>
 
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2308,7 +2308,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.The Parties agree that the following Disputes are not subject to the above provisions concerning informal negotiations binding arbitration")}: {t("TermsandConditions.(a) any Disputes seeking to enforce or protect, or concerning the validity of, any of the intellectual property rights of a Party; (b) any Dispute related to, or arising from, allegations of theft, piracy, invasion of privacy, or unauthorised use; and (c) any claim for injunctive relief. If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2333,7 +2333,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.There may be information on the Services that contains typographical errors, inaccuracies, or omissions, including descriptions, pricing, availability, and various other information. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Services at any time, without prior notice.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2357,7 +2357,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS, AND YOU AGREE THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK; TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICES AND YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, AND WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SERVICES' CONTENT OR THE CONTENT OF ANY WEBSITES OR MOBILE APPLICATIONS LINKED TO THE SERVICES, AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS, PERSONAL INJURY OR PROPERTY DAMAGE RESULTING FROM YOUR ACCESS TO AND USE OF THE SERVICES, ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY PERSONAL OR FINANCIAL INFORMATION STORED THEREIN, ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SERVICES, ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SERVICES BY ANY THIRD PARTY, AND/OR ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICES; WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICES, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES, AND AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.")}
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2381,7 +2381,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2405,7 +2405,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys’ fees and expenses, made by any third party due to or arising out of")}: {t("TermsandConditions.(1) use of the Services; (2) breach of these Legal Terms; (3) any breach of your representations and warranties set forth in these Legal Terms; (4) your violation of the rights of a third party, including but not limited to intellectual property rights; or (5) any overt harmful act toward any other user of the Services with whom you connected via the Services. Notwithstanding the foregoing, we reserve the right, at your expense, to assume the exclusive defence and control of any matter for which you are required to indemnify us, and you agree to cooperate, at your expense, with our defence of such claims. We will use reasonable efforts to notify you of any such claim, action, or proceeding which is subject to this indemnification upon becoming aware of it.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2429,7 +2429,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginTop: 10}}>
+          <View style={{ width: '100%', marginTop: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2454,7 +2454,7 @@ const TermsandConditions = () => {
             </Text>
           </View>
 
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2539,7 +2539,7 @@ const TermsandConditions = () => {
               9873832002.
             </Text>
           </View>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2563,7 +2563,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.These Legal Terms and any policies or operating rules posted by us on the Services or with respect to the Services constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Legal Terms shall not operate as a waiver of such right or provision. These Legal Terms operate to the fullest extent permissible by law. We may assign any or all of our rights and obligations to others at any time. We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control. If any provision or part of a provision of these Legal Terms is determined to be unlawful, void, or unenforceable, that provision or part of the provision is deemed severable from these Legal Terms and does not affect the validity and enforceability of any remaining provisions. There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Legal Terms or use of the Services. You agree that these Legal Terms will not be construed against us by virtue of having drafted them. You hereby waive any and all defences you may have based on the electronic form of these Legal Terms and the lack of signing by the parties hereto to execute these Legal Terms.")}
             </Text>
           </View>
-          <View style={{width: '100%', marginBottom: 10}}>
+          <View style={{ width: '100%', marginBottom: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
@@ -2714,7 +2714,7 @@ const TermsandConditions = () => {
           paddingBottom: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 5}}
+          style={{ width: scr_width / 5 }}
           onPress={() => {
             navigation?.goBack();
           }}>
@@ -2726,11 +2726,25 @@ const TermsandConditions = () => {
             iconname={'chevron-back'}
           />
         </Pressable>
-        <View>
-          <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            {t("TermsandConditions.Terms and Conditions")}
-          </Text>
+        <View style={{flexDirection:'row',flex:1}}>
+          <View>
+            <Text
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+              {t("TermsandConditions.Terms and Conditions")}
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{ position:'absolute',right:"10%" }}
+            onPress={() => navigation.navigate("LanguageSelector")}
+          >
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={30}
+              icon_color={Color.black}
+              iconname="language-outline"
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View
@@ -2747,7 +2761,7 @@ const TermsandConditions = () => {
           ListHeaderComponent={() => renderHeaderItem()}
           // renderItem={({ item, index }) => renderFreeRentalItem(item, index)}
           ListFooterComponent={() => renderFooterItem()}
-          style={{width: '95%'}}
+          style={{ width: '95%' }}
           showsVerticalScrollIndicator={false}
         />
       </View>

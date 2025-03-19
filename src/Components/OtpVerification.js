@@ -92,6 +92,7 @@ const OtpVerification = ({
         style={{
           position: 'absolute',
           opacity: 0,
+          color:'#000'
         }}
         keyboardType="number-pad"
         value={code}

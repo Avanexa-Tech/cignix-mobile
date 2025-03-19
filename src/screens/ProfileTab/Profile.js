@@ -80,6 +80,7 @@ const Profile = ({ navigation }) => {
       if (logout?.success == true) {
         await AsyncStorage.removeItem('ACCESS_TOKEN');
         await AsyncStorage.removeItem('USERDATA');
+        await AsyncStorage.removeItem('selectedLanguage');
         navigation.reset({
           index: 0,
           routes: [{ name: 'Auth' }],
@@ -152,7 +153,7 @@ const Profile = ({ navigation }) => {
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold,flex: 1, justifyContent: 'center', alignItems: 'center',marginLeft:20}}>
+        <View style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold, flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
           <Text
             style={{
               fontSize: 20,
@@ -228,7 +229,7 @@ const Profile = ({ navigation }) => {
                           source={
                             Uservalue?.profile
                               ? { uri: Uservalue?.profile }
-                              : require('../../assets/Logos/cignix_black.png')
+                              : require('../../assets/Gallery/profile.png')
                           }
                           style={{
                             width: 60,
@@ -631,10 +632,10 @@ const Profile = ({ navigation }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
-                          icon_size={22}
+                          Icontag="FontAwesome5"
+                          icon_size={20}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="blog"
                         />
                       </View>
                       <View
@@ -692,10 +693,10 @@ const Profile = ({ navigation }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
+                          Icontag="MaterialCommunityIcons"
                           icon_size={22}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="newspaper-variant-multiple"
                         />
                       </View>
                       <View
@@ -753,10 +754,10 @@ const Profile = ({ navigation }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
+                          Icontag="AntDesign"
                           icon_size={22}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="infocirlceo"
                         />
                       </View>
                       <View
@@ -933,13 +934,6 @@ const Profile = ({ navigation }) => {
                           justifyContent: 'center',
                           alignItems: 'center',
                         }}>
-                        {/* <Iconviewcomponent
-                                                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                                                    Icontag="Ionicons"
-                                                    icon_size={25}
-                                                    icon_color={Color.cloudyGrey}
-                                                    iconname="notifications-outline"
-                                                /> */}
                         <Image
                           source={require('../../assets/Images/terms.png')}
                           style={{ width: 25, height: 25, resizeMode: 'contain' }}

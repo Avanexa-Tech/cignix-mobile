@@ -248,10 +248,10 @@ const HomeScreen = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     Getvideo();
-  },[language])
-  
+  }, [language])
+
   // USERDATA :
   const Userdata = async () => {
     try {
@@ -308,7 +308,6 @@ const HomeScreen = () => {
       console.log('Catch in Userdata', error);
     }
   };
-  // GET SCORE :
   const Get_Score = async () => {
     try {
       const Get_Score = await fetchData?.Get_Score();
@@ -324,12 +323,10 @@ const HomeScreen = () => {
     }
   };
 
-  // RESTART VIDEO :
   useEffect(() => {
     restartVideo();
   }, [Currentvideo]);
 
-  // PUT_END_VIDEO :
   const Videoend = async value => {
     try {
       const enddata = {
@@ -341,8 +338,6 @@ const HomeScreen = () => {
       );
       if (Endvideo?.success == true) {
         if (getvideo[getvideo?.length - 1]?._id == Currentvideo?._id) {
-          // const formData = new FormData();
-          // formData.append('step', 2);
           let formData = {
             step: 2,
           };
@@ -460,8 +455,7 @@ const HomeScreen = () => {
                 borderRadius: 100,
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: scr_width - 70,
-                // marginBottom: 70,
+                width: scr_width - 70
               }}
               onPress={() => {
                 if (Object.keys(selctedAnswer)?.length == getQuestion?.length) {
@@ -489,7 +483,6 @@ const HomeScreen = () => {
       </View>
     );
   };
-  // SIMTEST_UPDATE_SCORE :
   const SIMTEST_UPDATE_SCORE = async val => {
     try {
       const data = {
@@ -498,9 +491,6 @@ const HomeScreen = () => {
       const SIMTEST_UPDATE_SCORE = await fetchData?.POST_USER_LESSON(data);
       console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       if (SIMTEST_UPDATE_SCORE?.success == true) {
-        console.log('=============>');
-        console.log('======SIMTEST==SCORE=====>', SIMTEST_UPDATE_SCORE);
-        console.log('=============>');
         await UserStep();
         common_fn.showToast('Answer Submited Successfully');
       } else {
@@ -510,23 +500,17 @@ const HomeScreen = () => {
       console.log('Catch in SIMTEST_UPDATE_SCORE', error);
     }
   };
-  // UserStep :
   const UserStep = async () => {
     try {
       const formData = new FormData();
       formData.append('step', 1);
       const Stepupdate = await fetchData?.UpdateProfile(formData);
       if (Stepupdate?.success == true) {
-        // Userdata();
-        console.log('=============>');
-        console.log('======USERDATA==STEP==01=====>', Stepupdate);
-        console.log('=============>');
         await Get_Score();
         setHomeSection([
           { id: 1, title: 'Profile', data: ['Profile'] },
           { id: 2, title: 'Score', data: ['Score'] },
-          { id: 3, title: 'Recommended Videos', data: ['Recommended Videos'] },
-          // {id: 4, title: 'Upcoming Videos', data: ['Upcoming Videos']},
+          { id: 3, title: 'Recommended Videos', data: ['Recommended Videos'] }
         ]);
       } else {
         console.log('Stepupdate', Stepupdate);
@@ -540,14 +524,8 @@ const HomeScreen = () => {
       <ActivityIndicator size="large" color="#4254B6" />
     </View>;
   }
-
-  // ======>VIDEOS FUNCTION <====== //
-
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0.1);
-  const [paused, setPaused] = useState(false);
-  const [overlay, setOverlay] = useState(false);
-  // const [loader, setLoader] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
 
   const videoRef = useRef(null);
@@ -629,26 +607,7 @@ const HomeScreen = () => {
           setWhatsapploader(false);
         }
       }
-      // const sendotp = await fetchData?.sendotpwhatsapp(
-      //   {
-      //     whatsapp_no: is_Whatsappcheck ? Whatsappnumber : userdata?.mobile ,
-      //     check: false,
-      //   }
-      // );
-      // console.log('sendotp', sendotp);
-      // if (sendotp?.success) {
-      //   console.log('sendotp', sendotp);
-      //   ToastAndroid.show('Otp Send Successfully', ToastAndroid.SHORT);
-      //   await AsyncStorage?.setItem(
-      //     'Whatsapptoken',
-      //     JSON.stringify(sendotp?.token),
-      //   );
-      //   setchange(true);
-      //   setWhatsapploader(false);
-      // } else {
-      //   ToastAndroid.show(sendotp?.message, ToastAndroid.SHORT);
-      //   setWhatsapploader(false);
-      // }
+
     } catch (error) {
       console.log('CATCH IN SENDOTPFUN', error);
     }
@@ -692,7 +651,6 @@ const HomeScreen = () => {
         style={{
           flex: 1,
           height: scr_height,
-          // justifyContent: 'center',
           alignItems: 'center',
         }}
         start={{ x: 0, y: 1 }}
@@ -700,26 +658,19 @@ const HomeScreen = () => {
         colors={['#ffffff', '#D9DDF0']}>
         <View
           style={{
-            width: '100%',
+            width: scr_width,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: 10,
-            paddingHorizontal: 15,
-            // marginVertical: 10,
+            padding: scr_width * 0.025,
+            paddingHorizontal: scr_width * 0.0375,
           }}>
           <TouchableOpacity
-            onPress={() => {
-              navigation.reset({
-                index: 0,
-                routes: [{ name: 'Tab', params: { screen: 'ProfileTab' } }],
-              });
-            }}
             style={{
               flex: 0,
               justifyContent: 'center',
               alignItems: 'center',
-              borderRadius: 100,
+              borderRadius: scr_width * 0.25,
               backgroundColor: Color.softGrey,
             }}>
             <Image
@@ -729,10 +680,10 @@ const HomeScreen = () => {
                   : require('../../assets/Gallery/profile.png')
               }
               style={{
-                width: 50,
-                height: 50,
+                width: scr_width * 0.125,
+                height: scr_width * 0.125,
                 resizeMode: 'cover',
-                borderRadius: 100,
+                borderRadius: scr_width * 0.25,
               }}
             />
           </TouchableOpacity>
@@ -776,8 +727,7 @@ const HomeScreen = () => {
               style={{
                 fontSize: 12,
                 color: Color.cloudyGrey,
-                fontFamily: Mulish.Medium,
-                // letterSpacing: 0.2,
+                fontFamily: Mulish.Medium
               }}
               numberOfLines={2}>
               {userdata?.step == 1 || userdata?.step == 2
@@ -812,7 +762,11 @@ const HomeScreen = () => {
           </View>
         </View>
         <View
-          style={{ width: scr_width - 40, height: height, alignItems: 'center' }}>
+          style={{
+            width: scr_width * 0.9, // 90% of screen width
+            height: scr_height * 0.9, // 90% of screen height
+            alignItems: 'center',
+          }}>
           <Animated.SectionList
             sections={homeSection}
             scrollEnabled={true}
@@ -826,7 +780,7 @@ const HomeScreen = () => {
                 case 'Profile':
                   return userdata?.step == 3 ? (
                     <View>
-                      <View style={{ marginBottom: 20, marginTop: 15 }}>
+                      <View style={{ marginBottom: scr_height * 0.025, marginTop: scr_height * 0.02 }}>
                         <Text
                           style={{
                             fontFamily: Mulish?.SemiBold,
@@ -1015,14 +969,6 @@ const HomeScreen = () => {
                                   {t("Homescreen.Best Version of You")} !
                                 </Text>
                               </View>
-                              {/* <Text
-                                style={{
-                                  fontSize: 13,
-                                  color: '#fff',
-                                  fontFamily: Mulish?.Regular,
-                                }}>
-                                Lorem ipsum dolor sit amet
-                              </Text> */}
                             </View>
                             <TouchableOpacity
                               style={{
@@ -1107,29 +1053,6 @@ const HomeScreen = () => {
                             {moment(scoredata[0]?.updatedAt).format('LL')}.
                           </Text>
 
-                          {/* <View
-                            style={{
-                              padding: 10,
-                              paddingHorizontal: 30,
-                              backgroundColor: Color.white,
-                              borderRadius: 30,
-                              marginTop: 15,
-                              // marginVertical: 20,
-                            }}
-                            // onPress={() => {
-                            //   refRBSheetssss.current.open();
-                            // }}
-                          >
-                            <Text
-                              style={{
-                                fontSize: 16,
-                                color: Color.notify,
-                                fontFamily: Mulish.SemiBold,
-                              }}>
-                              Low Score
-                            </Text>
-                          </View> */}
-
                           {Currentvideo == null && userdata?.step !== 2 ? (
                             <Text
                               style={{
@@ -1139,7 +1062,6 @@ const HomeScreen = () => {
                                 color: Color.white,
                                 fontFamily: Mulish.SemiBold,
                                 marginTop: 15,
-                                // textTransform:'capitalize'
                               }}>
                               * {t("Homescreen.Complete Our Free video course to Improve Score")}
                             </Text>
@@ -1156,7 +1078,7 @@ const HomeScreen = () => {
                                 backgroundColor: '#5F6AA5',
                                 borderColor: Color.white,
                                 borderWidth: 0.2,
-                                borderRadius: 30,
+                                borderRadius: 50,
                                 shadowOpacity: 0.5,
                                 marginVertical: 20,
                               }}>
@@ -1190,7 +1112,7 @@ const HomeScreen = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                   }}
-                                  Icontag="Ionicons"
+                                  Icontag="Feather"
                                   icon_size={55}
                                   icon_color={Color.white}
                                   iconname="play-circle"
@@ -1209,7 +1131,7 @@ const HomeScreen = () => {
                                   backgroundColor: '#5F6AA5',
                                   borderColor: Color.white,
                                   borderWidth: 0.2,
-                                  borderRadius: 30,
+                                  borderRadius: 50,
                                   shadowOpacity: 0.5,
                                   marginVertical: 20,
                                 }}
@@ -1323,8 +1245,7 @@ const HomeScreen = () => {
                             style={{
                               fontSize: 15,
                               color: Color.white,
-                              fontFamily: Mulish.SemiBold,
-                              // letterSpacing: 0.5,
+                              fontFamily: Mulish.SemiBold
                             }}>
                             {t("Homescreen.Welcome Back! Your Journey to a")}
                           </Text>
@@ -1344,12 +1265,8 @@ const HomeScreen = () => {
                               paddingHorizontal: 30,
                               backgroundColor: Color.white,
                               borderRadius: 30,
-                              marginTop: 15,
-                              // marginVertical: 20,
+                              marginTop: 15
                             }}
-                          // onPress={() => {
-                          //   refRBSheetssss.current.open();
-                          // }}
                           >
                             <Text
                               style={{
@@ -1357,7 +1274,7 @@ const HomeScreen = () => {
                                 color: Color.notify,
                                 fontFamily: Mulish.SemiBold,
                               }}>
-                              {t("Homesceen.Low Score")}
+                              {t("Homescreen.Low Score")}
                             </Text>
                           </View>
 
@@ -1370,7 +1287,6 @@ const HomeScreen = () => {
                                 color: Color.white,
                                 fontFamily: Mulish.SemiBold,
                                 marginTop: 15,
-                                // textTransform:'capitalize'
                               }}>
                               * {t("Homescreen.Complete Our Free video course to Improve Score")}
                             </Text>
@@ -1387,7 +1303,7 @@ const HomeScreen = () => {
                                 backgroundColor: '#5F6AA5',
                                 borderColor: Color.white,
                                 borderWidth: 0.2,
-                                borderRadius: 30,
+                                borderRadius: 40,
                                 shadowOpacity: 0.5,
                                 marginVertical: 20,
                               }}>
@@ -1403,7 +1319,7 @@ const HomeScreen = () => {
                                     color: Color.white,
                                     fontFamily: Mulish.SemiBold,
                                   }}>
-                                  {t("Homescreen:Start Video Course")}
+                                  {t("Homescreen.Start Video Course")}
                                 </Text>
                               </View>
                               <TouchableOpacity
@@ -1416,16 +1332,28 @@ const HomeScreen = () => {
                                     ),
                                   );
                                 }}>
-                                <Iconviewcomponent
-                                  viewstyle={{
+                                <View
+                                  style={{
+                                    width: 60,
+                                    height: 60,
+                                    borderRadius: 30,
+                                    backgroundColor: Color.white,
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                  }}
-                                  Icontag="Ionicons"
-                                  icon_size={55}
-                                  icon_color={Color.white}
-                                  iconname="play-circle"
-                                />
+                                    elevation: 5,
+                                    marginRight: 10
+                                  }}>
+                                  <Iconviewcomponent
+                                    viewstyle={{
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                    }}
+                                    Icontag="MaterialCommunityIcons"
+                                    icon_size={40}
+                                    icon_color="#000"
+                                    iconname="play-outline"
+                                  />
+                                </View>
                               </TouchableOpacity>
                             </View>
                           ) : (
@@ -1440,7 +1368,7 @@ const HomeScreen = () => {
                                   backgroundColor: '#5F6AA5',
                                   borderColor: Color.white,
                                   borderWidth: 0.2,
-                                  borderRadius: 30,
+                                  borderRadius: 50,
                                   shadowOpacity: 0.5,
                                   marginVertical: 20,
                                 }}
@@ -1510,7 +1438,6 @@ const HomeScreen = () => {
                             marginHorizontal: 5,
                           }}
                           onPress={() => {
-                            // setModalVisible(true);
                             setTestModalVisible(true);
                           }}>
                           <Iconviewcomponent
@@ -1576,47 +1503,11 @@ const HomeScreen = () => {
                           borderRadius: 10,
                           marginVertical: 10,
                         }}>
-                        {/* <Video
-                          ref={videoRef}
-                          source={{
-                            uri: Currentvideo?.lesson_details?.source,
-                          }}
-                          style={[styles.video, {borderRadius: 50}]}
-                          controls={false}
-                          resizeMode="contain"
-                          paused={!isPlaying}
-                          onProgress={handleProgress}
-                          onLoad={handleLoad}
-                          onBuffer={buffer => console.log('nnnnnnnnnnnnnnnn', buffer)}
-                          onError={error => console.log('Error:', error)} // Callback for errors
-                          onEnd={text => {
-                            if (Currentvideo?.status !== 'completed') {
-                              Videoend(Currentvideo);
-                            }
-                          }}
-                        /> */}
-
-                        {/* <View style={{width:'100%'}}> */}
-
                         <Videoplayercomponent
                           source={Currentvideo?.lesson_details?.source}
                           Videoendfun={Videoend}
                           currentdata={Currentvideo}
                         />
-                        {/* </View> */}
-                        {/* <View style={styles.controls}>
-                          <TouchableOpacity onPress={togglePlayPause}>
-                            <Icon
-                              name={isPlaying ? 'pause' : 'play'}
-                              size={30}
-                              color="#FFF"
-                            />
-                          </TouchableOpacity>
-
-                          <Text style={styles.time}>
-                            {formatTime(currentTime)} / {formatTime(duration)}
-                          </Text>
-                        </View> */}
                         <View style={{ gap: 5 }}>
                           <Text
                             style={{
@@ -1745,7 +1636,6 @@ const HomeScreen = () => {
           />
         </View>
       </LinearGradient>
-      {/* BOTTOM SHEET */}
       <RBSheet
         ref={refRBSheetssss}
         height={550}
@@ -1833,18 +1723,20 @@ const HomeScreen = () => {
                   }}>
                   <TextInput
                     placeholder={t("PlaceHolder.Type your question here...")}
-                    numberOfLines={4}
+                    placeholderTextColor={'#666666'}
+                    numberOfLines={7}
                     multiline
                     value={Feedback}
                     onChangeText={text => setFeedback(text)}
                     scrollEnabled={true}
                     style={{
-                      width: '100%',
-                      height: '100%',
+                      flex:1,
                       alignItems: 'flex-start',
                       justifyContent: 'flex-start',
                       borderRadius: 5,
                       padding: 5,
+                      color: Color.black,
+                      textAlignVertical:'top'
                     }}
                   />
                 </View>
@@ -1903,7 +1795,6 @@ const HomeScreen = () => {
           </ScrollView>
         </KeyboardAvoidingView>
       </RBSheet>
-      {/* INITIAL  SCORE */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -1988,7 +1879,6 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
-      {/* GO TO SIM TEST */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -2078,7 +1968,6 @@ const HomeScreen = () => {
         </View>
       </Modal>
 
-      {/* Whatsapp modal */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -2120,7 +2009,7 @@ const HomeScreen = () => {
               <TextInput
                 placeholder={Change ? t("PlaceHolder.Enter Otp") : t('PlaceHolder.Whatsapp Number')}
                 style={{
-                  color: Color?.black,
+                  color: Color.black,
                   fontFamily: Mulish?.Regular,
                   fontSize: 16,
                   borderRadius: 10,
@@ -2278,12 +2167,9 @@ const HomeScreen = () => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // paddingTop: 10,
     alignItems: 'center',
     backgroundColor: Color.white,
   },
@@ -2293,46 +2179,45 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    borderRadius: 10,
+    borderRadius: scr_width * 0.025,
   },
   video: {
     width: '100%',
-    height: '100%', // Adjust height as needed
+    height: scr_height * 0.3,
     resizeMode: 'contain',
-    borderRadius: 60,
+    borderRadius: scr_width * 0.15
   },
   controls: {
     position: 'absolute',
-    bottom: 10,
-    left: 10,
-    right: 10,
+    bottom: scr_height * 0.015,
+    left: scr_width * 0.025,
+    right: scr_width * 0.025,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: 10,
-    borderRadius: 5,
+    padding: scr_width * 0.025,
+    borderRadius: scr_width * 0.0125,
   },
   time: {
     color: '#FFF',
-    fontSize: 14,
+    fontSize: scr_width * 0.035,
   },
   button: {
-    padding: 10,
+    padding: scr_width * 0.025,
     backgroundColor: '#1E90FF',
-    borderRadius: 5,
-    marginBottom: 10,
+    borderRadius: scr_width * 0.0125,
+    marginBottom: scr_height * 0.015,
   },
   buttonText: {
     color: '#FFF',
-    fontSize: 16,
+    fontSize: scr_width * 0.04,
     fontWeight: 'bold',
   },
   timing: {
     color: '#FFF',
-    fontSize: 14,
+    fontSize: scr_width * 0.035,
   },
-  video: { ...StyleSheet.absoluteFillObject },
   fullscreenVideo: {
     backgroundColor: 'black',
     ...StyleSheet.absoluteFill,
@@ -2350,19 +2235,14 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontSize: 30,
+    fontSize: scr_width * 0.075,
   },
   timer: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 5,
-  },
-  overlaySet: {
-    flex: 1,
-    flexDirection: 'row',
+    paddingHorizontal: scr_width * 0.0125
   },
 });
 
-//make this component available to the app
 export default HomeScreen;

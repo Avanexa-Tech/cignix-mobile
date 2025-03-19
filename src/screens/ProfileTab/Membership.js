@@ -471,6 +471,7 @@ const Membership = () => {
               <TextInput
                 placeholder={t("PlaceHolder.Enter Coupon Code")}
                 placeholderTextColor={'#999999'}
+                style={{color: Color.black}}
                 maxLength={6}
                 value={Couponcode}
                 editable={Coupondata == '' ? true : false}
