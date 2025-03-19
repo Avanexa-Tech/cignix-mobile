@@ -405,12 +405,16 @@ const PrivacyPolicy = () => {
                 style={{
                     backgroundColor: Color?.white,
                     flexDirection: 'row',
-                    paddingLeft: 5,
-                    paddingTop: 20,
-                    paddingBottom: 20,
+                    paddingVertical: 20,
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: scr_width,
                 }}>
                 <Pressable
-                    style={{ width: scr_width / 5 }}
+                    style={{
+                        width: scr_width / 5,
+                        paddingLeft: 10,
+                    }}
                     onPress={() => {
                         navigation?.goBack();
                     }}>
@@ -421,14 +425,39 @@ const PrivacyPolicy = () => {
                         iconname={'chevron-back'}
                     />
                 </Pressable>
-                <View>
+
+                <View style={{
+                    width: scr_width / 2,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
                     <Text
-                        style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+                        style={{
+                            fontFamily: Mulish?.SemiBold,
+                            fontSize: 22,
+                            color: '#000',
+                            textAlign: 'center',
+                        }}>
                         {t("PrivacyPolicy.Privacy Policy")}
                     </Text>
                 </View>
+                <TouchableOpacity
+                    style={{
+                        marginRight: 10,
+                        width: scr_width / 5,
+                        alignItems: 'flex-end',
+                    }}
+                    onPress={() => navigation.navigate("LanguageSelector")}>
+                    <Iconviewcomponent
+                        viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+                        Icontag="Ionicons"
+                        icon_size={30}
+                        icon_color={Color.black}
+                        iconname="language-outline"
+                    />
+                </TouchableOpacity>
             </View>
-            <View style={{ width: '90%', height: scr_height / 1.17, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, alignSelf: 'center', marginLeft: 5 }}>
+            <View style={{ width: '90%', height: scr_height / 1.24, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, alignSelf: 'center', marginLeft: 5 }}>
                 <FlatList
                     data={privacyData}
                     keyExtractor={(item, index) => item + index}

@@ -104,7 +104,7 @@ const Membership = () => {
 
     return (
       <TouchableOpacity
-        style={{ flex: 1 }}
+        style={{ flex: 1,alignContent:'center',alignItems:'center'}}
         onPress={() => {
           if (title?.price != 0) {
             setSelectedPlan(title);
@@ -162,11 +162,11 @@ const Membership = () => {
               </Text>
             </View>
           ) : null}
-          <View style={{ gap: 15, marginTop: 20 }}>
+          <View style={{ gap: 15, marginTop: 20,width:scr_width/1.5}}>
             {title?.features?.map((item, index) => {
               return (
                 <View
-                  style={{ gap: 13, flexDirection: 'row', alignItems: 'center' }}
+                  style={{flexDirection: 'row', alignItems: 'center' }}
                   key={index}>
                   <Iconviewcomponent
                     Icontag={'AntDesign'}
@@ -181,6 +181,7 @@ const Membership = () => {
                       fontSize: 12,
                       textTransform: 'capitalize',
                       fontWeight: '400',
+                      marginLeft:5
                     }}>
                     {item}
                   </Text>
@@ -230,7 +231,6 @@ const Membership = () => {
     }
   };
 
-  // GST ADD FUN :
   const gstFunction = async amt => {
     try {
       if (amt) {
@@ -242,7 +242,6 @@ const Membership = () => {
     }
   };
 
-  // Apply Coupon :
   const Applycoupon = async item => {
     try {
       let data = {
@@ -452,7 +451,6 @@ const Membership = () => {
                   fontFamily: Mulish?.Regular,
                   fontSize: 16,
                   textTransform: 'capitalize',
-                  fontWeight: '400',
                 }}>
                 {t("Membership.Access essential features to help you begin your quit-smoking journey.")}
               </Text>
@@ -492,7 +490,6 @@ const Membership = () => {
                     style={{
                       fontSize: 16,
                       color: '#4254B6',
-                      fontWeight: '700',
                       fontFamily: Mulish?.Bold,
                     }}>
                     {t("Membership.Apply")}

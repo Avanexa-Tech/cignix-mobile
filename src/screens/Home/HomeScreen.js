@@ -674,8 +674,9 @@ const HomeScreen = () => {
               backgroundColor: Color.softGrey,
             }}>
             <Image
+
               source={
-                userdata?.profile
+                userdata?.profile && userdata?.profile !== '{"isRemoveRequest":true}'
                   ? { uri: userdata?.profile }
                   : require('../../assets/Gallery/profile.png')
               }
@@ -1113,7 +1114,7 @@ const HomeScreen = () => {
                                     justifyContent: 'center',
                                   }}
                                   Icontag="Feather"
-                                  icon_size={55}
+                                  icon_size={35}
                                   icon_color={Color.white}
                                   iconname="play-circle"
                                 />
@@ -1334,8 +1335,8 @@ const HomeScreen = () => {
                                 }}>
                                 <View
                                   style={{
-                                    width: 60,
-                                    height: 60,
+                                    width: 55,
+                                    height: 55,
                                     borderRadius: 30,
                                     backgroundColor: Color.white,
                                     alignItems: 'center',
@@ -1349,7 +1350,7 @@ const HomeScreen = () => {
                                       justifyContent: 'center',
                                     }}
                                     Icontag="MaterialCommunityIcons"
-                                    icon_size={40}
+                                    icon_size={35}
                                     icon_color="#000"
                                     iconname="play-outline"
                                   />
@@ -1730,13 +1731,13 @@ const HomeScreen = () => {
                     onChangeText={text => setFeedback(text)}
                     scrollEnabled={true}
                     style={{
-                      flex:1,
+                      flex: 1,
                       alignItems: 'flex-start',
                       justifyContent: 'flex-start',
                       borderRadius: 5,
                       padding: 5,
                       color: Color.black,
-                      textAlignVertical:'top'
+                      textAlignVertical: 'top'
                     }}
                   />
                 </View>

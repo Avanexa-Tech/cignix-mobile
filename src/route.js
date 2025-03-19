@@ -15,21 +15,12 @@ import Profile from './screens/ProfileTab/Profile';
 import Login from './screens/Auth/Login';
 import OTPScreen from './screens/Auth/OTPScreen';
 import Color from './Global/Color';
-import LinearGradient from 'react-native-linear-gradient';
-import { Mulish } from './Global/FontFamily';
 import { scr_height, scr_width } from './Components/Dimensions';
-import { Iconviewcomponent } from './Components/Icontag';
 import EmailPassword from './screens/Auth/EmailPassword';
 import Register from './screens/Auth/Register';
-import EditProfile from './screens/ProfileTab/EditProfile';
-import Membership from './screens/ProfileTab/Membership';
-import ChangePassword from './screens/ProfileTab/ChangePassword';
-import NotificationSettings from './screens/ProfileTab/NotificationSettings';
 import SimTest from './screens/Auth/SimTest';
 import SimTestScreen from './screens/Home/SimTestScreen';
 import SuccesScreen from './screens/Auth/SuccesScreen';
-import Blogs from './screens/SideMenu/Blogs';
-import NewsandMedia from './screens/SideMenu/NewsandMedia';
 
 const wp = (percentage) => {
   return (percentage * scr_width) / 100;

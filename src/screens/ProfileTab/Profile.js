@@ -1,36 +1,20 @@
-//import liraries
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
   Animated,
   View,
-  ScrollView,
   Image,
   SafeAreaView,
   TouchableOpacity,
-  Platform,
-  Dimensions,
-  LogBox,
   StatusBar,
-  FlatList,
-  PermissionsAndroid,
-  Modal,
-  NativeEventEmitter,
-  NativeModules,
-  TextInput,
-  ImageBackground,
   Linking,
-  ToastAndroid,
   Alert,
 } from 'react-native';
 
 import { Iconviewcomponent } from '../../Components/Icontag';
 import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
-import { Badge } from 'react-native-paper';
-import Feather from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
 import { scr_height } from '../../Components/Dimensions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import fetchData from '../../Config/fetchData';
@@ -38,14 +22,13 @@ import common_fn from '../../Components/common_fn';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-// create a component
 const Profile = ({ navigation }) => {
-  // const navigation = useNavigation();
   const [Uservalue, setuserdata] = useState(null);
   const [shopSection] = useState([
     { id: 1, title: 'Profile', data: ['Profile'] },
     { id: 2, title: 'Account', data: ['Account'] },
     { id: 3, title: 'Other Settings', data: ['Other Settings'] },
+    { id: 4, title: 'Logout', data: ['Logout'] },
   ]);
   const { t, i18n } = useTranslation();
 
@@ -72,26 +55,42 @@ const Profile = ({ navigation }) => {
   useEffect(() => {
     User_Function();
   }, []);
-
   const Logout = async () => {
-    try {
-      const logout = await fetchData?.Logout();
-      console.log('logout', logout);
-      if (logout?.success == true) {
-        await AsyncStorage.removeItem('ACCESS_TOKEN');
-        await AsyncStorage.removeItem('USERDATA');
-        await AsyncStorage.removeItem('selectedLanguage');
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'Auth' }],
-        });
-      } else {
-        console.log('error');
-        common_fn.showToast(logout?.message);
-      }
-    } catch (error) {
-      console.log('Catch in Logout', error);
-    }
+    Alert.alert(
+      'Confirm Logout',
+      'Are you sure you want to logout?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: async () => {
+            try {
+              const logout = await fetchData?.Logout();
+              console.log('logout', logout);
+              if (logout?.success == true) {
+                await AsyncStorage.removeItem('ACCESS_TOKEN');
+                await AsyncStorage.removeItem('USERDATA');
+                await AsyncStorage.removeItem('selectedLanguage');
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Auth' }],
+                });
+              } else {
+                console.log('error');
+                common_fn.showToast(logout?.message);
+              }
+            } catch (error) {
+              console.log('Catch in Logout', error);
+            }
+          },
+        },
+      ],
+      { cancelable: false },
+    );
   };
   const RemoveAccount = async () => {
     try {
@@ -124,13 +123,11 @@ const Profile = ({ navigation }) => {
       console.log('catch in RemoveAccount : ', error);
     }
   };
-
-  console.log('Current language:', i18n.language);
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
-        hidden={false} // Hides the status bar
-        backgroundColor={Color.white} // Matches background color
+        hidden={false}
+        backgroundColor={Color.white}
         translucent={true}
         barStyle={'dark-content'}
       />
@@ -191,7 +188,6 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-
       <Animated.SectionList
         sections={shopSection}
         scrollEnabled={true}
@@ -227,7 +223,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Image
                           source={
-                            Uservalue?.profile
+                            Uservalue?.profile && Uservalue?.profile !== '{"isRemoveRequest":true}'
                               ? { uri: Uservalue?.profile }
                               : require('../../assets/Gallery/profile.png')
                           }
@@ -393,7 +389,6 @@ const Profile = ({ navigation }) => {
                         />
                       </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                       onPress={() => navigation.navigate('Membership')}
                       style={{
@@ -598,7 +593,7 @@ const Profile = ({ navigation }) => {
                   style={{
                     width: '100%',
                     alignItems: 'center',
-                    paddingBottom: scr_height / 9,
+                    paddingBottom: scr_height / 7,
                   }}>
                   <View style={{ width: '95%', marginTop: 20 }}>
                     <Text
@@ -918,7 +913,6 @@ const Profile = ({ navigation }) => {
                         />
                       </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                       onPress={() => navigation.navigate('TermsandConditions')}
                       style={{
@@ -1035,13 +1029,16 @@ const Profile = ({ navigation }) => {
                         />
                       </View>
                     </TouchableOpacity>
-
+                    <View
+                      style={{
+                        width: '100%',
+                        height: 3,
+                        backgroundColor: Color.softGrey,
+                        marginTop: 20,
+                      }}
+                    />
                     <TouchableOpacity
                       onPress={() =>
-                        // navigation.reset({
-                        //   index: 0,
-                        //   routes: [{name: 'Auth'}], // Replace 'Auth' with your desired route name
-                        // })
                         Logout()
                       }
                       style={{
@@ -1113,7 +1110,6 @@ const Profile = ({ navigation }) => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -1167,5 +1163,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default Profile;
