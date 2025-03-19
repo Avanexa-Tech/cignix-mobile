@@ -220,16 +220,10 @@ const EditProfile = ({ navigation }) => {
 
   const removeProfilePicture = async () => {
     try {
-      const formData = new FormData();
+      const RemoveProfile = await fetchData?.RemoveProfilePic();
+      console.log("Remove Profile Response:", RemoveProfile);
 
-      formData.append('profile', '{"isRemoveRequest":true}');
-
-      console.log("========================>formData:", formData);
-
-      const RemoveProfile = await fetchData?.Uploadprofileimg(formData);
-      console.log("=============>", RemoveProfile);
-
-      if (RemoveProfile?.success == true) {
+      if (RemoveProfile?.success === true) {
         setuservalue({ ...Uservalue, profile: '' });
         common_fn.showToast('Profile picture removed successfully');
       } else {
@@ -237,7 +231,7 @@ const EditProfile = ({ navigation }) => {
       }
       setProfileOptionsVisible(false);
     } catch (error) {
-      console.log('CATCH IN REMOVE PROFILE', error);
+      console.log('Error in REMOVE PROFILE:', error);
       console.log('Error details:', error.message);
       common_fn.showToast('Network request failed. Please try again later.');
       setProfileOptionsVisible(false);
@@ -463,7 +457,7 @@ const EditProfile = ({ navigation }) => {
           }}>
           <Image
             source={
-              Uservalue?.profile && Uservalue?.profile !== '{"isRemoveRequest":true}'
+              Uservalue?.profile
                 ? { uri: Uservalue?.profile }
                 : require('../../assets/Gallery/profile.png')
             }

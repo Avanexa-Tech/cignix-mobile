@@ -33,7 +33,11 @@
     "Date of Birth / Age": "जन्म तिथि / आयु",
     "Gender": "लिंग",
     "Update Profile": "प्रोफ़ाइल अपडेट करें",
-    "Select Gender": "लिंग चुनें"
+    "Select Gender": "लिंग चुनें",
+    "Profile Picture Options": "प्रोफ़ाइल चित्र विकल्प",
+    "Take Photo": "फोटो लें",
+    "Choose from Gallery": "गैलरी से चुनें",
+    "Remove Profile Picture": "प्रोफ़ाइल चित्र हटाएँ"
   },
   "ChangePassword": {
     "Change Password": "पासवर्ड बदलें",
@@ -281,7 +285,7 @@
     "or contact us by post at": "या हमें डाक द्वारा संपर्क करें",
     "If you have questions or comments about this notice, you may email us at": "यदि इस नोटिस के बारे में आपके कोई प्रश्न या टिप्पणियाँ हैं, तो आप हमें ईमेल कर सकते हैं",
     "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?": "आप इस नोटिस के बारे में हमसे कैसे संपर्क कर सकते हैं?",
-     "'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.": "'इस सूचना के बारे में आप हमसे कैसे संपर्क कर सकते हैं?' नीचे।",
+    "'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.": "'इस सूचना के बारे में आप हमसे कैसे संपर्क कर सकते हैं?' नीचे।",
     "We may update this Privacy Notice from time to time. The updated version will be indicated by an updated 'Revised' date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.": "हम इस गोपनीयता नोटिस को समय-समय पर अपडेट कर सकते हैं। अपडेटेड संस्करण इस गोपनीयता नोटिस के शीर्ष पर एक अपडेटेड 'संशोधित' तिथि द्वारा संकेतित किया जाएगा। यदि हम इस गोपनीयता नोटिस में महत्वपूर्ण परिवर्तन करते हैं, तो हम आपको या तो ऐसे परिवर्तनों की सूचना प्रमुखता से पोस्ट करके या आपको सीधे एक अधिसूचना भेजकर सूचित कर सकते हैं। हम आपको इस गोपनीयता नोटिस की बार-बार समीक्षा करने के लिए प्रोत्साहित करते हैं ताकि आप यह जान सकें कि हम आपकी जानकारी को कैसे सुरक्षित रख रहे हैं।",
     "Yes, we will update this notice as necessary to stay compliant with relevant laws.": "हाँ, हम प्रासंगिक कानूनों के अनुपालन में रहने के लिए आवश्यकतानुसार इस नोटिस को अपडेट करेंगे।",
     "In Short": "संक्षेप में",

@@ -33,7 +33,11 @@
     "Date of Birth / Age": "जन्म तारीख / वय",
     "Gender": "लिंग",
     "Update Profile": "प्रोफाइल अद्यतनित करा",
-    "Select Gender": "लिंग निवडा"
+    "Select Gender": "लिंग निवडा",
+    "Profile Picture Options": "प्रोफाइल चित्र पर्याय",
+    "Take Photo": "फोटो काढा",
+    "Choose from Gallery": "गॅलरीमधून निवडा",
+    "Remove Profile Picture": "प्रोफाइल चित्र काढा"
   },
   "ChangePassword": {
     "Change Password": "पासवर्ड बदला",

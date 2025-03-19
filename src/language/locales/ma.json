@@ -47,7 +47,11 @@
     "Date of Birth / Age": "ജനനത്തീയതി / പ്രായം",
     "Gender": "ലിംഗം",
     "Update Profile": "പ്രൊഫൈൽ അപ്‌ഡേറ്റ് ചെയ്യുക",
-    "Select Gender": "ലിംഗം തിരഞ്ഞെടുക്കുക"
+    "Select Gender": "ലിംഗം തിരഞ്ഞെടുക്കുക",
+    "Profile Picture Options": "ചിത്ര ഓപ്ഷനുകൾ",
+    "Take Photo": "ഫോട്ടോ എടുക്കു",
+    "Choose from Gallery": "ഗാലറിയിൽ നിന്ന് എടുക്കു",
+    "Remove Profile Picture": "ചിത്രം നീക്കം ചെയ്യു"
   },
   "ChangePassword": {
     "Change Password": "പാസ്‌വേഡ് മാറ്റുക",

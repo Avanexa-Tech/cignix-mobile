@@ -47,7 +47,11 @@
     "Date of Birth / Age": "పుట్టిన తేది / వయసు",
     "Gender": "లింగం",
     "Update Profile": "ప్రొఫైల్ నవీకరించండి",
-    "Select Gender": "లింగాన్ని ఎంచుకోండి"
+    "Select Gender": "లింగాన్ని ఎంచుకోండి",
+    "Profile Picture Options": "ప్రొఫైల్ చిత్రం ఎంపికలు",
+    "Take Photo": "ఫోటో తీయండి",
+    "Choose from Gallery": "గ్యాలరీ నుండి ఎంచుకోండి",
+    "Remove Profile Picture": "ప్రొఫైల్ చిత్రాన్ని తొలగించండి"
   },
   "ChangePassword": {
     "Change Password": "పాస్‌వర్డ్ మార్చండి",

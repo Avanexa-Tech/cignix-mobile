@@ -223,7 +223,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Image
                           source={
-                            Uservalue?.profile && Uservalue?.profile !== '{"isRemoveRequest":true}'
+                            Uservalue?.profile
                               ? { uri: Uservalue?.profile }
                               : require('../../assets/Gallery/profile.png')
                           }

@@ -33,7 +33,11 @@
     "Date of Birth / Age": "Date of Birth / Age",
     "Gender": "Gender",
     "Update Profile": "Update Profile",
-    "Select Gender": "Select Gender"
+    "Select Gender": "Select Gender",
+    "Profile Picture Options":"Profile Picture Options",
+    "Take Photo":"Take Photo",
+    "Choose from Gallery":"Choose from Gallery",
+    "Remove Profile Picture":"Remove Profile Picture"
   },
   "ChangePassword": {
     "Change Password": "Change Password",

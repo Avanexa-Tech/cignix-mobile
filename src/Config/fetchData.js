@@ -73,6 +73,12 @@ export default {
     const accessToken = await AccessToken();
     return api.putMethod(url, data, accessToken);
   },
+  //Remove Profile
+  RemoveProfilePic: async () => {
+    let url = 'user/profile/delete-pic';
+    const accessToken = await AccessToken();
+    return api.deleteMethod(url, accessToken);
+  },
   // GET NOTIFICATION :
   Getnotification: async () => {
     let url = 'user-notification';

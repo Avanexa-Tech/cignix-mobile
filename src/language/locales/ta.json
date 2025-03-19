@@ -33,7 +33,11 @@
     "Date of Birth / Age": "பிறந்த தேதி / வயது",
     "Gender": "பாலினம்",
     "Update Profile": "சுயவிவரத்தை புதுப்பிக்கவும்",
-    "Select Gender": "பாலினம் தேர்ந்தெடுக்கவும்"
+    "Select Gender": "பாலினம் தேர்ந்தெடுக்கவும்",
+    "Profile Picture Options": "பட விருப்பங்கள்",
+    "Take Photo": "புகைப்படம் எடு",
+    "Choose from Gallery": "கேலரியில் இருந்து எடு",
+    "Remove Profile Picture": "படத்தை அகற்று"
   },
   "ChangePassword": {
     "Change Password": "கடவுச்சொல்லை மாற்றவும்",

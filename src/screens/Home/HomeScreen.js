@@ -676,7 +676,7 @@ const HomeScreen = () => {
             <Image
 
               source={
-                userdata?.profile && userdata?.profile !== '{"isRemoveRequest":true}'
+                userdata?.profile
                   ? { uri: userdata?.profile }
                   : require('../../assets/Gallery/profile.png')
               }
