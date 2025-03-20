@@ -244,7 +244,7 @@ const HelpCenter = () => {
                   letterSpacing: 0.5,
                 }}
                 numberOfLines={2}>
-                {t("HelpCenter.Want to know about plans and payment methods? Lear more here.")}
+                {t("HelpCenter.Want to know about plans and payment methods? Learn more here.")}
               </Text>
             </TouchableOpacity>
           </View>
