@@ -119,16 +119,18 @@
     "Please Enter Coupon Code": "ദയവായി കൂപ്പൺ കോഡ് നൽകുക"
   },
   "mobilelogin": {
-    "Welcome Back": "തിരികെ വരൂ",
-    "Welcome description": "നിങ്ങളുടെ മൊബൈൽ നമ്പറോടെ ലോഗിൻ ചെയ്യുക",
+    "Welcome Back": "തിരികെ സ്വാഗതം",
+    "Welcome description": "നിങ്ങളുടെ മൊബൈൽ നമ്പറുമായി ലോഗിൻ ചെയ്യുക",
     "Mobile Number": "മൊബൈൽ നമ്പർ",
     "Get Otp": "OTP നേടുക",
-    "or Login With": "അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക",
+    "or Login With": "അല്ലെങ്കിൽ ഇതിലൂടെ ലോഗിൻ ചെയ്യുക",
     "Google": "ഗൂഗിൾ",
-    "Password": "പാസ്‌വേഡ്",
+    "Password": "പാസ്വേഡ്",
     "Don't have an account?": "അക്കൗണ്ട് ഇല്ലേ?",
-    "Sign Up": "സൈൻ അപ്പ് ചെയ്യുക"
-  },
+    "Sign Up": "സൈൻ അപ്പ് ചെയ്യുക",
+    "Mobile number": "മൊബൈൽ നമ്പർ",
+    "Invalid Phone Number, Please Enter Your 10 Digit Phone Number": "അസാധുവായ ഫോൺ നമ്പർ, നിങ്ങളുടെ 10 അക്കം ഉള്ള ഫോൺ നമ്പർ നൽകുക"
+},
   "Otp": {
     "Verify Your Login": "ലോഗിൻ സ്ഥിരീകരിക്കുക",
     "Enter the verification code we sent to your Number": "നിങ്ങളുടെ നമ്പറിലേക്ക് അയച്ച സ്ഥിരീകരണ കോഡ് നൽകുക",
@@ -139,7 +141,7 @@
   "Roadmap": {
     "Complete the SIM Test": "SIM പരീക്ഷ പൂർത്തിയാക്കുക",
     "Start by taking the SIM Test to evaluate your Smoking habits  and readiness to quit": "നിങ്ങളുടെ മുളക് പാനീയങ്ങൾക്കും വിട്ടുവിടാനുള്ള തയ്യാറെടുപ്പിനും വിലയിരുത്താൻ SIM പരീക്ഷ നടത്തുക",
-    "Watch All 7 Videos": "എല്ലാ 7 വീഡിയോകളും കാണുക",
+    "Watch All Videos": "എല്ലാ വീഡിയോകളും കാണുക",
     "Each video is designed to guide you through the quitting process": "ഓരോ വീഡിയോകളും നിങ്ങൾക്ക് മുളക് പാനീയങ്ങൾ വിട്ടുവിടുന്നതിന് മാർഗനിർദ്ദേശം നൽകാൻ രൂപകൽപ്പന ചെയ്തതാണ്",
     "Retake the SIM Test (SIM Test 2)": "SIM പരീക്ഷ വീണ്ടും നടത്തുക (SIM പരീക്ഷ 2)",
     "Each Video is designed to Guide you through the quitting process": "ഓരോ വീഡിയോകളും നിങ്ങൾക്ക് മുളക് പാനീയങ്ങൾ വിട്ടുവിടുന്നതിന് മാർഗനിർദ്ദേശം നൽകാൻ രൂപകൽപ്പന ചെയ്തതാണ്",
@@ -670,5 +672,54 @@
     "To check your scores and see how you did": "നിങ്ങളുടെ സ്കോറുകൾ പരിശോധിച്ച് എങ്ങനെ ചെയ്തു എന്ന് കാണാൻ",
     "please sign up or log in!": "ദയവായി സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക!",
     "Sign Up to View Scores": "സ്കോറുകൾ കാണാൻ സൈൻ അപ്പ് ചെയ്യുക"
-  }
+  },
+  "Registerscreen": {
+    "Let’s Get Started": "ആരംഭിക്കാം",
+    "Create an account to unlock personalised videos and support to help you quit smoking": "വ്യക്തിഗത വീഡിയോകളും പുകവലി ഉപേക്ഷിക്കാൻ സഹായിക്കുന്ന പിന്തുണയും അൺലോക്ക് ചെയ്യാൻ ഒരു അക്കൗണ്ട് ഉണ്ടാക്കുക",
+    "By signing up, you agree to our": "സൈൻ അപ്പ് ചെയ്യുന്നതിലൂടെ, നിങ്ങൾ ഞങ്ങളുടെ",
+    "Terms & Conditions": "നിബന്ധനകളും വ്യവസ്ഥകളും",
+    "and": "കൂടാതെ",
+    "Privacy Policy": "പ്രൈവസി പോളിസി",
+    "Get Started": "ആരംഭിക്കൂ",
+    "Already have an account?": "ഇതിനകം ഒരു അക്കൗണ്ട് ഉണ്ടോ?",
+    "Log in": "ലോഗിൻ ചെയ്യുക",
+    "Password *": "പാസ്വേഡ് *",
+    "Select Gender *": "ലിംഗം തിരഞ്ഞെടുക്കുക *",
+    "DD/MM/YYYY *": "ദി/മാ/വर्षം *",
+    "Enter Your Mobile Number *": "നിങ്ങളുടെ മൊബൈൽ നമ്പർ നൽകുക *",
+    "Enter Your Email ID *": "നിങ്ങളുടെ ഇമെയിൽ ഐഡി നൽകുക *",
+    "Enter Your Name *": "നിങ്ങളുടെ പേര് നൽകുക *",
+    "Select Gender": "ലിംഗം തിരഞ്ഞെടുക്കുക",
+    "Male": "പുരുഷൻ",
+    "Female": "സ്ത്രീ",
+     "Please fill out the required forms to register.": "രജിസ്റ്റർ ചെയ്യുന്നതിനായി ആവശ്യമായ ഫോമുകൾ പൂരിപ്പിക്കുക."
+    
+  },
+  "Onboardscreen": {
+    "Your smoke-free life Begins now": "നിങ്ങളുടെ പുകരഹിത ജീവിതം ഇപ്പോൾ ആരംഭിക്കുന്നു",
+    "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "ഒരു ദിവസം ഒരു സിഗരറ്റ് നിങ്ങളുടെ ജീവിതം കുറയ്ക്കുന്നു. തമിഴിലിൽ നിന്ന് മോചിതനാകുക, ഇന്ന് തന്നെ മികച്ച ജീവിതം ആരംഭിക്കുക!",
+    "Get Started": "ആരംഭിക്കൂ",
+    "Already Have an Account?": "ഇതിന് മുമ്പേ ഒരു അക്കൗണ്ട് ഉണ്ടോ?"
+},
+"Passwordlogin": {
+    "Welcome Back": "തിരികെ സ്വാഗതം",
+    "Welcome description": "നിങ്ങളുടെ ഇമെയിലും പാസ്‌വേർഡും ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യുക",
+    "Email Your Email ID": "നിങ്ങളുടെ ഇമെയിൽ ഐഡി",
+    "Password": "പാസ്‌വേർഡ്",
+    "Log in": "ലോഗിൻ ചെയ്യുക",
+    "forgot Password": "പാസ്‌വേഡ് മറന്നോ?",
+    "or Login With": "അല്ലെങ്കിൽ ഇതിലൂടെ ലോഗിൻ ചെയ്യുക",
+    "Google": "ഗൂഗിൾ",
+    "Phone": "ഫോൺ",
+    "Don't have an account?": "അക്കൗണ്ട് ഇല്ലേ?",
+    "Sign Up": "സൈൻ അപ്പ് ചെയ്യുക",
+    "Reset Password with your Email": "നിങ്ങളുടെ ഇമെയിൽ ഉപയോഗിച്ച് പാസ്‌വേർഡ് പുനഃസജ്ജമാക്കുക",
+    "Enter Your Email ID": "നിങ്ങളുടെ ഇമെയിൽ ഐഡി നൽകുക",
+    "Send Password Reset Link": "പാസ്‌വേർഡ് പുനഃസജ്ജമാക്കാനുള്ള ലിങ്ക് അയയ്ക്കുക",
+    "Please enter your email": "ദയവായി നിങ്ങളുടെ ഇമെയിൽ നൽകുക.",
+    "Please enter a valid email.": "ദയവായി സാധുവായ ഇമെയിൽ നൽകുക.",
+    "Mail sent successfully": "മെയിൽ വിജയകരമായി അയച്ചു",
+    "set minimum character as 6": "കുറഞ്ഞത് 6 അക്ഷരങ്ങൾ ആയി ക്രമീകരിക്കുക",
+    "Please Enter your valid Email and Password": "ദയവായി നിങ്ങളുടെ സാധുവായ ഇമെയിലും പാസ്‌വേർഡും നൽകുക"
+}
 }

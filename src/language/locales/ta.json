@@ -96,15 +96,17 @@
     "Please Enter Coupon Code": "கூப்பன் குறியீட்டை உள்ளிடவும்"
   },
   "mobilelogin": {
-    "Welcome Back": "மீண்டும் வருக",
-    "Welcome description": "உங்கள் கைப்பேசி எண்ணுடன் உள்நுழையவும்",
-    "Mobile Number": "கைபேசி எண்",
+    "Welcome Back": "மீண்டும் வரவேற்கிறோம்",
+    "Welcome description": "உங்கள் மொபைல் எண்ணுடன் உள்நுழையவும்",
+    "Mobile Number": "மொபைல் எண்",
     "Get Otp": "OTP பெறவும்",
-    "or Login With": "அல்லது உள்நுழையவும்",
+    "or Login With": "அல்லது இதன்மூலம் உள்நுழைக",
     "Google": "கூகுள்",
     "Password": "கடவுச்சொல்",
     "Don't have an account?": "கணக்கு இல்லையா?",
-    "Sign Up": "பதிவு செய்யவும்"
+    "Sign Up": "பதிவு செய்யவும்",
+    "Mobile number": "மொபைல் எண்",
+    "Invalid Phone Number, Please Enter Your 10 Digit Phone Number": "தவறான தொலைபேசி எண், உங்கள் 10 இலக்க தொலைபேசி எண்ணை உள்ளிடவும்"
   },
   "Onboarding": {
     "Your smoke-free life Begins now": "உங்கள் புகைச்சல் இல்லாத வாழ்க்கை இப்போது தொடங்குகிறது!",
@@ -113,17 +115,25 @@
     "Already have an account?": "ஏற்கனவே கணக்கு உள்ளதா?"
   },
   "Passwordlogin": {
-    "Welcome Back": "மீண்டும் வருக",
+    "Welcome Back": "மீண்டும் வரவேற்கிறோம்",
     "Welcome description": "உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லுடன் உள்நுழையவும்",
     "Email Your Email ID": "உங்கள் மின்னஞ்சல் ஐடி",
     "Password": "கடவுச்சொல்",
     "Log in": "உள்நுழையவும்",
-    "forgot Password": "கடவுச்சொல் மறந்துவிட்டதா?",
-    "or Login With": "அல்லது உள்நுழையவும்",
+    "forgot Password": "கடவுச்சொல் மறந்துவிட்டீர்களா?",
+    "or Login With": "அல்லது இதன்மூலம் உள்நுழையவும்",
     "Google": "கூகுள்",
     "Phone": "தொலைபேசி",
-    "Don't have an account?": "கணக்கு இல்லையா?",
-    "Sign Up": "பதிவு செய்யவும்"
+    "Don't have an account?": "உங்களிடம் கணக்கு இல்லையா?",
+    "Sign Up": "பதிவு செய்யவும்",
+    "Reset Password with your Email": "உங்கள் மின்னஞ்சலுடன் கடவுச்சொல்லை மீட்டமைக்கவும்",
+    "Enter Your Email ID": "மின்னஞ்சல் ஐடியை உள்ளிடவும்",
+    "Send Password Reset Link": "கடவுச்சொல் மீட்டமைக்க இணைப்பை அனுப்பவும்",
+    "Please enter your email": "தயவுசெய்து உங்கள் மின்னஞ்சல் உள்ளிடவும்.",
+    "Please enter a valid email.": "தயவுசெய்து சரியான மின்னஞ்சலை உள்ளிடவும்.",
+    "Mail sent successfully": "அஞ்சல் வெற்றிகரமாக அனுப்பப்பட்டது",
+    "set minimum character as 6": "குறைந்தபட்ச எழுத்துகளை 6 ஆக அமைக்கவும்",
+    "Please Enter your valid Email and Password": "தயவுசெய்து உங்கள் சரியான மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்"
   },
   "Sim1": {
     "SIM Test": "SIM சோதனை",
@@ -164,7 +174,7 @@
   "Roadmap": {
     "Complete the SIM Test": "SIM சோதனையை முடிக்கவும்",
     "Start by taking the SIM Test to evaluate your Smoking habits  and readiness to quit": "உங்கள் புகையிலை பழக்கங்கள் மற்றும் நிறுத்துவதற்கான தயாரிப்பை மதிப்பீடு செய்ய SIM சோதனையை எடுக்கவும்",
-    "Watch All 7 Videos": "எல்லா 7 வீடியோக்களையும் பாருங்கள்",
+    "Watch All Videos": "அனைத்து வீடியோக்களையும் பாருங்கள்",
     "Each video is designed to guide you through the quitting process": "ஒவ்வொரு வீடியோவும் நீங்கள் புகையிலை விட்டுவிடும் செயல்முறையில் வழிகாட்டுவதற்காக வடிவமைக்கப்பட்டுள்ளது",
     "Retake the SIM Test (SIM Test 2)": "SIM சோதனையை மீண்டும் எடுக்கவும் (SIM சோதனை 2)",
     "Each Video is designed to Guide you through the quitting process": "ஒவ்வொரு வீடியோவும் நீங்கள் புகையிலை விட்டுவிடும் செயல்முறையில் வழிகாட்டுவதற்காக வடிவமைக்கப்பட்டுள்ளது",
@@ -697,14 +707,30 @@
     "Sign Up to View Scores": "மதிப்பெண்களை பார்க்க பதிவு செய்யவும்"
   },
   "Registerscreen": {
-    "Let’s Get Started": "ஆரம்பமாக விடுவோம்",
-    "Create an account to unlock personalised videos and support to help you quit smoking": "பதிவு செய்யவும், புகைத்தல் நிறுத்த உதவும் தனிப்பயனாக்கப்பட்ட வீடியோக்களையும் ஆதரவு பெற்று துவங்கவும்",
-    "By signing up, you agree to our": "பதிவு செய்து, நீங்கள் ஒப்புக்கொள்கிறீர்கள்",
-    "Terms & Conditions": "பட்டியல்கள் மற்றும் விதிமுறைகள்",
+    "Let’s Get Started": "ஆரம்பிக்கலாம்",
+    "Create an account to unlock personalised videos and support to help you quit smoking": "தனிப்பயன் வீடியோக்கள் மற்றும் புகைப்பழக்கத்தைக் கைவிட உதவுவதற்கான ஆதரவைத் திறக்கக் கணக்கை உருவாக்குங்கள்",
+    "By signing up, you agree to our": "பதிவு செய்வதன் மூலம், நீங்கள் எங்களின்",
+    "Terms & Conditions": "விதிமுறைகள் & நிபந்தனைகள்",
     "and": "மற்றும்",
-    "Privacy Policy": "பிரைவேசி கொள்கை",
-    "Get Started": "துவங்கவும்",
-    "Already have an account?": "ஏற்கனவே கணக்கு உண்டா?",
-    "Log in": "உள்நுழையவும்"
+    "Privacy Policy": "தனியுரிமை கொள்கை",
+    "Get Started": "ஆரம்பிக்கவும்",
+    "Already have an account?": "ஏற்கனவே கணக்கு உள்ளதா?",
+    "Log in": "உள்நுழையவும்",
+    "Password *": "கடவுச்சொல் *",
+    "Select Gender *": "பாலினத்தைத் தேர்ந்தெடு*",
+    "DD/MM/YYYY *": "தி/மா/வரு *",
+    "Enter Your Mobile Number *": "மொபைல் எண் *",
+    "Enter Your Email ID *": "மின்னஞ்சல் ஐடி *",
+    "Enter Your Name *": "உங்கள் பெயரை உள்ளிடவும் *",
+    "Select Gender": "பாலினத்தைத் தேர்ந்தெடுக்கவும்",
+    "Male": "ஆண்",
+    "Female": "பெண்",
+    "Please fill out the required forms to register.": "பதிவுசெய்ய தேவையான படிவங்களை நிரப்பவும்."
+  },
+  "Onboardscreen": {
+    "Your smoke-free life Begins now": "உங்கள் புகை இல்லாத வாழ்க்கை இப்போது தொடங்குகிறது",
+    "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "ஒவ்வொரு நாளும் ஒரு சிகரெட் உங்கள் வாழ்க்கையை பறிக்கிறது. புகையிலை alışத்தை உடைத்து, இன்று மேல் வாழத் தொடங்குங்கள்!",
+    "Get Started": "தொடங்கவும்",
+    "Already Have an Account?": "ஏற்கனவே ஒரு கணக்கு உள்ளதா?"
   }
 }

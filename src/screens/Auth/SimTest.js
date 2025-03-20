@@ -258,12 +258,10 @@ const SimTest = ({ navigation }) => {
             onPress={() => navigation.navigate("LanguageSelector")}
           >
             <Iconviewcomponent
-              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-              Icontag="Ionicons"
-              icon_size={30}
-              icon_color={Color.black}
-              iconname="language-outline"
-            />
+                        Icontag="Entypo"
+                        icon_size={24}
+                        icon_color={Color?.black}
+                        iconname={"language"} />
           </TouchableOpacity>
         </View>
       </View>

@@ -28,12 +28,14 @@ import common_fn from '../../Components/common_fn';
 import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 import { translateText } from '../Context/userContext'
 
 
 // create a component
 const Register = ({ navigation, route }) => {
   const routedata = route?.params;
+  const { t } = useTranslation();
   console.log('jnvjnbjvb', routedata);
   const [uname, setUname] = useState('');
   const [error, setError] = useState(false);
@@ -54,11 +56,11 @@ const Register = ({ navigation, route }) => {
   const [genderData, setGenderData] = useState([
     {
       id: '0',
-      gender: 'male',
+      gender: t("Registerscreen.Male"),
     },
     {
       id: '1',
-      gender: 'female',
+      gender: t("Registerscreen.Female"),
     }
   ]);
 
@@ -124,7 +126,7 @@ const Register = ({ navigation, route }) => {
   const registerClick = async () => {
     try {
       setloading(true);
-      // console.log("============= REGISTER ============";
+      console.log("============= REGISTER ============",selectGenderId);
       if (uname && email && number && password) {
         const dateee = datevalue(date);
         const Registerdata = {
@@ -132,11 +134,13 @@ const Register = ({ navigation, route }) => {
           email: email,
           mobile: number,
           dob: dateee?._z,
-          gender: selectGender,
+          gender: selectGenderId == 0 ? "male":"female",
           password: password,
           step: 1,
           total_points: routedata?.totalScore
         }
+        console.log("Registerdata", Registerdata);
+
         console.log("Registerdata", Registerdata);
 
         const Registerapi = await fetchData?.Register(Registerdata);
@@ -158,10 +162,10 @@ const Register = ({ navigation, route }) => {
         }
 
       } else {
-        common_fn.showToast('Please fill out the required forms to register.');
+        common_fn.showToast(`${t('Registerscreen.Please fill out the required forms to register.')}`);
         setloading(false);
       }
-    } catch (error) {
+    } catch (error) {r
       console.log('catch in register_Click : ', error);
       setloading(false);
     }
@@ -208,7 +212,7 @@ const Register = ({ navigation, route }) => {
                     color: Color.lightBlack,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Select Gender
+                  {t("Registerscreen.Select Gender")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => setSelectGenderbottomSheetVisible(false)}>
@@ -274,8 +278,8 @@ const Register = ({ navigation, route }) => {
   const selectedItem = item => {
     try {
       // console.log("Item ======================= :", item);
-      setSelectGender(item.gender);
-      setSelectGenderId(item.gender.id);
+      setSelectGender(item.gender);      
+      setSelectGenderId(item.id);
       setSelectGenderbottomSheetVisible(false);
     } catch (error) {
       console.log('catch in Register_selectedItem:', error);
@@ -299,8 +303,17 @@ const Register = ({ navigation, route }) => {
             source={require('../../assets/Logos/cignix.png')}
             style={[styles.image]}
           />
+          <View style={{position:'absolute',right:10,top:10}}>
+           <TouchableOpacity onPress={() => navigation.navigate("LanguageSelector")}>
+                  <Iconviewcomponent
+                    Icontag="Entypo"
+                    icon_size={24}
+                    icon_color={Color?.black}
+                    iconname={"language"} />
+                  </TouchableOpacity>
+          </View>
         </View>
-        <Text style={styles.header}>Let’s Get Started</Text>
+        <Text style={styles.header}>{t("Registerscreen.Let’s Get Started")}</Text>
         <Text
           style={{
             fontSize: 14,
@@ -308,8 +321,9 @@ const Register = ({ navigation, route }) => {
             fontFamily: Mulish.Light,
             paddingVertical: 10,
             lineHeight: 20
+            lineHeight: 20
           }}>
-          Create an account to unlock personalised videos and support to help you quit smoking
+          {t("Registerscreen.Create an account to unlock personalised videos and support to help you quit smoking")}
         </Text>
 
         <View style={[styles.NumberBoxConatiner, { marginVertical: 10 }]}>
@@ -330,7 +344,7 @@ const Register = ({ navigation, route }) => {
             />
           </View>
           <TextInput
-            placeholder="Enter Your Name *"
+            placeholder={t("Registerscreen.Enter Your Name *")}
             placeholderTextColor={Color.grey}
             keyboardType="name-phone-pad"
             value={uname}
@@ -361,7 +375,7 @@ const Register = ({ navigation, route }) => {
             />
           </View>
           <TextInput
-            placeholder="Enter Your Email ID *"
+            placeholder={t("Registerscreen.Enter Your Email ID *")}
             placeholderTextColor={Color.grey}
             keyboardType="email-address"
             value={email}
@@ -404,7 +418,7 @@ const Register = ({ navigation, route }) => {
             </Text>
           </View>
           <TextInput
-            placeholder="Enter Your Mobile Number *"
+            placeholder={t("Registerscreen.Enter Your Mobile Number *")}
             placeholderTextColor={Color.grey}
             value={number}
             keyboardType="phone-pad"
@@ -442,7 +456,7 @@ const Register = ({ navigation, route }) => {
                 color: date ? Color.black : Color.Venus,
                 fontFamily: Mulish.SemiBold,
               }}>
-              {date ? formatDate(date) : 'DD/MM/YYYY *'} {/* Show formatted date or placeholder */}
+              {date ? formatDate(date) : t("Registerscreen.DD/MM/YYYY *")} {/* Show formatted date or placeholder */}
               {/* {formatDate(date)} */}
             </Text>
           </TouchableOpacity>
@@ -482,7 +496,7 @@ const Register = ({ navigation, route }) => {
                   color: selectGender ? Color.black : Color.Venus,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                {selectGender ? selectGender : "Select Gender *"}
+                {selectGender ? selectGender : t("Registerscreen.Select Gender *")}
               </Text>
             </View>
             <View style={{ paddingHorizontal: 20 }}>
@@ -521,7 +535,7 @@ const Register = ({ navigation, route }) => {
             </View>
             <TextInput
               style={[styles.numberTextBox, { right: 5 }]}
-              placeholder="Password *"
+              placeholder={t("Registerscreen.Password *")}
               placeholderTextColor={Color.grey}
               secureTextEntry={!password_visible}
               value={password}
@@ -565,13 +579,13 @@ const Register = ({ navigation, route }) => {
                 </View> */}
         <View>
           <Text style={{ textAlign: 'justify', fontSize: 14, fontFamily: Mulish?.Medium, color: '#666666' }}>
-            By signing up, you agree to our <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 13 }} onPress={() => {
+            {t("Registerscreen.By signing up, you agree to our")} <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 13 }} onPress={() => {
               navigation.navigate('TermsandConditions')
 
-            }}>Terms & Conditions</Text> and{' '}
-            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 14 }} onPress={() => {
+            }}>{t("Registerscreen.Terms & Conditions")}</Text> {t("Registerscreen.and")}
+            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 13 }} onPress={() => {
               navigation?.navigate('PrivacyPolicy')
-            }}>Privacy Policy</Text>
+            }}>{" "}{t("Registerscreen.Privacy Policy")}</Text>
           </Text>
         </View>
         <TouchableOpacity
@@ -596,7 +610,7 @@ const Register = ({ navigation, route }) => {
                     color: Color.white,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Get Started
+                  {t("Registerscreen.Get Started")}
                 </Text>
               )
           }
@@ -605,7 +619,7 @@ const Register = ({ navigation, route }) => {
 
         <View
           style={{
-            width: '100%',
+            width: scr_width - 50,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
@@ -613,21 +627,21 @@ const Register = ({ navigation, route }) => {
           }}>
           <Text
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: Color.Venus,
               fontFamily: Mulish.Medium,
               paddingHorizontal: 5,
             }}>
-            Already have an account? {' '}
+            {t("Registerscreen.Already have an account?")}
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.primary,
                 fontFamily: Mulish.SemiBold,
               }}>
-              Log in
+              {t("Registerscreen.Log in")}
             </Text>
           </TouchableOpacity>
         </View>
