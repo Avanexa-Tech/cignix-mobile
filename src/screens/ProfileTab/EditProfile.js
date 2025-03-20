@@ -20,6 +20,7 @@ import common_fn from '../../Components/common_fn';
 import { BottomSheet } from 'react-native-btr';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
 const EditProfile = ({ navigation }) => {
   const [isEditable, setIsEditable] = useState(false);
@@ -79,9 +80,11 @@ const EditProfile = ({ navigation }) => {
         const UpdateProfile = await fetchData?.UpdateProfile(formData);
         console.log('UpdateProfile', UpdateProfile);
         if (UpdateProfile?.success == true) {
-          common_fn.showToast(UpdateProfile?.message);
+          const translatedMessage = await translateText(UpdateProfile?.message);
+          common_fn.showToast(translatedMessage);
         } else {
-          common_fn.showToast(UpdateProfile?.message);
+          const translatedMessage = await translateText(Updatepassword?.message);
+          common_fn.showToast(translatedMessage);
         }
       } catch (error) {
         console.log('CATCH IN UPDATE PROFILE', error);
@@ -151,9 +154,10 @@ const EditProfile = ({ navigation }) => {
               );
               if (UpdateProfile?.success == true) {
                 GETUSERDATA();
-                common_fn.showToast('User Profile Updated Successfully');
+                common_fn.showToast(`${t('Homescreen.User Profile Updated Successfully')}`);
               } else {
-                common_fn.showToast(UpdateProfile?.message);
+                const translatedMessage = await translateText(UpdateProfile?.message);
+                common_fn.showToast(translatedMessage);
               }
             }
           }
@@ -196,9 +200,10 @@ const EditProfile = ({ navigation }) => {
               );
               if (UpdateProfile?.success == true) {
                 GETUSERDATA();
-                common_fn.showToast('User Profile Updated Successfully');
+                common_fn.showToast(`${t('Homescreen.User Profile Updated Successfully')}`);
               } else {
-                common_fn.showToast(UpdateProfile?.message);
+                const translatedMessage = await translateText(UpdateProfile?.message);
+                common_fn.showToast(translatedMessage);
               }
             }
           }
@@ -216,15 +221,16 @@ const EditProfile = ({ navigation }) => {
 
       if (RemoveProfile?.success === true) {
         setuservalue({ ...Uservalue, profile: '' });
-        common_fn.showToast('Profile picture removed successfully');
+        common_fn.showToast(`${t('Homescreen.Profile picture removed successfully')}`);
       } else {
-        common_fn.showToast(RemoveProfile?.message || 'Failed to remove profile picture');
+        const translatedMessage = await translateText(RemoveProfile?.message);
+        common_fn.showToast(translatedMessage);
       }
       setProfileOptionsVisible(false);
     } catch (error) {
       console.log('Error in REMOVE PROFILE:', error);
       console.log('Error details:', error.message);
-      common_fn.showToast('Network request failed. Please try again later.');
+      common_fn.showToast(`${t('Homescreen.Network request failed. Please try again later.')}`);
       setProfileOptionsVisible(false);
     }
   };

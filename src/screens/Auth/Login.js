@@ -25,6 +25,7 @@ import common_fn from '../../Components/common_fn';
 import { Platform } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import fetchData from '../../Config/fetchData';
+import { translateText } from '../Context/userContext';
 
 import {
   GoogleSignin,
@@ -126,7 +127,8 @@ const Login = () => {
 
         if (login_res?.success == true) {
           await AsyncStorage.setItem('WhatsAppModal', 'true');
-          common_fn.showToast(login_res?.message);
+          const translatedMessage = await translateText(login_res?.message);
+          common_fn.showToast(translatedMessage);
           navigation.navigate('OTPScreen', {
             number: number,
             token: login_res?.token,
@@ -134,7 +136,8 @@ const Login = () => {
           setNumber('');
           setloader(false);
         } else {
-          common_fn.showToast(login_res?.message);
+          const translatedMessage = await translateText(login_res?.message);
+          common_fn.showToast(translatedMessage);
           setloader(false);
         }
       } else {
@@ -180,7 +183,8 @@ const Login = () => {
           'USERDATA',
           JSON.stringify(googleLogin?.data),
         );
-        common_fn.showToast(googleLogin?.message);
+        const translatedMessage = await translateText(googleLogin?.message);
+        common_fn.showToast(translatedMessage);
         await GoogleSignin.signOut();
         navigation.dispatch(
           CommonActions.reset({

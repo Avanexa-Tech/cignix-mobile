@@ -28,6 +28,7 @@ import common_fn from '../../Components/common_fn';
 import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { translateText } from '../Context/userContext'
 
 
 // create a component
@@ -136,8 +137,8 @@ const Register = ({ navigation, route }) => {
           step: 1,
           total_points: routedata?.totalScore
         }
-       console.log("Registerdata",Registerdata);
-       
+        console.log("Registerdata", Registerdata);
+
         const Registerapi = await fetchData?.Register(Registerdata);
         if (Registerapi?.success == true) {
           console.log("first");
@@ -147,11 +148,12 @@ const Register = ({ navigation, route }) => {
             JSON.stringify(Registerapi?.data),
           );
           navigation.navigate('Tab');
-
-          common_fn.showToast(Registerapi?.message);
+          const translatedMessage = await translateText(Registerapi?.message);
+          common_fn.showToast(translatedMessage);
           setloading(false);
         } else {
-          common_fn.showToast(Registerapi?.message);
+          const translatedMessage = await translateText(Registerapi?.message);
+          common_fn.showToast(translatedMessage);
           setloading(false);
         }
 
@@ -305,7 +307,7 @@ const Register = ({ navigation, route }) => {
             color: '#666666',
             fontFamily: Mulish.Light,
             paddingVertical: 10,
-            lineHeight:20
+            lineHeight: 20
           }}>
           Create an account to unlock personalised videos and support to help you quit smoking
         </Text>

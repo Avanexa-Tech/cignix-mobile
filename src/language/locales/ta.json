@@ -91,7 +91,9 @@
     "Free": "இலவசம்",
     "year": "ஆண்டு",
     "basic Plan": "அடிப்படை திட்டம்",
-    "Access essential features to help you begin your quit-smoking journey.": "உங்கள் புகைபிடிப்பு நிறுத்தும் பயணத்தை தொடங்க உதவும் அடிப்படை அம்சங்களுக்கு அணுகல்."
+    "Access essential features to help you begin your quit-smoking journey.": "உங்கள் புகைபிடிப்பு நிறுத்தும் பயணத்தை தொடங்க உதவும் அடிப்படை அம்சங்களுக்கு அணுகல்.",
+    "Please select a plan": "தயவுசெய்து ஒரு திட்டத்தைத் தேர்ந்தெடுக்கவும்",
+    "Please Enter Coupon Code": "கூப்பன் குறியீட்டை உள்ளிடவும்"
   },
   "mobilelogin": {
     "Welcome Back": "மீண்டும் வருக",
@@ -135,7 +137,16 @@
     "Once a smoker, always a smoker": "ஒரு முறை புகைபிடித்தால், எப்போதும் புகைபிடிப்பவர்",
     "Even if I quit smoking for some days, I will surely relapse": "நான் சில நாட்கள் புகைபிடிப்பதை நிறுத்தினாலும், நான் கண்டிப்பாக மீண்டும் புகைபிடிப்பேன்",
     "Cigarette is my best friend": "சிகரெட் என் சிறந்த நண்பன்",
-    "Cigarette helps me cope better with life": "சிகரெட் எனக்கு வாழ்க்கையை சிறப்பாக சமாளிக்க உதவுகிறது"
+    "Cigarette helps me cope better with life": "சிகரெட் எனக்கு வாழ்க்கையை சிறப்பாக சமாளிக்க உதவுகிறது",
+    "Answer Submited Successfully": "பதில் வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது",
+    "Please Answer All Questions": "தயவுசெய்து அனைத்து கேள்விகளுக்கும் பதிலளிக்கவும்",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code": "தவறான OTP குறியீடு, தயவுசெய்து உங்கள் 6 இலக்க OTP குறியீட்டை உள்ளிடவும்",
+    "Verify Your Login": "உங்கள் உள்நுழைவை சரிபார்க்கவும்",
+    "Enter the verification code we sent to your number": "நாங்கள் உங்கள் எண்ணிற்கு அனுப்பிய சரிபார்ப்பு குறியீட்டை உள்ளிடவும்",
+    "Verfiy OTP": "OTP ஐ சரிபார்க்கவும்",
+    "Time Remaining": "மீதமுள்ள நேரம்",
+    "Didn’t get the code": "குறியீடு கிடைக்கவில்லையா",
+    "Resend": "மீண்டும் அனுப்புக"
   },
   "Congts": {
     "Congrats": "வாழ்த்துகள்",
@@ -210,7 +221,20 @@
     "Please Enter 6 Digit Otp": "தயவுசெய்து 6 இலக்க OTP ஐ உள்ளிடவும்",
     "Current": "தற்போதைய",
     "Watched": "பார்த்தது",
-    "Recently Unlocked": "சமீபத்தில் திறக்கப்பட்டது"
+    "Recently Unlocked": "சமீபத்தில் திறக்கப்பட்டது",
+    "Verify Your Login": "உங்கள் உள்நுழைவதை சரிபார்க்கவும்",
+    "Enter the verification code we sent to your number": "உங்கள் எண்ணிற்கு அனுப்பிய doğrிகைகை குறியீட்டை உள்ளிடவும்",
+    "Verfiy OTP": "OTP ஐ சரிபார்க்கவும்",
+    "Time Remaining": "மீதமுள்ள நேரம்",
+    "Didn’t get the code": "குறியீடு கிடைக்கவில்லையா?",
+    "Resend": "மீண்டும் அனுப்பு",
+    "This video is locked": "இந்த வீடியோ பூட்டப்பட்டுள்ளது",
+    "You can't go backward": "நீங்கள் பின்னோக்கி செல்ல முடியாது",
+    "Please fill out the required forms to register.": "பதிவுசெய்ய தேவையான படிவங்களை தயவுசெய்து பூர்த்தி செய்யவும்.",
+    "New password and confirm password does not match.": "புதிய கடவுச்சொல் மற்றும் உறுதிப்படுத்திய கடவுச்சொல் பொருந்தவில்லை.",
+    "Network request failed. Please try again later.": "பிணைய கோரிக்கை தோல்வியடைந்தது. தயவுசெய்து பிறகு முயற்சிக்கவும்.",
+    "Profile picture removed successfully": "சுயவிவரப் படம் வெற்றிகரமாக நீக்கப்பட்டது",
+    "User Profile Updated Successfully": "பயனர் சுயவிவரம் வெற்றிகரமாக புதுப்பிக்கப்பட்டது"
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "எங்களை எவ்வாறு அணுகுவது மற்றும் எங்கள் ஆதரவு குழுவுடன் எவ்வாறு இணைவது என்பதை கண்டறியவும்",
@@ -666,21 +690,21 @@
     "Submit & Continue": "சமர்ப்பிக்கவும் & தொடரவும்"
   },
   "Success": {
-  "Congratulations on": "அவதரிப்புக்கு வாழ்த்துக்கள்",
-  "Completing the Quiz": "குவிஜை முடித்ததற்கான வாழ்த்துக்கள்",
-  "To check your scores and see how you did": "உங்கள் மதிப்பெண்கள் மற்றும் நீங்கள் எவ்வாறு செயல்பட்டீர்களோ என்பதை பார்க்க",
-  "please sign up or log in!": "தயவு செய்து பதிவு செய்யவும் அல்லது உள்நுழைக!",
-  "Sign Up to View Scores": "மதிப்பெண்களை பார்க்க பதிவு செய்யவும்"
-},
-"Registerscreen": {
-  "Let’s Get Started": "ஆரம்பமாக விடுவோம்",
-  "Create an account to unlock personalised videos and support to help you quit smoking": "பதிவு செய்யவும், புகைத்தல் நிறுத்த உதவும் தனிப்பயனாக்கப்பட்ட வீடியோக்களையும் ஆதரவு பெற்று துவங்கவும்",
-  "By signing up, you agree to our": "பதிவு செய்து, நீங்கள் ஒப்புக்கொள்கிறீர்கள்",
-  "Terms & Conditions": "பட்டியல்கள் மற்றும் விதிமுறைகள்",
-  "and": "மற்றும்",
-  "Privacy Policy": "பிரைவேசி கொள்கை",
-  "Get Started": "துவங்கவும்",
-  "Already have an account?": "ஏற்கனவே கணக்கு உண்டா?",
-  "Log in": "உள்நுழையவும்"
-}
+    "Congratulations on": "அவதரிப்புக்கு வாழ்த்துக்கள்",
+    "Completing the Quiz": "குவிஜை முடித்ததற்கான வாழ்த்துக்கள்",
+    "To check your scores and see how you did": "உங்கள் மதிப்பெண்கள் மற்றும் நீங்கள் எவ்வாறு செயல்பட்டீர்களோ என்பதை பார்க்க",
+    "please sign up or log in!": "தயவு செய்து பதிவு செய்யவும் அல்லது உள்நுழைக!",
+    "Sign Up to View Scores": "மதிப்பெண்களை பார்க்க பதிவு செய்யவும்"
+  },
+  "Registerscreen": {
+    "Let’s Get Started": "ஆரம்பமாக விடுவோம்",
+    "Create an account to unlock personalised videos and support to help you quit smoking": "பதிவு செய்யவும், புகைத்தல் நிறுத்த உதவும் தனிப்பயனாக்கப்பட்ட வீடியோக்களையும் ஆதரவு பெற்று துவங்கவும்",
+    "By signing up, you agree to our": "பதிவு செய்து, நீங்கள் ஒப்புக்கொள்கிறீர்கள்",
+    "Terms & Conditions": "பட்டியல்கள் மற்றும் விதிமுறைகள்",
+    "and": "மற்றும்",
+    "Privacy Policy": "பிரைவேசி கொள்கை",
+    "Get Started": "துவங்கவும்",
+    "Already have an account?": "ஏற்கனவே கணக்கு உண்டா?",
+    "Log in": "உள்நுழையவும்"
+  }
 }

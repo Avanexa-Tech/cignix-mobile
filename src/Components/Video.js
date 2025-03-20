@@ -61,7 +61,7 @@ const VideoPlayerWithThumbnail = ({
             if (data?.status == 'active' || data?.status == 'completed') {
               setCurrentdata(data);
             } else {
-              common_fn.showToast('This video is locked');
+              common_fn.showToast(`${t('Homescreen.This video is locked')}`);
             }
           }}>
           <Image source={{ uri: thumbnailUri }} style={styles.thumbnail} />
@@ -93,7 +93,7 @@ const VideoPlayerWithThumbnail = ({
                 if (data?.status == 'active' || data?.status == 'completed') {
                   setCurrentdata(data);
                 } else {
-                  common_fn.showToast('This video is locked');
+                  common_fn.showToast(`${t('Homescreen.This video is locked')}`);
                 }
               }}>
               <Text style={{ fontSize: 13, fontFamily: Mulish.Bold, color: '#000' }}>
@@ -118,7 +118,7 @@ const VideoPlayerWithThumbnail = ({
                 if (data?.status == 'active' || data?.status == 'completed') {
                   setCurrentdata(data);
                 } else {
-                  common_fn.showToast('This video is locked');
+                  common_fn.showToast(`${t('Homescreen.This video is locked')}`);
                 }
               }}>
               <Text style={{ fontSize: 13, fontFamily: Mulish.Bold, color: '#000' }}>

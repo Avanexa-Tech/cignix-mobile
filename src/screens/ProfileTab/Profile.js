@@ -21,6 +21,7 @@ import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
 const Profile = ({ navigation }) => {
   const [Uservalue, setuserdata] = useState(null);
@@ -82,7 +83,8 @@ const Profile = ({ navigation }) => {
                 });
               } else {
                 console.log('error');
-                common_fn.showToast(logout?.message);
+                const translatedMessage = await translateText(logout?.message);
+                common_fn.showToast(translatedMessage);
               }
             } catch (error) {
               console.log('Catch in Logout', error);

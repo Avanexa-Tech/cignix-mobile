@@ -91,7 +91,9 @@
     "Free": "मोफत",
     "year": "वर्ष",
     "basic Plan": "मूलभूत योजना",
-    "Access essential features to help you begin your quit-smoking journey.": "आपल्या धूम्रपान सोडण्याच्या प्रवासाला प्रारंभ करण्यास मदत करण्यासाठी आवश्यक वैशिष्ट्यांमध्ये प्रवेश मिळवा."
+    "Access essential features to help you begin your quit-smoking journey.": "आपल्या धूम्रपान सोडण्याच्या प्रवासाला प्रारंभ करण्यास मदत करण्यासाठी आवश्यक वैशिष्ट्यांमध्ये प्रवेश मिळवा.",
+    "Please select a plan": "कृपया एक योजना निवडा",
+    "Please Enter Coupon Code": "कृपया कूपन कोड प्रविष्ट करा"
   },
   "mobilelogin": {
     "Welcome Back": "परत स्वागत आहे",
@@ -135,7 +137,16 @@
     "Once a smoker, always a smoker": "एकदा धूम्रपान करणारा, नेहमीच धूम्रपान करणारा",
     "Even if I quit smoking for some days, I will surely relapse": "मी काही दिवस धूम्रपान सोडले तरी, मी नक्कीच पुन्हा धूम्रपान करेन",
     "Cigarette is my best friend": "सिगारेट माझा सर्वोत्तम मित्र आहे",
-    "Cigarette helps me cope better with life": "सिगारेट मला जीवनाशी चांगले सामंजस्य साधण्यास मदत करते"
+    "Cigarette helps me cope better with life": "सिगारेट मला जीवनाशी चांगले सामंजस्य साधण्यास मदत करते",
+    "Answer Submited Successfully": "उत्तर यशस्वीरित्या सबमिट झाले",
+    "Please Answer All Questions": "कृपया सर्व प्रश्नांची उत्तरे द्या",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code": "अवैध ओटीपी कोड, कृपया आपला 6 अंकी ओटीपी कोड टाका",
+    "Verify Your Login": "तुमचे लॉगिन सत्यापित करा",
+    "Enter the verification code we sent to your number": "आम्ही तुमच्या क्रमांकावर पाठवलेला सत्यापन कोड प्रविष्ट करा",
+    "Verfiy OTP": "OTP सत्यापित करा",
+    "Time Remaining": "शिल्लक वेळ",
+    "Didn’t get the code": "कोड मिळाला नाही का",
+    "Resend": "पुन्हा पाठवा"
   },
   "Congts": {
     "Congrats": "अभिनंदन",
@@ -210,7 +221,20 @@
     "Please Enter 6 Digit Otp": "कृपया 6 अंकी OTP भरा",
     "Current": "सध्याचे",
     "Watched": "पाहिले",
-    "Recently Unlocked": "अलीकडे अनलॉक केले"
+    "Recently Unlocked": "अलीकडे अनलॉक केले",
+    "Verify Your Login": "तुमचा लॉगिन सत्यापित करा",
+    "Enter the verification code we sent to your number": "आम्ही तुमच्या क्रमांकावर पाठवलेला पडताळणी कोड प्रविष्ट करा",
+    "Verfiy OTP": "ओटीपी सत्यापित करा",
+    "Time Remaining": "उर्वरित वेळ",
+    "Didn’t get the code": "कोड मिळाला नाही?",
+    "Resend": "पुन्हा पाठवा",
+    "This video is locked": "हे व्हिडिओ लॉक केलेले आहे",
+    "You can't go backward": "तुम्ही मागे जाऊ शकत नाही",
+    "Please fill out the required forms to register.": "नोंदणीसाठी आवश्यक फॉर्म भरा.",
+    "New password and confirm password does not match.": "नवीन पासवर्ड आणि पुष्टी पासवर्ड जुळत नाहीत.",
+    "Network request failed. Please try again later.": "नेटवर्क विनंती अयशस्वी झाली. कृपया नंतर पुन्हा प्रयत्न करा.",
+    "Profile picture removed successfully": "प्रोफाईल चित्र यशस्वीरित्या काढले गेले.",
+    "User Profile Updated Successfully": "वापरकर्ता प्रोफाईल यशस्वीरित्या अद्ययावत केले गेले."
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "आमच्याशी संपर्क साधण्यासाठी आणि आमच्या समर्थन टीमशी कसे जोडावे हे शोधा",
@@ -318,7 +342,7 @@
     "Lost your progress or data? Don’t worry—our support team helps recover your information, so you can continue from where you left off without losing valuable time or effort.": "आपली प्रगती किंवा डेटा हरवला आहे का? काळजी करू नका—आमचा सहाय्यक संघ तुमची माहिती पुनर्प्राप्त करण्यात मदत करतो, जेणेकरून आपण जिथे थांबलात तिथून पुढे चालू ठेवू शकता, तुमचा मौल्यवान वेळ आणि प्रयत्न वाचवू शकता.",
     "Sign-up": "नोंदणी करा",
     "How does Cignix work": "Cignix कसे कार्य करते",
-     "Encountering errors or glitches while using our app or platform? We provide step-by-step assistance to diagnose and resolve technical issues, ensuring optimal performance.": "आमच्या अ‍ॅप किंवा प्लॅटफॉर्मचा वापर करताना त्रुटी किंवा अडचणी येत आहेत का? आम्ही तांत्रिक अडचणी शोधून काढण्यासाठी आणि सोडवण्यासाठी टप्प्याटप्प्याने सहाय्य प्रदान करतो, जेणेकरून सर्वोत्तम कार्यक्षमता सुनिश्चित करता येईल."
+    "Encountering errors or glitches while using our app or platform? We provide step-by-step assistance to diagnose and resolve technical issues, ensuring optimal performance.": "आमच्या अ‍ॅप किंवा प्लॅटफॉर्मचा वापर करताना त्रुटी किंवा अडचणी येत आहेत का? आम्ही तांत्रिक अडचणी शोधून काढण्यासाठी आणि सोडवण्यासाठी टप्प्याटप्प्याने सहाय्य प्रदान करतो, जेणेकरून सर्वोत्तम कार्यक्षमता सुनिश्चित करता येईल."
   },
   "ContactUs": {
     "We’re committed to offering the best possible support, ensuring your experience with us is smooth!": "आम्ही सर्वोत्तम शक्य समर्थन देण्यास वचनबद्ध आहोत, त्यामुळे तुमचा आमच्यासोबतचा अनुभव सुरळीत असेल!",
@@ -666,10 +690,10 @@
     "Submit & Continue": "सामान्य करा & पुढे जा"
   },
   "Success": {
-  "Congratulations on": "आपल्याला शुभेच्छा",
-  "Completing the Quiz": "क्विझ पूर्ण केल्याबद्दल",
-  "To check your scores and see how you did": "तुमचे स्कोअर तपासण्यासाठी आणि तुम्ही कसे केले हे पाहण्यासाठी",
-  "please sign up or log in!": "कृपया साइन अप करा किंवा लॉग इन करा!",
-  "Sign Up to View Scores": "स्कोअर पाहण्यासाठी साइन अप करा"
-}
+    "Congratulations on": "आपल्याला शुभेच्छा",
+    "Completing the Quiz": "क्विझ पूर्ण केल्याबद्दल",
+    "To check your scores and see how you did": "तुमचे स्कोअर तपासण्यासाठी आणि तुम्ही कसे केले हे पाहण्यासाठी",
+    "please sign up or log in!": "कृपया साइन अप करा किंवा लॉग इन करा!",
+    "Sign Up to View Scores": "स्कोअर पाहण्यासाठी साइन अप करा"
+  }
 }

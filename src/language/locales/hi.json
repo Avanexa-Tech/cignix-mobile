@@ -92,7 +92,9 @@
     "Free": "निःशुल्क",
     "year": "वर्ष",
     "basic Plan": "मूलभूत प्लान",
-    "Access essential features to help you begin your quit-smoking journey.": "आपकी धूम्रपान छोड़ने की यात्रा शुरू करने में मदद करने के लिए आवश्यक सुविधाओं तक पहुँचें।"
+    "Access essential features to help you begin your quit-smoking journey.": "आपकी धूम्रपान छोड़ने की यात्रा शुरू करने में मदद करने के लिए आवश्यक सुविधाओं तक पहुँचें।",
+    "Please select a plan": "कृपया एक योजना चुनें",
+    "Please Enter Coupon Code": "कृपया कूपन कोड दर्ज करें"
   },
   "mobilelogin": {
     "Welcome Back": "फिर से स्वागत है",
@@ -136,7 +138,16 @@
     "Once a smoker, always a smoker": "एक बार धूम्रपान करने वाला, हमेशा धूम्रपान करने वाला",
     "Even if I quit smoking for some days, I will surely relapse": "अगर मैं कुछ दिनों के लिए धूम्रपान छोड़ दूं, तो मैं निश्चित रूप से फिर से धूम्रपान करूंगा",
     "Cigarette is my best friend": "सिगरेट मेरा सबसे अच्छा दोस्त है",
-    "Cigarette helps me cope better with life": "सिगरेट मुझे जीवन से बेहतर तरीके से निपटने में मदद करती है"
+    "Cigarette helps me cope better with life": "सिगरेट मुझे जीवन से बेहतर तरीके से निपटने में मदद करती है",
+    "Answer Submited Successfully": "उत्तर सफलतापूर्वक सबमिट किया गया",
+    "Please Answer All Questions": "कृपया सभी प्रश्नों का उत्तर दें",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code": "अमान्य ओटीपी कोड, कृपया अपना 6 अंकों का ओटीपी कोड दर्ज करें",
+    "Verify Your Login": "अपने लॉगिन को सत्यापित करें",
+    "Enter the verification code we sent to your number": "हमने आपके नंबर पर भेजा गया सत्यापन कोड दर्ज करें",
+    "Verfiy OTP": "ओटीपी सत्यापित करें",
+    "Time Remaining": "शेष समय",
+    "Didn’t get the code": "कोड नहीं मिला?",
+    "Resend": "पुनः भेजें"
   },
   "Congts": {
     "Congrats": "बधाई हो",
@@ -228,7 +239,20 @@
     "Please Enter 6 Digit Otp": "कृपया 6 अंकों का OTP दर्ज करें",
     "Current": "वर्तमान",
     "Watched": "देखा",
-    "Recently Unlocked": "हाल ही में अनलॉक किया गया"
+    "Recently Unlocked": "हाल ही में अनलॉक किया गया",
+    "Verify Your Login": "अपने लॉगिन को सत्यापित करें",
+    "Enter the verification code we sent to your number": "हमने आपके नंबर पर जो सत्यापन कोड भेजा है, उसे दर्ज करें",
+    "Verfiy OTP": "ओटीपी सत्यापित करें",
+    "Time Remaining": "शेष समय",
+    "Didn’t get the code": "कोड नहीं मिला?",
+    "Resend": "फिर से भेजें",
+    "This video is locked": "यह वीडियो लॉक है",
+    "You can't go backward": "आप पीछे नहीं जा सकते",
+    "Please fill out the required forms to register.": "कृपया पंजीकरण के लिए आवश्यक फ़ॉर्म भरें।",
+    "New password and confirm password does not match.": "नया पासवर्ड और पुष्टि पासवर्ड मेल नहीं खाते।",
+    "Network request failed. Please try again later.": "नेटवर्क अनुरोध विफल हुआ। कृपया बाद में पुनः प्रयास करें।",
+    "Profile picture removed successfully": "प्रोफ़ाइल चित्र सफलतापूर्वक हटाया गया।",
+    "User Profile Updated Successfully": "यूज़र प्रोफ़ाइल सफलतापूर्वक अपडेट की गई।"
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "जानें कि हमसे कैसे संपर्क करें और हमारी सहायता टीम से कैसे जुड़ें",
@@ -684,10 +708,10 @@
     "Submit & Continue": "सबमिट करें & जारी रखें"
   },
   "Success": {
-  "Congratulations on": "बधाई हो",
-  "Completing the Quiz": "क्विज़ पूरा करने के लिए",
-  "To check your scores and see how you did": "अपने स्कोर जांचने और यह देखने के लिए कि आपने कैसे प्रदर्शन किया",
-  "please sign up or log in!": "कृपया साइन अप करें या लॉग इन करें!",
-  "Sign Up to View Scores": "स्कोर देखने के लिए साइन अप करें"
-}
+    "Congratulations on": "बधाई हो",
+    "Completing the Quiz": "क्विज़ पूरा करने के लिए",
+    "To check your scores and see how you did": "अपने स्कोर जांचने और यह देखने के लिए कि आपने कैसे प्रदर्शन किया",
+    "please sign up or log in!": "कृपया साइन अप करें या लॉग इन करें!",
+    "Sign Up to View Scores": "स्कोर देखने के लिए साइन अप करें"
+  }
 }

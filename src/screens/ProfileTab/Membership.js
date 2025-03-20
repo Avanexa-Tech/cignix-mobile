@@ -25,7 +25,7 @@ import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import {translateText} from '../Context/userContext';
+import { translateText } from '../Context/userContext';
 
 const Membership = () => {
   const navigation = useNavigation();
@@ -67,12 +67,12 @@ const Membership = () => {
           GetMembership?.data.map(async (plan) => {
             const translatedFeatures = await Promise.all(
               plan.features.map((feature) =>
-                translateText(feature, t) 
+                translateText(feature, t)
               )
             );
             return {
               ...plan,
-              features: translatedFeatures, 
+              features: translatedFeatures,
             };
           })
         );
@@ -104,7 +104,7 @@ const Membership = () => {
 
     return (
       <TouchableOpacity
-        style={{ flex: 1,alignContent:'center',alignItems:'center'}}
+        style={{ flex: 1, alignContent: 'center', alignItems: 'center' }}
         onPress={() => {
           if (title?.price != 0) {
             setSelectedPlan(title);
@@ -162,11 +162,11 @@ const Membership = () => {
               </Text>
             </View>
           ) : null}
-          <View style={{ gap: 15, marginTop: 20,width:scr_width/1.5}}>
+          <View style={{ gap: 15, marginTop: 20, width: scr_width / 1.5 }}>
             {title?.features?.map((item, index) => {
               return (
                 <View
-                  style={{flexDirection: 'row', alignItems: 'center' }}
+                  style={{ flexDirection: 'row', alignItems: 'center' }}
                   key={index}>
                   <Iconviewcomponent
                     Icontag={'AntDesign'}
@@ -181,7 +181,7 @@ const Membership = () => {
                       fontSize: 12,
                       textTransform: 'capitalize',
                       fontWeight: '400',
-                      marginLeft:5
+                      marginLeft: 5
                     }}>
                     {item}
                   </Text>
@@ -260,7 +260,8 @@ const Membership = () => {
           );
         }
       } else {
-        common_fn?.showToast(Apply_coupon?.message);
+        const translatedMessage = await translateText(Apply_coupon?.message);
+        common_fn?.showToast(translatedMessage);
       }
     } catch (error) {
       console.log('CATCH IN Apply Coupon', error);
@@ -276,7 +277,8 @@ const Membership = () => {
         JSON.stringify(data),
       );
       if (requestApi?.success == true) {
-        common_fn?.showToast(requestApi?.message);
+        const translatedMessage = await translateText(requestApi?.message);
+        common_fn?.showToast(translatedMessage);
       }
     } catch (error) {
       console.log('ERROR IN CATCH IN REFUND REQUEST', error);
@@ -469,7 +471,7 @@ const Membership = () => {
               <TextInput
                 placeholder={t("PlaceHolder.Enter Coupon Code")}
                 placeholderTextColor={'#999999'}
-                style={{color: Color.black}}
+                style={{ color: Color.black }}
                 maxLength={6}
                 value={Couponcode}
                 editable={Coupondata == '' ? true : false}
@@ -483,7 +485,7 @@ const Membership = () => {
                     if (Couponcode !== '') {
                       Applycoupon(Couponcode);
                     } else {
-                      common_fn?.showToast('Please Enter Coupon Code');
+                      common_fn?.showToast(`${t('Membership.Please Enter Coupon Code')}`);
                     }
                   }}>
                   <Text
@@ -621,7 +623,7 @@ const Membership = () => {
                 alignItems: 'center',
               }}
               onPress={() => {
-                common_fn?.showToast('Please select a plan');
+                common_fn?.showToast(`${t('Membership.Please select a plan')}`);
               }}>
               {btnloader ? (
                 <ActivityIndicator size={'small'} color={'#fff'} />

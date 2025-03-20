@@ -84,7 +84,7 @@ const VideoPlayerWithThumbnail = ({
             if (data?.status === 'active' || data?.status === 'completed') {
               setCurrentdata(data);
             } else {
-              common_fn.showToast('This video is locked');
+              common_fn.showToast(`${t('Homescreen.This video is locked')}`);
             }
           }}>
           <Image source={{ uri: thumbnailUri }} style={styles.thumbnail} />
@@ -97,7 +97,7 @@ const VideoPlayerWithThumbnail = ({
               if (data?.status === 'active' || data?.status === 'completed') {
                 setCurrentdata(data);
               } else {
-                common_fn.showToast('This video is locked');
+                common_fn.showToast(`${t('Homescreen.This video is locked')}`);
               }
             }}>
               <Text style={styles.buttonText}>
@@ -109,7 +109,7 @@ const VideoPlayerWithThumbnail = ({
               if (data?.status === 'active' || data?.status === 'completed') {
                 setCurrentdata(data);
               } else {
-                common_fn.showToast('This video is locked');
+                common_fn.showToast(`${t('Homescreen.This video is locked')}`);
               }
             }}>
               <Text style={dynamicStyles.buttonText}>
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: screenWidth * 0.02, 
+    padding: screenWidth * 0.02,
     borderRadius: 5,
   },
   time: {
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     left: '30%',
     top: '35%',
     backgroundColor: '#fff',
-    padding: screenWidth * 0.025, 
+    padding: screenWidth * 0.025,
     alignItems: 'center',
     borderRadius: 20,
   },

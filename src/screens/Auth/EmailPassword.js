@@ -28,7 +28,7 @@ import { Platform } from 'react-native';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {CommonActions} from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -71,12 +71,12 @@ const EmailPassword = () => {
       setEmailValidError('');
     }
   };
-    useEffect(() => {
-      GoogleSignin.configure({
-        webClientId:
-          '542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com',
-      });
-    }, []);
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com',
+    });
+  }, []);
 
   // LOGIN FUNCTION :
   const login = async () => {
@@ -97,7 +97,8 @@ const EmailPassword = () => {
             'USERDATA',
             JSON.stringify(Emailpassword?.data),
           );
-          common_fn.showToast(Emailpassword?.message);
+          const translatedMessage = await translateText(Emailpassword?.message);
+          common_fn.showToast(translatedMessage);
           navigation.reset({
             index: 0,
             routes: [{ name: 'Tab' }],
@@ -106,7 +107,8 @@ const EmailPassword = () => {
         } else {
           console.log('====================================');
           console.log(Emailpassword);
-          common_fn.showToast(Emailpassword?.message);
+          const translatedMessage = await translateText(Emailpassword?.message);
+          common_fn.showToast(translatedMessage);
           setLoading(false);
         }
       } else {
@@ -144,7 +146,8 @@ const EmailPassword = () => {
           refRBSheet.current.close();
           setChangepassowrd('');
         } else {
-          common_fn.showToast(EmailApi?.message);
+          const translatedMessage = await translateText(EmailApi?.message);
+          common_fn.showToast(translatedMessage);
           setChangepassowrdloader(false);
         }
       }
@@ -166,8 +169,8 @@ const EmailPassword = () => {
         dob: '',
         step: 0,
         type: 'free',
-      };      
-      console.log('googleAuthPayload',googleAuthPayload)
+      };
+      console.log('googleAuthPayload', googleAuthPayload)
       const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
       console.log('googleAuthPayload', googleLogin);
       if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
@@ -176,12 +179,13 @@ const EmailPassword = () => {
           'USERDATA',
           JSON.stringify(googleLogin?.data),
         );
-        common_fn.showToast(googleLogin?.message); 
+        const translatedMessage = await translateText(googleLogin?.message);
+        common_fn.showToast(translatedMessage);
         await GoogleSignin.signOut();
         navigation.dispatch(
           CommonActions.reset({
-            index: 0, 
-            routes: [{ name: 'Tab' }], 
+            index: 0,
+            routes: [{ name: 'Tab' }],
           })
         );
       }
@@ -469,8 +473,8 @@ const EmailPassword = () => {
                     borderWidth: 1,
                     borderColor: '#C5C5C5',
                   }}
-                  onPress={()=>signIn()}
-                  >
+                  onPress={() => signIn()}
+                >
                   <Image
                     source={require('../../assets/Images/google.png')}
                     style={{ width: 24, height: 24, resizeMode: 'contain' }}

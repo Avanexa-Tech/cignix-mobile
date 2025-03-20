@@ -34,7 +34,16 @@
     "Once a smoker, always a smoker": "ഒരു തവണ പുകവലിച്ചാൽ, എപ്പോഴും പുകവലിക്കുന്നവനാണ്",
     "Even if I quit smoking for some days, I will surely relapse": "ഞാൻ ചില ദിവസങ്ങൾ പുകവലി നിർത്തിയാലും, ഞാൻ തീർച്ചയായും വീണ്ടും പുകവലിക്കും",
     "Cigarette is my best friend": "സിഗരറ്റ് എന്റെ മികച്ച സുഹൃത്ത് ആണ്",
-    "Cigarette helps me cope better with life": "സിഗരറ്റ് എനിക്ക് ജീവിതം നേരിടാൻ മികച്ച രീതിയിൽ സഹായിക്കുന്നു"
+    "Cigarette helps me cope better with life": "സിഗരറ്റ് എനിക്ക് ജീവിതം നേരിടാൻ മികച്ച രീതിയിൽ സഹായിക്കുന്നു",
+    "Answer Submited Successfully": "ഉത്തരം വിജയകരമായി സമർപ്പിച്ചു",
+    "Please Answer All Questions": "ദയവായി എല്ലാ ചോദ്യങ്ങൾക്കും ഉത്തരം നൽകുക",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code": "അസാധുവായ ഒടിപി കോഡ്, ദയവായി നിങ്ങളുടെ 6 അക്ക ഒടിപി കോഡ് നൽകുക",
+    "Verify Your Login": "നിങ്ങളുടെ ലോഗിൻ സ്ഥിരീകരിക്കുക",
+    "Enter the verification code we sent to your number": "നിങ്ങളുടെ നമ്പറിൽ ഞങ്ങൾ അയച്ച പരിശോധനാ കോഡ് നൽകുക",
+    "Verfiy OTP": "OTP സ്ഥിരീകരിക്കുക",
+    "Time Remaining": "ശേഷിച്ച സമയം",
+    "Didn’t get the code": "കോഡ് ലഭിച്ചില്ലേ?",
+    "Resend": "വീണ്ടും അയയ്ക്കുക"
   },
   "Editprofile": {
     "Edit Profile": "പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക",
@@ -105,7 +114,9 @@
     "Free": "മോഫത്",
     "year": "വർഷം",
     "basic Plan": "മൂലിക പദ്ധതി",
-    "Access essential features to help you begin your quit-smoking journey.": "നിങ്ങളുടെ പുകവലി നിർത്താനുള്ള യാത്ര ആരംഭിക്കാൻ സഹായിക്കുന്ന അടിസ്ഥാന സവിശേഷതകളിലേക്ക് പ്രവേശിക്കുക."
+    "Access essential features to help you begin your quit-smoking journey.": "നിങ്ങളുടെ പുകവലി നിർത്താനുള്ള യാത്ര ആരംഭിക്കാൻ സഹായിക്കുന്ന അടിസ്ഥാന സവിശേഷതകളിലേക്ക് പ്രവേശിക്കുക.",
+    "Please select a plan": "ദയവായി ഒരു പദ്ധതിയെ തിരഞ്ഞെടുക്കുക",
+    "Please Enter Coupon Code": "ദയവായി കൂപ്പൺ കോഡ് നൽകുക"
   },
   "mobilelogin": {
     "Welcome Back": "തിരികെ വരൂ",
@@ -185,7 +196,20 @@
     "Please Enter 6 Digit Otp": "ദയവായി 6 അക്ക OTP നൽകുക",
     "Current": "നിലവിലെ",
     "Watched": "കണ്ടു",
-    "Recently Unlocked": "സമീപകാലത്ത് തുറന്നത്"
+    "Recently Unlocked": "സമീപകാലത്ത് തുറന്നത്",
+    "Verify Your Login": "നിങ്ങളുടെ ലോഗിൻ സ്ഥിരീകരിക്കുക",
+    "Enter the verification code we sent to your number": "നിങ്ങളുടെ നമ്പറിലേക്ക് ഞങ്ങൾ അയച്ച പരിശോധന കോഡ് നൽകുക",
+    "Verfiy OTP": "OTP സ്ഥിരീകരിക്കുക",
+    "Time Remaining": "ശേഷിക്കുന്ന സമയം",
+    "Didn’t get the code": "കോഡ് ലഭിച്ചില്ലേ?",
+    "Resend": "വീണ്ടും അയയ്ക്കുക",
+    "This video is locked": "ഈ വീഡിയോ ലോക്ക് ചെയ്തിരിക്കുന്നു",
+    "You can't go backward": "നിങ്ങൾക്ക് പിന്നിലേക്ക് പോകാൻ കഴിയില്ല",
+    "Please fill out the required forms to register.": "ദയവായി രജിസ്റ്റർ ചെയ്യുന്നതിനായി ആവശ്യമായ ഫോമുകൾ പൂരിപ്പിക്കുക.",
+    "New password and confirm password does not match.": "പുതിയ പാസ്‌വേഡും സ്ഥിരീകരണ പാസ്‌വേഡും പൊരുത്തപ്പെടുന്നില്ല.",
+    "Network request failed. Please try again later.": "നെറ്റ്‌വർക്കിനുള്ള അഭ്യർത്ഥന പരാജയപ്പെട്ടു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
+    "Profile picture removed successfully": "പ്രൊഫൈൽ ചിത്രം വിജയകരമായി നീക്കം ചെയ്തു",
+    "User Profile Updated Successfully": "ഉപയോക്തൃ പ്രൊഫൈൽ വിജയകരമായി അപ്‌ഡേറ്റ് ചെയ്തു"
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "ഞങ്ങളുമായി എങ്ങനെ ബന്ധപ്പെടാമെന്ന് കണ്ടെത്തുക, ഞങ്ങളുടെ പിന്തുണാ ടീമുമായി ബന്ധപ്പെടുക",
@@ -641,10 +665,10 @@
     "Submit & Continue": "സമർപ്പിക്കുക & തുടരുക"
   },
   "Success": {
-  "Congratulations on": "ആശംസകൾ",
-  "Completing the Quiz": "ക്വിസ് പൂർത്തിയാക്കിയതിന്",
-  "To check your scores and see how you did": "നിങ്ങളുടെ സ്കോറുകൾ പരിശോധിച്ച് എങ്ങനെ ചെയ്തു എന്ന് കാണാൻ",
-  "please sign up or log in!": "ദയവായി സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക!",
-  "Sign Up to View Scores": "സ്കോറുകൾ കാണാൻ സൈൻ അപ്പ് ചെയ്യുക"
-}
+    "Congratulations on": "ആശംസകൾ",
+    "Completing the Quiz": "ക്വിസ് പൂർത്തിയാക്കിയതിന്",
+    "To check your scores and see how you did": "നിങ്ങളുടെ സ്കോറുകൾ പരിശോധിച്ച് എങ്ങനെ ചെയ്തു എന്ന് കാണാൻ",
+    "please sign up or log in!": "ദയവായി സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക!",
+    "Sign Up to View Scores": "സ്കോറുകൾ കാണാൻ സൈൻ അപ്പ് ചെയ്യുക"
+  }
 }

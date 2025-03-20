@@ -200,10 +200,10 @@ const SimTest = ({ navigation }) => {
                       },
                     ],
                   });
-                  common_fn.showToast('Answer Submited Successfully');
+                   common_fn.showToast(`${t('Sim1.Answer Submited Successfully')}`);
                 } else {
                   console.log('selctedAnswer', selctedAnswer);
-                  common_fn.showToast('Please Answer All Questions');
+                  common_fn.showToast(`${t('Sim1.Please Answer All Questions')}`);
                 }
               }}>
               <Text

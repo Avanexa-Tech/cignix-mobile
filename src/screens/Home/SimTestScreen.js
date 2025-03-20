@@ -62,7 +62,7 @@ const SimTestScreen = ({ navigation }) => {
       const SIMTEST_UPDATE_SCORE = await fetchData?.POST_USER_LESSON(data);
       if (SIMTEST_UPDATE_SCORE?.success === true) {
         UserStep();
-        common_fn.showToast('Answer Submitted Successfully');
+        common_fn.showToast(`${t('Homescreen.Answer Submited Successfully')}`);
       }
     } catch (error) {
       console.log('Catch in SIMTEST_UPDATE_SCORE', error);
@@ -130,7 +130,7 @@ const SimTestScreen = ({ navigation }) => {
                   );
                   SIMTEST_UPDATE_SCORE(total);
                 } else {
-                  common_fn.showToast('Please Answer All Questions');
+                  common_fn.showToast(`${t('Homescreen.Please Answer All Questions')}`);
                 }
               }}>
               <Text style={styles.submitButtonText}>

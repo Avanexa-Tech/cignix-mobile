@@ -111,12 +111,12 @@ const Videostep4 = ({
       clearTimeout(timer);
       overlayTimer = setTimeout(() => setOverlay(false), 3000);
     } else {
-      common_fn?.showToast("You can't go backward");
+      common_fn?.showToast(`${t("Homescreen.You can't go backward")}`);
     }
   };
 
   const forward = () => {
-    common_fn?.showToast("You can't go forward");
+    common_fn?.showToast(`${t("Homescreen.You can't go forward")}`);
   };
 
   const onslide = slide => {

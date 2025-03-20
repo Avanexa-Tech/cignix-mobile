@@ -29,6 +29,8 @@ import OTPInput from '../../Components/OTPInput';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
 import { scr_height } from '../../Components/Dimensions';
+import { useTranslation } from 'react-i18next';
+import {translateText} from '../Context/userContext'
 
 
 const DismissKeyboard = ({ children }) => (
@@ -54,6 +56,7 @@ const OTPScreen = ({ route }) => {
     const [loader, setLoading] = useState(false);
     const [token, setToken] = useState(null);
     const dispatch = useDispatch();
+    const {t}=useTranslation()
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -106,10 +109,12 @@ const OTPScreen = ({ route }) => {
                     mobile: routeName?.number
                 });
                 if (login?.success == true) {
-                    common_fn.showToast(login?.message);
+                    const translatedMessage = await translateText(login?.message);
+                    common_fn.showToast(translatedMessage);
                     setToken(login?.token);
                 } else {
-                    common_fn.showToast(login?.message);
+                    const translatedMessage = await translateText(login?.message);
+                    common_fn.showToast(translatedMessage);
                 }
             }
         } catch (error) {
@@ -143,28 +148,30 @@ const OTPScreen = ({ route }) => {
                     otp: data,
                     token: token == null ? routeName?.token : token,
                 })
-                console.log("otp resp --------------- :",verify);
-                
+                console.log("otp resp --------------- :", verify);
+
                 if (verify?.success == true) {
                     await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(verify?.token));
                     await AsyncStorage.setItem('USERDATA', JSON.stringify(verify?.data));
-                    common_fn.showToast(verify?.message);
+                    const translatedMessage = await translateText(verify?.message);
+                    common_fn.showToast(translatedMessage);
                     navigation.reset({
                         index: 0,
                         routes: [{ name: 'Tab' }],
                     })
                     setLoading(false);
                 } else {
-                    common_fn.showToast(verify?.message);
+                    const translatedMessage = await translateText(verify?.message);
+                    common_fn.showToast(translatedMessage);
                     console.log(verify?.message, 'oooo');
                     setLoading(false);
                 }
             } else {
                 if (Platform.OS === 'android') {
-                    common_fn.showToast('Invalid OTP Code Please Enter Your 6 Digit OTP Code');
+                    common_fn.showToast(`${t('Sim1.Invalid OTP Code Please Enter Your 6 Digit OTP Code')}`);
                     setLoading(false);
                 } else {
-                    alert('Invalid OTP Code Please Enter Your 6 Digit OTP Code');
+                    alert(`${t('Sim1.Invalid OTP Code Please Enter Your 6 Digit OTP Code')}`);
                     setLoading(false);
                 }
             }
@@ -242,7 +249,7 @@ const OTPScreen = ({ route }) => {
                         style={{
                             width: '100%',
                             marginVertical: 20,
-                            marginTop:scr_height/5,
+                            marginTop: scr_height / 5,
                             justifyContent: 'center', alignItems: 'center'
                         }}>
                         <Text
@@ -253,9 +260,9 @@ const OTPScreen = ({ route }) => {
                                 color: Color.black,
                                 marginRight: 10,
                                 marginVertical: 10,
-                    
+
                             }}>
-                            Verify Your Login
+                            {t("Sim1.Verify Your Login")}
                         </Text>
                         <Text
                             style={{
@@ -266,7 +273,7 @@ const OTPScreen = ({ route }) => {
                                 paddingTop: 10,
                                 textAlign: 'center',
                             }}>
-                            Enter the verification code we sent to your number{' +91 '}
+                            {t("Sim1.Enter the verification code we sent to your number")}{' +91 '}
                             <Text
                                 style={{
                                     fontSize: 14,
@@ -295,13 +302,13 @@ const OTPScreen = ({ route }) => {
                         <TouchableOpacity onPress={() => VerifyOTP()} style={{ width: '95%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.primary, borderRadius: 30, marginVertical: 20 }}>
                             {loader == true ? (
                                 <ActivityIndicator size={'small'} color={Color.white} />
-                            ) : (<Text style={{ fontSize: 16, color: Color.white, fontFamily: Mulish.SemiBold }}>Verfiy OTP</Text>)}
+                            ) : (<Text style={{ fontSize: 16, color: Color.white, fontFamily: Mulish.SemiBold }}>{t("Sim1.Verfiy OTP")}</Text>)}
                         </TouchableOpacity>
 
                         {seconds > 0 || minutes > 0 ? (
                             <View style={styles.noReceivecodeView}>
                                 <Text style={styles.noReceiveText}>
-                                    Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
+                                    {t("Sim1.Time Remaining")}: {minutes < 10 ? `0${minutes}` : minutes}:
                                     {seconds < 10 ? `0${seconds}` : seconds}
                                 </Text>
                             </View>
@@ -312,8 +319,8 @@ const OTPScreen = ({ route }) => {
                                         color: Color.cloudyGrey,
                                         fontSize: 14,
                                         fontFamily: Mulish.Medium,
-                                    }}>Didn’t get the code? </Text>
-                                    <Text style={styles.resendOtp}>Resend </Text>
+                                    }}>{t("Sim1.Didn’t get the code")}? </Text>
+                                    <Text style={styles.resendOtp}>{t("Sim1.Resend")} </Text>
                                 </TouchableOpacity>
                             </View>
                         )}

@@ -220,7 +220,7 @@ const HomeScreen = () => {
       };
       const FeedbackApi = await fetchData?.PUT_END_VIDEO(value?._id, data);
       if (FeedbackApi?.success == true) {
-        common_fn?.showToast('Feedback submitted successfully');
+        common_fn?.showToast(`${t('Homescreen.Feedback submitted successfully')}`);
         setFeedback('');
         refRBSheetssss?.current?.close();
         if (onlastvideo) {
@@ -228,7 +228,8 @@ const HomeScreen = () => {
         }
       } else {
         setFeedback('');
-        common_fn?.showToast(FeedbackApi?.message);
+        const translatedMessage = await translateText(FeedbackApi?.message);
+        common_fn?.showToast(translatedMessage);
         refRBSheetssss?.current?.close();
         if (onlastvideo) {
           setTestModalVisible(true);
@@ -264,8 +265,8 @@ const HomeScreen = () => {
           };
         })
       );
-        console.log("Videoooooooooo", translatedData);
-        
+      console.log("Videoooooooooo", translatedData);
+
       setgetvideo(translatedData);
       getrecentVideo(translatedData);
 
@@ -276,7 +277,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     Getvideo();
-  
+
   }, [language])
 
   // USERDATA :
@@ -494,7 +495,7 @@ const HomeScreen = () => {
                   SIMTEST_UPDATE_SCORE(total);
                 } else {
                   console.log('selctedAnswer', selctedAnswer);
-                  common_fn.showToast('Please Answer All Questions');
+                  common_fn.showToast(`${t('Homescreen.Please Answer All Questions')}`);
                 }
               }}>
               <Text
@@ -520,7 +521,7 @@ const HomeScreen = () => {
       console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       if (SIMTEST_UPDATE_SCORE?.success == true) {
         await UserStep();
-        common_fn.showToast('Answer Submited Successfully');
+        common_fn.showToast(`${t('Homescreen.Answer Submited Successfully')}`);
       } else {
         console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       }
@@ -573,8 +574,8 @@ const HomeScreen = () => {
 
   // getrecentVideo Button Functionality :
   const getrecentVideo = data => {
-    try {      
-      const activeIndex = data.findIndex(item => item?.status == 'active');      
+    try {
+      const activeIndex = data.findIndex(item => item?.status == 'active');
       if (activeIndex !== -1) {
         const activeItem = data[activeIndex];
         setCurrentvideo(activeItem);
@@ -1172,7 +1173,7 @@ const HomeScreen = () => {
                                       userdata?.step == 0
                                     ) {
                                       common_fn?.showToast(
-                                        'Please Watch All Videos and take the test.',
+                                        `${t('Homescreen.Please Watch All Videos and take the test.')}`
                                       );
                                     }
                                   }
@@ -1414,7 +1415,7 @@ const HomeScreen = () => {
                                       userdata?.step == 0
                                     ) {
                                       common_fn?.showToast(
-                                        'Please Watch All Videos and take the test.',
+                                       `${t('Homescreen.Please Watch All Videos and take the test.',)}`
                                       );
                                     }
                                   }
@@ -1790,7 +1791,7 @@ const HomeScreen = () => {
                   }}
                   onPress={() => {
                     Feedback == ''
-                      ? common_fn.showToast('Please Enter Feedback')
+                      ? common_fn.showToast(`${t('Homescreen.Please Enter Feedback')}`)
                       : FeedbackApi(Currentvideo);
                   }}>
                   <Text

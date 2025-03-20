@@ -91,7 +91,9 @@
     "Free": "Free",
     "year": "year",
     "basic Plan": "basic Plan",
-    "Access essential features to help you begin your quit-smoking journey.": "Access essential features to help you begin your quit-smoking journey."
+    "Access essential features to help you begin your quit-smoking journey.": "Access essential features to help you begin your quit-smoking journey.",
+    "Please select a plan":"Please select a plan"
+
   },
   "mobilelogin": {
     "Welcome Back": "Welcome Back",
@@ -135,7 +137,17 @@
     "Once a smoker, always a smoker": "Once a smoker, always a smoker",
     "Even if I quit smoking for some days, I will surely relapse": "Even if I quit smoking for some days, I will surely relapse",
     "Cigarette is my best friend": "Cigarette is my best friend",
-    "Cigarette helps me cope better with life": "Cigarette helps me cope better with life"
+    "Cigarette helps me cope better with life": "Cigarette helps me cope better with life",
+    "Answer Submited Successfully":"Answer Submited Successfully",
+    "Please Answer All Questions":"Please Answer All Questions",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code":"Invalid OTP Code Please Enter Your 6 Digit OTP Code",
+    "Verify Your Login":"Verify Your Login",
+    "Enter the verification code we sent to your number":"Enter the verification code we sent to your number",
+    "Verfiy OTP":"Verfiy OTP",
+    "Time Remaining":"Time Remaining",
+    "Didn’t get the code":"Didn’t get the code",
+    "Resend":"Resend"
+
   },
   "Congts": {
     "Congrats": "Congratulations on",
@@ -228,7 +240,20 @@
     "Please Enter 6 Digit Otp": "Please Enter 6 Digit OTP",
     "Current": "Current",
     "Watched": "Watched",
-    "Recently Unlocked": "Recently Unlocked"
+    "Recently Unlocked": "Recently Unlocked",
+    "Please Watch All Videos and take the test.":"Please Watch All Videos and take the test.",
+    "Feedback submitted successfully":"Feedback submitted successfully",
+    "Please Answer All Questions":"Please Answer All Questions",
+    "Answer Submited Successfully":"Answer Submitted Successfully",
+    "Please Enter Feedback":"Please Enter Feedback",
+    "Please Enter Coupon Code":"Please Enter Coupon Code",
+    "This video is locked":"This video is locked",
+    "You can't go backward":"You can't go backward",
+    "Please fill out the required forms to register.":"Please fill out the required forms to register.",
+    "New password and confirm password does not match.":"New password and confirm password does not match.",
+    "Network request failed. Please try again later.":"Network request failed. Please try again later.",
+    "Profile picture removed successfully":"Profile picture removed successfully",
+    "User Profile Updated Successfully":"User Profile Updated Successfully"
   },
   "Sim2": {
     "Sim Test 2": "SIM Test 2",

@@ -34,7 +34,16 @@
     "Once a smoker, always a smoker": "ఒకసారి పొగాకు పీల్చినవాడు, ఎప్పుడూ పొగాకు పీల్చేవాడు",
     "Even if I quit smoking for some days, I will surely relapse": "నేను కొన్ని రోజులు పొగాకు పీల్చడం ఆపినా, నేను ఖచ్చితంగా మళ్లీ పొగాకు పీల్చుతాను",
     "Cigarette is my best friend": "సిగరెట్ నా అత్యుత్తమ స్నేహితుడు",
-    "Cigarette helps me cope better with life": "సిగరెట్ నాకు జీవితాన్ని బాగా ఎదుర్కొనడంలో సహాయపడుతుంది"
+    "Cigarette helps me cope better with life": "సిగరెట్ నాకు జీవితాన్ని బాగా ఎదుర్కొనడంలో సహాయపడుతుంది",
+    "Answer Submited Successfully": "సమాధానం విజయవంతంగా సమర్పించబడింది",
+    "Please Answer All Questions": "దయచేసి అన్ని ప్రశ్నలకు సమాధానాలు ఇవ్వండి",
+    "Invalid OTP Code Please Enter Your 6 Digit OTP Code": "చెల్లని OTP కోడ్, దయచేసి మీ 6 అంకెల OTP కోడ్‌ను నమోదు చేయండి",
+    "Verify Your Login": "మీ లాగిన్‌ను నిర్ధారించండి",
+    "Enter the verification code we sent to your number": "మేము మీ నంబర్‌కు పంపిన ధృవీకరణ కోడ్‌ను నమోదు చేయండి",
+    "Verfiy OTP": "OTPని నిర్ధారించండి",
+    "Time Remaining": "మిగిలిన సమయం",
+    "Didn’t get the code": "కోడ్ అందలేదా?",
+    "Resend": "మళ్లీ పంపు"
   },
   "Editprofile": {
     "Edit Profile": "ప్రొఫైల్ ఎడిట్ చేయండి",
@@ -105,7 +114,9 @@
     "Free": "ఉచితం",
     "year": "సంవత్సరం",
     "basic Plan": "మూల ప్రణాళిక",
-    "Access essential features to help you begin your quit-smoking journey.": "మీరు పుక్కు విరమణ ప్రారంభించడానికి సహాయపడే అవసరమైన లక్షణాలకు ప్రాప్తి పొందండి."
+    "Access essential features to help you begin your quit-smoking journey.": "మీరు పుక్కు విరమణ ప్రారంభించడానికి సహాయపడే అవసరమైన లక్షణాలకు ప్రాప్తి పొందండి.",
+    "Please select a plan": "దయచేసి ఒక ప్లాన్‌ను ఎంచుకోండి",
+    "Please Enter Coupon Code": "దయచేసి కూపన్ కోడ్‌ని నమోదు చేయండి"
   },
   "mobilelogin": {
     "Welcome Back": "తిరిగి స్వాగతం",
@@ -191,7 +202,20 @@
     "Please Enter 6 Digit Otp": "దయచేసి 6 అంకెల OTP నమోదు చేయండి",
     "Current": "ప్రస్తుత",
     "Watched": "చూసిన",
-    "Recently Unlocked": "ఇటీవల అన్లాక్ చేయబడింది"
+    "Recently Unlocked": "ఇటీవల అన్లాక్ చేయబడింది",
+    "Verify Your Login": "మీ లాగిన్‌ను నిర్ధారించండి",
+    "Enter the verification code we sent to your number": "మేము మీ నంబర్‌కు పంపిన ధృవీకరణ కోడ్‌ను నమోదు చేయండి",
+    "Verfiy OTP": "OTPని నిర్ధారించండి",
+    "Time Remaining": "మిగిలిన సమయం",
+    "Didn’t get the code": "కోడ్ అందలేదా?",
+    "Resend": "మళ్లీ పంపు",
+    "This video is locked": "ఈ వీడియో లాక్ చేయబడింది",
+    "You can't go backward": "మీరు వెనక్కి వెళ్లలేరు",
+    "Please fill out the required forms to register.": "దయచేసి నమోదు కోసం అవసరమైన ఫారమ్‌లను పూరించండి.",
+    "New password and confirm password does not match.": "కొత్త పాస్‌వర్డ్ మరియు ధృవీకరణ పాస్‌వర్డ్ సరిపోలడం లేదు.",
+    "Network request failed. Please try again later.": "నెట్‌వర్క్ అభ్యర్థన విఫలమైంది. దయచేసి తర్వాత ప్రయత్నించండి.",
+    "Profile picture removed successfully": "ప్రొఫైల్ చిత్రం విజయవంతంగా తొలగించబడింది",
+    "User Profile Updated Successfully": "యూజర్ ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది"
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "మమ్మల్ని ఎలా చేరుకోవాలో మరియు మా మద్దతు బృందంతో ఎలా కనెక్ట్ కావాలో కనుగొనండి",
@@ -647,10 +671,10 @@
     "Submit & Continue": "సమర్పించండి & కొనసాగించండి"
   },
   "Success": {
-  "Congratulations on": "శుభాకాంక్షలు",
-  "Completing the Quiz": "క్విజ్ పూర్తి చేసినందుకు",
-  "To check your scores and see how you did": "మీ స్కోర్లను పరిశీలించడానికి మరియు మీరు ఎలా చేసినట్లు చూడటానికి",
-  "please sign up or log in!": "దయచేసి సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి!",
-  "Sign Up to View Scores": "స్కోర్లు చూడటానికి సైన్ అప్ చేయండి"
-}
+    "Congratulations on": "శుభాకాంక్షలు",
+    "Completing the Quiz": "క్విజ్ పూర్తి చేసినందుకు",
+    "To check your scores and see how you did": "మీ స్కోర్లను పరిశీలించడానికి మరియు మీరు ఎలా చేసినట్లు చూడటానికి",
+    "please sign up or log in!": "దయచేసి సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి!",
+    "Sign Up to View Scores": "స్కోర్లు చూడటానికి సైన్ అప్ చేయండి"
+  }
 }

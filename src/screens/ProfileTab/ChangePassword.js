@@ -32,6 +32,7 @@ import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
 import { ActivityIndicator } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
 // create a component
 const ChangePassword = () => {
@@ -88,12 +89,12 @@ const ChangePassword = () => {
         confirmPassword,
       );
       if (currentPassword == '' && newPassword == '' && confirmPassword == '') {
-        common_fn.showToast('Please fill out the required forms to register.');
+        common_fn.showToast(`${t('Homescreen.Please fill out the required forms to register.')}`);
         setloading(false);
       } else {
         if (newPassword !== confirmPassword) {
           common_fn.showToast(
-            'New password and confirm password does not match.',
+            `${t('Homescreen.New password and confirm password does not match.')}`
           );
           setloading(false);
         } else {
@@ -103,11 +104,13 @@ const ChangePassword = () => {
           };
           const Updatepassword = await fetchData?.ChangePassword(JSON?.stringify(passwordvalue));
           if (Updatepassword?.success == true) {
-            common_fn.showToast(Updatepassword?.message);
+            const translatedMessage = await translateText(Updatepassword?.message);
+            common_fn.showToast(translatedMessage);
             navigation.goBack();
             setloading(false);
           } else {
-            common_fn.showToast(Updatepassword?.message);
+            const translatedMessage = await translateText(Updatepassword?.message);
+            common_fn.showToast(translatedMessage);
             setloading(false);
           }
         }
