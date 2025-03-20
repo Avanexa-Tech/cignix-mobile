@@ -37,6 +37,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { Iconviewcomponent } from '../../Components/Icontag';
+import { useSelector } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -46,6 +47,10 @@ const DismissKeyboard = ({ children }) => (
 
 // create a component
 const Login = () => {
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   const { t, i18n } = useTranslation();
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -73,6 +78,9 @@ const Login = () => {
       hideListener.remove();
     };
   }, []);
+  useEffect(() => {
+    setError("");
+  },[language]);
   const chkNumber = number => {
     // setNumber(number);
     // if (number.length == 10) {
@@ -108,10 +116,8 @@ const Login = () => {
     let reg = /^[6-9][0-9]*$/; // Starts with 6-9 and contains digits only
 
     if (number.length === 0) {
-      setError('Enter Your Mobile Number');
-    } else if (!reg.test(number)) {
-      setError('Enter a valid mobile number');
-    } else {
+      setError(`${t("Registerscreen.Enter Your Mobile Number *")}`);
+    }  else {
       setError(''); // Clear the error if the input is valid
     }
   };
@@ -137,6 +143,8 @@ const Login = () => {
           setNumber('');
           setloader(false);
         } else {
+          console.log("ereeee",login_res?.message);
+          
           const translatedMessage = await translateText(login_res?.message);
           common_fn.showToast(translatedMessage);
           setloader(false);

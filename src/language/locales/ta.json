@@ -20,7 +20,11 @@
     "Remove Account": "கணக்கை நீக்கு",
     "Change Language": "மொழி மாற்றவும்",
     "Read More": "மேலும் படிக்கவும்",
-    "Select Language": "மொழியை தேர்ந்தெடுக்கவும்"
+    "Select Language": "மொழியை தேர்ந்தெடுக்கவும்",
+    "Are you sure you want to logout?": "நீங்கள் வெளியேற்ற விரும்புகிறீர்களா?",
+    "Confirm Logout": "வெளியேற்றத்தை உறுதிப்படுத்தவும்",
+    "Cancel": "ரத்து செய்யவும்",
+    "OK": "சரி"
   },
   "Editprofile": {
     "Edit Profile": "சுயவிவரத்தை திருத்தவும்",
@@ -124,7 +128,7 @@
     "or Login With": "அல்லது இதன்மூலம் உள்நுழையவும்",
     "Google": "கூகுள்",
     "Phone": "தொலைபேசி",
-    "Don't have an account?": "உங்களிடம் கணக்கு இல்லையா?",
+    "Don't have an account?": "கணக்கு இல்லையா?",
     "Sign Up": "பதிவு செய்யவும்",
     "Reset Password with your Email": "உங்கள் மின்னஞ்சலுடன் கடவுச்சொல்லை மீட்டமைக்கவும்",
     "Enter Your Email ID": "மின்னஞ்சல் ஐடியை உள்ளிடவும்",
@@ -188,6 +192,8 @@
     "Pending": "காத்திருப்பில்"
   },
   "Homescreen": {
+    "Feedback submitted successfully": "உங்கள் கருத்து வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது",
+    "Please Watch All Videos and take the test.": "தயவு செய்து அனைத்து வீடியோக்களையும் பார்வையிடவும் மற்றும் தேர்வை எடுக்கவும்.",
     "Hello": "வணக்கம்",
     "Here is Your SIM Test Score": "உங்கள் SIM சோதனை மதிப்பெண் இதோ",
     "Start Video Course": "வீடியோ பாடத்தை தொடங்கு",

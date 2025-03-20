@@ -20,7 +20,11 @@
     "Remove Account": "ఖాతాను తొలగించండి",
     "Change Language": "భాష మార్చండి",
     "Read More": "మరింత చదవండి",
-    "Select Language": "భాషను ఎంచుకోండి"
+    "Select Language": "భాషను ఎంచుకోండి",
+    "Are you sure you want to logout?": "మీరు లాగౌట్ చేయాలని నిశ్చయించుకున్నారా?",
+    "Confirm Logout": "లాగౌట్ నిర్ధారించండి",
+    "Cancel": "రద్దు చేయండి",
+    "OK": "ఓకే"
   },
   "Sim1": {
     "SIM Test": "SIM పరీక్ష",
@@ -161,6 +165,8 @@
     "Pending": "లంబించు"
   },
   "Homescreen": {
+    "Feedback submitted successfully": "ఫీడ్‌బ్యాక్ విజయవంతంగా సమర్పించబడింది",
+    "Please Watch All Videos and take the test.": "దయచేసి అన్ని వీడియోలను చూడండి మరియు పరీక్ష చేయండి.",
     "Hello": "హలో",
     "Here is Your SIM Test Score": "ఇది మీ SIM పరీక్ష స్కోరు",
     "Start Video Course": "వీడియో కోర్సు ప్రారంభించండి",

@@ -125,7 +125,7 @@ const HomeScreen = () => {
   const handleChangeLanguage = async (lang) => {
     try {
       await i18n.changeLanguage(lang);
-      await AsyncStorage.setItem('selectedLanguage=========================================>', lang);
+      await AsyncStorage.setItem('selectedLanguage', lang);
       console.log("Language changed to:", lang);
     } catch (err) {
       console.log("Error changing language:", err);
@@ -241,6 +241,10 @@ const HomeScreen = () => {
     }
   };
   // GET VIDEO :
+  const emptyfeedback =async()=>{
+    const translatedMessage = await translateText("Please Enter Feedback");
+    common_fn?.showToast(translatedMessage);
+  }
   const Getvideo = async () => {
     try {
       const Getvideo = await fetchData?.UserLesson();
@@ -1790,7 +1794,7 @@ const HomeScreen = () => {
                   }}
                   onPress={() => {
                     Feedback == ''
-                      ? common_fn.showToast(`${t('Homescreen.Please Enter Feedback')}`)
+                      ? emptyfeedback()
                       : FeedbackApi(Currentvideo);
                   }}>
                   <Text

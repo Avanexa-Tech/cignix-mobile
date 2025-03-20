@@ -58,16 +58,16 @@ const Profile = ({ navigation }) => {
   }, []);
   const Logout = async () => {
     Alert.alert(
-      'Confirm Logout',
-      'Are you sure you want to logout?',
+      `${t('profile.Confirm Logout')}`,
+      `${t('profile.Are you sure you want to logout?')}`,
       [
         {
-          text: 'Cancel',
+          text: `${t('profile.Cancel')}`,
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
         {
-          text: 'OK',
+          text: `${t('profile.OK')}`,
           onPress: async () => {
             try {
               const logout = await fetchData?.Logout();
@@ -75,7 +75,8 @@ const Profile = ({ navigation }) => {
               if (logout?.success == true) {
                 await AsyncStorage.removeItem('ACCESS_TOKEN');
                 await AsyncStorage.removeItem('USERDATA');
-                await AsyncStorage.removeItem('selectedLanguage');
+                await AsyncStorage.setItem('selectedLanguage','en');
+                await i18n.changeLanguage("en");
                 await AsyncStorage.removeItem('skipWhatsappVerification');
                 navigation.reset({
                   index: 0,

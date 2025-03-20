@@ -17,8 +17,10 @@ import common_fn from './common_fn';
  
 import Orientation from 'react-native-orientation-locker';
 import { useFocusEffect } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
  
 const {width} = Dimensions.get('window');
+
 const Videoplayercomponent = ({
   source,
   cancel,
@@ -27,6 +29,10 @@ const Videoplayercomponent = ({
   currentdata,
   navigation
 }) => {
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0.1);
   const [paused, setPaused] = useState(true);
@@ -55,7 +61,7 @@ const Videoplayercomponent = ({
       return () => {
         setPaused(true);
       };
-    }, [])
+    }, [language])
   );
   const handleDoubleTap = (doubleTapCallback, singleTapCallback) => {
     const now = Date.now();

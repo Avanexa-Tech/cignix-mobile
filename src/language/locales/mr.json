@@ -20,7 +20,11 @@
     "Remove Account": "खाते हटवा",
     "Change Language": "भाषा बदला",
     "Read More": "अधिक वाचा",
-    "Select Language": "भाषा निवडा"
+    "Select Language": "भाषा निवडा",
+    "Are you sure you want to logout?": "तुम्हाला लॉगआउट करण्याची खात्री आहे का?",
+    "Confirm Logout": "लॉगआउट पुष्टी करा",
+    "Cancel": "रद्द करा",
+    "OK": "ठीक आहे"
   },
   "Editprofile": {
     "Edit Profile": "प्रोफाइल संपादित करा",
@@ -132,7 +136,7 @@
     "Please enter your email": "कृपया तुमचा ईमेल प्रविष्ट करा.",
     "Please enter a valid email.": "कृपया वैध ईमेल प्रविष्ट करा.",
     "Mail sent successfully": "मेल यशस्वीपणे पाठवला",
-     "set minimum character as 6": "किमान 6 अक्षरे सेट करा",
+    "set minimum character as 6": "किमान 6 अक्षरे सेट करा",
     "Please Enter your valid Email and Password": "कृपया तुमचा वैध ईमेल आणि पासवर्ड प्रविष्ट करा"
   },
   "Sim1": {
@@ -188,6 +192,7 @@
     "Pending": "लंबित"
   },
   "Homescreen": {
+    "Feedback submitted successfully": "अभिप्राय यशस्वीरित्या सबमिट केला गेला आहे",
     "Hello": "नमस्कार",
     "Here is Your SIM Test Score": "तुमचा SIM चाचणी स्कोअर येथे आहे",
     "Start Video Course": "व्हिडिओ कोर्स सुरू करा",
@@ -219,6 +224,7 @@
     "Submit Question": "प्रश्न सबमिट करा",
     "No Questions, I Understand": "कोणतेही प्रश्न नाहीत, मला समजले",
     "Got It": "समजले",
+    "Please Watch All Videos and take the test.": "कृपया सर्व व्हिडिओ पहा आणि चाचणी द्या.",
     "Enter 6 Digit Otp": "6 अंकी OTP प्रविष्ट करा",
     "Enter Your Whatsapp Number": "तुमचा Whatsapp नंबर प्रविष्ट करा",
     "Verify Otp": "OTP सत्यापित करा",

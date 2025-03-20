@@ -35,6 +35,8 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext';
+import { useSelector } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -46,6 +48,10 @@ const DismissKeyboard = ({ children }) => (
 const EmailPassword = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation();
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   const refRBSheet = useRef();
   const dispatch = useDispatch();
   const routeName = useRoute();
@@ -79,6 +85,11 @@ const EmailPassword = () => {
         '542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com',
     });
   }, []);
+
+  useEffect(() => {
+    setEmailValidError(" ");
+    setMinPass(" ");
+  }, [language]);
 
   // LOGIN FUNCTION :
   const login = async () => {
@@ -131,10 +142,10 @@ const EmailPassword = () => {
       setChangepassowrdloader(true);
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!Changepassowrd || Changepassowrd.trim() === '') {
-        common_fn.showToast('Please enter your email.');
+        common_fn.showToast(`${t("Passwordlogin.Please enter your email")}`);
         setChangepassowrdloader(false);
       } else if (!emailRegex.test(Changepassowrd)) {
-        common_fn.showToast('Please enter a valid email.');
+        common_fn.showToast(`${t("Passwordlogin.Please enter a valid email.")}`);
         setChangepassowrdloader(false);
       } else {
         const data = {
@@ -143,8 +154,11 @@ const EmailPassword = () => {
         const EmailApi = await fetchData?.Forgetpassword(data);
         console.log('email', EmailApi);
         if (EmailApi?.success == true) {
-          common_fn.showToast('Mail sent successfully');
+          const translatedMessage = await translateText("Mail sent successfully");
+          common_fn.showToast(translatedMessage);
           setChangepassowrdloader(false);
+          console.log("jcb jhkb hjkv");
+          
           refRBSheet.current.close();
           setChangepassowrd('');
         } else {
@@ -300,7 +314,7 @@ const EmailPassword = () => {
                     />
                   </View>
                   <TextInput
-                    placeholder={t("Passwordlogin.Email Your Email ID")}
+                    placeholder={t("Passwordlogin.Enter Your Email ID")}
                     placeholderTextColor={Color.grey}
                     keyboardType="email-address"
                     value={email}

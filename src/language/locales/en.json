@@ -20,7 +20,11 @@
     "Remove Account": "Remove Account",
     "Change Language": "Change Language",
     "Read More": "Read More",
-    "Select Language": "Select Language"
+    "Select Language": "Select Language",
+    "Are you sure you want to logout?":"Are you sure you want to logout?",
+    "Confirm Logout":"Confirm Logout",
+    "Cancel":"Cancel",
+    "OK":"OK"
   },
   "Editprofile": {
     "Edit Profile": "Edit Profile",

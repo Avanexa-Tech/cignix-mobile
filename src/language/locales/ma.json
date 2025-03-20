@@ -20,7 +20,11 @@
     "Remove Account": "അക്കൗണ്ട് നീക്കം ചെയ്യുക",
     "Change Language": "ഭാഷ മാറ്റുക",
     "Read More": "കൂടുതൽ വായിക്കുക",
-    "Select Language": "ഭാഷ തിരഞ്ഞെടുക്കുക"
+    "Select Language": "ഭാഷ തിരഞ്ഞെടുക്കുക",
+    "Are you sure you want to logout?": "നിങ്ങൾ ലോഗ്ആട്ട് ചെയ്യണമെന്ന് നിങ്ങൾ ഉറപ്പാണ് കൊണ്ടിരിക്കുന്നത്?",
+    "Confirm Logout": "ലോഗ്ആട്ട് സ്ഥിരീകരിക്കുക",
+    "Cancel": "റദ്ദാക്കുക",
+    "OK": "ശരി"
   },
   "Sim1": {
     "SIM Test": "SIM പരീക്ഷണം",
@@ -130,7 +134,7 @@
     "Sign Up": "സൈൻ അപ്പ് ചെയ്യുക",
     "Mobile number": "മൊബൈൽ നമ്പർ",
     "Invalid Phone Number, Please Enter Your 10 Digit Phone Number": "അസാധുവായ ഫോൺ നമ്പർ, നിങ്ങളുടെ 10 അക്കം ഉള്ള ഫോൺ നമ്പർ നൽകുക"
-},
+  },
   "Otp": {
     "Verify Your Login": "ലോഗിൻ സ്ഥിരീകരിക്കുക",
     "Enter the verification code we sent to your Number": "നിങ്ങളുടെ നമ്പറിലേക്ക് അയച്ച സ്ഥിരീകരണ കോഡ് നൽകുക",
@@ -155,6 +159,7 @@
     "Pending": "കാത്തിരിക്കുന്നു"
   },
   "Homescreen": {
+    "Feedback submitted successfully": "പ്രതികരണം വിജയകരമായി സമർപ്പിച്ചു",
     "Hello": "ഹലോ",
     "Here is Your SIM Test Score": "ഇവിടെ നിങ്ങളുടെ SIM പരീക്ഷാ സ്കോർ ആണ്",
     "Start Video Course": "വീഡിയോ കോഴ്‌സ് ആരംഭിക്കുക",
@@ -205,6 +210,7 @@
     "Time Remaining": "ശേഷിക്കുന്ന സമയം",
     "Didn’t get the code": "കോഡ് ലഭിച്ചില്ലേ?",
     "Resend": "വീണ്ടും അയയ്ക്കുക",
+    "Please Watch All Videos and take the test.": "ദയവായി എല്ലാ വീഡിയോകളും കാണിച്ച് പരീക്ഷയ്ക്ക് പോകുക.",
     "This video is locked": "ഈ വീഡിയോ ലോക്ക് ചെയ്തിരിക്കുന്നു",
     "You can't go backward": "നിങ്ങൾക്ക് പിന്നിലേക്ക് പോകാൻ കഴിയില്ല",
     "Please fill out the required forms to register.": "ദയവായി രജിസ്റ്റർ ചെയ്യുന്നതിനായി ആവശ്യമായ ഫോമുകൾ പൂരിപ്പിക്കുക.",
@@ -692,16 +698,15 @@
     "Select Gender": "ലിംഗം തിരഞ്ഞെടുക്കുക",
     "Male": "പുരുഷൻ",
     "Female": "സ്ത്രീ",
-     "Please fill out the required forms to register.": "രജിസ്റ്റർ ചെയ്യുന്നതിനായി ആവശ്യമായ ഫോമുകൾ പൂരിപ്പിക്കുക."
-    
+    "Please fill out the required forms to register.": "രജിസ്റ്റർ ചെയ്യുന്നതിനായി ആവശ്യമായ ഫോമുകൾ പൂരിപ്പിക്കുക."
   },
   "Onboardscreen": {
     "Your smoke-free life Begins now": "നിങ്ങളുടെ പുകരഹിത ജീവിതം ഇപ്പോൾ ആരംഭിക്കുന്നു",
     "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "ഒരു ദിവസം ഒരു സിഗരറ്റ് നിങ്ങളുടെ ജീവിതം കുറയ്ക്കുന്നു. തമിഴിലിൽ നിന്ന് മോചിതനാകുക, ഇന്ന് തന്നെ മികച്ച ജീവിതം ആരംഭിക്കുക!",
     "Get Started": "ആരംഭിക്കൂ",
     "Already Have an Account?": "ഇതിന് മുമ്പേ ഒരു അക്കൗണ്ട് ഉണ്ടോ?"
-},
-"Passwordlogin": {
+  },
+  "Passwordlogin": {
     "Welcome Back": "തിരികെ സ്വാഗതം",
     "Welcome description": "നിങ്ങളുടെ ഇമെയിലും പാസ്‌വേർഡും ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യുക",
     "Email Your Email ID": "നിങ്ങളുടെ ഇമെയിൽ ഐഡി",
@@ -721,5 +726,5 @@
     "Mail sent successfully": "മെയിൽ വിജയകരമായി അയച്ചു",
     "set minimum character as 6": "കുറഞ്ഞത് 6 അക്ഷരങ്ങൾ ആയി ക്രമീകരിക്കുക",
     "Please Enter your valid Email and Password": "ദയവായി നിങ്ങളുടെ സാധുവായ ഇമെയിലും പാസ്‌വേർഡും നൽകുക"
-}
+  }
 }

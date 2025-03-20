@@ -29,13 +29,18 @@ import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
-import { translateText } from '../Context/userContext'
+import { translateText } from '../Context/userContext';
+import { useSelector } from 'react-redux';
 
 
 // create a component
 const Register = ({ navigation, route }) => {
   const routedata = route?.params;
   const { t } = useTranslation();
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   console.log('jnvjnbjvb', routedata);
   const [uname, setUname] = useState('');
   const [error, setError] = useState(false);
@@ -63,13 +68,27 @@ const Register = ({ navigation, route }) => {
       gender: t("Registerscreen.Female"),
     }
   ]);
-
+ useEffect(() => {
+  setGenderData(
+    [
+      {
+        id: '0',
+        gender: t("Registerscreen.Male"),
+      },
+      {
+        id: '1',
+        gender: t("Registerscreen.Female"),
+      }
+    ]
+  )
+  setEmailValidError('')
+ },[language])
   const handleValidEmail = val => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (val.length === 0) {
-      setEmailValidError('Email address must be enter');
+      setEmailValidError(`${t("Passwordlogin.Please enter your email")}`);
     } else if (reg.test(val) === false) {
-      setEmailValidError('Enter valid email address');
+      setEmailValidError(`${t("Passwordlogin.Please enter a valid email.")}`);
     } else if (reg.test(val) === true) {
       setEmailValidError('');
     }
@@ -141,8 +160,6 @@ const Register = ({ navigation, route }) => {
         }
         console.log("Registerdata", Registerdata);
 
-        console.log("Registerdata", Registerdata);
-
         const Registerapi = await fetchData?.Register(Registerdata);
         if (Registerapi?.success == true) {
           console.log("first");
@@ -152,10 +169,13 @@ const Register = ({ navigation, route }) => {
             JSON.stringify(Registerapi?.data),
           );
           navigation.navigate('Tab');
+
           const translatedMessage = await translateText(Registerapi?.message);
           common_fn.showToast(translatedMessage);
           setloading(false);
         } else {
+          console.log("eeeeeeeeeeeejkvsjdbvvd", Registerapi);
+          
           const translatedMessage = await translateText(Registerapi?.message);
           common_fn.showToast(translatedMessage);
           setloading(false);
@@ -320,7 +340,6 @@ const Register = ({ navigation, route }) => {
             color: '#666666',
             fontFamily: Mulish.Light,
             paddingVertical: 10,
-            lineHeight: 20
             lineHeight: 20
           }}>
           {t("Registerscreen.Create an account to unlock personalised videos and support to help you quit smoking")}

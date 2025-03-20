@@ -28,7 +28,7 @@ import { Mulish } from '../../Global/FontFamily';
 import OTPInput from '../../Components/OTPInput';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
-import { scr_height } from '../../Components/Dimensions';
+import { scr_height, scr_width } from '../../Components/Dimensions';
 import { useTranslation } from 'react-i18next';
 import {translateText} from '../Context/userContext'
 
@@ -314,7 +314,7 @@ const OTPScreen = ({ route }) => {
                             </View>
                         ) : (
                             <View style={styles.noReceivecodeView}>
-                                <TouchableOpacity onPress={() => ResendOtp(number)} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <TouchableOpacity onPress={() => ResendOtp(number)} style={{ flexDirection: 'column', alignItems: 'center', }}>
                                     <Text style={{
                                         color: Color.cloudyGrey,
                                         fontSize: 14,
@@ -374,6 +374,8 @@ const styles = StyleSheet.create({
         fontFamily: Mulish.SemiBold,
         fontWeight: 'bold',
         textAlign: 'right',
+        // width:scr_width-40,
+        // backgroundColor:'red'
     },
     invalidLogin: {
         fontSize: 14,

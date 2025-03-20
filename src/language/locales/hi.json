@@ -20,7 +20,11 @@
     "Remove Account": "खाता हटाएँ",
     "Change Language": "भाषा बदलें",
     "Read More": "और पढ़ें",
-    "Select Language": "भाषा चुनें"
+    "Select Language": "भाषा चुनें",
+    "Are you sure you want to logout?": "क्या आप सुनिश्चित हैं कि आप लॉगआउट करना चाहते हैं?",
+    "Confirm Logout": "लॉगआउट की पुष्टि करें",
+    "Cancel": "रद्द करें",
+    "OK": "ठीक है"
   },
   "Editprofile": {
     "Edit Profile": "प्रोफ़ाइल संपादित करें",
@@ -133,7 +137,7 @@
     "Please enter your email": "कृपया अपना ईमेल दर्ज करें।",
     "Please enter a valid email.": "कृपया एक मान्य ईमेल दर्ज करें।",
     "Mail sent successfully": "मेल सफलतापूर्वक भेजा गया",
-      "set minimum character as 6": "न्यूनतम 6 अक्षर सेट करें",
+    "set minimum character as 6": "न्यूनतम 6 अक्षर सेट करें",
     "Please Enter your valid Email and Password": "कृपया अपना वैध ईमेल और पासवर्ड दर्ज करें"
   },
   "Sim1": {
@@ -206,6 +210,8 @@
     "Pending": "लंबित"
   },
   "Homescreen": {
+    "Feedback submitted successfully": "प्रतिक्रिया सफलतापूर्वक सबमिट की गई",
+    "Please Watch All Videos and take the test.": "कृपया सभी वीडियो देखें और परीक्षा दें।",
     "Hello": "नमस्ते",
     "Here is Your SIM Test Score": "यहाँ आपका SIM टेस्ट स्कोर है",
     "Start Video Course": "वीडियो कोर्स शुरू करें",
