@@ -75,6 +75,7 @@ const Profile = ({ navigation }) => {
                 await AsyncStorage.removeItem('ACCESS_TOKEN');
                 await AsyncStorage.removeItem('USERDATA');
                 await AsyncStorage.removeItem('selectedLanguage');
+                await AsyncStorage.removeItem('skipWhatsappVerification');
                 navigation.reset({
                   index: 0,
                   routes: [{ name: 'Auth' }],

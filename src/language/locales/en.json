@@ -163,7 +163,7 @@
   "Otp": {
     "Verify Your Login": "Verify Your Login",
     "Enter the verification code we sent to your Number": "Enter the verification code we sent to your Number",
-    "Verify otp": "Verify otp",
+    "Verify otp": "Verify OTP",
     "Didn't get the code?": "Didn't get the code?",
     "Resend": "Resend"
   },
@@ -216,15 +216,16 @@
     "Submit Question": "Submit Question",
     "No Questions, I Understand": "No Questions, I Understand",
     "Got It": "Got It",
-    "Enter 6 Digit Otp": "Enter 6 Digit Otp",
+    "Enter 6 Digit Otp": "Enter 6 Digit OTP",
     "Enter Your Whatsapp Number": "Enter Your Whatsapp Number",
-    "Verify Otp": "Verify Otp",
-    "Send Otp": "Send Otp",
+    "Verify Otp": "Verify OTP",
+    "Send Otp": "Send OTP",
     "Whatsapp Number": "Whatsapp Number",
     "Is the given number during registration is your whatsapp number": "Is the given number during registration is your whatsapp number",
     "No": "No",
     "Yes": "Yes",
-    "Please Enter 6 Digit Otp": "Please Enter 6 Digit Otp",
+    "Skip":"Skip",
+    "Please Enter 6 Digit Otp": "Please Enter 6 Digit OTP",
     "Current": "Current",
     "Watched": "Watched",
     "Recently Unlocked": "Recently Unlocked"
@@ -584,7 +585,7 @@
     "Date of Birth / Age": "Date of Birth / Age",
     "Gender": "Gender",
     "Enter Coupon Code": "Enter Coupon Code",
-    "Enter Otp": "Enter Otp",
+    "Enter Otp": "Enter OTP",
     "Whatsapp Number": "Whatsapp Number"
   },
   "Test":{

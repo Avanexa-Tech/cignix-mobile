@@ -1,5 +1,5 @@
 //import liraries
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,13 +17,13 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {scr_height, scr_width} from '../../Components/Dimensions';
-import {Mulish} from '../../Global/FontFamily';
-import {useDispatch} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import { scr_height, scr_width } from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { useDispatch } from 'react-redux';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import common_fn from '../../Components/common_fn';
-import {Platform} from 'react-native';
-import {KeyboardAvoidingView} from 'react-native';
+import { Platform } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 import fetchData from '../../Config/fetchData';
 
 import {
@@ -33,10 +33,10 @@ import {
 } from '@react-native-google-signin/google-signin';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {CommonActions} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { CommonActions } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
-const DismissKeyboard = ({children}) => (
+const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     {children}
   </TouchableWithoutFeedback>
@@ -125,6 +125,7 @@ const Login = () => {
         console.log('login resp ================== :', login_res);
 
         if (login_res?.success == true) {
+          await AsyncStorage.setItem('WhatsAppModal', 'true');
           common_fn.showToast(login_res?.message);
           navigation.navigate('OTPScreen', {
             number: number,
@@ -159,9 +160,9 @@ const Login = () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log("userInfo",userInfo);
-      console.log("userInfo",userInfo?.data?.user);
-      
+      console.log("userInfo", userInfo);
+      console.log("userInfo", userInfo?.data?.user);
+
       let googleAuthPayload = {
         email: userInfo?.data?.user?.email,
         name: userInfo?.data?.user?.givenName,
@@ -169,8 +170,8 @@ const Login = () => {
         dob: '',
         step: 0,
         type: 'free',
-      };      
-      console.log('googleAuthPayload',googleAuthPayload)
+      };
+      console.log('googleAuthPayload', googleAuthPayload)
       const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
       console.log('googleAuthPayload', googleLogin);
       if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
@@ -179,12 +180,12 @@ const Login = () => {
           'USERDATA',
           JSON.stringify(googleLogin?.data),
         );
-        common_fn.showToast(googleLogin?.message); 
+        common_fn.showToast(googleLogin?.message);
         await GoogleSignin.signOut();
         navigation.dispatch(
           CommonActions.reset({
-            index: 0, 
-            routes: [{ name: 'Tab' }], 
+            index: 0,
+            routes: [{ name: 'Tab' }],
           })
         );
       }
@@ -199,7 +200,7 @@ const Login = () => {
   };
   const changeLanguage = (lang) => {
     console.log("ccccccccccc");
-    
+
     i18n.changeLanguage(lang); // Change language dynamically
   };
 
@@ -209,7 +210,7 @@ const Login = () => {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        // scrollEnabled={isKeyboardVisible ? true : false }
+      // scrollEnabled={isKeyboardVisible ? true : false }
       >
         <StatusBar
           hidden={false} // Hides the status bar
@@ -265,8 +266,8 @@ const Login = () => {
                   fontFamily: Mulish.Bold,
                   paddingVertical: 5,
                 }}>
-              {/* {t("mobilelogin.Welcome Back")} */}
-              Welcome Back,
+                {/* {t("mobilelogin.Welcome Back")} */}
+                Welcome Back,
               </Text>
               <Text
                 style={{
@@ -278,7 +279,7 @@ const Login = () => {
                 Login with your Mobile Number
               </Text>
 
-              <View style={{marginVertical: 20}}>
+              <View style={{ marginVertical: 20 }}>
                 <View style={styles.NumberBoxConatiner}>
                   <View
                     style={{
@@ -290,12 +291,12 @@ const Login = () => {
                     }}>
                     <Image
                       source={require('../../assets/Images/india.png')}
-                      style={{width: 25, height: 25, resizeMode: 'contain'}}
+                      style={{ width: 25, height: 25, resizeMode: 'contain' }}
                     />
                     <Text
                       style={[
                         styles.numberCountryCode,
-                        {paddingHorizontal: 5},
+                        { paddingHorizontal: 5 },
                       ]}>
                       +91
                     </Text>
@@ -311,7 +312,7 @@ const Login = () => {
                       chkNumber(number);
                       chkNumberError(number);
                     }}
-                    style={[styles.numberTextBox, {right: 5}]}
+                    style={[styles.numberTextBox, { right: 5 }]}
                   />
                 </View>
                 {error && <Text style={styles.invalidLogin}>{error}</Text>}
@@ -338,8 +339,8 @@ const Login = () => {
                       color: Color.white,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                  {/* {t("mobilelogin.Get Otp")} */}
-                  Get OTP
+                    {/* {t("mobilelogin.Get Otp")} */}
+                    Get OTP
                   </Text>
                 )}
               </TouchableOpacity>
@@ -405,7 +406,7 @@ const Login = () => {
                   }}>
                   <Image
                     source={require('../../assets/Images/google.png')}
-                    style={{width: 25, height: 25, resizeMode: 'contain'}}
+                    style={{ width: 25, height: 25, resizeMode: 'contain' }}
                   />
                   <Text
                     style={{
@@ -438,7 +439,7 @@ const Login = () => {
                   }}>
                   <Image
                     source={require('../../assets/Images/pass.png')}
-                    style={{width: 25, height: 25, resizeMode: 'contain'}}
+                    style={{ width: 25, height: 25, resizeMode: 'contain' }}
                   />
                   <Text
                     style={{
@@ -447,8 +448,8 @@ const Login = () => {
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
                     }}>
-                  {/* {t("mobilelogin.Password")} */}
-                  Password
+                    {/* {t("mobilelogin.Password")} */}
+                    Password
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -469,7 +470,7 @@ const Login = () => {
                     paddingHorizontal: 5,
                   }}>
                   {/* {t("mobilelogin.Don't have an account?")}{' '} */}
-                 Don't have an account?
+                  Don't have an account?
                 </Text>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('SimTest')}>
@@ -479,8 +480,8 @@ const Login = () => {
                       color: Color.primary,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                   {/* {t("mobilelogin.Sign Up")} */}
-                  Sign Up
+                    {/* {t("mobilelogin.Sign Up")} */}
+                    Sign Up
                   </Text>
                 </TouchableOpacity>
               </View>

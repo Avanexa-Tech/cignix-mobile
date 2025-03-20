@@ -98,6 +98,30 @@ const HomeScreen = () => {
 
     loadLanguage();
   }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    Getvideo();
+    Userdata();
+    Get_Score();
+
+    const checkWhatsAppModal = async () => {
+      try {
+        const whatsappModalValue = await AsyncStorage.getItem('WhatsAppModal');
+        if (whatsappModalValue === 'true') {
+          setwhatsappmodal(true);
+        } else {
+          setwhatsappmodal(false);
+        }
+      } catch (error) {
+        console.log('Error checking WhatsAppModal storage:', error);
+        setwhatsappmodal(false);
+      }
+    };
+
+    checkWhatsAppModal();
+  }, []);
+
   const handleChangeLanguage = async (lang) => {
     try {
       await i18n.changeLanguage(lang);
@@ -262,7 +286,8 @@ const HomeScreen = () => {
           ' =============> Userdata?.data <============= ',
           Userdata?.data,
         );
-        if (Userdata?.data?.whatsapp_no) {
+        const whatsappModalValue = await AsyncStorage.getItem('WhatsAppModal');
+        if (whatsappModalValue === 'false') {
           if (Userdata?.data?.step == 0) {
             GetQustion();
           } else {
@@ -1194,27 +1219,32 @@ const HomeScreen = () => {
                             </>
                           )}
                         </View>
-                        <TouchableOpacity
-                          style={{
-                            position: 'absolute',
-                            top: 10,
-                            right: 10,
-                            marginHorizontal: 5,
-                          }}
-                          onPress={() => {
-                            setModalVisible(true);
-                          }}>
-                          <Iconviewcomponent
-                            viewstyle={{
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                            Icontag="MaterialCommunityIcons"
-                            icon_size={24}
-                            icon_color={Color.white}
-                            iconname="information-outline"
-                          />
-                        </TouchableOpacity>
+                        {
+                          (userdata?.step == 0 || userdata?.step == 1) ?
+                            <TouchableOpacity
+                              style={{
+                                position: 'absolute',
+                                top: 10,
+                                right: 10,
+                                marginHorizontal: 5,
+                              }}
+                              onPress={() => {
+                                setModalVisible(true);
+                              }}>
+                              <Iconviewcomponent
+                                viewstyle={{
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                                Icontag="MaterialCommunityIcons"
+                                icon_size={24}
+                                icon_color={Color.white}
+                                iconname="information-outline"
+                              />
+                            </TouchableOpacity> : null
+
+                        }
+
                       </ImageBackground>
                     </View>
                   ) : (
@@ -1431,6 +1461,7 @@ const HomeScreen = () => {
                             </>
                           )}
                         </View>
+
                         <TouchableOpacity
                           style={{
                             position: 'absolute',
@@ -1439,7 +1470,11 @@ const HomeScreen = () => {
                             marginHorizontal: 5,
                           }}
                           onPress={() => {
-                            setTestModalVisible(true);
+                            if (userdata?.step == 0 || userdata?.step == 1) {
+                              setModalVisible(true)
+                            } else {
+                              setTestModalVisible(true)
+                            }
                           }}>
                           <Iconviewcomponent
                             viewstyle={{
@@ -2119,7 +2154,6 @@ const HomeScreen = () => {
                   width: '100%',
                   justifyContent: 'space-between',
                 }}>
-
                 <TouchableOpacity
                   style={{
                     borderWidth: 1,
@@ -2127,7 +2161,7 @@ const HomeScreen = () => {
                     padding: 5,
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '40%',
+                    width: '30%',
                     borderRadius: 10,
                   }}
                   onPress={() => setIs_Whatsappcheck(true)}>
@@ -2146,7 +2180,7 @@ const HomeScreen = () => {
                     padding: 5,
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '40%',
+                    width: '30%',
                     borderRadius: 10,
                   }}
                   onPress={() => sendotpfun()}>
@@ -2157,6 +2191,32 @@ const HomeScreen = () => {
                       fontFamily: Mulish?.Medium,
                     }}>
                     {t("Homescreen.Yes")}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    borderWidth: 1,
+                    borderColor: Color?.primary,
+                    padding: 5,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '30%',
+                    borderRadius: 10,
+                  }}
+                  onPress={async () => {
+                    await AsyncStorage.setItem('WhatsAppModal', 'false');
+                    setwhatsappmodal(false);
+                    Getvideo();
+                    Userdata();
+                    Get_Score();
+                  }}>
+                  <Text
+                    style={{
+                      color: Color?.primary,
+                      fontSize: 14,
+                      fontFamily: Mulish?.Medium,
+                    }}>
+                    {t("Homescreen.Skip")}
                   </Text>
                 </TouchableOpacity>
               </View>
