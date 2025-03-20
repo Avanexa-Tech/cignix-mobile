@@ -179,13 +179,11 @@ const Profile = ({ navigation }) => {
             style={{ marginHorizontal: 10 }}
             onPress={() => navigation.navigate("LanguageSelector")}
           >
-            <Iconviewcomponent
-              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-              Icontag="Ionicons"
-              icon_size={30}
-              icon_color={Color.black}
-              iconname="language-outline"
-            />
+           <Iconviewcomponent
+                         Icontag="Entypo"
+                         icon_size={24}
+                         icon_color={Color?.black}
+                         iconname={"language"} />
           </TouchableOpacity>
         </View>
       </View>

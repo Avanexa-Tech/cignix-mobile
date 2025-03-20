@@ -95,14 +95,16 @@
   },
   "mobilelogin": {
     "Welcome Back": "परत स्वागत आहे",
-    "Welcome description": "आपल्या मोबाइल क्रमांकासह लॉगिन करा",
-    "Mobile Number": "मोबाइल नंबर",
+    "Welcome description": "तुमच्या मोबाइल क्रमांकासह लॉगिन करा",
+    "Mobile Number": "मोबाइल क्रमांक",
     "Get Otp": "OTP मिळवा",
-    "or Login With": "किंवा लॉगिन करा",
+    "or Login With": "किंवा यासह लॉगिन करा",
     "Google": "गूगल",
     "Password": "पासवर्ड",
-    "Don't have an account?": "खाते नाही?",
-    "Sign Up": "साइन अप करा"
+    "Don't have an account?": "तुमच्याकडे खाते नाही का?",
+    "Sign Up": "साइन अप करा",
+    "Mobile number": "मोबाइल क्रमांक",
+    "Invalid Phone Number, Please Enter Your 10 Digit Phone Number": "अवैध फोन नंबर, कृपया तुमचा 10 अंकी फोन नंबर प्रविष्ट करा"
   },
   "Onboarding": {
     "Your smoke-free life Begins now": "तुमचे धूम्रपान-मुक्त जीवन आता सुरू होते!",
@@ -111,17 +113,25 @@
     "Already have an account?": "आधीच खाते आहे?"
   },
   "Passwordlogin": {
-    "Welcome Back": "परत स्वागत आहे",
-    "Welcome description": "आपल्या ई-मेल आणि पासवर्डने लॉगिन करा",
-    "Email Your Email ID": "आपला ई-मेल ID प्रविष्ट करा",
+    "Welcome Back": "पुन्हा स्वागत आहे",
+    "Welcome description": "तुमच्या ईमेल आणि पासवर्डने लॉगिन करा",
+    "Email Your Email ID": "तुमचा ईमेल आयडी",
     "Password": "पासवर्ड",
     "Log in": "लॉग इन करा",
-    "forgot Password": "पासवर्ड विसरलात?",
-    "or Login With": "किंवा लॉगिन करा",
+    "forgot Password": "पासवर्ड विसरलात का?",
+    "or Login With": "किंवा यासह लॉगिन करा",
     "Google": "गूगल",
     "Phone": "फोन",
-    "Don't have an account?": "खाते नाही?",
-    "Sign Up": "साइन अप करा"
+    "Don't have an account?": "तुमच्याकडे खाते नाही का?",
+    "Sign Up": "साइन अप करा",
+    "Reset Password with your Email": "तुमच्या ईमेलने पासवर्ड रीसेट करा",
+    "Enter Your Email ID": "तुमचा ईमेल आयडी प्रविष्ट करा",
+    "Send Password Reset Link": "पासवर्ड रीसेट लिंक पाठवा",
+    "Please enter your email": "कृपया तुमचा ईमेल प्रविष्ट करा.",
+    "Please enter a valid email.": "कृपया वैध ईमेल प्रविष्ट करा.",
+    "Mail sent successfully": "मेल यशस्वीपणे पाठवला",
+     "set minimum character as 6": "किमान 6 अक्षरे सेट करा",
+    "Please Enter your valid Email and Password": "कृपया तुमचा वैध ईमेल आणि पासवर्ड प्रविष्ट करा"
   },
   "Sim1": {
     "SIM Test": "SIM चाचणी",
@@ -153,7 +163,7 @@
   "Roadmap": {
     "Complete the SIM Test": "SIM टेस्ट पूर्ण करा",
     "Start by taking the SIM Test to evaluate your Smoking habits  and readiness to quit": "आपल्या धूम्रपानाच्या सवयी आणि सोडण्याची तयारीचे मूल्यांकन करण्यासाठी SIM टेस्ट घ्या",
-    "Watch All 7 Videos": "सर्व ७ व्हिडिओ पहा",
+    "Watch All Videos": "सर्व व्हिडिओ पाहा",
     "Each video is designed to guide you through the quitting process": "प्रत्येक व्हिडिओ तुम्हाला धूम्रपान सोडण्याच्या प्रक्रियेत मार्गदर्शन करण्यासाठी तयार केले आहे",
     "Retake the SIM Test (SIM Test 2)": "SIM टेस्ट पुन्हा घ्या (SIM टेस्ट 2)",
     "Each Video is designed to Guide you through the quitting process": "प्रत्येक व्हिडिओ तुम्हाला धूम्रपान सोडण्याच्या प्रक्रियेत मार्गदर्शन करण्यासाठी तयार केले आहे",
@@ -318,7 +328,7 @@
     "Lost your progress or data? Don’t worry—our support team helps recover your information, so you can continue from where you left off without losing valuable time or effort.": "आपली प्रगती किंवा डेटा हरवला आहे का? काळजी करू नका—आमचा सहाय्यक संघ तुमची माहिती पुनर्प्राप्त करण्यात मदत करतो, जेणेकरून आपण जिथे थांबलात तिथून पुढे चालू ठेवू शकता, तुमचा मौल्यवान वेळ आणि प्रयत्न वाचवू शकता.",
     "Sign-up": "नोंदणी करा",
     "How does Cignix work": "Cignix कसे कार्य करते",
-     "Encountering errors or glitches while using our app or platform? We provide step-by-step assistance to diagnose and resolve technical issues, ensuring optimal performance.": "आमच्या अ‍ॅप किंवा प्लॅटफॉर्मचा वापर करताना त्रुटी किंवा अडचणी येत आहेत का? आम्ही तांत्रिक अडचणी शोधून काढण्यासाठी आणि सोडवण्यासाठी टप्प्याटप्प्याने सहाय्य प्रदान करतो, जेणेकरून सर्वोत्तम कार्यक्षमता सुनिश्चित करता येईल."
+    "Encountering errors or glitches while using our app or platform? We provide step-by-step assistance to diagnose and resolve technical issues, ensuring optimal performance.": "आमच्या अ‍ॅप किंवा प्लॅटफॉर्मचा वापर करताना त्रुटी किंवा अडचणी येत आहेत का? आम्ही तांत्रिक अडचणी शोधून काढण्यासाठी आणि सोडवण्यासाठी टप्प्याटप्प्याने सहाय्य प्रदान करतो, जेणेकरून सर्वोत्तम कार्यक्षमता सुनिश्चित करता येईल."
   },
   "ContactUs": {
     "We’re committed to offering the best possible support, ensuring your experience with us is smooth!": "आम्ही सर्वोत्तम शक्य समर्थन देण्यास वचनबद्ध आहोत, त्यामुळे तुमचा आमच्यासोबतचा अनुभव सुरळीत असेल!",
@@ -666,10 +676,37 @@
     "Submit & Continue": "सामान्य करा & पुढे जा"
   },
   "Success": {
-  "Congratulations on": "आपल्याला शुभेच्छा",
-  "Completing the Quiz": "क्विझ पूर्ण केल्याबद्दल",
-  "To check your scores and see how you did": "तुमचे स्कोअर तपासण्यासाठी आणि तुम्ही कसे केले हे पाहण्यासाठी",
-  "please sign up or log in!": "कृपया साइन अप करा किंवा लॉग इन करा!",
-  "Sign Up to View Scores": "स्कोअर पाहण्यासाठी साइन अप करा"
-}
+    "Congratulations on": "आपल्याला शुभेच्छा",
+    "Completing the Quiz": "क्विझ पूर्ण केल्याबद्दल",
+    "To check your scores and see how you did": "तुमचे स्कोअर तपासण्यासाठी आणि तुम्ही कसे केले हे पाहण्यासाठी",
+    "please sign up or log in!": "कृपया साइन अप करा किंवा लॉग इन करा!",
+    "Sign Up to View Scores": "स्कोअर पाहण्यासाठी साइन अप करा"
+  },
+  "Registerscreen": {
+    "Let’s Get Started": "चला सुरू करूया",
+    "Create an account to unlock personalised videos and support to help you quit smoking": "वैयक्तिकृत व्हिडिओ आणि धूम्रपान सोडण्यास मदत करणारा पाठिंबा अनलॉक करण्यासाठी खाते तयार करा",
+    "By signing up, you agree to our": "साइन अप करून, तुम्ही आमच्या",
+    "Terms & Conditions": "अटी आणि शर्तींना",
+    "and": "आणि",
+    "Privacy Policy": "गोपनीयता धोरणाला",
+    "Get Started": "सुरु करा",
+    "Already have an account?": "आधीपासूनच खाते आहे का?",
+    "Log in": "लॉग इन करा",
+    "Password *": "पासवर्ड *",
+    "Select Gender *": "लिंग निवडा *",
+    "DD/MM/YYYY *": "दि/माहि/वर्ष *",
+    "Enter Your Mobile Number *": "तुमचा मोबाइल क्रमांक टाका *",
+    "Enter Your Email ID *": "तुमचा ईमेल आयडी टाका *",
+    "Enter Your Name *": "तुमचे नाव टाका *",
+    "Select Gender": "लिंग निवडा",
+    "Male": "पुरुष",
+    "Female": "महिला",
+    "Please fill out the required forms to register.": "नोंदणीसाठी आवश्यक फॉर्म भरा."
+  },
+  "Onboardscreen": {
+    "Your smoke-free life Begins now": "तुमचे धूम्रपानमुक्त जीवन आता सुरू होते",
+    "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "दररोज एक सिगारेट तुमचे आयुष्य कमी करते. तंबाखूपासून मुक्त व्हा आणि आजच चांगले जीवन जगायला सुरुवात करा!",
+    "Get Started": "सुरू करा",
+    "Already Have an Account?": "आधीच खाते आहे का?"
+  }
 }

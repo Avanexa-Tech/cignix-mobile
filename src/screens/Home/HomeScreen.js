@@ -264,8 +264,8 @@ const HomeScreen = () => {
           };
         })
       );
-        console.log("Videoooooooooo", translatedData);
-        
+      console.log("Videoooooooooo", translatedData);
+
       setgetvideo(translatedData);
       getrecentVideo(translatedData);
 
@@ -276,7 +276,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     Getvideo();
-  
+
   }, [language])
 
   // USERDATA :
@@ -573,8 +573,8 @@ const HomeScreen = () => {
 
   // getrecentVideo Button Functionality :
   const getrecentVideo = data => {
-    try {      
-      const activeIndex = data.findIndex(item => item?.status == 'active');      
+    try {
+      const activeIndex = data.findIndex(item => item?.status == 'active');
       if (activeIndex !== -1) {
         const activeItem = data[activeIndex];
         setCurrentvideo(activeItem);
@@ -780,12 +780,10 @@ const HomeScreen = () => {
               onPress={() => navigation.navigate("LanguageSelector")}
             >
               <Iconviewcomponent
-                viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                Icontag="Ionicons"
-                icon_size={30}
-                icon_color={Color.black}
-                iconname="language-outline"
-              />
+                Icontag="Entypo"
+                icon_size={24}
+                icon_color={Color?.black}
+                iconname={"language"} />
             </TouchableOpacity>
           </View>
         </View>
@@ -1545,6 +1543,7 @@ const HomeScreen = () => {
                           source={Currentvideo?.lesson_details?.source}
                           Videoendfun={Videoend}
                           currentdata={Currentvideo}
+                          navigation={navigation}
                         />
                         <View style={{ gap: 5 }}>
                           <Text

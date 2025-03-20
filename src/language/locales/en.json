@@ -102,7 +102,9 @@
     "Google": "Google",
     "Password": "Password",
     "Don't have an account?": "Don't have an account?",
-    "Sign Up": "Sign Up"
+    "Sign Up": "Sign Up",
+    "Mobile number":"Mobile Number",
+    "Invalid Phone Number, Please Enter Your 10 Digit Phone Number":"Invalid Phone Number, Please Enter Your 10 Digit Phone Number"
   },
   "Onboarding": {
     "Your smoke-free life Begins now": "Your  Smoke-Free Life Begins Now!",
@@ -121,7 +123,15 @@
     "Google": "Google",
     "Phone": "Phone",
     "Don't have an account?": "Don't have an account?",
-    "Sign Up": "Sign Up"
+    "Sign Up": "Sign Up",
+    "Reset Password with your Email":"Reset Password with your Email",
+    "Enter Your Email ID":"Enter Your Email ID",
+    "Send Password Reset Link":"Send Password Reset Link",
+    "Please enter your email":"Please enter your email.",
+    "Please enter a valid email.":"Please enter a valid email.",
+    "Mail sent successfully":"Mail sent successfully",
+   "set minimum character as 6":"set minimum character as 6",
+    "Please Enter your valid Email and Password":"Please Enter your valid Email and Password"
   },
   "Sim1": {
     "SIM Test": "SIM Test",
@@ -170,7 +180,7 @@
   "Roadmap": {
     "Complete the SIM Test": "Complete the SIM Test",
     "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit",
-    "Watch All 7 Videos": "Watch All 7 Videos",
+    "Watch All Videos": "Watch All Videos",
     "Each video is designed to guide you through the quitting process": "Each video is designed to guide you through the quitting process",
     "Retake the SIM Test (SIM Test 2)": "Retake the SIM Test (SIM Test 2)",
     "Each Video is designed to Guide you through the quitting process": "Each Video is designed to Guide you through the quitting process",
@@ -703,6 +713,22 @@
    "Privacy Policy":"Privacy Policy",
    "Get Started":"Get Started",
    "Already have an account?":" Already have an account?",
-   "Log in":"Log in"
+   "Log in":"Log in",
+   "Password *":"Password *",
+   "Select Gender *":"Select Gender *",
+   "DD/MM/YYYY *":"DD/MM/YYYY *",
+   "Enter Your Mobile Number *":"Enter Your Mobile Number *",
+   "Enter Your Email ID *":"Enter Your Email ID *",
+   "Enter Your Name *":"Enter Your Name *",
+   "Select Gender":"Select Gender",
+   "Male":"Male",
+   "Female":"Female",
+   "Please fill out the required forms to register.":"Please fill out the required forms to register."
+  },
+  "Onboardscreen":{
+    "Your smoke-free life Begins now":"Your smoke-free life Begins now",
+    "A cigarette a day takes your life away. Break free from tobacco and start living better today!":"A cigarette a day takes your life away. Break free from tobacco and start living better today!",
+    "Get Started":"Get Started",
+    "Already Have an Account?":"Already Have an Account?"
   }
 }

@@ -1,210 +1,331 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
-  Image,
-  TouchableOpacity,
+  Text,
   StyleSheet,
-  Pressable,
   Dimensions,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import Video from 'react-native-video';
-import Icon from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { useSelector } from 'react-redux';
-import { Text } from 'react-native';
-import { Mulish } from '../Global/FontFamily';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Color from '../Global/Color';
 import common_fn from './common_fn';
-import { useTranslation } from "react-i18next";
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-
-const VideoPlayerWithThumbnail = ({
-  videoUri,
-  thumbnailUri,
-  data,
-  setCurrentdata,
+ 
+import Orientation from 'react-native-orientation-locker';
+import { useFocusEffect } from '@react-navigation/native';
+ 
+const {width} = Dimensions.get('window');
+const Videoplayercomponent = ({
+  source,
+  cancel,
+  onEnds,
+  Videoendfun,
   currentdata,
+  navigation
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const videoPlayerRef = useRef(null);
-  const { t } = useTranslation();
-
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+  const [duration, setDuration] = useState(0.1);
+  const [paused, setPaused] = useState(true);
+  const [overlay, setOverlay] = useState(false);
+  const [loader, setLoader] = useState(true);
+  const [fullscreen, setFullscreen] = useState(false);
+ 
+  const videoRef = useRef(null);
+  const overlayTimer = useRef(null);
+  const lastTap = useRef(null);
+ 
+  useEffect(() => {
+    if (videoRef.current) {
+      setPaused(true);
+      setCurrentTime(0);
+      videoRef?.current?.seek(0);
+      setLoader(false);
+     
+      setTimeout(() => {
+        setPaused(false);  
+      }, 500);  
+    }
+  }, [currentdata]);
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {
+        setPaused(true);
+      };
+    }, [])
+  );
+  const handleDoubleTap = (doubleTapCallback, singleTapCallback) => {
+    const now = Date.now();
+    const DOUBLE_PRESS_DELAY = 300;
+    if (lastTap.current && now - lastTap.current < DOUBLE_PRESS_DELAY) {
+      clearTimeout(30);
+      doubleTapCallback();
+    } else {
+      lastTap.current = now;
+      const timer = setTimeout(() => {
+        singleTapCallback();
+      }, DOUBLE_PRESS_DELAY);
+    }
   };
-
-  const handleProgress = progress => {
-    setCurrentTime(progress.currentTime);
+ 
+  const getTime = t => {
+    const digit = n => (n < 10 ? `0${n}` : `${n}`);
+    const sec = digit(Math.floor(t % 60));
+    const min = digit(Math.floor((t / 60) % 60));
+    const hr = digit(Math.floor((t / 3600) % 60));
+    return hr + ':' + min + ':' + sec;
+  };  
+ 
+  const load = ({duration}) => {
+    console.log("duration",duration);
+    setDuration(duration), setLoader(false)
   };
-
-  const handleLoad = meta => {
-    setDuration(meta.duration);
+ 
+  const progress = ({currentTime}) => {
+    // const exercises = currentdata?.lesson_details?.exercise || [];
+    // const targetTime = Math.floor(currentTime);
+        // const data = exercises?.find(item => item?.time == targetTime);
+        // if(data)
+        // {
+        //   console.log('====>llll<===',data);  
+        // }
+    setCurrentTime(currentTime);
+    if (Math?.round(currentTime) === Math?.round(duration - 0.025)) {
+      console.log('Video has ended');
+      console.log('Current', currentdata?.status);
+      if (currentdata?.status == 'active') {
+        Videoendfun(currentdata);
+      } else {
+        console.log('Video Already apply a Feedback', currentdata);
+        // Videoendfun(currentdata);
+      }
+      setPaused(!paused);
+      setCurrentTime(0);
+      videoRef.current.seek(0);
+    }
   };
-
-  const language = useSelector((state) => {
-    return state.UserReducer.language;
-  });
-
-  const formatTime = time => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+ 
+  const backward = () => {
+    if (Math.round(currentTime) >= 5) {
+      videoRef.current.seek(currentTime - 5);
+      clearTimeout(timer);
+      overlayTimer = setTimeout(() => setOverlay(false), 3000);
+    } else {
+      common_fn?.showToast("You can't go backward");
+    }
   };
-
-  // Function to get dynamic styles based on data
-  const getDynamicStyles = () => {
-    return {
-      recentButton: {
-        position: 'absolute',
-        left: data?._id === currentdata?._id ? screenWidth * 0.3 : (language === 'ta' || language === 'ma' ? screenWidth * 0.1 : screenWidth * 0.2),
-        top: screenHeight * 0.35,
-        backgroundColor: '#fff',
-        padding: screenWidth * 0.025, // Responsive padding
-        alignItems: 'center',
-        borderRadius: 20,
+ 
+  const forward = () => {
+    common_fn?.showToast("You can't go forward");
+  };
+ 
+  const onslide = slide => {
+    videoRef.current.seek(slide * duration);
+    // clearTimeout(overlayTimer);
+    overlayTimer = setTimeout(() => setOverlay(false), 10000);
+  };
+ 
+  const youtubeSeekLeft = () => {
+    handleDoubleTap(
+      () => {
+        videoRef.current.seek(currentTime - 5);
       },
-      buttonText: {
-        fontSize: screenWidth * 0.035, // Responsive font size
-        fontFamily: Mulish.Bold,
-        color: '#000',
+      () => {
+        setOverlay(true);
+        overlayTimer = setTimeout(() => setOverlay(false), 3000);
       },
-    };
+    );
   };
-
-  const dynamicStyles = getDynamicStyles();
-
+ 
+  const youtubeSeekRight = () => {
+    handleDoubleTap(
+      () => {
+        videoRef.current.seek(currentTime + 5);
+      },
+      () => {
+        setOverlay(true);
+        overlayTimer = setTimeout(() => setOverlay(false), 3000);
+      },
+    );
+  };
+ 
+  const handleFullscreen = () => {
+    const newFullscreen = !fullscreen;
+    console.log('newFullscreen', newFullscreen);
+ 
+    if (newFullscreen) {
+      Orientation.lockToLandscape();
+    } else {
+      Orientation.lockToPortrait();
+    }
+    setFullscreen(newFullscreen);
+  };
+ 
   return (
-    <View style={styles.container}>
-      {!isPlaying && (
-        <Pressable
-          style={styles.thumbnailContainer}
+    <View style={style.container}>
+      <View style={{position: 'absolute', top: 20, left: 20}}>
+        <TouchableOpacity
           onPress={() => {
-            if (data?.status === 'active' || data?.status === 'completed') {
-              setCurrentdata(data);
-            } else {
-              common_fn.showToast('This video is locked');
-            }
+            cancel(false);
           }}>
-          <Image source={{ uri: thumbnailUri }} style={styles.thumbnail} />
-          {data?.status === 'inactive' ? (
-            <View style={styles.lockIcon}>
-              <FontAwesome name="lock" size={20} color="#000" />
-            </View>
-          ) : data?.status === 'completed' ? (
-            <Pressable style={styles.completedButton} onPress={() => {
-              if (data?.status === 'active' || data?.status === 'completed') {
-                setCurrentdata(data);
-              } else {
-                common_fn.showToast('This video is locked');
-              }
-            }}>
-              <Text style={styles.buttonText}>
-                {data?._id === currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Watched')}
-              </Text>
-            </Pressable>
-          ) : (
-            <Pressable style={dynamicStyles.recentButton} onPress={() => {
-              if (data?.status === 'active' || data?.status === 'completed') {
-                setCurrentdata(data);
-              } else {
-                common_fn.showToast('This video is locked');
-              }
-            }}>
-              <Text style={dynamicStyles.buttonText}>
-                {data?._id === currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Recently Unlocked')}
-              </Text>
-            </Pressable>
-          )}
-        </Pressable>
-      )}
-      {isPlaying && (
-        <>
-          <Video
-            ref={videoPlayerRef}
-            source={{ uri: videoUri }}
-            style={styles.video}
-            controls={false}
-            paused={!isPlaying}
-            onProgress={handleProgress}
-            onLoad={handleLoad}
-            resizeMode="contain"
-          />
-          <View style={styles.controls}>
-            <TouchableOpacity onPress={togglePlayPause}>
-              <Icon
-                name={isPlaying ? 'pause' : 'play'}
-                size={30}
-                color="#FFF"
-              />
-            </TouchableOpacity>
-
-            <Text style={styles.time}>
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </Text>
+          <AntDesign name="close" size={30} color="white" />
+        </TouchableOpacity>
+      </View>
+      <View style={fullscreen ? style.fullscreenVideo : style.video}>
+       
+        <Video
+          fullscreen={fullscreen}
+          paused={paused}
+          ref={videoRef}
+          source={{uri: source}}
+          style={StyleSheet.absoluteFill}
+          resizeMode="cover"
+          onLoad={load}
+          onProgress={progress}
+          controls={false}
+          onFullscreenPlayerDidDismiss={handleFullscreen}
+          // onEnd={text => {
+          //     if (currentdata?.status !== 'completed') {
+          //         console.log("Data",currentdata);
+ 
+          //         Videoendfun(currentdata);
+          //     }
+          //     console.log("G  Video has ended");
+ 
+          //   }}
+        />
+ 
+        {!loader ? (
+          <View style={style.overlay}>
+            {overlay ? (
+              <View style={{...style.overlaySet, backgroundColor: '#0006'}}>
+                {/* {
+                                    Math.round(currentTime) > 5 ? (
+                                        <Icons name="replay-5" style={style.icon} onPress={backward} />
+                                    ):null
+                                } */}
+                <Icons name="replay-5" style={style.icon} onPress={backward} />
+                {console.log('duration', Math.round(duration))}
+                <Icon
+                  name={paused ? 'play' : 'pause'}
+                  style={style.icon}
+                  onPress={() => setPaused(!paused)}
+                />
+ 
+                <Icons name="forward-5" style={style.icon} onPress={forward} />
+ 
+                <View style={style.sliderCont}>
+                  <View style={style.timer}>
+                    <Text style={{color: 'white'}}>{getTime(currentTime)}</Text>
+                    <Text style={{color: 'white'}}>
+                      {getTime(duration)}{' '}
+                      <TouchableOpacity
+                        style={{marginLeft: 5}}
+                        onPress={handleFullscreen}>
+                        <Icon
+                          //   onPress={handleFullscreen}
+                          name={fullscreen ? 'compress' : 'expand'}
+                          style={{
+                            fontSize: 13,
+                            marginLeft: 5,
+                            zindex: 100,
+                            color: 'white',
+                          }}
+                        />
+                      </TouchableOpacity>
+                    </Text>
+                  </View>
+                  {/* <Slider
+                    maximumTrackTintColor="white"
+                    minimumTrackTintColor="white"
+                    thumbTintColor="white"
+                    value={currentTime / duration}
+                    onValueChange={onslide}
+                  /> */}
+                </View>
+              </View>
+            ) : (
+              <View style={style.overlaySet}>
+                <TouchableNativeFeedback
+                  onPress={() => {
+                    setOverlay(true),
+                      setTimeout(() => {
+                        setOverlay(false);
+                      }, 3000);
+                  }}>
+                  <View style={{flex: 1}} />
+                </TouchableNativeFeedback>
+                <TouchableNativeFeedback
+                  onPress={() => {
+                    setOverlay(true),
+                      setTimeout(() => {
+                        setOverlay(false);
+                      }, 3000);
+                  }}>
+                  <View style={{flex: 1}} />
+                </TouchableNativeFeedback>
+              </View>
+            )}
           </View>
-        </>
-      )}
+        ) : (
+          <View
+            style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <ActivityIndicator size="large" color={Color?.white} />
+          </View>
+        )}
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
+ 
+const style = StyleSheet.create({
   container: {
+    flex: 1,
     width: '100%',
     height: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#000',
   },
-  thumbnailContainer: {
-    width: screenWidth,
-    height: screenHeight * 0.5,
-    position: 'relative',
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
   },
-  thumbnail: {
-    width: '100%',
-    height: '100%',
+  overlaySet: {
+    flex: 1,
+    flexDirection: 'row',
   },
-  video: {
-    width: '100%',
-    height: '100%',
+  icon: {
+    color: 'white',
+    flex: 1,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 30,
   },
-  controls: {
+  sliderCont: {
     position: 'absolute',
-    bottom: 10,
-    left: 10,
-    right: 10,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  text: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  timer: {
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: screenWidth * 0.02, 
-    borderRadius: 5,
+    paddingHorizontal: 5,
   },
-  time: {
-    color: '#FFF',
-    fontSize: screenWidth * 0.04,
-  },
-  lockIcon: {
-    position: 'absolute',
-    left: '40%',
-    top: '35%',
-    backgroundColor: '#fff',
-    padding: 13,
-    alignItems: 'center',
-    borderRadius: 100,
-  },
-  completedButton: {
-    position: 'absolute',
-    left: '30%',
-    top: '35%',
-    backgroundColor: '#fff',
-    padding: screenWidth * 0.025, 
-    alignItems: 'center',
-    borderRadius: 20,
+  video: {...StyleSheet.absoluteFillObject},
+  fullscreenVideo: {
+    backgroundColor: '#000',
+    ...StyleSheet.absoluteFill,
+    elevation: 1,
   },
 });
-
-export default VideoPlayerWithThumbnail;
+ 
+export default Videoplayercomponent;

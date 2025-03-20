@@ -99,11 +99,13 @@
     "Welcome description": "अपने मोबाइल नंबर से लॉगिन करें",
     "Mobile Number": "मोबाइल नंबर",
     "Get Otp": "OTP प्राप्त करें",
-    "or Login With": "या लॉगिन करें",
+    "or Login With": "या इसके साथ लॉगिन करें",
     "Google": "गूगल",
     "Password": "पासवर्ड",
-    "Don't have an account?": "खाता नहीं है?",
-    "Sign Up": "साइन अप करें"
+    "Don't have an account?": "क्या आपका खाता नहीं है?",
+    "Sign Up": "साइन अप करें",
+    "Mobile number": "मोबाइल नंबर",
+    "Invalid Phone Number, Please Enter Your 10 Digit Phone Number": "अमान्य फोन नंबर, कृपया अपना 10 अंकों का फोन नंबर दर्ज करें"
   },
   "Onboarding": {
     "Your smoke-free life Begins now": "आपका धूम्रपान-मुक्त जीवन अब शुरू होता है!",
@@ -114,15 +116,23 @@
   "Passwordlogin": {
     "Welcome Back": "फिर से स्वागत है",
     "Welcome description": "अपने ईमेल और पासवर्ड से लॉगिन करें",
-    "Email Your Email ID": "अपना ईमेल आईडी दर्ज करें",
+    "Email Your Email ID": "अपना ईमेल आईडी",
     "Password": "पासवर्ड",
     "Log in": "लॉग इन करें",
     "forgot Password": "पासवर्ड भूल गए?",
-    "or Login With": "या लॉगिन करें",
+    "or Login With": "या इसके साथ लॉगिन करें",
     "Google": "गूगल",
-    "Phone": "फ़ोन",
-    "Don't have an account?": "खाता नहीं है?",
-    "Sign Up": "साइन अप करें"
+    "Phone": "फोन",
+    "Don't have an account?": "क्या आपका खाता नहीं है?",
+    "Sign Up": "साइन अप करें",
+    "Reset Password with your Email": "अपने ईमेल से पासवर्ड रीसेट करें",
+    "Enter Your Email ID": "अपना ईमेल आईडी दर्ज करें",
+    "Send Password Reset Link": "पासवर्ड रीसेट लिंक भेजें",
+    "Please enter your email": "कृपया अपना ईमेल दर्ज करें।",
+    "Please enter a valid email.": "कृपया एक मान्य ईमेल दर्ज करें।",
+    "Mail sent successfully": "मेल सफलतापूर्वक भेजा गया",
+      "set minimum character as 6": "न्यूनतम 6 अक्षर सेट करें",
+    "Please Enter your valid Email and Password": "कृपया अपना वैध ईमेल और पासवर्ड दर्ज करें"
   },
   "Sim1": {
     "SIM Test": "SIM परीक्षण",
@@ -171,7 +181,7 @@
   "Roadmap": {
     "Complete the SIM Test": "SIM टेस्ट पूरा करें",
     "Start by taking the SIM Test to evaluate your Smoking habits and readiness to quit": "अपनी धूम्रपान की आदतों और छोड़ने की तत्परता का मूल्यांकन करने के लिए SIM टेस्ट लें",
-    "Watch All 7 Videos": "सभी 7 वीडियो देखें",
+    "Watch All Videos": "सभी वीडियो देखें",
     "Each video is designed to guide you through the quitting process": "प्रत्येक वीडियो आपको छोड़ने की प्रक्रिया के माध्यम से मार्गदर्शन करने के लिए डिज़ाइन किया गया है",
     "Retake the SIM Test (SIM Test 2)": "SIM टेस्ट को फिर से लें (SIM टेस्ट 2)",
     "Each Video is designed to Guide you through the quitting process": "प्रत्येक वीडियो आपको छोड़ने की प्रक्रिया के माध्यम से मार्गदर्शन करने के लिए डिज़ाइन किया गया है",
@@ -684,10 +694,37 @@
     "Submit & Continue": "सबमिट करें & जारी रखें"
   },
   "Success": {
-  "Congratulations on": "बधाई हो",
-  "Completing the Quiz": "क्विज़ पूरा करने के लिए",
-  "To check your scores and see how you did": "अपने स्कोर जांचने और यह देखने के लिए कि आपने कैसे प्रदर्शन किया",
-  "please sign up or log in!": "कृपया साइन अप करें या लॉग इन करें!",
-  "Sign Up to View Scores": "स्कोर देखने के लिए साइन अप करें"
-}
+    "Congratulations on": "बधाई हो",
+    "Completing the Quiz": "क्विज़ पूरा करने के लिए",
+    "To check your scores and see how you did": "अपने स्कोर जांचने और यह देखने के लिए कि आपने कैसे प्रदर्शन किया",
+    "please sign up or log in!": "कृपया साइन अप करें या लॉग इन करें!",
+    "Sign Up to View Scores": "स्कोर देखने के लिए साइन अप करें"
+  },
+  "Registerscreen": {
+    "Let’s Get Started": "चलिए शुरू करते हैं",
+    "Create an account to unlock personalised videos and support to help you quit smoking": "व्यक्तिगत वीडियो और धूम्रपान छोड़ने में सहायता को अनलॉक करने के लिए एक खाता बनाएं",
+    "By signing up, you agree to our": "साइन अप करके, आप हमारी",
+    "Terms & Conditions": "शर्तों और नियमों",
+    "and": "और",
+    "Privacy Policy": "गोपनीयता नीति",
+    "Get Started": "शुरू करें",
+    "Already have an account?": "पहले से ही एक खाता है?",
+    "Log in": "लॉग इन करें",
+    "Password *": "पासवर्ड *",
+    "Select Gender *": "लिंग चुनें *",
+    "DD/MM/YYYY *": "दि/मा/वर्ष *",
+    "Enter Your Mobile Number *": "अपना मोबाइल नंबर दर्ज करें *",
+    "Enter Your Email ID *": "अपना ईमेल आईडी दर्ज करें *",
+    "Enter Your Name *": "अपना नाम दर्ज करें *",
+    "Select Gender": "लिंग चुनें",
+    "Male": "पुरुष",
+    "Female": "महिला",
+    "Please fill out the required forms to register.": "पंजीकरण के लिए आवश्यक फ़ॉर्म भरें।"
+  },
+  "Onboardscreen": {
+    "Your smoke-free life Begins now": "आपकी धूम्रपान मुक्त ज़िंदगी अब शुरू होती है",
+    "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "हर दिन एक सिगरेट आपकी ज़िंदगी को कम करती है। तंबाकू से मुक्त हो जाइए और आज ही बेहतर जीवन जीना शुरू करें!",
+    "Get Started": "शुरू करें",
+    "Already Have an Account?": "पहले से ही एक खाता है?"
+  }
 }

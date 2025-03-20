@@ -35,6 +35,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { Iconviewcomponent } from '../../Components/Icontag';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -139,9 +140,7 @@ const Login = () => {
         }
       } else {
         if (Platform.OS === 'android') {
-          common_fn.showToast(
-            'Invalid Phone Number, Please Enter Your 10 Digit Phone Number',
-          );
+          common_fn.showToast(`${t('mobilelogin.Invalid Phone Number, Please Enter Your 10 Digit Phone Number')}`);
           setloader(false);
         } else {
           alert(
@@ -212,6 +211,15 @@ const Login = () => {
         showsVerticalScrollIndicator={false}
       // scrollEnabled={isKeyboardVisible ? true : false }
       >
+        <View style={{ position: 'absolute', right: 25, top: 25 }}>
+          <TouchableOpacity onPress={() => navigation.navigate("LanguageSelector")}>
+            <Iconviewcomponent
+              Icontag="Entypo"
+              icon_size={24}
+              icon_color={Color?.black}
+              iconname={"language"} />
+          </TouchableOpacity>
+        </View>
         <StatusBar
           hidden={false} // Hides the status bar
           backgroundColor={Color.white} // Matches background color
@@ -227,6 +235,7 @@ const Login = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
+
           <View
             style={{
               flex: 1,
@@ -251,6 +260,7 @@ const Login = () => {
                 source={require('../../assets/Logos/cignix.png')}
                 style={[styles.image]}
               />
+
             </View>
             <View
               style={{
@@ -266,8 +276,8 @@ const Login = () => {
                   fontFamily: Mulish.Bold,
                   paddingVertical: 5,
                 }}>
-                {/* {t("mobilelogin.Welcome Back")} */}
-                Welcome Back,
+                {t("mobilelogin.Welcome Back")}
+                {/* Welcome Back, */}
               </Text>
               <Text
                 style={{
@@ -275,8 +285,8 @@ const Login = () => {
                   color: Color.cloudyGrey,
                   fontFamily: Mulish.Medium,
                 }}>
-                {/* {t("mobilelogin.Welcome description")} */}
-                Login with your Mobile Number
+                {t("mobilelogin.Welcome description")}
+                {/* Login with your Mobile Number */}
               </Text>
 
               <View style={{ marginVertical: 20 }}>
@@ -302,7 +312,7 @@ const Login = () => {
                     </Text>
                   </View>
                   <TextInput
-                    placeholder="Mobile Number"
+                    placeholder={t("mobilelogin.Mobile number")}
                     placeholderTextColor={Color.black}
                     value={number}
                     keyboardType="numeric"
@@ -339,28 +349,18 @@ const Login = () => {
                       color: Color.white,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                    {/* {t("mobilelogin.Get Otp")} */}
-                    Get OTP
+                    {t("mobilelogin.Get Otp")}
+                    {/* Get OTP */}
                   </Text>
                 )}
               </TouchableOpacity>
 
               <View
                 style={{
-                  width: scr_width,
-                  flexDirection: 'row',
+                  width: scr_width - 40,
                   alignItems: 'center',
                   marginVertical: 20,
                 }}>
-                <View
-                  style={{
-                    width: scr_width / 3.3,
-                    height: 0.5,
-                    borderStyle: 'dashed',
-                    borderWidth: 0.5,
-                    backgroundColor: Color.softGrey,
-                    borderRadius: 1,
-                  }}></View>
                 <View>
                   <Text
                     style={{
@@ -368,20 +368,12 @@ const Login = () => {
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.Medium,
                       paddingHorizontal: 5,
+                      alignItems: 'center'
                     }}>
-                    {/* {t("mobilelogin.or Login With")} */}
-                    Or Login With
+                    ------{t("mobilelogin.or Login With")}------
+                    {/* Or Login With */}
                   </Text>
                 </View>
-                <View
-                  style={{
-                    width: scr_width / 3.3,
-                    height: 0.5,
-                    borderStyle: 'dashed',
-                    borderWidth: 0.5,
-                    backgroundColor: Color.softGrey,
-                    borderRadius: 1,
-                  }}></View>
               </View>
 
               <View
@@ -415,8 +407,8 @@ const Login = () => {
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
                     }}>
-                    {/* {t("mobilelogin.Google")} */}
-                    Google
+                    {t("mobilelogin.Google")}
+                    {/* Google */}
                   </Text>
                 </TouchableOpacity>
                 <View
@@ -431,9 +423,10 @@ const Login = () => {
                     flex: 1,
                     height: 60,
                     flexDirection: 'row',
-                    justifyContent: 'center',
+                    justifyContent: 'space-evenly',
                     alignItems: 'center',
                     borderRadius: 30,
+                    padding: 10,
                     borderWidth: 1,
                     borderColor: '#C5C5C5',
                   }}>
@@ -448,15 +441,15 @@ const Login = () => {
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
                     }}>
-                    {/* {t("mobilelogin.Password")} */}
-                    Password
+                    {t("mobilelogin.Password")}
+                    {/* Password */}
                   </Text>
                 </TouchableOpacity>
               </View>
 
               <View
                 style={{
-                  width: '100%',
+                  width: scr_width - 30,
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -464,24 +457,24 @@ const Login = () => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color.Venus,
                     fontFamily: Mulish.Medium,
                     paddingHorizontal: 5,
                   }}>
-                  {/* {t("mobilelogin.Don't have an account?")}{' '} */}
-                  Don't have an account?
+                  {t("mobilelogin.Don't have an account?")}{' '}
+                  {/* Don't have an account? */}
                 </Text>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('SimTest')}>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Color.primary,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                    {/* {t("mobilelogin.Sign Up")} */}
-                    Sign Up
+                    {t("mobilelogin.Sign Up")}
+                    {/* Sign Up */}
                   </Text>
                 </TouchableOpacity>
               </View>
