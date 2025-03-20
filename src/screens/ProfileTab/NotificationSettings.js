@@ -193,7 +193,7 @@ const NotificationSettings = () => {
         </Pressable>
         <View>
           <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
+            style={{fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000'}}>
             {t("NotificationSettings.Notification Settings")}
           </Text>
         </View>
@@ -202,7 +202,7 @@ const NotificationSettings = () => {
         style={{
           width: scr_width,
           padding: 10,
-          fontSize: 22,
+          fontSize: 17,
           color: Color.black,
           fontFamily: Mulish.Bold,
           // letterSpacing: 0.5,
@@ -214,7 +214,7 @@ const NotificationSettings = () => {
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
@@ -238,7 +238,7 @@ const NotificationSettings = () => {
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
             {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
@@ -258,7 +258,7 @@ const NotificationSettings = () => {
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
@@ -280,7 +280,7 @@ const NotificationSettings = () => {
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
             {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
@@ -300,7 +300,7 @@ const NotificationSettings = () => {
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
@@ -322,7 +322,7 @@ const NotificationSettings = () => {
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
             {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
@@ -343,7 +343,7 @@ const NotificationSettings = () => {
         style={{
           width: '100%',
           padding: 10,
-          fontSize: 20,
+          fontSize: 16,
           color: Color.black,
           fontFamily: Mulish.Bold,
           letterSpacing: 0.5,
@@ -364,7 +364,7 @@ const NotificationSettings = () => {
           style={{flex: 3, justifyContent: 'center', alignItems: 'flex-start'}}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               textAlign: 'justify',
               color: Color.black,
               fontFamily: Mulish.SemiBold,
@@ -407,7 +407,7 @@ const NotificationSettings = () => {
           style={{flex: 3, justifyContent: 'center', alignItems: 'flex-start'}}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               textAlign: 'justify',
               color: Color.black,
               fontFamily: Mulish.SemiBold,
@@ -446,7 +446,7 @@ const NotificationSettings = () => {
           justifyContent: 'center',
           borderRadius: 100,
         }}>
-        <Text style={{color: '#fff', fontSize: 20}}>Update Settings</Text>
+        <Text style={{color: '#fff', fontSize: 16}}>Update Settings</Text>
       </TouchableOpacity> */}
       <View style={{padding: 50, backgroundColor: '#fff'}}></View>
     </ScrollView>
@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#333',
   },
   switchContainer: {

@@ -269,7 +269,7 @@ const OTPScreen = ({ route }) => {
                             Enter the verification code we sent to your number{' +91 '}
                             <Text
                                 style={{
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Color.lightBlack,
                                     fontFamily: Mulish.SemiBold,
                                     letterSpacing: 0.5,
@@ -295,7 +295,7 @@ const OTPScreen = ({ route }) => {
                         <TouchableOpacity onPress={() => VerifyOTP()} style={{ width: '95%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.primary, borderRadius: 30, marginVertical: 20 }}>
                             {loader == true ? (
                                 <ActivityIndicator size={'small'} color={Color.white} />
-                            ) : (<Text style={{ fontSize: 18, color: Color.white, fontFamily: Mulish.SemiBold }}>Verfiy OTP</Text>)}
+                            ) : (<Text style={{ fontSize: 16, color: Color.white, fontFamily: Mulish.SemiBold }}>Verfiy OTP</Text>)}
                         </TouchableOpacity>
 
                         {seconds > 0 || minutes > 0 ? (
@@ -363,7 +363,7 @@ const styles = StyleSheet.create({
     },
     resendOtp: {
         color: Color.primary,
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: Mulish.SemiBold,
         fontWeight: 'bold',
         textAlign: 'right',

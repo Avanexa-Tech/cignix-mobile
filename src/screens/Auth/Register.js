@@ -29,6 +29,7 @@ import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 // create a component
 const Register = ({ navigation, route }) => {
   const routedata = route?.params;
@@ -201,7 +202,7 @@ const Register = ({ navigation, route }) => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color.lightBlack,
                     fontFamily: Mulish.SemiBold,
                   }}>
@@ -236,7 +237,7 @@ const Register = ({ navigation, route }) => {
                         <Text
                           style={{
                             textAlign: 'center',
-                            fontSize: 16,
+                            fontSize: 14,
                             color:
                               selectGender === item.gender
                                 ? Color.white
@@ -435,7 +436,7 @@ const Register = ({ navigation, route }) => {
           <TouchableOpacity onPress={showDatePicker} style={{ paddingLeft: 0 }}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: date ? Color.black : Color.Venus,
                 fontFamily: Mulish.SemiBold,
               }}>
@@ -475,7 +476,7 @@ const Register = ({ navigation, route }) => {
             <View>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: 14,
                   color: selectGender ? Color.black : Color.Venus,
                   fontFamily: Mulish.SemiBold,
                 }}>
@@ -562,11 +563,11 @@ const Register = ({ navigation, route }) => {
                 </View> */}
         <View>
           <Text style={{ textAlign: 'justify', fontSize: 14, fontFamily: Mulish?.Medium, color: '#666666' }}>
-            By signing up, you agree to our <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 15 }} onPress={() => {
+            By signing up, you agree to our <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 13 }} onPress={() => {
               navigation.navigate('TermsandConditions')
 
             }}>Terms & Conditions</Text> and{' '}
-            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 16 }} onPress={() => {
+            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 14 }} onPress={() => {
               navigation?.navigate('PrivacyPolicy')
             }}>Privacy Policy</Text>
           </Text>
@@ -589,7 +590,7 @@ const Register = ({ navigation, route }) => {
               ) : (
                 <Text
                   style={{
-                    fontSize: 20,
+                    fontSize: 16,
                     color: Color.white,
                     fontFamily: Mulish.SemiBold,
                   }}>
@@ -610,7 +611,7 @@ const Register = ({ navigation, route }) => {
           }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               color: Color.Venus,
               fontFamily: Mulish.Medium,
               paddingHorizontal: 5,
@@ -620,7 +621,7 @@ const Register = ({ navigation, route }) => {
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 16,
                 color: Color.primary,
                 fontFamily: Mulish.SemiBold,
               }}>
@@ -679,7 +680,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 0,
@@ -716,7 +717,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
 });

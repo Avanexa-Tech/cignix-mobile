@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 16,
     marginRight:10,
     fontFamily: Mulish.Bold,
     flex: 1,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Color.lightgrey,
   },
   languageText: {
-    fontSize: 16,
+    fontSize: 14,
     color: Color.lightBlack,
     fontFamily: Mulish.Regular,
     marginVertical:10

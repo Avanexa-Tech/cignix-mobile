@@ -264,8 +264,10 @@ const HomeScreen = () => {
           };
         })
       );
-
+        console.log("Videoooooooooo", translatedData);
+        
       setgetvideo(translatedData);
+      getrecentVideo(translatedData);
 
     } catch (error) {
       console.log('Catch in Getvideo', error);
@@ -274,6 +276,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     Getvideo();
+  
   }, [language])
 
   // USERDATA :
@@ -412,7 +415,7 @@ const HomeScreen = () => {
           </Text>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               color: Color?.black,
               fontFamily: Mulish.Medium,
             }}>
@@ -451,7 +454,7 @@ const HomeScreen = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color?.black,
                       fontFamily: Mulish.Regular,
                     }}>
@@ -496,7 +499,7 @@ const HomeScreen = () => {
               }}>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Color?.white,
                   fontFamily: Mulish?.SemiBold,
                 }}>
@@ -570,14 +573,14 @@ const HomeScreen = () => {
 
   // getrecentVideo Button Functionality :
   const getrecentVideo = data => {
-    try {
-      const activeIndex = data.findIndex(item => item?.status == 'active');
+    try {      
+      const activeIndex = data.findIndex(item => item?.status == 'active');      
       if (activeIndex !== -1) {
         const activeItem = data[activeIndex];
         setCurrentvideo(activeItem);
       } else {
+        setCurrentvideo(data[0]);
         console.log('sss', data);
-        console.log('No active item found');
       }
     } catch (error) { }
   };
@@ -699,11 +702,10 @@ const HomeScreen = () => {
               backgroundColor: Color.softGrey,
             }}>
             <Image
-
               source={
                 userdata?.profile
                   ? { uri: userdata?.profile }
-                  : require('../../assets/Gallery/profile.png')
+                  : require('../../assets/Gallery/profile.jpg')
               }
               style={{
                 width: scr_width * 0.125,
@@ -728,7 +730,7 @@ const HomeScreen = () => {
               }}>
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -738,7 +740,7 @@ const HomeScreen = () => {
               {userdata?.name && (
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color.black,
                     fontFamily: Mulish.Bold,
                     paddingHorizontal: 5,
@@ -845,7 +847,7 @@ const HomeScreen = () => {
                                   />
                                   <Text
                                     style={{
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       color: '#666666',
                                       fontFamily: Mulish?.SemiBold,
                                     }}>
@@ -912,7 +914,7 @@ const HomeScreen = () => {
                             <Text
                               style={{
                                 color: '#53B98F',
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontFamily: Mulish?.Bold,
                                 textTransform: 'capitalize',
                               }}>
@@ -941,7 +943,7 @@ const HomeScreen = () => {
                           <Text
                             style={{
                               color: '#000000',
-                              fontSize: 16,
+                              fontSize: 14,
                               fontFamily: Mulish?.Bold,
                             }}>
                             {t("Homescreen.What’s Next?")}
@@ -980,7 +982,7 @@ const HomeScreen = () => {
                               <View>
                                 <Text
                                   style={{
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     color: '#fff',
                                     fontFamily: Mulish?.Bold,
                                   }}>
@@ -988,7 +990,7 @@ const HomeScreen = () => {
                                 </Text>
                                 <Text
                                   style={{
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     color: '#fff',
                                     fontFamily: Mulish?.Bold,
                                   }}>
@@ -1084,7 +1086,7 @@ const HomeScreen = () => {
                               style={{
                                 width: '70%',
                                 textAlign: 'center',
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: Color.white,
                                 fontFamily: Mulish.SemiBold,
                                 marginTop: 15,
@@ -1116,7 +1118,7 @@ const HomeScreen = () => {
                                 }}>
                                 <Text
                                   style={{
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Color.white,
                                     fontFamily: Mulish.SemiBold,
                                   }}>
@@ -1183,7 +1185,7 @@ const HomeScreen = () => {
                                   }}>
                                   <Text
                                     style={{
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       color: Color.white,
                                       fontFamily: Mulish.SemiBold,
                                     }}>
@@ -1210,7 +1212,7 @@ const HomeScreen = () => {
                                 style={{
                                   width: '60%',
                                   textAlign: 'center',
-                                  fontSize: 15,
+                                  fontSize: 13,
                                   color: Color.white,
                                   fontFamily: Mulish.SemiBold,
                                 }}>
@@ -1274,7 +1276,7 @@ const HomeScreen = () => {
                           }}>
                           <Text
                             style={{
-                              fontSize: 15,
+                              fontSize: 13,
                               color: Color.white,
                               fontFamily: Mulish.SemiBold
                             }}>
@@ -1301,7 +1303,7 @@ const HomeScreen = () => {
                           >
                             <Text
                               style={{
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Color.notify,
                                 fontFamily: Mulish.SemiBold,
                               }}>
@@ -1314,7 +1316,7 @@ const HomeScreen = () => {
                               style={{
                                 width: '70%',
                                 textAlign: 'center',
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: Color.white,
                                 fontFamily: Mulish.SemiBold,
                                 marginTop: 15,
@@ -1346,7 +1348,7 @@ const HomeScreen = () => {
                                 }}>
                                 <Text
                                   style={{
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Color.white,
                                     fontFamily: Mulish.SemiBold,
                                   }}>
@@ -1425,7 +1427,7 @@ const HomeScreen = () => {
                                   }}>
                                   <Text
                                     style={{
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       color: Color.white,
                                       fontFamily: Mulish.SemiBold,
                                     }}>
@@ -1452,7 +1454,7 @@ const HomeScreen = () => {
                                 style={{
                                   width: '60%',
                                   textAlign: 'center',
-                                  fontSize: 15,
+                                  fontSize: 13,
                                   color: Color.white,
                                   fontFamily: Mulish.SemiBold,
                                 }}>
@@ -1525,7 +1527,7 @@ const HomeScreen = () => {
                         style={{
                           width: '100%',
                           textAlign: 'left',
-                          fontSize: 20,
+                          fontSize: 16,
                           color: Color.black,
                           fontFamily: Mulish.Bold,
                           letterSpacing: 0.5,
@@ -1548,7 +1550,7 @@ const HomeScreen = () => {
                           <Text
                             style={{
                               fontFamily: Mulish?.Medium,
-                              fontSize: 18,
+                              fontSize: 16,
                               color: '#333333',
                             }}>
                             {Currentvideo?.lesson_details?.title}
@@ -1577,7 +1579,7 @@ const HomeScreen = () => {
                         style={{
                           width: '100%',
                           textAlign: 'left',
-                          fontSize: 20,
+                          fontSize: 16,
                           color: Color.black,
                           fontFamily: Mulish.Bold,
                           letterSpacing: 0.5,
@@ -1636,7 +1638,7 @@ const HomeScreen = () => {
                                   <Text
                                     style={{
                                       fontFamily: Mulish?.Medium,
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: '#333333',
                                     }}>
                                     {item?.lesson_details?.title}
@@ -1794,7 +1796,7 @@ const HomeScreen = () => {
                   <Text
                     style={{
                       color: '#fff',
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: Mulish?.Medium,
                     }}>
                     {t("Homescreen.Submit Question")}
@@ -1820,7 +1822,7 @@ const HomeScreen = () => {
                   <Text
                     style={{
                       color: '#000',
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: Mulish?.Medium,
                     }}>
                     {t("Homescreen.No Questions, I Understand")}
@@ -1888,7 +1890,7 @@ const HomeScreen = () => {
                   style={{
                     color: '#fff',
                     textAlign: 'center',
-                    fontSize: 20,
+                    fontSize: 16,
                     fontFamily: Mulish?.Medium,
                   }}>
                   {t("Homescreen.Got It")} !
@@ -1975,7 +1977,7 @@ const HomeScreen = () => {
                   style={{
                     color: '#fff',
                     textAlign: 'center',
-                    fontSize: 20,
+                    fontSize: 16,
                     fontFamily: Mulish?.Medium,
                   }}>
                   {t("Homescreen.Got It")} !
@@ -2036,7 +2038,7 @@ const HomeScreen = () => {
               }}>
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color?.black,
                   fontFamily: Mulish?.SemiBold,
                 }}>
@@ -2047,7 +2049,7 @@ const HomeScreen = () => {
                 style={{
                   color: Color.black,
                   fontFamily: Mulish?.Regular,
-                  fontSize: 16,
+                  fontSize: 14,
                   borderRadius: 10,
                   borderWidth: 1,
                   borderColor: 'gray',
@@ -2102,7 +2104,7 @@ const HomeScreen = () => {
                   <Text
                     style={{
                       color: '#fff',
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: Mulish?.Medium,
                       textTransform: 'capitalize',
                     }}>
@@ -2131,7 +2133,7 @@ const HomeScreen = () => {
               <View style={{ gap: 10 }}>
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color?.black,
                     fontFamily: Mulish?.SemiBold,
                   }}>
@@ -2139,7 +2141,7 @@ const HomeScreen = () => {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color?.black,
                     fontFamily: Mulish?.Regular,
                   }}>

@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     // marginHorizontal: 20,
   },
   BoxInputValue: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: Mulish.SemiBold,
     textAlign: 'center',
     color: Color.black,

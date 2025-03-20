@@ -223,7 +223,7 @@ const Videostep4 = ({
                           //   onPress={handleFullscreen}
                           name={fullscreen ? 'compress' : 'expand'}
                           style={{
-                            fontSize: 15,
+                            fontSize: 13,
                             marginLeft: 5,
                             zindex: 100,
                             color: 'white',
@@ -306,7 +306,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 16,
   },
   timer: {
     width: '100%',

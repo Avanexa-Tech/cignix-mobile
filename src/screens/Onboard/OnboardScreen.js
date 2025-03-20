@@ -50,7 +50,7 @@ const OnboardScreen = () => {
               alignItems: 'center',
             }}>
             <Text style={{ width: '95%', textAlign: 'center', fontSize: 36, color: Color.white, fontFamily: Mulish.Bold, letterSpacing: 0.5 }}>Onboarding.Your smoke-free life Begins now</Text>
-            <Text style={{ width: '95%', textAlign: 'center', fontSize: 16, color: Color.grey, fontFamily: Mulish.Medium, paddingVertical: 15, lineHeight: 22, letterSpacing: 0.5 }}>A cigarette a day takes your life away. Break free from tobacco and start living better today!</Text>
+            <Text style={{ width: '95%', textAlign: 'center', fontSize: 14, color: Color.grey, fontFamily: Mulish.Medium, paddingVertical: 15, lineHeight: 22, letterSpacing: 0.5 }}>A cigarette a day takes your life away. Break free from tobacco and start living better today!</Text>
 
 
             <TouchableOpacity

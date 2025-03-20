@@ -117,7 +117,7 @@ const Timeline = () => {
         <View>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Bold,
               flex: 1,
@@ -210,10 +210,10 @@ const Timeline = () => {
                 gap: 5,
               }}>
               <View>
-                <Text style={{ fontSize: 18, color: '#fff', fontFamily: Mulish?.Bold }}>
+                <Text style={{ fontSize: 16, color: '#fff', fontFamily: Mulish?.Bold }}>
                   {t('Roadmap.Go Premium')}
                 </Text>
-                <Text style={{ fontSize: 18, color: '#fff', fontFamily: Mulish?.Bold }}>
+                <Text style={{ fontSize: 16, color: '#fff', fontFamily: Mulish?.Bold }}>
                   {t('Roadmap.For Extra Benefits')}!
                 </Text>
               </View>
@@ -229,7 +229,7 @@ const Timeline = () => {
                 borderRadius: 5,
               }}
               onPress={() => navigation.navigate('Membership')}>
-              <Text style={{ fontSize: 16, color: '#000', fontFamily: Mulish?.Bold }}>
+              <Text style={{ fontSize: 14, color: '#000', fontFamily: Mulish?.Bold }}>
                 {t('Roadmap.See Plans')}
               </Text>
             </TouchableOpacity>
@@ -260,14 +260,14 @@ const styles = StyleSheet.create({
   },
   label: {
     textAlign: 'left',
-    fontSize: 18,
+    fontSize: 16,
     color: Color.black,
     fontFamily: Mulish.Bold,
     marginBottom: 5,
   },
   stepLabel: {
     textAlign: 'justify',
-    fontSize: 16,
+    fontSize: 14,
     color: Color.cloudyGrey,
     fontFamily: Mulish.Medium,
     paddingVertical: 5,
@@ -290,11 +290,11 @@ const styles = StyleSheet.create({
   },
   indicatorText: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 14,
   },
   indicatorimg: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 

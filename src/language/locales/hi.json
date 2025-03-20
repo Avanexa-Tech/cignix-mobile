@@ -589,5 +589,12 @@
     "Let’s reinforce what you learned! Complete": "आपने जो सीखा है उसे मजबूत करें! पूरा करें",
     "the short exercise below": "नीचे दिया गया छोटा व्यायाम",
     "Submit & Continue": "सबमिट करें & जारी रखें"
-  }
+  },
+  "Success": {
+  "Congratulations on": "बधाई हो",
+  "Completing the Quiz": "क्विज़ पूरा करने के लिए",
+  "To check your scores and see how you did": "अपने स्कोर जांचने और यह देखने के लिए कि आपने कैसे प्रदर्शन किया",
+  "please sign up or log in!": "कृपया साइन अप करें या लॉग इन करें!",
+  "Sign Up to View Scores": "स्कोर देखने के लिए साइन अप करें"
+}
 }

@@ -172,7 +172,7 @@ const Test = ({ data, close }) => {
           </View>
           <View style={{ alignItems: 'center', gap: 5 }}>
             <Text
-              style={{ color: '#000', fontFamily: Mulish?.SemiBold, fontSize: 18 }}>
+              style={{ color: '#000', fontFamily: Mulish?.SemiBold, fontSize: 16 }}>
               {t("Test.Time for a Quick Exercise!")}
             </Text>
             <View style={{ alignItems: 'center' }}>
@@ -207,7 +207,7 @@ const Test = ({ data, close }) => {
                           style={{
                             color: '#000',
                             fontFamily: Mulish?.SemiBold,
-                            fontSize: 16,
+                            fontSize: 14,
                           }}>
                           {' '}
                           {index + 1}. {item.question}
@@ -248,7 +248,7 @@ const Test = ({ data, close }) => {
                               <Text
                                 style={{
                                   color: '#000',
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontFamily: Mulish?.Regular,
                                 }}>
                                 {option?.value}
@@ -267,7 +267,7 @@ const Test = ({ data, close }) => {
                           style={{
                             color: '#000',
                             fontFamily: Mulish?.SemiBold,
-                            fontSize: 16,
+                            fontSize: 14,
                           }}>
                           {' '}
                           {index + 1}. {item?.question}
@@ -312,7 +312,7 @@ const Test = ({ data, close }) => {
                               <Text
                                 style={{
                                   color: isChecked ? '#4259B7' : '#000',
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontFamily: Mulish?.Regular,
                                 }}>
                                 {option?.value}
@@ -331,7 +331,7 @@ const Test = ({ data, close }) => {
                           style={{
                             color: '#000',
                             fontFamily: Mulish?.SemiBold,
-                            fontSize: 16,
+                            fontSize: 14,
                           }}>
                           {' '}
                           {index + 1}. {item?.question}
@@ -380,7 +380,7 @@ const Test = ({ data, close }) => {
               }
             }}>
             <Text
-              style={{ color: '#fff', fontFamily: Mulish?.Medium, fontSize: 18 }}>
+              style={{ color: '#fff', fontFamily: Mulish?.Medium, fontSize: 16 }}>
               {t("Test.Submit & Continue")}
             </Text>
           </TouchableOpacity>

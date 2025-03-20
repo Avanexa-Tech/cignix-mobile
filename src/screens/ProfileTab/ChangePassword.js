@@ -143,7 +143,7 @@ const ChangePassword = () => {
         </Pressable>
         <View>
           <Text
-            style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
             {t("ChangePassword.Change Password")}
           </Text>
         </View>
@@ -160,7 +160,7 @@ const ChangePassword = () => {
             style={{
               padding: 10,
               textAlign: 'justify',
-              fontSize: 16,
+              fontSize: 14,
               color: Color.cloudyGrey,
               letterSpacing: 0.5,
               lineHeight: 25,
@@ -293,7 +293,7 @@ const ChangePassword = () => {
           }}>
           {/* <TouchableOpacity onPress={() => common_fn.showToast("Still Progress")}
                         style={{ width: '100%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, borderColor: Color.grey, borderWidth: 1, borderRadius: 30, marginVertical: 20 }}>
-                        <Text style={{ fontSize: 18, color: Color.cloudyGrey, fontFamily: Mulish.SemiBold }}>Forget Password</Text>
+                        <Text style={{ fontSize: 16, color: Color.cloudyGrey, fontFamily: Mulish.SemiBold }}>Forget Password</Text>
                     </TouchableOpacity> */}
 
           <TouchableOpacity
@@ -312,7 +312,7 @@ const ChangePassword = () => {
             ) : (
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color.white,
                   fontFamily: Mulish.SemiBold,
                 }}>
@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
   },
   numberCountryCode: {
     color: Color.cloudyGrey,
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: Mulish.SemiBold,
     textAlign: 'center',
     alignItems: 'center',
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 10,
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
 });

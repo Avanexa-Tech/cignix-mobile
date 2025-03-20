@@ -46,7 +46,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -68,7 +68,7 @@ const TermsandConditions = () => {
               <Text
                 style={{
                   textAlign: 'justify',
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -82,7 +82,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -115,7 +115,7 @@ const TermsandConditions = () => {
               <Text
                 style={{
                   textAlign: 'justify',
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -126,7 +126,7 @@ const TermsandConditions = () => {
               <Text
                 style={{
                   textAlign: 'justify',
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -139,7 +139,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -161,7 +161,7 @@ const TermsandConditions = () => {
               <Text
                 style={{
                   textAlign: 'justify',
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -210,7 +210,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -234,7 +234,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -244,7 +244,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -293,7 +293,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -354,7 +354,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -380,7 +380,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -442,7 +442,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -466,7 +466,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -490,7 +490,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -500,7 +500,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -525,7 +525,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -550,7 +550,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -576,7 +576,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -600,7 +600,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -802,7 +802,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -813,7 +813,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -837,7 +837,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -860,7 +860,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -888,7 +888,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -912,7 +912,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -1622,7 +1622,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -1986,7 +1986,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2022,7 +2022,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2032,7 +2032,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2056,7 +2056,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2083,7 +2083,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2107,7 +2107,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2143,7 +2143,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2179,7 +2179,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2204,7 +2204,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2214,7 +2214,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2238,7 +2238,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2262,7 +2262,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2286,7 +2286,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2312,7 +2312,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2337,7 +2337,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2361,7 +2361,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2385,7 +2385,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2409,7 +2409,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2433,7 +2433,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2458,7 +2458,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2468,7 +2468,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2516,7 +2516,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2543,7 +2543,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2567,7 +2567,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2590,7 +2590,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2600,7 +2600,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2612,7 +2612,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2624,7 +2624,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2636,7 +2636,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2648,7 +2648,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2660,7 +2660,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2670,7 +2670,7 @@ const TermsandConditions = () => {
               {t("ContactUs.Phone")}:{' '}
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.primary,
                   fontFamily: Mulish.SemiBold,
                 }}>
@@ -2680,7 +2680,7 @@ const TermsandConditions = () => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -2729,7 +2729,7 @@ const TermsandConditions = () => {
         <View style={{flexDirection:'row',flex:1}}>
           <View>
             <Text
-              style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
               {t("TermsandConditions.Terms and Conditions")}
             </Text>
           </View>

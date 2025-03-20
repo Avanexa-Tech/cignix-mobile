@@ -256,7 +256,7 @@ const EmailPassword = () => {
               </Text>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.cloudyGrey,
                   fontFamily: Mulish.Medium,
                 }}>
@@ -380,7 +380,7 @@ const EmailPassword = () => {
                 ) : (
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.white,
                       fontFamily: Mulish.SemiBold,
                     }}>
@@ -477,7 +477,7 @@ const EmailPassword = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
@@ -512,7 +512,7 @@ const EmailPassword = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
@@ -532,7 +532,7 @@ const EmailPassword = () => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color.Venus,
                     fontFamily: Mulish.Medium,
                     paddingHorizontal: 5,
@@ -543,7 +543,7 @@ const EmailPassword = () => {
                   onPress={() => navigation.navigate('SimTest')}>
                   <Text
                     style={{
-                      fontSize: 20,
+                      fontSize: 16,
                       color: Color.primary,
                       fontFamily: Mulish.SemiBold,
                     }}>
@@ -592,7 +592,7 @@ const EmailPassword = () => {
             </Text>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.cloudyGrey,
                 fontFamily: Mulish.Medium,
               }}>
@@ -649,7 +649,7 @@ const EmailPassword = () => {
               <Text
                 style={{
                   color: Color?.white,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: Mulish?.SemiBold,
                 }}>
                 Send Password Reset Link
@@ -693,7 +693,7 @@ const styles = StyleSheet.create({
   },
   numberCountryCode: {
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: Mulish.SemiBold,
     textAlign: 'center',
     alignItems: 'center',
@@ -713,7 +713,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 10,

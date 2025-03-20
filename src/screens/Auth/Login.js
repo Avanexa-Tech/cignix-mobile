@@ -271,7 +271,7 @@ const Login = () => {
               </Text>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.cloudyGrey,
                   fontFamily: Mulish.Medium,
                 }}>
@@ -335,7 +335,7 @@ const Login = () => {
                 ) : (
                   <Text
                     style={{
-                      fontSize: 20,
+                      fontSize: 16,
                       color: Color.white,
                       fontFamily: Mulish.SemiBold,
                     }}>
@@ -410,7 +410,7 @@ const Login = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
@@ -443,7 +443,7 @@ const Login = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
@@ -464,7 +464,7 @@ const Login = () => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color.Venus,
                     fontFamily: Mulish.Medium,
                     paddingHorizontal: 5,
@@ -476,7 +476,7 @@ const Login = () => {
                   onPress={() => navigation.navigate('SimTest')}>
                   <Text
                     style={{
-                      fontSize: 20,
+                      fontSize: 16,
                       color: Color.primary,
                       fontFamily: Mulish.SemiBold,
                     }}>
@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
     borderLeftColor: Color.grey,
     borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 10,

@@ -179,7 +179,7 @@ const NotificationsList = () => {
           }}>
           <Text
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: item.read ? Color.white : Color.black,
               fontFamily: Mulish.Bold,
               letterSpacing: 0.5,
@@ -225,7 +225,7 @@ const NotificationsList = () => {
         </Pressable>
         <View>
           <Text
-            style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
             {t("Notifications List")}
           </Text>
         </View>

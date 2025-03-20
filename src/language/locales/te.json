@@ -552,5 +552,12 @@
     "Let’s reinforce what you learned! Complete": "మీరు నేర్చుకున్నది పునరుద్ధరించుకుందాం! పూర్తి చేయండి",
     "the short exercise below": "కింద ఉన్న చిన్న వ్యాయామం",
     "Submit & Continue": "సమర్పించండి & కొనసాగించండి"
-  }
+  },
+  "Success": {
+  "Congratulations on": "శుభాకాంక్షలు",
+  "Completing the Quiz": "క్విజ్ పూర్తి చేసినందుకు",
+  "To check your scores and see how you did": "మీ స్కోర్లను పరిశీలించడానికి మరియు మీరు ఎలా చేసినట్లు చూడటానికి",
+  "please sign up or log in!": "దయచేసి సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి!",
+  "Sign Up to View Scores": "స్కోర్లు చూడటానికి సైన్ అప్ చేయండి"
+}
 }

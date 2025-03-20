@@ -43,7 +43,7 @@ const Viewblog = ({navigation,route}) => {
               <Text
                 style={{
                   fontFamily: Mulish?.SemiBold,
-                  fontSize: 18,
+                  fontSize: 16,
                   color: '#000',
                 }}>
                 {item?.meta_title}
@@ -66,7 +66,7 @@ const Viewblog = ({navigation,route}) => {
                 style={{
                   color: Color?.black,
                   fontFamily: Mulish?.Bold,
-                  fontSize: 16,
+                  fontSize: 14,
                 }}>
                 {item?.title}
               </Text>

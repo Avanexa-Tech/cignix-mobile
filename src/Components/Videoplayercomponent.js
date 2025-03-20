@@ -177,6 +177,8 @@ const Videoplayercomponent = ({
           resizeMode="cover"
           onLoad={load}
           onProgress={progress}
+          controls={false}
+          onFullscreenPlayerDidDismiss={handleFullscreen}
           // onEnd={text => {
           //     if (currentdata?.status !== 'completed') {
           //         console.log("Data",currentdata);
@@ -219,7 +221,7 @@ const Videoplayercomponent = ({
                           //   onPress={handleFullscreen}
                           name={fullscreen ? 'compress' : 'expand'}
                           style={{
-                            fontSize: 15,
+                            fontSize: 13,
                             marginLeft: 5,
                             zindex: 100,
                             color: 'white',
@@ -302,7 +304,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 16,
   },
   timer: {
     width: '100%',

@@ -115,7 +115,7 @@ const SimTest = ({ navigation }) => {
           </Text>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               color: Color?.black,
               fontFamily: Mulish.Medium,
             }}>
@@ -154,7 +154,7 @@ const SimTest = ({ navigation }) => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color?.black,
                       fontFamily: Mulish.Regular,
                     }}>
@@ -208,7 +208,7 @@ const SimTest = ({ navigation }) => {
               }}>
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color?.white,
                   fontFamily: Mulish?.SemiBold,
                 }}>
@@ -246,7 +246,7 @@ const SimTest = ({ navigation }) => {
         </Pressable>
         <Text
           style={{
-            fontSize: 22,
+            fontSize: 17,
             color: Color?.black,
             fontFamily: Mulish.SemiBold,
           }}>

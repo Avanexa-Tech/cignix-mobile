@@ -74,7 +74,7 @@ const Blogs = ({ navigation }) => {
         </Pressable>
         <View>
           <Text
-            style={{ fontFamily: Mulish?.SemiBold, fontSize: 18, color: '#000' }}>
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 16, color: '#000' }}>
             {t("profile.Blogs")}
           </Text>
         </View>
@@ -127,7 +127,7 @@ const Blogs = ({ navigation }) => {
                       style={{
                         color: Color?.black,
                         fontFamily: Mulish?.Bold,
-                        fontSize: 16,
+                        fontSize: 14,
                       }}>
                       {item?.title}
                     </Text>

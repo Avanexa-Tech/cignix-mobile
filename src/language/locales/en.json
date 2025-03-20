@@ -593,5 +593,23 @@
     "Let’s reinforce what you learned! Complete":"Let’s reinforce what you learned! Complete",
     "the short exercise below":"the short exercise below",
     "Submit & Continue":"Submit & Continue"
+  },
+  "Success":{
+    "Congratulations on":"Congratulations on",
+    "Completing the Quiz":"Completing the Quiz",
+    "To check your scores and see how you did":"To check your scores and see how you did,",
+    "please sign up or log in!":"please sign up or log in!",
+    "Sign Up to View Scores":"Sign Up to View Scores"
+  },
+  "Registerscreen":{
+   "Let’s Get Started":"Let’s Get Started",
+   "Create an account to unlock personalised videos and support to help you quit smoking":"Create an account to unlock personalised videos and support to help you quit smoking",
+   "By signing up, you agree to our":"By signing up, you agree to our",
+   "Terms & Conditions":"Terms & Conditions",
+   "and":"and",
+   "Privacy Policy":"Privacy Policy",
+   "Get Started":"Get Started",
+   "Already have an account?":" Already have an account?",
+   "Log in":"Log in"
   }
 }

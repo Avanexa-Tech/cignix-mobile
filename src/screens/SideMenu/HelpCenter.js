@@ -56,7 +56,7 @@ const HelpCenter = () => {
           </Pressable>
           <View>
             <Text
-              style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
               {t("HelpCenter.Help Center")}
             </Text>
           </View>
@@ -65,7 +65,7 @@ const HelpCenter = () => {
           <Text
             style={{
               textAlign: 'justify',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Bold,
               letterSpacing: 0.5, paddingVertical: 5
@@ -117,7 +117,7 @@ const HelpCenter = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -171,7 +171,7 @@ const HelpCenter = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -226,7 +226,7 @@ const HelpCenter = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -281,7 +281,7 @@ const HelpCenter = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -336,7 +336,7 @@ const HelpCenter = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,

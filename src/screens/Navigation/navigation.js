@@ -135,7 +135,7 @@ const MainStack = () => {
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: Color.black,
-            fontSize: 18,
+            fontSize: 16,
             // fontFamily: Manrope.Bold,
           },
           headerStyle: { backgroundColor: Color.white },

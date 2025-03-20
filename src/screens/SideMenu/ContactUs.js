@@ -38,7 +38,7 @@ const ContactUs = ({ navigation }) => {
           </Pressable>
           <View>
             <Text
-              style={{ fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000' }}>
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
               {t("ContactUs.Contact Support")}
             </Text>
           </View>
@@ -46,7 +46,7 @@ const ContactUs = ({ navigation }) => {
         <Text
           style={{
             textAlign: 'justify',
-            fontSize: 16,
+            fontSize: 14,
             color: Color.cloudyGrey,
             fontFamily: Mulish.Medium,
             letterSpacing: 0.5, paddingVertical: 5
@@ -58,7 +58,7 @@ const ContactUs = ({ navigation }) => {
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
@@ -78,7 +78,7 @@ const ContactUs = ({ navigation }) => {
             {t("ContactUs.For any questions or concerns, feel free to email us")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
@@ -92,7 +92,7 @@ const ContactUs = ({ navigation }) => {
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
@@ -112,7 +112,7 @@ const ContactUs = ({ navigation }) => {
             {t("ContactUs.If you prefer to speak directly with our team, call us at")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
@@ -126,7 +126,7 @@ const ContactUs = ({ navigation }) => {
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
@@ -146,7 +146,7 @@ const ContactUs = ({ navigation }) => {
             {t("ContactUs.Need immediate help? Our live chat service is available")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
@@ -160,7 +160,7 @@ const ContactUs = ({ navigation }) => {
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
@@ -207,7 +207,7 @@ const ContactUs = ({ navigation }) => {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -244,7 +244,7 @@ const ContactUs = ({ navigation }) => {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
@@ -266,7 +266,7 @@ const ContactUs = ({ navigation }) => {
             }}>
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -276,7 +276,7 @@ const ContactUs = ({ navigation }) => {
             {t("ContactUs.If you need help outside of our customer support hours, you can make use of the")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -290,7 +290,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -313,7 +313,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -323,7 +323,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -335,7 +335,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -347,7 +347,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -359,7 +359,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -371,7 +371,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -383,7 +383,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -393,7 +393,7 @@ const ContactUs = ({ navigation }) => {
               Phone:{' '}
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.primary,
                   fontFamily: Mulish.Bold,
                 }}>
@@ -403,7 +403,7 @@ const ContactUs = ({ navigation }) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.primary,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,

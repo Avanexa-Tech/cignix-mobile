@@ -546,5 +546,12 @@
     "Let’s reinforce what you learned! Complete": "നിങ്ങൾ പഠിച്ചതു ശക്തിപ്പെടുത്താം! പൂർത്തിയാക്കുക",
     "the short exercise below": "കീഴിലുള്ള ചെറുവ്യായാമം",
     "Submit & Continue": "സമർപ്പിക്കുക & തുടരുക"
-  }
+  },
+  "Success": {
+  "Congratulations on": "ആശംസകൾ",
+  "Completing the Quiz": "ക്വിസ് പൂർത്തിയാക്കിയതിന്",
+  "To check your scores and see how you did": "നിങ്ങളുടെ സ്കോറുകൾ പരിശോധിച്ച് എങ്ങനെ ചെയ്തു എന്ന് കാണാൻ",
+  "please sign up or log in!": "ദയവായി സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക!",
+  "Sign Up to View Scores": "സ്കോറുകൾ കാണാൻ സൈൻ അപ്പ് ചെയ്യുക"
+}
 }

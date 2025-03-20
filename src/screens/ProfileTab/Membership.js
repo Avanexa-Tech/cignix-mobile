@@ -131,7 +131,7 @@ const Membership = () => {
             <Text
               style={{
                 color: '#000',
-                fontSize: 20,
+                fontSize: 16,
                 textTransform: 'capitalize',
                 fontFamily: Mulish?.SemiBold,
               }}>
@@ -146,7 +146,7 @@ const Membership = () => {
                 fontSize: 40,
               }}>
               {title?.price == 0 ? '₹0' : '₹' + title?.special_price}
-              <Text style={{ fontSize: 16 }}>/ {t("Membership.year")}</Text>
+              <Text style={{ fontSize: 14 }}>/ {t("Membership.year")}</Text>
             </Text>
           </View>
           {title?.price != 0 ? (
@@ -155,7 +155,7 @@ const Membership = () => {
                 style={{
                   fontFamily: Mulish?.Regular,
                   color: '#000',
-                  fontSize: 20,
+                  fontSize: 16,
                   textDecorationLine: 'line-through',
                 }}>
                 {title?.price}
@@ -312,7 +312,7 @@ const Membership = () => {
           <Text
             style={{
               fontFamily: Mulish?.SemiBold,
-              fontSize: 22,
+              fontSize: 17,
               color: '#000',
             }}>
             Cignix <Text style={{ color: '#D09B37' }}>{t("Membership.Prime")}</Text>
@@ -325,7 +325,7 @@ const Membership = () => {
             <View style={{ gap: 10 }}>
               <Text
                 style={{
-                  fontSize: 22,
+                  fontSize: 17,
                   color: '#000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
@@ -333,7 +333,7 @@ const Membership = () => {
               </Text>
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: '#666666',
                   fontFamily: Mulish?.Regular,
                 }}>
@@ -362,7 +362,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000000',
-                  fontSize: 22,
+                  fontSize: 17,
                   fontFamily: Mulish?.SemiBold,
                 }}>
                 {t("Membership.Cignix Pro Plan Benefits")}
@@ -381,7 +381,7 @@ const Membership = () => {
                   style={{
                     color: '#333333',
                     fontFamily: Mulish?.Regular,
-                    fontSize: 16,
+                    fontSize: 14,
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
@@ -400,7 +400,7 @@ const Membership = () => {
                   style={{
                     color: '#333333',
                     fontFamily: Mulish?.Regular,
-                    fontSize: 16,
+                    fontSize: 14,
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
@@ -419,7 +419,7 @@ const Membership = () => {
                   style={{
                     color: '#333333',
                     fontFamily: Mulish?.Regular,
-                    fontSize: 16,
+                    fontSize: 14,
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
@@ -439,7 +439,7 @@ const Membership = () => {
             <View style={{ gap: 10 }}>
               <Text
                 style={{
-                  fontSize: 22,
+                  fontSize: 17,
                   color: '#000000',
                   fontFamily: Mulish?.SemiBold,
                 }}>
@@ -449,7 +449,7 @@ const Membership = () => {
                 style={{
                   color: '#333333',
                   fontFamily: Mulish?.Regular,
-                  fontSize: 16,
+                  fontSize: 14,
                   textTransform: 'capitalize',
                 }}>
                 {t("Membership.Access essential features to help you begin your quit-smoking journey.")}
@@ -488,7 +488,7 @@ const Membership = () => {
                   }}>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: '#4254B6',
                       fontFamily: Mulish?.Bold,
                     }}>
@@ -506,7 +506,7 @@ const Membership = () => {
                   <TouchableOpacity>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#27AE60',
                         fontWeight: '700',
                         fontFamily: Mulish?.Bold,
@@ -521,7 +521,7 @@ const Membership = () => {
                     }}>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#4254B6',
                         fontWeight: '700',
                         fontFamily: Mulish?.Bold,
@@ -604,7 +604,7 @@ const Membership = () => {
                   style={{
                     color: '#fff',
                     fontFamily: Mulish?.Medium,
-                    fontSize: 16,
+                    fontSize: 14,
                   }}>
                   {t("Membership.Buy Now for")} ₹{Afterdiscountamt} + 18% GST
                 </Text>
@@ -630,7 +630,7 @@ const Membership = () => {
                   style={{
                     color: '#fff',
                     fontFamily: Mulish?.Medium,
-                    fontSize: 16,
+                    fontSize: 14,
                   }}>
                   {t("Membership.Select Premium plan")}
                 </Text>
@@ -644,7 +644,7 @@ const Membership = () => {
           <View style={{ gap: 15 }}>
             <Text
               style={{
-                fontSize: 18,
+                fontSize: 16,
                 fontFamily: Mulish?.SemiBold,
                 color: '#000',
               }}>
@@ -653,7 +653,7 @@ const Membership = () => {
             <Text
               style={{
                 color: '#666666',
-                fontSize: 16,
+                fontSize: 14,
                 fontFamily: Mulish?.Regular,
               }}>
               {t("Membership.Thank you for being a valued member of the CIGNIX family.")}
@@ -675,7 +675,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000',
-                  fontSize: 18,
+                  fontSize: 16,
                   fontFamily: Mulish?.SemiBold,
                 }}>
                 {t("Membership.Cignix Pro")}
@@ -683,13 +683,13 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#666666',
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: Mulish?.Regular,
                 }}>
                 {t("Membership.Full access to all video series, articles, and quitting guides.")}
               </Text>
             </View>
-            <Text style={{ color: '#000', fontSize: 16 }}>
+            <Text style={{ color: '#000', fontSize: 14 }}>
               {t("Membership.Next due date")} - 29-10-2025
             </Text>
             <View style={{ height: 2, width: '93%', backgroundColor: '#fff' }} />
@@ -733,7 +733,7 @@ const Membership = () => {
                 <Text
                   style={{
                     color: '#ED1E24',
-                    fontSize: 16,
+                    fontSize: 14,
                     textTransform: 'capitalize',
                     fontFamily: Mulish?.Regular,
                   }}>
@@ -797,7 +797,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000',
-                  fontSize: 20,
+                  fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
                 {t("Membership.Failed")}
@@ -805,7 +805,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000',
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: Mulish?.Regular,
                 }}>
                 {t("Membership.Unfortunately payment was rejected")}
@@ -826,7 +826,7 @@ const Membership = () => {
                 <Text
                   style={{
                     color: '#fff',
-                    fontSize: 16,
+                    fontSize: 14,
                     fontFamily: Mulish?.Regular,
                   }}>
                   Done
@@ -883,7 +883,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000',
-                  fontSize: 20,
+                  fontSize: 16,
                   fontFamily: Mulish?.Regular,
                 }}>
                 {t("Membership.Success")}
@@ -891,7 +891,7 @@ const Membership = () => {
               <Text
                 style={{
                   color: '#000',
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: Mulish?.Regular,
                 }}>
                 {t("Membership.Your payment has been processed Successfully")}
@@ -912,7 +912,7 @@ const Membership = () => {
                 <Text
                   style={{
                     color: '#fff',
-                    fontSize: 16,
+                    fontSize: 14,
                     fontFamily: Mulish?.Regular,
                   }}>
                   {t("Membership.Done")}

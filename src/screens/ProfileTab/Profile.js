@@ -151,10 +151,10 @@ const Profile = ({ navigation }) => {
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View style={{ fontSize: 20, color: Color.black, fontFamily: Mulish.Bold, flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
+        <View style={{ fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Bold,
               textAlign: 'center',
@@ -226,7 +226,7 @@ const Profile = ({ navigation }) => {
                           source={
                             Uservalue?.profile
                               ? { uri: Uservalue?.profile }
-                              : require('../../assets/Gallery/profile.png')
+                              : require('../../assets/Gallery/profile.jpg')
                           }
                           style={{
                             width: 60,
@@ -250,7 +250,7 @@ const Profile = ({ navigation }) => {
                       <Text
                         style={{
                           width: '100%',
-                          fontSize: 16,
+                          fontSize: 14,
                           textAlign: 'left',
                           color: Color.black,
                           fontFamily: Mulish.Bold,
@@ -320,7 +320,7 @@ const Profile = ({ navigation }) => {
                   <View style={{ width: '95%' }}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         textAlign: 'left',
                         color: Color.black,
                         fontFamily: Mulish.Bold,
@@ -364,7 +364,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -425,7 +425,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -487,7 +487,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -551,7 +551,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -599,7 +599,7 @@ const Profile = ({ navigation }) => {
                   <View style={{ width: '95%', marginTop: 20 }}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         textAlign: 'left',
                         color: Color.black,
                         fontFamily: Mulish.Bold,
@@ -643,7 +643,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -704,7 +704,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -765,7 +765,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -826,7 +826,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -888,7 +888,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -943,7 +943,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -1004,7 +1004,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -1075,7 +1075,7 @@ const Profile = ({ navigation }) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
@@ -1139,7 +1139,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   modalTitle: {
-    fontSize: 20,
+    fontSize: 16,
     marginBottom: 15,
     fontFamily: Mulish.Bold,
   },
@@ -1149,7 +1149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   languageText: {
-    fontSize: 16,
+    fontSize: 14,
     color: Color.lightBlack,
   },
   closeButton: {
@@ -1160,7 +1160,7 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 

@@ -272,7 +272,7 @@ const Step4 = ({navigation}) => {
       {/* LIVE SESSION */}
       {getonline !== null ? (
         <View style={{marginTop: 5, gap: 20, marginBottom: 15}}>
-          <Text style={{fontSize: 20, color: '#000'}}>Live Sessions</Text>
+          <Text style={{fontSize: 16, color: '#000'}}>Live Sessions</Text>
           {getonline?.length &&
             getonline?.map((item, index) => {
               console.log('<===> item <====>', item);
@@ -295,7 +295,7 @@ const Step4 = ({navigation}) => {
                     <View style={{gap: 5}}>
                       <Text
                         style={{
-                          fontSize: 18,
+                          fontSize: 16,
                           color: '#000',
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
@@ -304,7 +304,7 @@ const Step4 = ({navigation}) => {
                       </Text>
                       <Text
                         style={{
-                          fontSize: 18,
+                          fontSize: 16,
                           color: '#7ead2d',
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
@@ -315,7 +315,7 @@ const Step4 = ({navigation}) => {
                     <View>
                       <Text
                         style={{
-                          fontSize: 16,
+                          fontSize: 14,
                           color: '#000',
                           fontFamily: Mulish?.SemiBold,
                         }}>
@@ -335,7 +335,7 @@ const Step4 = ({navigation}) => {
                       </Text>
                       <Text
                         style={{
-                          fontSize: 16,
+                          fontSize: 14,
                           color: '#7ead2d',
                           fontFamily: Mulish?.SemiBold,
                         }}>
@@ -353,7 +353,7 @@ const Step4 = ({navigation}) => {
                       </Text>
                       <Text
                         style={{
-                          fontSize: 16,
+                          fontSize: 14,
                           color: '#7ead2d',
                           fontFamily: Mulish?.SemiBold,
                         }}>
@@ -375,7 +375,7 @@ const Step4 = ({navigation}) => {
                       }}>
                       <Text
                         style={{
-                          fontSize: 18,
+                          fontSize: 16,
                           color: '#000',
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
@@ -419,7 +419,7 @@ const Step4 = ({navigation}) => {
         <View style={{gap: 5}}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 16,
               color: Color?.black,
               fontFamily: Mulish.Medium,
               textTransform: 'capitalize',
@@ -428,7 +428,7 @@ const Step4 = ({navigation}) => {
           </Text>
           <Text
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: '#666666',
               fontFamily: Mulish.Regular,
               textTransform: 'capitalize',
@@ -460,7 +460,7 @@ const Step4 = ({navigation}) => {
         style={{gap: 15, width: '90%', height: height / 2.5, marginTop: 15}}>
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 16,
             fontFamily: Mulish.SemiBold,
             color: Color?.black,
           }}>
@@ -503,7 +503,7 @@ const Step4 = ({navigation}) => {
                   <Text
                     style={{
                       fontFamily: Mulish?.Medium,
-                      fontSize: 18,
+                      fontSize: 16,
                       color: '#333333',
                       textTransform: 'capitalize',
                     }}>
@@ -581,7 +581,7 @@ const Step4 = ({navigation}) => {
           <Text
             style={{
               color: Color?.black,
-              fontSize: 20,
+              fontSize: 16,
               fontFamily: Mulish?.SemiBold,
             }}>{`Day - ${Dayvideo[0]?.lesson_details?.day} Lessons`}</Text>
         </View>
@@ -630,7 +630,7 @@ const Step4 = ({navigation}) => {
                       <View style={{gap: 14}}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             fontFamily: Mulish?.SemiBold,
                             color: Color?.black,
                             textTransform: 'capitalize',
@@ -700,7 +700,7 @@ const Step4 = ({navigation}) => {
         userdata?.current_day == video && video[video?.length - 1]?.is_viewed ? null:null
       } */}
       {/* <View style={{marginTop: 25, gap: 20}}>
-        <Text style={{fontSize: 20, color: '#000'}}>Live Sessions</Text>
+        <Text style={{fontSize: 16, color: '#000'}}>Live Sessions</Text>
         {getonline?.length &&
           getonline?.map((item, index) => {
             // console.log("<===> item <====>",item);    
@@ -723,7 +723,7 @@ const Step4 = ({navigation}) => {
                   <View style={{gap: 5}}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         color: '#000',
                         fontFamily: Mulish?.Bold,
                         textTransform: 'capitalize',
@@ -732,7 +732,7 @@ const Step4 = ({navigation}) => {
                     </Text>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         color: '#7ead2d',
                         fontFamily: Mulish?.Bold,
                         textTransform: 'capitalize',
@@ -743,7 +743,7 @@ const Step4 = ({navigation}) => {
                   <View>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#000',
                         fontFamily: Mulish?.SemiBold,
                       }}>
@@ -763,7 +763,7 @@ const Step4 = ({navigation}) => {
                     </Text>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#7ead2d',
                         fontFamily: Mulish?.SemiBold,
                       }}>
@@ -781,7 +781,7 @@ const Step4 = ({navigation}) => {
                     </Text>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#7ead2d',
                         fontFamily: Mulish?.SemiBold,
                       }}>
@@ -800,7 +800,7 @@ const Step4 = ({navigation}) => {
                     }}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         color: '#000',
                         fontFamily: Mulish?.Bold,
                         textTransform: 'capitalize',
