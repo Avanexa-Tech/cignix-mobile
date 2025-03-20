@@ -426,7 +426,7 @@ const EditProfile = ({ navigation }) => {
             source={
               Uservalue?.profile
                 ? { uri: Uservalue?.profile }
-                : require('../../assets/Gallery/profile.png')
+                : require('../../assets/Gallery/profile.jpg')
             }
             style={styles.profileImage}
           />
