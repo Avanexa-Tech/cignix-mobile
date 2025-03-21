@@ -29,7 +29,7 @@ const SimTestScreen = ({ navigation }) => {
   const GetQustion = async () => {
     try {
       setLoader(true);
-      const GetQustion = await fetchData.GetQusetion(1);
+      const GetQustion = await fetchData.GetQusetion(1,1);
       if (GetQustion?.success === true) {
         const translatedData = await Promise.all(
           GetQustion?.data.map(async (item) => {

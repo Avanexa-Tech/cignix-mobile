@@ -165,7 +165,8 @@
     "Verfiy OTP": "OTP सत्यापित करा",
     "Time Remaining": "शिल्लक वेळ",
     "Didn’t get the code": "कोड मिळाला नाही का",
-    "Resend": "पुन्हा पाठवा"
+    "Resend": "पुन्हा पाठवा",
+    "Next": "पुढचा"
   },
   "Congts": {
     "Congrats": "अभिनंदन",
@@ -256,10 +257,10 @@
     "Network request failed. Please try again later.": "नेटवर्क विनंती अयशस्वी झाली. कृपया नंतर पुन्हा प्रयत्न करा.",
     "Profile picture removed successfully": "प्रोफाईल चित्र यशस्वीरित्या काढले गेले.",
     "User Profile Updated Successfully": "वापरकर्ता प्रोफाईल यशस्वीरित्या अद्ययावत केले गेले.",
-    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"हे स्कोअर आपल्याद्वारे ऑनबोर्डिंग दरम्यान दिलेल्या उत्तरांवर आधारित तयार करण्यात आले आहे. आपला प्रगती मार्गक्रमण करतांना ट्रॅक करा!",
-    "Your Initial Score !":"तुमचा प्राथमिक स्कोअर!",
-    "Congratulations On Completing the Free Videos !":"फ्री व्हिडिओ पूर्ण केल्याबद्दल अभिनंदन!",
-    "Take the test to track your progress on your smoke-free journey with Cignix":"सिग्निक्ससह आपल्या धूम्रपानमुक्त प्रवासातील प्रगती ट्रॅक करण्यासाठी टेस्ट द्या."
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!": "हे स्कोअर आपल्याद्वारे ऑनबोर्डिंग दरम्यान दिलेल्या उत्तरांवर आधारित तयार करण्यात आले आहे. आपला प्रगती मार्गक्रमण करतांना ट्रॅक करा!",
+    "Your Initial Score !": "तुमचा प्राथमिक स्कोअर!",
+    "Congratulations On Completing the Free Videos !": "फ्री व्हिडिओ पूर्ण केल्याबद्दल अभिनंदन!",
+    "Take the test to track your progress on your smoke-free journey with Cignix": "सिग्निक्ससह आपल्या धूम्रपानमुक्त प्रवासातील प्रगती ट्रॅक करण्यासाठी टेस्ट द्या."
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "आमच्याशी संपर्क साधण्यासाठी आणि आमच्या समर्थन टीमशी कसे जोडावे हे शोधा",
@@ -713,11 +714,11 @@
     "Let’s reinforce what you learned! Complete": "तुम्ही शिकलेल्या गोष्टी मजबूत करूया! पूर्ण करा",
     "the short exercise below": "खालील लहान व्यायाम",
     "Submit & Continue": "सामान्य करा & पुढे जा",
-    "Please answer all the questions":"कृपया सर्व प्रश्नांची उत्तरे द्या"
+    "Please answer all the questions": "कृपया सर्व प्रश्नांची उत्तरे द्या"
   },
   "Success": {
     "Congratulations on": "आपल्याला शुभेच्छा",
-    "Completing the Quiz": "क्विझ पूर्ण केल्याबद्दल",
+    "Completing the SIM Test": "क्विझ पूर्ण केल्याबद्दल",
     "To check your scores and see how you did": "तुमचे स्कोअर तपासण्यासाठी आणि तुम्ही कसे केले हे पाहण्यासाठी",
     "please sign up or log in!": "कृपया साइन अप करा किंवा लॉग इन करा!",
     "Sign Up to View Scores": "स्कोअर पाहण्यासाठी साइन अप करा"
@@ -749,7 +750,7 @@
     "Get Started": "सुरू करा",
     "Already Have an Account?": "आधीच खाते आहे का?"
   },
-  "Step4":{
+  "Step4": {
     "Lessons": "धडे",
     "Day": "दिवस",
     "Upcoming": "आगामी",
@@ -762,6 +763,6 @@
     "Date": "तारीख",
     "Time": "वेळ",
     "Enroll Now": "आता नोंदणी करा",
-    "Currently you have access to watch till day":"सद्यस्थितीत तुम्हाला दिवसापर्यंत पाहण्याचा प्रवेश आहे."
-}
+    "Currently you have access to watch till day": "सद्यस्थितीत तुम्हाला दिवसापर्यंत पाहण्याचा प्रवेश आहे."
+  }
 }

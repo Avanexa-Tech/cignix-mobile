@@ -165,7 +165,8 @@
     "Verfiy OTP": "OTP ஐ சரிபார்க்கவும்",
     "Time Remaining": "மீதமுள்ள நேரம்",
     "Didn’t get the code": "குறியீடு கிடைக்கவில்லையா",
-    "Resend": "மீண்டும் அனுப்புக"
+    "Resend": "மீண்டும் அனுப்புக",
+    "Next": "அடுத்த"
   },
   "Congts": {
     "Congrats": "வாழ்த்துகள்",
@@ -717,7 +718,7 @@
   },
   "Success": {
     "Congratulations on": "அவதரிப்புக்கு வாழ்த்துக்கள்",
-    "Completing the Quiz": "குவிஜை முடித்ததற்கான வாழ்த்துக்கள்",
+    "Completing the SIM Test": "SIM முடித்ததற்கான வாழ்த்துக்கள்",
     "To check your scores and see how you did": "உங்கள் மதிப்பெண்கள் மற்றும் நீங்கள் எவ்வாறு செயல்பட்டீர்களோ என்பதை பார்க்க",
     "please sign up or log in!": "தயவு செய்து பதிவு செய்யவும் அல்லது உள்நுழைக!",
     "Sign Up to View Scores": "மதிப்பெண்களை பார்க்க பதிவு செய்யவும்"

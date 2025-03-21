@@ -28,7 +28,7 @@ const SuccesScreen = ({ navigation, route }) => {
                 </View>
                 <View style={{ width: scr_width, padding: 20, justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ fontSize: 16, fontFamily: Mulish?.Bold, color: '#000' }}>{t("Success.Congratulations on")}</Text>
-                    <Text style={{ fontSize: 16, fontFamily: Mulish?.Bold, color: '#000' }}>{t("Success.Completing the Quiz")}</Text>
+                    <Text style={{ fontSize: 16, fontFamily: Mulish?.Bold, color: '#000' }}>{t("Success.Completing the SIM Test")}</Text>
                 </View>
                 <View style={{ width: scr_width, paddingLeft: 20, justifyContent: 'center', alignItems: 'center', paddingBottom: 30 }}>
                     <Text style={{ color: '#333333', fontSize: 13, fontFamily: Mulish?.Regular }}>{t("Success.To check your scores and see how you did")}</Text>

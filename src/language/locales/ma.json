@@ -52,7 +52,8 @@
     "Are you sure you want to Remove/Delete account?": "നിനക്ക് ഉറപ്പാണോ നിന്റെ അക്കൗണ്ട് നീക്കം ചെയ്യണം/ഡിലീറ്റ് ചെയ്യണം എന്ന്?",
     "Cancelled": "रद्द किया गया",
     "User cancelled image picker": "उपयोगकर्ता ने छवि चयनकर्ता रद्द कर दिया",
-    "User cancelled camera": "उपयोगकर्ता ने कैमरा रद्द कर दिया"
+    "User cancelled camera": "उपयोगकर्ता ने कैमरा रद्द कर दिया",
+    "Next": "അടുത്ത"
   },
   "Editprofile": {
     "Edit Profile": "പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക",
@@ -684,7 +685,7 @@
   },
   "Success": {
     "Congratulations on": "ആശംസകൾ",
-    "Completing the Quiz": "ക്വിസ് പൂർത്തിയാക്കിയതിന്",
+    "Completing the SIM Test": "ക്വിസ് പൂർത്തിയാക്കിയതിന്",
     "To check your scores and see how you did": "നിങ്ങളുടെ സ്കോറുകൾ പരിശോധിച്ച് എങ്ങനെ ചെയ്തു എന്ന് കാണാൻ",
     "please sign up or log in!": "ദയവായി സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക!",
     "Sign Up to View Scores": "സ്കോറുകൾ കാണാൻ സൈൻ അപ്പ് ചെയ്യുക"

@@ -169,7 +169,7 @@ const HomeScreen = () => {
   // GET QUESTION :
   const GetQustion = async () => {
     try {
-      const Getquestion = await fetchData.GetQusetion(0);
+      const Getquestion = await fetchData.GetQusetion(0,1);
       console.log(
         '====================>GET QUESTION <=================',
         Getquestion,

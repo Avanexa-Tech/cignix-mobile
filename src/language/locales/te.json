@@ -52,7 +52,8 @@
     "Verfiy OTP": "OTPని నిర్ధారించండి",
     "Time Remaining": "మిగిలిన సమయం",
     "Didn’t get the code": "కోడ్ అందలేదా?",
-    "Resend": "మళ్లీ పంపు"
+    "Resend": "మళ్లీ పంపు",
+    "Next": "తదుపరి"
   },
   "Editprofile": {
     "Edit Profile": "ప్రొఫైల్ ఎడిట్ చేయండి",
@@ -690,7 +691,7 @@
   },
   "Success": {
     "Congratulations on": "శుభాకాంక్షలు",
-    "Completing the Quiz": "క్విజ్ పూర్తి చేసినందుకు",
+    "Completing the SIM Test": "క్విజ్ పూర్తి చేసినందుకు",
     "To check your scores and see how you did": "మీ స్కోర్లను పరిశీలించడానికి మరియు మీరు ఎలా చేసినట్లు చూడటానికి",
     "please sign up or log in!": "దయచేసి సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి!",
     "Sign Up to View Scores": "స్కోర్లు చూడటానికి సైన్ అప్ చేయండి"

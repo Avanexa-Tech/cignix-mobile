@@ -18,8 +18,8 @@ const AccessToken = async () => {
 
 export default {
   // Get_Question :
-  GetQusetion: async event => {
-    let url = `question?event=${event}`;
+  GetQusetion: async (event,page,limit = 'inf') => {
+    let url = `question?event=${event}&page=${page}&limit=${limit}`;
     return api.getMethod(url);
   },
   getquestionstep4: async event => {
