@@ -26,3 +26,21 @@ export const UserProvider = ({ children }) => {
 };
 
 export const useUser = () => useContext(UserContext);
+
+export const translateText = async (text) => {
+  console.log("ffffffffffffffffffuk",text);
+  
+  let targetLanguage = await AsyncStorage?.getItem('selectedLanguage') || 'en';
+  if (targetLanguage === 'ma') {
+    targetLanguage = 'ml';
+  }
+
+  if (!text?.trim()) return '';
+
+  const response = await fetch(
+    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(text)}`
+  );
+
+  const result = await response?.json();
+  return result[0][0][0];
+};

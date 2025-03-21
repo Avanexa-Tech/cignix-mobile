@@ -18,8 +18,8 @@ const AccessToken = async () => {
 
 export default {
   // Get_Question :
-  GetQusetion: async event => {
-    let url = `question?event=${event}`;
+  GetQusetion: async (event,page,limit = 'inf') => {
+    let url = `question?event=${event}&page=${page}&limit=${limit}`;
     return api.getMethod(url);
   },
   getquestionstep4: async event => {
@@ -72,6 +72,12 @@ export default {
     let url = 'user/profile';
     const accessToken = await AccessToken();
     return api.putMethod(url, data, accessToken);
+  },
+  //Remove Profile
+  RemoveProfilePic: async () => {
+    let url = 'user/profile/delete-pic';
+    const accessToken = await AccessToken();
+    return api.deleteMethod(url, accessToken);
   },
   // GET NOTIFICATION :
   Getnotification: async () => {

@@ -5,64 +5,65 @@ import Color from '../../Global/Color';
 import { scr_height, scr_width } from '../../Components/Dimensions';
 import { Mulish } from '../../Global/FontFamily';
 import { Iconviewcomponent } from '../../Components/Icontag';
+import { useTranslation } from 'react-i18next';
 
 // create a component
-const ContactUs = ({navigation}) => {
+const ContactUs = ({ navigation }) => {
+  const { t } = useTranslation();
   return (
     <ScrollView
       contentContainerStyle={styles.scrollContent}
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-            <View
-                        style={{
-                          backgroundColor: Color?.white,
-                          flexDirection: 'row',
-                          paddingTop: 20,
-                          paddingBottom: 20,
-                        }}>
-                        <Pressable
-                          style={{width: scr_width / 5}}
-                          onPress={() => {
-                            navigation?.goBack();
-                          }}>
-                          <Iconviewcomponent
-                            // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                            Icontag="Ionicons"
-                            icon_size={25}
-                            icon_color={'#000'}
-                            iconname={'chevron-back'}
-                          />
-                        </Pressable>
-                        <View>
-                          <Text
-                            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-                            Contact Support
-                          </Text>
-                        </View>
-                      </View>
+        <View
+          style={{
+            backgroundColor: Color?.white,
+            flexDirection: 'row',
+            paddingTop: 20,
+            paddingBottom: 20,
+          }}>
+          <Pressable
+            style={{ width: scr_width / 5 }}
+            onPress={() => {
+              navigation?.goBack();
+            }}>
+            <Iconviewcomponent
+              // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={25}
+              icon_color={'#000'}
+              iconname={'chevron-back'}
+            />
+          </Pressable>
+          <View>
+            <Text
+              style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
+              {t("ContactUs.Contact Support")}
+            </Text>
+          </View>
+        </View>
         <Text
           style={{
             textAlign: 'justify',
-            fontSize: 16,
+            fontSize: 14,
             color: Color.cloudyGrey,
             fontFamily: Mulish.Medium,
             letterSpacing: 0.5, paddingVertical: 5
           }}>
-          We’re here to help! There are several ways to reach our customer
-          support team:
+          {t("ContactUs.We’re here to help! There are several ways to reach our customer support team")}:
         </Text>
 
         <View style={{ width: '100%', marginTop: 20 }}>
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
             }}>
-            Email Support:
+            {t("ContactUs.Email Support")}:
           </Text>
           <Text
             style={{
@@ -74,29 +75,29 @@ const ContactUs = ({navigation}) => {
               lineHeight: 22,
               paddingVertical: 10,
             }}>
-            For any questions or concerns, feel free to email us{' '}
+            {t("ContactUs.For any questions or concerns, feel free to email us")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
               }}>
               atquit@cignix.com
             </Text>
-            , and we’ll get back to you as soon as possible.
+            , {t("ContactUs.and we’ll get back to you as soon as possible.")}
           </Text>
         </View>
         <View style={{ width: '100%', marginTop: 20 }}>
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
             }}>
-            Phone Support:
+            {t("ContactUs.Phone Support")}:
           </Text>
           <Text
             style={{
@@ -108,29 +109,29 @@ const ContactUs = ({navigation}) => {
               lineHeight: 22,
               paddingVertical: 10,
             }}>
-            If you prefer to speak directly with our team, call us at{' '}
+            {t("ContactUs.If you prefer to speak directly with our team, call us at")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
               }}>
               9873832002
             </Text>{' '}
-            for assistance. Our phone lines are open during our support hours.
+            {t("ContactUs.for assistance")}. {t("ContactUs.Our phone lines are open during our support hours.")}
           </Text>
         </View>
         <View style={{ width: '100%', marginTop: 20 }}>
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
             }}>
-            Live Chat:
+            {t("ContactUs.Live Chat")}:
           </Text>
           <Text
             style={{
@@ -142,30 +143,29 @@ const ContactUs = ({navigation}) => {
               lineHeight: 22,
               paddingVertical: 10,
             }}>
-            Need immediate help? Our live chat service is available{' '}
+            {t("ContactUs.Need immediate help? Our live chat service is available")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.BoldItalic,
                 letterSpacing: 0.5,
               }}>
               24/7{' '}
             </Text>{' '}
-            on our website. Connect instantly with a support agent for quick
-            resolutions.
+            {t("ContactUs.on our website")}. {t("ContactUs.Connect instantly with a support agent for quick resolutions.")}
           </Text>
         </View>
         <View style={{ width: '100%' }}>
           <Text
             style={{
               textAlign: 'left',
-              fontSize: 18,
+              fontSize: 16,
               color: Color.black,
               fontFamily: Mulish.Black,
               letterSpacing: 0.5,
             }}>
-            Customer Support Hours:
+            {t("ContactUs.Customer Support Hours")}:
           </Text>
           <Text
             style={{
@@ -177,8 +177,7 @@ const ContactUs = ({navigation}) => {
               lineHeight: 22,
               paddingVertical: 10,
             }}>
-            Our team is dedicated to providing excellent support during the
-            following hours:
+            {t("ContactUs.Our team is dedicated to providing excellent support during the following hours")}:
           </Text>
 
           <View
@@ -208,12 +207,12 @@ const ContactUs = ({navigation}) => {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
                 }}>
-                Monday - Friday:
+                {t("ContactUs.Monday")} - {t("ContactUs.Friday")}:
               </Text>{' '}
               10:00 AM - 6:00 PM (IST)
             </Text>
@@ -245,14 +244,14 @@ const ContactUs = ({navigation}) => {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.black,
                   fontFamily: Mulish.Bold,
                   letterSpacing: 0.5,
                 }}>
-                Saturday & Sunday
+                {t("ContactUs.Saturday")} & {t("ContactUs.Sunday")}
               </Text>
-              : Closed
+              : {t("ContactUs.Closed")}
             </Text>
           </View>
           <Text
@@ -267,37 +266,36 @@ const ContactUs = ({navigation}) => {
             }}>
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
               }}>
-              Note:
+              {t("ContactUs.Note")}:
             </Text>{' '}
-            If you need help outside of our customer support hours, you can make
-            use of the{' '}
+            {t("ContactUs.If you need help outside of our customer support hours, you can make use of the")}{' '}
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
               }}>
-              Live Chat{' '}
+              {t("ContactUs.Live Chat")}{' '}
             </Text>
-            option on our website.
+            {t("ContactUs.option on our website.")}
           </Text>
 
           <View style={{ width: '100%', marginTop: 10, marginBottom: 10 }}>
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
               }}>
-              CONTACT US
+              {t("ContactUs.CONTACT US")}
             </Text>
             <Text
               style={{
@@ -309,15 +307,13 @@ const ContactUs = ({navigation}) => {
                 lineHeight: 22,
                 paddingVertical: 10,
               }}>
-              In order to resolve a complaint regarding the Services or to
-              receive further information regarding the use of the Services,
-              please contact us at:
+              {t("ContactUs.In order to resolve a complaint regarding the Services or to receive further information regarding the use of the Services, please contact us at")}:
             </Text>
 
             <Text
               style={{
                 textAlign: 'left',
-                fontSize: 18,
+                fontSize: 16,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -327,67 +323,67 @@ const ContactUs = ({navigation}) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
                 lineHeight: 22,
                 paddingVertical: 5,
               }}>
-              Unit No. 105, First Floor,
+              {t("ContactUs.Unit No. 105, First Floor,")}
             </Text>
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
                 lineHeight: 22,
                 paddingVertical: 5,
               }}>
-              Iris Tech Park, Sector-48,
+              {t("ContactUs.Iris Tech Park, Sector-48,")}
             </Text>
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
                 lineHeight: 22,
                 paddingVertical: 5,
               }}>
-              Gurgaon,
+              {t("ContactUs.Gurgaon,")}
             </Text>
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
                 lineHeight: 22,
                 paddingVertical: 5,
               }}>
-              Haryana 122018,
+              {t("ContactUs.Haryana")} 122018,
             </Text>
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
                 lineHeight: 22,
                 paddingVertical: 5,
               }}>
-              India.
+              {t("ContactUs.India.")}
             </Text>
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.black,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -397,7 +393,7 @@ const ContactUs = ({navigation}) => {
               Phone:{' '}
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color.primary,
                   fontFamily: Mulish.Bold,
                 }}>
@@ -407,7 +403,7 @@ const ContactUs = ({navigation}) => {
             <Text
               style={{
                 textAlign: 'justify',
-                fontSize: 15,
+                fontSize: 13,
                 color: Color.primary,
                 fontFamily: Mulish.Bold,
                 letterSpacing: 0.5,
@@ -428,8 +424,7 @@ const ContactUs = ({navigation}) => {
               lineHeight: 22,
               paddingVertical: 10,
             }}>
-            We’re committed to offering the best possible support, ensuring your
-            experience with us is smooth!
+            {t("ContactUs.We’re committed to offering the best possible support, ensuring your experience with us is smooth!")}
           </Text>
         </View>
       </View>

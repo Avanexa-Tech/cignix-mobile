@@ -28,10 +28,19 @@ import common_fn from '../../Components/common_fn';
 import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext';
+import { useSelector } from 'react-redux';
+
 
 // create a component
 const Register = ({ navigation, route }) => {
   const routedata = route?.params;
+  const { t } = useTranslation();
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   console.log('jnvjnbjvb', routedata);
   const [uname, setUname] = useState('');
   const [error, setError] = useState(false);
@@ -52,20 +61,34 @@ const Register = ({ navigation, route }) => {
   const [genderData, setGenderData] = useState([
     {
       id: '0',
-      gender: 'male',
+      gender: t("Registerscreen.Male"),
     },
     {
       id: '1',
-      gender: 'female',
+      gender: t("Registerscreen.Female"),
     }
   ]);
-
+ useEffect(() => {
+  setGenderData(
+    [
+      {
+        id: '0',
+        gender: t("Registerscreen.Male"),
+      },
+      {
+        id: '1',
+        gender: t("Registerscreen.Female"),
+      }
+    ]
+  )
+  setEmailValidError('')
+ },[language])
   const handleValidEmail = val => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (val.length === 0) {
-      setEmailValidError('Email address must be enter');
+      setEmailValidError(`${t("Passwordlogin.Please enter your email")}`);
     } else if (reg.test(val) === false) {
-      setEmailValidError('Enter valid email address');
+      setEmailValidError(`${t("Passwordlogin.Please enter a valid email.")}`);
     } else if (reg.test(val) === true) {
       setEmailValidError('');
     }
@@ -122,7 +145,7 @@ const Register = ({ navigation, route }) => {
   const registerClick = async () => {
     try {
       setloading(true);
-      // console.log("============= REGISTER ============";
+      console.log("============= REGISTER ============",selectGenderId);
       if (uname && email && number && password) {
         const dateee = datevalue(date);
         const Registerdata = {
@@ -130,13 +153,13 @@ const Register = ({ navigation, route }) => {
           email: email,
           mobile: number,
           dob: dateee?._z,
-          gender: selectGender,
+          gender: selectGenderId == 0 ? "male":"female",
           password: password,
           step: 1,
           total_points: routedata?.totalScore
         }
-       console.log("Registerdata",Registerdata);
-       
+        console.log("Registerdata", Registerdata);
+
         const Registerapi = await fetchData?.Register(Registerdata);
         if (Registerapi?.success == true) {
           console.log("first");
@@ -147,18 +170,22 @@ const Register = ({ navigation, route }) => {
           );
           navigation.navigate('Tab');
 
-          common_fn.showToast(Registerapi?.message);
+          const translatedMessage = await translateText(Registerapi?.message);
+          common_fn.showToast(translatedMessage);
           setloading(false);
         } else {
-          common_fn.showToast(Registerapi?.message);
+          console.log("eeeeeeeeeeeejkvsjdbvvd", Registerapi);
+          
+          const translatedMessage = await translateText(Registerapi?.message);
+          common_fn.showToast(translatedMessage);
           setloading(false);
         }
 
       } else {
-        common_fn.showToast('Please fill out the required forms to register.');
+        common_fn.showToast(`${t('Registerscreen.Please fill out the required forms to register.')}`);
         setloading(false);
       }
-    } catch (error) {
+    } catch (error) {r
       console.log('catch in register_Click : ', error);
       setloading(false);
     }
@@ -201,11 +228,11 @@ const Register = ({ navigation, route }) => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color.lightBlack,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Select Gender
+                  {t("Registerscreen.Select Gender")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => setSelectGenderbottomSheetVisible(false)}>
@@ -236,7 +263,7 @@ const Register = ({ navigation, route }) => {
                         <Text
                           style={{
                             textAlign: 'center',
-                            fontSize: 16,
+                            fontSize: 14,
                             color:
                               selectGender === item.gender
                                 ? Color.white
@@ -271,8 +298,8 @@ const Register = ({ navigation, route }) => {
   const selectedItem = item => {
     try {
       // console.log("Item ======================= :", item);
-      setSelectGender(item.gender);
-      setSelectGenderId(item.gender.id);
+      setSelectGender(item.gender);      
+      setSelectGenderId(item.id);
       setSelectGenderbottomSheetVisible(false);
     } catch (error) {
       console.log('catch in Register_selectedItem:', error);
@@ -296,17 +323,26 @@ const Register = ({ navigation, route }) => {
             source={require('../../assets/Logos/cignix.png')}
             style={[styles.image]}
           />
+          <View style={{position:'absolute',right:10,top:10}}>
+           <TouchableOpacity onPress={() => navigation.navigate("LanguageSelector")}>
+                  <Iconviewcomponent
+                    Icontag="Entypo"
+                    icon_size={24}
+                    icon_color={Color?.black}
+                    iconname={"language"} />
+                  </TouchableOpacity>
+          </View>
         </View>
-        <Text style={styles.header}>Let’s Get Started</Text>
+        <Text style={styles.header}>{t("Registerscreen.Let’s Get Started")}</Text>
         <Text
           style={{
             fontSize: 14,
             color: '#666666',
             fontFamily: Mulish.Light,
             paddingVertical: 10,
-            lineHeight:20
+            lineHeight: 20
           }}>
-          Create an account to unlock personalised videos and support to help you quit smoking
+          {t("Registerscreen.Create an account to unlock personalised videos and support to help you quit smoking")}
         </Text>
 
         <View style={[styles.NumberBoxConatiner, { marginVertical: 10 }]}>
@@ -327,7 +363,7 @@ const Register = ({ navigation, route }) => {
             />
           </View>
           <TextInput
-            placeholder="Enter Your Name *"
+            placeholder={t("Registerscreen.Enter Your Name *")}
             placeholderTextColor={Color.grey}
             keyboardType="name-phone-pad"
             value={uname}
@@ -358,7 +394,7 @@ const Register = ({ navigation, route }) => {
             />
           </View>
           <TextInput
-            placeholder="Enter Your Email ID *"
+            placeholder={t("Registerscreen.Enter Your Email ID *")}
             placeholderTextColor={Color.grey}
             keyboardType="email-address"
             value={email}
@@ -401,7 +437,7 @@ const Register = ({ navigation, route }) => {
             </Text>
           </View>
           <TextInput
-            placeholder="Enter Your Mobile Number *"
+            placeholder={t("Registerscreen.Enter Your Mobile Number *")}
             placeholderTextColor={Color.grey}
             value={number}
             keyboardType="phone-pad"
@@ -435,11 +471,11 @@ const Register = ({ navigation, route }) => {
           <TouchableOpacity onPress={showDatePicker} style={{ paddingLeft: 0 }}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: date ? Color.black : Color.Venus,
                 fontFamily: Mulish.SemiBold,
               }}>
-              {date ? formatDate(date) : 'DD/MM/YYYY *'} {/* Show formatted date or placeholder */}
+              {date ? formatDate(date) : t("Registerscreen.DD/MM/YYYY *")} {/* Show formatted date or placeholder */}
               {/* {formatDate(date)} */}
             </Text>
           </TouchableOpacity>
@@ -475,11 +511,11 @@ const Register = ({ navigation, route }) => {
             <View>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: 14,
                   color: selectGender ? Color.black : Color.Venus,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                {selectGender ? selectGender : "Select Gender *"}
+                {selectGender ? selectGender : t("Registerscreen.Select Gender *")}
               </Text>
             </View>
             <View style={{ paddingHorizontal: 20 }}>
@@ -518,7 +554,7 @@ const Register = ({ navigation, route }) => {
             </View>
             <TextInput
               style={[styles.numberTextBox, { right: 5 }]}
-              placeholder="Password *"
+              placeholder={t("Registerscreen.Password *")}
               placeholderTextColor={Color.grey}
               secureTextEntry={!password_visible}
               value={password}
@@ -562,13 +598,13 @@ const Register = ({ navigation, route }) => {
                 </View> */}
         <View>
           <Text style={{ textAlign: 'justify', fontSize: 14, fontFamily: Mulish?.Medium, color: '#666666' }}>
-            By signing up, you agree to our <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 15 }} onPress={() => {
+            {t("Registerscreen.By signing up, you agree to our")} <Text style={{ textAlign: 'justify', color: '#4254B6', fontSize: 13 }} onPress={() => {
               navigation.navigate('TermsandConditions')
 
-            }}>Terms & Conditions</Text> and{' '}
-            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 16 }} onPress={() => {
+            }}>{t("Registerscreen.Terms & Conditions")}</Text> {t("Registerscreen.and")}
+            <Text style={{ textAlign: 'justify', lineHeight: 22, color: '#4254B6', fontSize: 13 }} onPress={() => {
               navigation?.navigate('PrivacyPolicy')
-            }}>Privacy Policy</Text>
+            }}>{" "}{t("Registerscreen.Privacy Policy")}</Text>
           </Text>
         </View>
         <TouchableOpacity
@@ -589,11 +625,11 @@ const Register = ({ navigation, route }) => {
               ) : (
                 <Text
                   style={{
-                    fontSize: 20,
+                    fontSize: 16,
                     color: Color.white,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Get Started
+                  {t("Registerscreen.Get Started")}
                 </Text>
               )
           }
@@ -602,7 +638,7 @@ const Register = ({ navigation, route }) => {
 
         <View
           style={{
-            width: '100%',
+            width: scr_width - 50,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
@@ -610,21 +646,21 @@ const Register = ({ navigation, route }) => {
           }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 14,
               color: Color.Venus,
               fontFamily: Mulish.Medium,
               paddingHorizontal: 5,
             }}>
-            Already have an account? {' '}
+            {t("Registerscreen.Already have an account?")}
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 14,
                 color: Color.primary,
                 fontFamily: Mulish.SemiBold,
               }}>
-              Log in
+              {t("Registerscreen.Log in")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -679,7 +715,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 0,
@@ -716,7 +752,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
 });

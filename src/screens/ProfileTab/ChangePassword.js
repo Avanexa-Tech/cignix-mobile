@@ -1,6 +1,6 @@
 //import liraries
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect, useCallback} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,13 +25,14 @@ import {
   Pressable,
 } from 'react-native';
 import Color from '../../Global/Color';
-import {scr_height, scr_width} from '../../Components/Dimensions';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { scr_height, scr_width } from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import common_fn from '../../Components/common_fn';
 import fetchData from '../../Config/fetchData';
-import {ActivityIndicator} from 'react-native-paper';
-// import { TextInput, Provider as PaperProvider } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
 // create a component
 const ChangePassword = () => {
@@ -44,6 +45,7 @@ const ChangePassword = () => {
 
   const [password_visible, setPasswordvisibility] = useState(false);
   const [newpassword_visible, setNewPasswordvisibility] = useState(false);
+  const { t } = useTranslation();
   const [confirmnewpassword_visible, setConfirmNewPasswordvisibility] =
     useState(false);
   // PASSWORD VALIDATION
@@ -87,12 +89,12 @@ const ChangePassword = () => {
         confirmPassword,
       );
       if (currentPassword == '' && newPassword == '' && confirmPassword == '') {
-        common_fn.showToast('Please fill out the required forms to register.');
+        common_fn.showToast(`${t('Homescreen.Please fill out the required forms to register.')}`);
         setloading(false);
       } else {
         if (newPassword !== confirmPassword) {
           common_fn.showToast(
-            'New password and confirm password does not match.',
+            `${t('Homescreen.New password and confirm password does not match.')}`
           );
           setloading(false);
         } else {
@@ -102,11 +104,13 @@ const ChangePassword = () => {
           };
           const Updatepassword = await fetchData?.ChangePassword(JSON?.stringify(passwordvalue));
           if (Updatepassword?.success == true) {
-            common_fn.showToast(Updatepassword?.message);
+            const translatedMessage = await translateText(Updatepassword?.message);
+            common_fn.showToast(translatedMessage);
             navigation.goBack();
             setloading(false);
           } else {
-            common_fn.showToast(Updatepassword?.message);
+            const translatedMessage = await translateText(Updatepassword?.message);
+            common_fn.showToast(translatedMessage);
             setloading(false);
           }
         }
@@ -119,7 +123,7 @@ const ChangePassword = () => {
     <ScrollView
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
-      style={{padding: 10, backgroundColor: '#fff'}}>
+      style={{ padding: 10, backgroundColor: '#fff' }}>
       <View
         style={{
           backgroundColor: Color?.white,
@@ -128,7 +132,7 @@ const ChangePassword = () => {
           marginVertical: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 5}}
+          style={{ width: scr_width / 5 }}
           onPress={() => {
             navigation?.goBack();
           }}>
@@ -142,8 +146,8 @@ const ChangePassword = () => {
         </Pressable>
         <View>
           <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Change Password
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
+            {t("ChangePassword.Change Password")}
           </Text>
         </View>
       </View>
@@ -159,17 +163,15 @@ const ChangePassword = () => {
             style={{
               padding: 10,
               textAlign: 'justify',
-              fontSize: 16,
+              fontSize: 14,
               color: Color.cloudyGrey,
               letterSpacing: 0.5,
               lineHeight: 25,
               paddingVertical: 10,
             }}>
-            A strong password is key for security: use 12-16 characters with a
-            mix of uppercase, lowercase, numbers, and symbols. Avoid common
-            words and personal info.
+            {t("ChangePassword.A strong password is key for security")}:{t("ChangePassword.use 12-16 characters with a mix of uppercase, lowercase, numbers, and symbols. Avoid common words and personal info.")}
           </Text>
-          <View style={{width: '95%', marginVertical: 10}}>
+          <View style={{ width: '95%', marginVertical: 10 }}>
             <View style={styles.NumberBoxConatiner}>
               <View
                 style={{
@@ -183,7 +185,7 @@ const ChangePassword = () => {
                   onPress={() => setPasswordvisibility(!password_visible)}
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -196,7 +198,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.currentPassword && styles.errorBorder,
                 ]}
-                placeholder="Enter Current Password"
+                placeholder={t("PlaceHolder.Enter Current Password")}
                 placeholderTextColor={Color.lightgrey}
                 secureTextEntry={!password_visible}
                 value={currentPassword}
@@ -219,7 +221,7 @@ const ChangePassword = () => {
                   onPress={() => setNewPasswordvisibility(!newpassword_visible)}
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -232,7 +234,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.newPassword && styles.errorBorder,
                 ]}
-                placeholder="Enter New Password"
+                placeholder={t("PlaceHolder.Enter New Password")}
                 placeholderTextColor={Color.lightgrey}
                 secureTextEntry={!newpassword_visible}
                 value={newPassword}
@@ -256,7 +258,7 @@ const ChangePassword = () => {
                   }
                   style={styles.numberCountryCode}>
                   <Iconviewcomponent
-                    viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="MaterialCommunityIcons"
                     icon_size={24}
                     icon_color={Color.grey}
@@ -269,7 +271,7 @@ const ChangePassword = () => {
                   styles.numberTextBox,
                   errors.confirmPassword && styles.errorBorder,
                 ]}
-                placeholder="Retype New Password"
+                placeholder={t("PlaceHolder.Retype New Password")}
                 placeholderTextColor={Color.lightgrey}
                 value={confirmPassword}
                 secureTextEntry={!confirmnewpassword_visible}
@@ -294,7 +296,7 @@ const ChangePassword = () => {
           }}>
           {/* <TouchableOpacity onPress={() => common_fn.showToast("Still Progress")}
                         style={{ width: '100%', height: 55, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, borderColor: Color.grey, borderWidth: 1, borderRadius: 30, marginVertical: 20 }}>
-                        <Text style={{ fontSize: 18, color: Color.cloudyGrey, fontFamily: Mulish.SemiBold }}>Forget Password</Text>
+                        <Text style={{ fontSize: 16, color: Color.cloudyGrey, fontFamily: Mulish.SemiBold }}>Forget Password</Text>
                     </TouchableOpacity> */}
 
           <TouchableOpacity
@@ -313,11 +315,11 @@ const ChangePassword = () => {
             ) : (
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color.white,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                Change Password
+                {t("ChangePassword.Change Password")}
               </Text>
             )}
           </TouchableOpacity>
@@ -348,7 +350,7 @@ const styles = StyleSheet.create({
   },
   numberCountryCode: {
     color: Color.cloudyGrey,
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: Mulish.SemiBold,
     textAlign: 'center',
     alignItems: 'center',
@@ -368,7 +370,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 10,
@@ -405,7 +407,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
 });

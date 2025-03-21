@@ -15,7 +15,9 @@ import { scr_height, scr_width } from '../../Components/Dimensions';
 import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
 import { useNavigation } from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import { Iconviewcomponent } from '../../Components/Icontag';
+
 
 // create a component
 const OnboardScreen = () => {
@@ -33,6 +35,15 @@ const OnboardScreen = () => {
         source={require('../../assets/Images/onboard_bg.png')}
         style={styles.image}
         resizeMode="cover">
+        <View style={{ width: scr_width, alignItems: 'flex-end', padding: 20}}>
+          <TouchableOpacity onPress={() => navigation.navigate("LanguageSelector")}>
+          <Iconviewcomponent
+            Icontag="Entypo"
+            icon_size={24}
+            icon_color={Color?.white}
+            iconname={"language"} />
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             flex: 1,
@@ -49,8 +60,8 @@ const OnboardScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text style={{ width: '95%', textAlign: 'center', fontSize: 36, color: Color.white, fontFamily: Mulish.Bold, letterSpacing: 0.5 }}>Onboarding.Your smoke-free life Begins now</Text>
-            <Text style={{ width: '95%', textAlign: 'center', fontSize: 16, color: Color.grey, fontFamily: Mulish.Medium, paddingVertical: 15, lineHeight: 22, letterSpacing: 0.5 }}>A cigarette a day takes your life away. Break free from tobacco and start living better today!</Text>
+            <Text style={{ width: '95%', textAlign: 'center', fontSize: 36, color: Color.white, fontFamily: Mulish.Bold, letterSpacing: 0.5 }}>{t("Onboardscreen.Your smoke-free life Begins now")}</Text>
+            <Text style={{ width: '95%', textAlign: 'center', fontSize: 14, color: Color.grey, fontFamily: Mulish.Medium, paddingVertical: 15, lineHeight: 22, letterSpacing: 0.5 }}>{t("Onboardscreen.A cigarette a day takes your life away. Break free from tobacco and start living better today!")}</Text>
 
 
             <TouchableOpacity
@@ -74,7 +85,7 @@ const OnboardScreen = () => {
                   color: Color.white,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                Get Started
+               {t("Onboardscreen.Get Started")}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -95,7 +106,7 @@ const OnboardScreen = () => {
                   color: Color.white,
                   fontFamily: Mulish.SemiBold,
                 }}>
-                Already Have an Account?
+               {t("Onboardscreen.Already Have an Account?")}
               </Text>
             </TouchableOpacity>
           </View>

@@ -1,43 +1,37 @@
-//import liraries
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
-  Animated,
   View,
   ScrollView,
   Image,
-  SafeAreaView,
   TouchableOpacity,
-  Platform,
-  Dimensions,
-  LogBox,
-  StatusBar,
-  FlatList,
-  PermissionsAndroid,
-  Modal,
-  NativeEventEmitter,
-  NativeModules,
-  ImageBackground,
   Pressable,
   Alert,
   ToastAndroid,
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import Color from '../../Global/Color';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {Mulish} from '../../Global/FontFamily';
-import {scr_width} from '../../Components/Dimensions';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { Mulish } from '../../Global/FontFamily';
+import { scr_width, scr_height } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import { BottomSheet } from 'react-native-btr';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-// create a component
-const EditProfile = ({navigation}) => {
+const EditProfile = ({ navigation }) => {
   const [isEditable, setIsEditable] = useState(false);
-  const [selectGenderbottomSheetVisible, setSelectGenderbottomSheetVisible] =
-    useState(false);
+  const { t } = useTranslation();
+  const [selectGenderbottomSheetVisible, setSelectGenderbottomSheetVisible] = useState(false);
+  const [profileOptionsVisible, setProfileOptionsVisible] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [selectGender, setSelectGender] = useState(null);
+
   const [Uservalue, setuservalue] = useState({
     Name: '',
     Email: '',
@@ -49,35 +43,42 @@ const EditProfile = ({navigation}) => {
     Type: '',
     profile: '',
   });
-   const [genderData, setGenderData] = useState([
-      {
-        id: '0',
-        gender: 'male',
-      },
-      {
-        id: '1',
-        gender: 'female',
-      }
-    ]);
-  const [selectGender, setSelectGender] = useState(null);
-  const [selectGenderId, setSelectGenderId] = useState('0');
+
+  const [genderData, setGenderData] = useState([
+    { id: '0', gender: 'male' },
+    { id: '1', gender: 'female' },
+  ]);
+
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(false);
+    setDate(currentDate);
+
+    const formattedDate = currentDate.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    setuservalue({ ...Uservalue, DOB: formattedDate });
+  };
+
   const selectedItem = item => {
     try {
-      // console.log("Item ======================= :", item);
-      
       setSelectGender(item.gender);
-      setuservalue({...Uservalue, Gender: item?.gender})
+      setuservalue({ ...Uservalue, Gender: item?.gender });
       setSelectGenderbottomSheetVisible(false);
     } catch (error) {
       console.log('catch in Register_selectedItem:', error);
     }
   };
+
   const handleEditInfo = () => {
-    console.log('Edit info data : ');
     setIsEditable(!isEditable);
   };
-  const handleUpdateProfile = () => {
-        const UpdateProfile = async () => {
+
+  const handleUpdateProfile = async () => {
+    const UpdateProfile = async () => {
       try {
         const formData = new FormData();
         formData.append('Dob', Uservalue?.DOB);
@@ -88,31 +89,32 @@ const EditProfile = ({navigation}) => {
         formData.append('step', Uservalue?.Step);
         formData.append('type', Uservalue?.Type);
         formData.append('gender', Uservalue?.Gender);
-        console.log('dddddddd', formData);
 
         const UpdateProfile = await fetchData?.UpdateProfile(formData);
-        console.log('UpdateProfile', UpdateProfile);
         if (UpdateProfile?.success == true) {
-          common_fn.showToast(UpdateProfile?.message);
+          const translatedMessage = await translateText(UpdateProfile?.message);
+          common_fn.showToast(translatedMessage);
         } else {
-          common_fn.showToast(UpdateProfile?.message);
+          const translatedMessage = await translateText(UpdateProfile?.message);
+          common_fn.showToast(translatedMessage);
         }
       } catch (error) {
         console.log('CATCH IN UPDATE PROFILE', error);
       }
-    }; 
-    if(Uservalue?.Phone?.length == 10)
-    {      
+    };
+    if (Uservalue?.Phone?.length == 10) {
       UpdateProfile();
       setIsEditable(!isEditable);
-    }else{
-      ToastAndroid.show('Please enter valid phone number', ToastAndroid.SHORT);
+    } else {
+      const translatedMessage = await translateText("Please enter valid phone number");
+      ToastAndroid.show(translatedMessage, ToastAndroid.SHORT);
     }
   };
 
   useEffect(() => {
     GETUSERDATA();
   }, []);
+
   const GETUSERDATA = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
@@ -133,6 +135,11 @@ const EditProfile = ({navigation}) => {
       console.log('DATA FROM GETUSERDATA', error);
     }
   };
+
+  const toggleProfileOptions = () => {
+    setProfileOptionsVisible(!profileOptionsVisible);
+  };
+
   const pickImage = () => {
     try {
       launchImageLibrary(
@@ -142,53 +149,160 @@ const EditProfile = ({navigation}) => {
         },
         async response => {
           if (response.didCancel) {
-            Alert.alert('Cancelled', 'User cancelled image picker');
-          } else if (response.errorCode) {
-            Alert.alert(
-              'Error',
-              response.errorMessage || 'Something went wrong',
-            );
+            Alert.alert(`${t("profile.Cancelled")}`, `${t("profile.User cancelled image picker")}`);
           } else {
-            // const uri = response.assets[0]?.uri;
             const asset = response.assets?.[0];
             console.log('aaaa', asset);
-            // console.log("uri",uri);
             if (asset) {
-              const {uri, fileSize, fileName, type} = asset;
-              if (fileSize && fileSize <= 1048576) {
-                console.log('File selected:', uri);
-                const formData = new FormData();
-                formData.append('profile', {
-                  uri,
-                  name: fileName || 'profile.jpg', // Fallback to a default name
-                  type: type || 'image/jpeg', // Default to JPEG
-                });
-                console.log('formData', formData);
-
-                const UpdateProfile = await fetchData?.Uploadprofileimg(
-                  formData,
-                );
-                console.log('UpdateProfile', UpdateProfile);
-                if (UpdateProfile?.success == true) {
-                  GETUSERDATA();
-                  common_fn.showToast('User Profile Updated Successfully');
-                } else {
-                  common_fn.showToast(UpdateProfile?.message);
-                }
+              const { uri, fileName, type } = asset;
+              const formData = new FormData();
+              formData.append('profile', {
+                uri,
+                name: fileName || 'profile.jpg',
+                type: type || 'image/jpeg',
+              });
+              const UpdateProfile = await fetchData?.Uploadprofileimg(
+                formData,
+              );
+              if (UpdateProfile?.success == true) {
+                GETUSERDATA();
+                common_fn.showToast(`${t('Homescreen.User Profile Updated Successfully')}`);
               } else {
-                Alert.alert(
-                  'File Too Large',
-                  'Please select an image below 1 MB.',
-                );
+                const translatedMessage = await translateText(UpdateProfile?.message);
+                common_fn.showToast(translatedMessage);
               }
             }
           }
+          setProfileOptionsVisible(false);
         },
       );
     } catch (error) {
       console.log('CATCH IN ERROR');
     }
   };
+  const takePhoto = async () => {
+    try {
+      launchCamera(
+        {
+          mediaType: 'photo',
+          quality: 1,
+        },
+        async response => {
+          if (response.didCancel) {
+            Alert.alert(`${t("profile.Cancelled")}`, `${t("profile.User cancelled camera")}`);
+          } else {
+            const asset = response.assets?.[0];
+            if (asset) {
+              const { uri, fileName, type } = asset;
+              const formData = new FormData();
+              formData.append('profile', {
+                uri,
+                name: fileName || 'profile.jpg',
+                type: type || 'image/jpeg',
+              });
+              console.log('111111111111111+============>', formData);
+
+              const UpdateProfile = await fetchData?.Uploadprofileimg(
+                formData,
+              );
+              if (UpdateProfile?.success == true) {
+                GETUSERDATA();
+                common_fn.showToast(`${t('Homescreen.User Profile Updated Successfully')}`);
+              } else {
+                const translatedMessage = await translateText(UpdateProfile?.message);
+                common_fn.showToast(translatedMessage);
+              }
+            }
+          }
+          setProfileOptionsVisible(false);
+        },
+      );
+    } catch (error) {
+      console.log('CATCH IN TAKE PHOTO', error);
+    }
+  };
+  const removeProfilePicture = async () => {
+    try {
+      const RemoveProfile = await fetchData?.RemoveProfilePic();
+      console.log("Remove Profile Response:", RemoveProfile);
+
+      if (RemoveProfile?.success === true) {
+        setuservalue({ ...Uservalue, profile: '' });
+        common_fn.showToast(`${t('Homescreen.Profile picture removed successfully')}`);
+      } else {
+        const translatedMessage = await translateText(RemoveProfile?.message);
+        common_fn.showToast(translatedMessage);
+      }
+      setProfileOptionsVisible(false);
+    } catch (error) {
+      console.log('Error in REMOVE PROFILE:', error);
+      console.log('Error details:', error.message);
+      common_fn.showToast(`${t('Homescreen.Network request failed. Please try again later.')}`);
+      setProfileOptionsVisible(false);
+    }
+  };
+  function profileOptionsBottomSheet() {
+    return (
+      <BottomSheet
+        visible={profileOptionsVisible}
+        onBackButtonPress={toggleProfileOptions}
+        onBackdropPress={toggleProfileOptions}>
+        <View style={styles.profileOptionsContainer}>
+          <View style={styles.profileOptionsHeader}>
+            <Text style={styles.profileOptionsTitle}>
+              {t("Editprofile.Profile Picture Options")}
+            </Text>
+            <TouchableOpacity onPress={toggleProfileOptions}>
+              <Iconviewcomponent
+                Icontag={'AntDesign'}
+                iconname={'closecircleo'}
+                icon_size={scr_width * 0.055}
+                iconstyle={{ color: Color.primary, marginRight: scr_width * 0.025 }}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.optionsContainer}>
+            <TouchableOpacity style={styles.optionButton} onPress={takePhoto}>
+              <Iconviewcomponent
+                Icontag="MaterialIcons"
+                icon_size={scr_width * 0.06}
+                icon_color={Color.primary}
+                iconname="photo-camera"
+              />
+              <Text style={styles.optionText}>{t("Editprofile.Take Photo")}</Text>
+            </TouchableOpacity>
+            <View style={styles.divider}></View>
+            <TouchableOpacity style={styles.optionButton} onPress={pickImage}>
+              <Iconviewcomponent
+                Icontag="MaterialIcons"
+                icon_size={scr_width * 0.06}
+                icon_color={Color.primary}
+                iconname="photo-library"
+              />
+              <Text style={styles.optionText}>{t("Editprofile.Choose from Gallery")}</Text>
+            </TouchableOpacity>
+            {Uservalue?.profile && (
+              <>
+                <View style={styles.divider}></View>
+                <TouchableOpacity style={styles.optionButton} onPress={removeProfilePicture}>
+                  <Iconviewcomponent
+                    Icontag="MaterialIcons"
+                    icon_size={scr_width * 0.06}
+                    icon_color={'#FF3B30'}
+                    iconname="delete"
+                  />
+                  <Text style={[styles.optionText, { color: '#FF3B30' }]}>
+                    {t("Editprofile.Remove Profile Picture")}
+                  </Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </View>
+        </View>
+      </BottomSheet>
+    );
+  }
+
   function selectGender_toggleBottomView() {
     try {
       setSelectGenderbottomSheetVisible(!selectGenderbottomSheetVisible);
@@ -196,6 +310,7 @@ const EditProfile = ({navigation}) => {
       console.log('catch in Register_toggleBottomView :', error);
     }
   }
+
   function selGender_BottomSheetmenu() {
     try {
       return (
@@ -208,50 +323,50 @@ const EditProfile = ({navigation}) => {
               style={{
                 backgroundColor: Color.white,
                 alignItems: 'center',
-                borderTopStartRadius: 30,
-                borderTopEndRadius: 30,
+                borderTopStartRadius: scr_width * 0.075,
+                borderTopEndRadius: scr_width * 0.075,
               }}>
               <View
                 style={{
                   width: '100%',
                   flexDirection: 'row',
-                  padding: 15,
-                  paddingStart: 30,
+                  padding: scr_width * 0.0375,
+                  paddingStart: scr_width * 0.075,
                   backgroundColor: '#FBE9EF',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
+                  borderTopLeftRadius: scr_width * 0.05,
+                  borderTopRightRadius: scr_width * 0.05,
                 }}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: scr_width * 0.04,
                     color: Color.lightBlack,
                     fontFamily: Mulish.SemiBold,
                   }}>
-                  Select Gender
+                  {t("Editprofile.Select Gender")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => setSelectGenderbottomSheetVisible(false)}>
                   <Iconviewcomponent
                     Icontag={'AntDesign'}
                     iconname={'closecircleo'}
-                    icon_size={22}
-                    iconstyle={{color: Color.primary, marginRight: 10}}
+                    icon_size={scr_width * 0.055}
+                    iconstyle={{ color: Color.primary, marginRight: scr_width * 0.025 }}
                   />
                 </TouchableOpacity>
               </View>
 
-              <View style={{width: '95%'}}>
+              <View style={{ width: '95%' }}>
                 {genderData.map((item, index) => {
                   return (
-                    <View key={index} style={{width: '100%'}}>
+                    <View key={index} style={{ width: '100%' }}>
                       <TouchableOpacity
                         activeOpacity={0.7}
                         onPress={() => selectedItem(item)}
                         style={{
                           alignItems: 'center',
-                          padding: 5,
+                          padding: scr_width * 0.0125,
                           backgroundColor:
                             Uservalue?.Gender == item.gender
                               ? Color.primary
@@ -260,15 +375,15 @@ const EditProfile = ({navigation}) => {
                         <Text
                           style={{
                             textAlign: 'center',
-                            fontSize: 16,
-                            textTransform:'capitalize',
+                            fontSize: scr_width * 0.04,
+                            textTransform: 'capitalize',
                             color:
-                            Uservalue?.Gender === item.gender
+                              Uservalue?.Gender === item.gender
                                 ? Color.white
                                 : Color.cloudyGrey,
-                            marginVertical: 5,
+                            marginVertical: scr_width * 0.0125,
                             fontFamily: Mulish.SemiBold,
-                            padding: 5,
+                            padding: scr_width * 0.0125,
                           }}>
                           {item.gender}
                         </Text>
@@ -276,9 +391,9 @@ const EditProfile = ({navigation}) => {
                       <View
                         style={{
                           width: '100%',
-                          height: 3,
+                          height: scr_height * 0.004,
                           backgroundColor: Color.softGrey,
-                          marginVertical: 5,
+                          marginVertical: scr_width * 0.0125,
                         }}></View>
                     </View>
                   );
@@ -295,406 +410,421 @@ const EditProfile = ({navigation}) => {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View
-        style={{
-          backgroundColor: Color?.white,
-          flexDirection: 'row',
-          paddingLeft: 20,
-          paddingTop: 20,
-          paddingBottom: 20,
-        }}>
+      <View style={styles.headerContainer}>
         <Pressable
-          style={{width: scr_width / 4}}
-          onPress={() => {
-            navigation?.goBack();
-          }}>
+          style={styles.backButton}
+          onPress={() => navigation?.goBack()}>
           <Iconviewcomponent
             Icontag="Ionicons"
-            icon_size={25}
+            icon_size={scr_width * 0.0625}
             icon_color={'#000'}
             iconname={'chevron-back'}
           />
         </Pressable>
-        <View>
-          <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Edit Profile
+        <View style={styles.headerTitleContainer}>
+          <Text style={styles.headerTitle}>
+            {t("Editprofile.Edit Profile")}
           </Text>
         </View>
       </View>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <View
-          style={{
-            width: 120,
-            height: 120,
-            padding: 2,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 100,
-            backgroundColor: Color.grey,
-          }}>
+      <View style={styles.profileImageContainer}>
+        <View style={styles.profileImageWrapper}>
           <Image
             source={
               Uservalue?.profile
-                ? {uri: Uservalue?.profile}
-                : require('../../assets/Gallery/profile.png')
+                ? { uri: Uservalue?.profile }
+                : require('../../assets/Gallery/profile.jpg')
             }
-            style={{
-              width: '100%',
-              height: '100%',
-              resizeMode: 'cover',
-              borderRadius: 100,
-            }}
+            style={styles.profileImage}
           />
           <Pressable
-            style={{
-              position: 'absolute',
-              backgroundColor: Color.mediumGrey,
-              padding: 5,
-              borderRadius: 50,
-              bottom: 0,
-              right: 10,
-            }}
-            onPress={() => {
-              pickImage();
-            }}>
+            style={styles.editProfileIconContainer}
+            onPress={toggleProfileOptions}>
             <Iconviewcomponent
-              viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
               Icontag="MaterialCommunityIcons"
-              icon_size={25}
+              icon_size={scr_width * 0.0625}
               icon_color={Color.black}
               iconname="pencil-outline"
             />
           </Pressable>
         </View>
-        <TouchableOpacity style={{margin: 20}}>
-          <Text
-            style={{
-              color: '#2E81F8',
-              fontSize: 16,
-              fontFamily: Mulish?.Medium,
-            }}>
-            Edit Profile Picture
+        <TouchableOpacity
+          style={{ margin: scr_width * 0.05 }}
+          onPress={toggleProfileOptions}>
+          <Text style={styles.editProfileText}>
+            {t("Editprofile.Edit Profile Picture")}
           </Text>
         </TouchableOpacity>
-        <View
-          style={{
-            width: '90%',
-            height: 3,
-            backgroundColor: Color.softGrey,
-            marginHorizontal: 20,
-            marginBottom: 10,
-          }}
-        />
+        <View style={styles.dividerLine} />
       </View>
-      <View
-        style={{
-          flex: 3,
-          width: '100%',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            width: '90%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingVertical: 10,
-          }}>
+      <View style={styles.formContainer}>
+        <View style={styles.sectionHeader}>
           <View>
-            <Text
-              style={{
-                fontSize: 18,
-                color: Color.black,
-                fontFamily: Mulish.ExtraBold,
-                letterSpacing: 0.5,
-              }}>
-              Profile Information
+            <Text style={styles.sectionTitle}>
+              {t("Editprofile.Profile Information")}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              handleEditInfo();
-            }}>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#2E81F8',
-                fontFamily: Mulish.Bold,
-                letterSpacing: 0.5,
-              }}>
-              Edit Info
+          <TouchableOpacity onPress={handleEditInfo}>
+            <Text style={styles.editInfoText}>
+              {t("Editprofile.Edit Info")}
             </Text>
           </TouchableOpacity>
         </View>
-
         <TextInput
-          label="Full Name"
+          label={t("PlaceHolder.Full Name")}
           value={Uservalue?.Name}
-          editable={isEditable == true ? true : false} // Make the TextInput non-editable
-          // editable={isEditable} // Toggle edit mode
-          onChangeText={text => setuservalue({...Uservalue, Name: text})}
-          style={{
-            width: '90%',
-            height: 60,
-            paddingHorizontal: 20,
-            backgroundColor: Color.white,
-            marginVertical: 10,
-          }}
+          editable={isEditable}
+          onChangeText={text => setuservalue({ ...Uservalue, Name: text })}
+          style={styles.textInput}
           cursorColor={Color.primary}
           mode="outlined"
           theme={{
-            roundness: 30, // Set border radius
+            roundness: scr_width * 0.5,
             colors: {
-              primary: Color.primary, // Outline color when focused
-              text: Color.black, // Font color for input text
-              placeholder: Color.grey, // Placeholder color
-              disabled: Color.black, // Text color when disabled
+              primary: Color.primary,
+              text: Color.black,
+              placeholder: Color.grey,
+              disabled: Color.black,
             },
           }}
-          inputStyle={{
-            fontSize: 20, // Font size
-            fontFamily: Mulish.Black, // Font family
-          }}
+          inputStyle={styles.inputText}
         />
         <TextInput
-          label="Email Address"
+          label={t("PlaceHolder.Email Address")}
           value={Uservalue?.Email?.toLowerCase()}
-          editable={isEditable == true ? true : false} // Make the TextInput non-editable
-          onChangeText={text => setuservalue({...Uservalue, Email: text})}
-          style={{
-            width: '90%',
-            height: 60,
-            paddingHorizontal: 20,
-            backgroundColor: Color.white,
-            marginVertical: 10,
-          }}
+          editable={isEditable == true ? true : false}
+          onChangeText={text => setuservalue({ ...Uservalue, Email: text })}
+          style={styles.textInput}
           cursorColor={Color.primary}
           mode="outlined"
           theme={{
-            roundness: 30, // Set border radius
+            roundness: scr_width * 0.5,
             colors: {
-              primary: Color.primary, // Outline color when focused
-              text: Color.black, // Font color for input text
-              placeholder: Color.grey, // Placeholder color
-              disabled: Color.black, // Text color when disabled
+              primary: Color.primary,
+              text: Color.black,
+              placeholder: Color.grey,
+              disabled: Color.black,
             },
           }}
-          inputStyle={{
-            fontSize: 16, // Font size
-            fontFamily: Mulish.Black, // Font family
-          }}
+          inputStyle={styles.inputText}
         />
         <TextInput
-          label="Phone Number"
+          label={t("PlaceHolder.Phone Number")}
           value={Uservalue?.Phone}
-          editable={isEditable == true ? true : false} // Make the TextInput non-editable
-          onChangeText={text => setuservalue({...Uservalue, Phone: text})}
-          style={{
-            width: '90%',
-            height: 60,
-            paddingHorizontal: 20,
-            backgroundColor: Color.white,
-            marginVertical: 10,
-          }}
+          editable={isEditable == true ? true : false}
+          onChangeText={text => setuservalue({ ...Uservalue, Phone: text })}
+          style={styles.textInput}
           keyboardType='numeric'
           maxLength={10}
           cursorColor={Color.primary}
           mode="outlined"
           theme={{
-            roundness: 30, // Set border radius
+            roundness: scr_width * 0.5,
             colors: {
-              primary: Color.primary, // Outline color when focused
-              text: Color.black, // Font color for input text
-              placeholder: Color.grey, // Placeholder color
-              disabled: Color.black, // Text color when disabled
+              primary: Color.primary,
+              text: Color.black,
+              placeholder: Color.grey,
+              disabled: Color.black,
             },
           }}
-          inputStyle={{
-            fontSize: 16, // Font size
-            fontFamily: Mulish.Black, // Font family
-          }}
+          inputStyle={styles.inputText}
           left={
             <TextInput.Icon
               icon={() => (
                 <View style={styles.prefixContainer}>
                   <Image
-                    source={require('../../assets/Images/india.png')} // Replace with your image path
+                    source={require('../../assets/Images/india.png')}
                     style={styles.icon}
                   />
                   <Text style={styles.prefixText}>+91</Text>
                 </View>
               )}
-              style={styles.iconContainer} // Ensures proper alignment
+              style={styles.iconContainer}
             />
           }
         />
         <TextInput
-          label="Date of Birth / Age"
+          label={t("PlaceHolder.Date of Birth / Age")}
           value={Uservalue?.DOB}
-          editable={isEditable == true ? true : false} // Make the TextInput non-editable
-          onChangeText={text => setuservalue({...Uservalue, DOB: text})}
-          style={{
-            width: '90%',
-            height: 60,
-            paddingHorizontal: 20,
-            backgroundColor: Color.white,
-            marginVertical: 10,
-          }}
+          editable={isEditable == true ? true : false}
+          onChangeText={text => setuservalue({ ...Uservalue, DOB: text })}
+          style={styles.textInput}
           cursorColor={Color.primary}
           mode="outlined"
           theme={{
-            roundness: 30, // Set border radius
+            roundness: scr_width * 0.5,
             colors: {
-              primary: Color.primary, // Outline color when focused
-              text: Color.black, // Font color for input text
-              placeholder: Color.grey, // Placeholder color
-              disabled: Color.black, // Text color when disabled
+              primary: Color.primary,
+              text: Color.black,
+              placeholder: Color.grey,
+              disabled: Color.black,
             },
           }}
-          inputStyle={{
-            fontSize: 16, // Font size
-            fontFamily: Mulish.Black, // Font family
-          }}
+          inputStyle={styles.inputText}
           right={
             <TextInput.Icon
               icon={() => (
-                <View style={{}}>
+                <View>
                   <Iconviewcomponent
-                    // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="AntDesign"
-                    icon_size={22}
-                    icon_color={Color.cloudyGrey}
+                    icon_size={scr_width * 0.055}
+                    icon_color={isEditable ? Color.cloudyGrey : Color.Venus}
                     iconname={'calendar'}
                   />
                 </View>
               )}
-              style={{
-                width: 60,
-                marginTop: 7, // Ensures alignment with the text input
-              }} // Ensures proper alignment
+              style={styles.rightIconContainer}
+              onPress={() => isEditable && setShowDatePicker(true)}
             />
           }
         />
-
+        {showDatePicker && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            onChange={onDateChange}
+            maximumDate={new Date()}
+          />
+        )}
         <TextInput
-          label="Gender"
-          value={Uservalue?.Gender}    
-          // autoCapitalize='words'      
-          editable={isEditable == true ? true : false} // Make the TextInput non-editable
-          // onChangeText={text => setuservalue({...Uservalue, Gender: text.charAt(0).toUpperCase() + text.slice(1)})}
-          style={{
-            width: '90%',
-            height: 60,
-            textTransform:'capitalize',
-            paddingHorizontal: 20,
-            backgroundColor: Color.white,
-            marginVertical: 10,
-          }}
-          
+          label={t("PlaceHolder.Gender")}
+          value={Uservalue?.Gender || t("Editprofile.Select Gender")}
+          editable={isEditable}
+          style={styles.textInput}
           autoCapitalize='characters'
           cursorColor={Color.primary}
           mode="outlined"
           theme={{
-            roundness: 30, // Set border radius
+            roundness: scr_width * 0.5,
             colors: {
-              primary: Color.primary, // Outline color when focused
-              text: Color.black, // Font color for input text
-              placeholder: Color.grey, // Placeholder color
-              disabled: Color.black, 
-              
-              // Text color when disabled
+              primary: Color.primary,
+              text: Color.black,
+              placeholder: Color.grey,
+              disabled: Color.black,
             },
           }}
-          inputStyle={{
-            fontSize: 16, // Font size
-            fontFamily: Mulish.Black,
-          
-            // Font family
-          }}
+          inputStyle={styles.inputText}
           right={
             <TextInput.Icon
               icon={() => (
-                <View style={{}}>
+                <View>
                   <Iconviewcomponent
-                    // viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
                     Icontag="AntDesign"
-                    icon_size={20}
-                    icon_color={
-                      isEditable == true ? Color.lightBlack : Color.Venus
-                    }
+                    icon_size={scr_width * 0.05}
+                    icon_color={isEditable ? Color.lightBlack : Color.Venus}
                     iconname={'caretdown'}
                   />
                 </View>
               )}
-              style={{
-                width: 60,
-                marginTop: 7,
-              }}
-              onPress={() => {
-                isEditable == true ?
-                selectGender_toggleBottomView() : null
-              }}
+              style={styles.rightIconContainer}
+              onPress={() => isEditable && selectGender_toggleBottomView()}
             />
           }
         />
-
         <TouchableOpacity
-          onPress={() => {
-            handleUpdateProfile();
-          }}
-          disabled={!isEditable} // Disable button when not in edit mode
-          style={{
-            width: '90%',
-            height: 55,
-            marginBottom: 100,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: isEditable ? Color.primary : Color.grey, // Change color based on edit mode
-            borderRadius: 30,
-            marginVertical: 20,
-          }}>
-          <Text
-            style={{color: Color.white, fontSize: 16, fontFamily: Mulish.Bold}}>
-            Update Profile
+          onPress={handleUpdateProfile}
+          disabled={!isEditable}
+          style={[
+            styles.updateButton,
+            { backgroundColor: isEditable ? Color.primary : Color.grey }
+          ]}>
+          <Text style={styles.updateButtonText}>
+            {t("Editprofile.Update Profile")}
           </Text>
         </TouchableOpacity>
       </View>
       {selGender_BottomSheetmenu()}
+      {profileOptionsBottomSheet()}
     </ScrollView>
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     backgroundColor: Color.white,
+  },
+  headerContainer: {
+    backgroundColor: Color?.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: scr_height * 0.025,
+    width: '100%',
+  },
+  backButton: {
+    width: scr_width * 0.15,
+    paddingLeft: scr_width * 0.05,
+    justifyContent: 'center',
+  },
+  headerTitleContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    fontFamily: Mulish?.SemiBold,
+    fontSize: scr_width * 0.055,
+    color: '#000',
+    textAlign: 'center',
+  },
+  profileImageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  profileImageWrapper: {
+    width: scr_width * 0.3,
+    height: scr_width * 0.3,
+    padding: scr_width * 0.005,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: scr_width * 0.15,
+    backgroundColor: Color.grey,
+  },
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    borderRadius: scr_width * 0.15,
+  },
+  editProfileIconContainer: {
+    position: 'absolute',
+    backgroundColor: Color.mediumGrey,
+    padding: scr_width * 0.0125,
+    borderRadius: scr_width * 0.125,
+    bottom: 0,
+    right: scr_width * 0.025,
+  },
+  editProfileText: {
+    color: '#2E81F8',
+    fontSize: scr_width * 0.04,
+    fontFamily: Mulish?.Medium,
+  },
+  dividerLine: {
+    width: '90%',
+    height: scr_height * 0.004,
+    backgroundColor: Color.softGrey,
+    marginHorizontal: scr_width * 0.05,
+    marginBottom: scr_width * 0.025,
+  },
+  formContainer: {
+    flex: 3,
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  sectionHeader: {
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: scr_height * 0.015,
+  },
+  sectionTitle: {
+    fontSize: scr_width * 0.045,
+    color: Color.black,
+    fontFamily: Mulish.ExtraBold,
+    letterSpacing: 0.5,
+  },
+  editInfoText: {
+    fontSize: scr_width * 0.04,
+    color: '#2E81F8',
+    fontFamily: Mulish.Bold,
+    letterSpacing: 0.5,
+  },
+  textInput: {
+    width: '90%',
+    height: scr_height * 0.075,
+    paddingHorizontal: scr_width * 0.05,
+    backgroundColor: Color.white,
+    marginVertical: scr_height * 0.009,
+    color: Color.black
+  },
+  inputText: {
+    fontSize: scr_width * 0.04,
+    fontFamily: Mulish.Black,
   },
   prefixContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   icon: {
-    width: 20, // Adjust image width
-    height: 20, // Adjust image height
+    width: scr_width * 0.05,
+    height: scr_width * 0.05,
     resizeMode: 'contain',
-    marginRight: 5, // Space between image and text
+    marginRight: scr_width * 0.0125,
   },
   prefixText: {
-    fontSize: 16,
-    fontFamily: Mulish.Medium, // Ensure font matches your theme
-    color: Color.cloudyGrey, // Adjust color as needed
+    fontSize: scr_width * 0.04,
+    fontFamily: Mulish.Medium,
+    color: Color.cloudyGrey,
   },
   iconContainer: {
-    width: 100,
-    // backgroundColor: 'red',
-    marginTop: 7, // Ensures alignment with the text input
-    left: 15,
+    width: scr_width * 0.25,
+    marginTop: scr_height * 0.009,
+    left: scr_width * 0.0375,
   },
+  rightIconContainer: {
+    width: scr_width * 0.15,
+    marginTop: scr_height * 0.009,
+  },
+  updateButton: {
+    width: '90%',
+    height: scr_height * 0.07,
+    marginBottom: scr_height * 0.125,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: scr_width * 0.075,
+    marginVertical: scr_height * 0.025,
+  },
+  updateButtonText: {
+    color: Color.white,
+    fontSize: scr_width * 0.04,
+    fontFamily: Mulish.Bold
+  },
+  profileOptionsContainer: {
+    backgroundColor: Color.white,
+    borderTopLeftRadius: scr_width * 0.075,
+    borderTopRightRadius: scr_width * 0.075,
+  },
+  profileOptionsHeader: {
+    width: '100%',
+    flexDirection: 'row',
+    padding: scr_width * 0.0375,
+    paddingStart: scr_width * 0.075,
+    backgroundColor: '#FBE9EF',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderTopLeftRadius: scr_width * 0.05,
+    borderTopRightRadius: scr_width * 0.05,
+  },
+  profileOptionsTitle: {
+    fontSize: scr_width * 0.04,
+    color: Color.lightBlack,
+    fontFamily: Mulish.SemiBold,
+  },
+  optionsContainer: {
+    padding: scr_width * 0.05,
+  },
+  optionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: scr_height * 0.02,
+  },
+  optionText: {
+    marginLeft: scr_width * 0.0375,
+    fontSize: scr_width * 0.04,
+    color: Color.black,
+    fontFamily: Mulish.Medium,
+  },
+  divider: {
+    width: '100%',
+    height: 1,
+    backgroundColor: Color.softGrey,
+  }
 });
 
-//make this component available to the app
 export default EditProfile;

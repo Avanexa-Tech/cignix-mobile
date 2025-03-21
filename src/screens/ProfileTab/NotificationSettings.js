@@ -1,7 +1,7 @@
 //import liraries
 //import liraries
-import {useNavigation} from '@react-navigation/native';
-import React, {useState, useEffect, useCallback} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,14 +25,16 @@ import {
   Pressable,
 } from 'react-native';
 
-import {Switch} from 'react-native-paper';
-import {useDispatch} from 'react-redux';
+import { Switch } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Iconviewcomponent} from '../../Components/Icontag';
-import {scr_width} from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { Iconviewcomponent } from '../../Components/Icontag';
+import { scr_width } from '../../Components/Dimensions';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
 // create a component
 const NotificationSettings = () => {
@@ -44,6 +46,7 @@ const NotificationSettings = () => {
   const [isRemainderSwitchOn, setIsRemainderSwitchOn] = useState(false);
   const [isCommunitySwitchOn, setIsCommunitySwitchOn] = useState(false);
   const [getdata, setgetdata] = useState('');
+  const { t } = useTranslation();
   useEffect(() => {
     Getnotification();
   }, []);
@@ -82,8 +85,8 @@ const NotificationSettings = () => {
       );
       if (update?.success == true) {
         console.log('updateddddddddddd', update);
-
-        common_fn.showToast(update?.message);
+        const translatedMessage = await translateText(update?.message);
+        common_fn.showToast(translatedMessage);
         Getnotification();
       }
     } catch (error) {
@@ -102,7 +105,8 @@ const NotificationSettings = () => {
         JSON.stringify(data),
       );
       if (update?.success == true) {
-        common_fn.showToast(update?.message);
+        const translatedMessage = await translateText(update?.message);
+        common_fn.showToast(translatedMessage);
         Getnotification();
       }
     } catch (error) {
@@ -121,7 +125,8 @@ const NotificationSettings = () => {
         JSON.stringify(data),
       );
       if (update?.success == true) {
-        common_fn.showToast(update?.message);
+        const translatedMessage = await translateText(update?.message);
+        common_fn.showToast(translatedMessage);
         Getnotification();
       }
     } catch (error) {
@@ -140,7 +145,8 @@ const NotificationSettings = () => {
         JSON.stringify(data),
       );
       if (update?.success == true) {
-        common_fn.showToast(update?.message);
+        const translatedMessage = await translateText(update?.message);
+        common_fn.showToast(translatedMessage);
         Getnotification();
       }
     } catch (error) {
@@ -159,7 +165,8 @@ const NotificationSettings = () => {
         JSON.stringify(data),
       );
       if (update?.success == true) {
-        common_fn.showToast(update?.message);
+        const translatedMessage = await translateText(update?.message);
+        common_fn.showToast(translatedMessage);
         Getnotification();
       }
     } catch (error) {
@@ -177,7 +184,7 @@ const NotificationSettings = () => {
           paddingBottom: 20,
         }}>
         <Pressable
-          style={{width: scr_width / 5}}
+          style={{ width: scr_width / 5 }}
           onPress={() => {
             navigation?.goBack();
           }}>
@@ -191,8 +198,8 @@ const NotificationSettings = () => {
         </Pressable>
         <View>
           <Text
-            style={{fontFamily: Mulish?.SemiBold, fontSize: 22, color: '#000'}}>
-            Notification Settings
+            style={{ fontFamily: Mulish?.SemiBold, fontSize: 17, color: '#000' }}>
+            {t("NotificationSettings.Notification Settings")}
           </Text>
         </View>
       </View>
@@ -200,23 +207,23 @@ const NotificationSettings = () => {
         style={{
           width: scr_width,
           padding: 10,
-          fontSize: 22,
+          fontSize: 17,
           color: Color.black,
           fontFamily: Mulish.Bold,
           // letterSpacing: 0.5,
         }}>
-        Choose Notification Channels
+        {t("NotificationSettings.Choose Notification Channels")}
       </Text>
 
-      <View style={{padding: 10, gap: 10}}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{ padding: 10, gap: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Email Notification
+            {t("NotificationSettings.Email Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -228,18 +235,18 @@ const NotificationSettings = () => {
               }}
               color={Color.primary}
               thumbColor={isSmsSwitchOn ? Color.primary : '#f5f5f5'}
-              trackColor={{false: '#767577', true: '#81b0ff'}}
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
             />
           </View>
         </View>
-        <View style={{width: scr_width / 1.4}}>
+        <View style={{ width: scr_width / 1.4 }}>
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -252,15 +259,15 @@ const NotificationSettings = () => {
           marginVertical: 5,
         }}></View>
 
-      <View style={{padding: 10, gap: 10}}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{ padding: 10, gap: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Push Notification
+            {t("NotificationSettings.Push Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -270,18 +277,18 @@ const NotificationSettings = () => {
               }}
               color={Color.primary}
               thumbColor={isSmsSwitchOn ? Color.primary : '#f5f5f5'}
-              trackColor={{false: '#767577', true: '#81b0ff'}}
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
             />
           </View>
         </View>
-        <View style={{width: scr_width / 1.4}}>
+        <View style={{ width: scr_width / 1.4 }}>
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -294,15 +301,15 @@ const NotificationSettings = () => {
           borderRadius: 10,
           marginVertical: 5,
         }}></View>
-      <View style={{padding: 10, gap: 10}}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{ padding: 10, gap: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontFamily: Mulish?.Medium,
               color: '#333333',
             }}>
-            Whatsapp Notifaction
+            {t("NotificationSettings.Whatsapp Notification")}
           </Text>
           <View style={styles.switchContainer}>
             <Switch
@@ -312,18 +319,18 @@ const NotificationSettings = () => {
               }}
               color={Color.primary}
               thumbColor={isSmsSwitchOn ? Color.primary : '#f5f5f5'}
-              trackColor={{false: '#767577', true: '#81b0ff'}}
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
             />
           </View>
         </View>
-        <View style={{width: scr_width / 1.4}}>
+        <View style={{ width: scr_width / 1.4 }}>
           <Text
             style={{
               color: '#666666',
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: Mulish?.Regular,
             }}>
-            Receive notification all of the messages, videos, Progress Updates.
+            {t("NotificationSettings.Receive notification all of the messages, videos, Progress Updates.")}
           </Text>
         </View>
       </View>
@@ -341,12 +348,12 @@ const NotificationSettings = () => {
         style={{
           width: '100%',
           padding: 10,
-          fontSize: 20,
+          fontSize: 16,
           color: Color.black,
           fontFamily: Mulish.Bold,
           letterSpacing: 0.5,
         }}>
-        Types of Notification
+        {t("NotificationSettings.Types of Notification")}
       </Text>
 
       <View
@@ -359,17 +366,17 @@ const NotificationSettings = () => {
           marginVertical: 10,
         }}>
         <View
-          style={{flex: 3, justifyContent: 'center', alignItems: 'flex-start'}}>
+          style={{ flex: 3, justifyContent: 'center', alignItems: 'flex-start' }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               textAlign: 'justify',
               color: Color.black,
               fontFamily: Mulish.SemiBold,
               letterSpacing: 0.5,
               padding: 3,
             }}>
-            Remainder
+            {t("NotificationSettings.Remainder")}
           </Text>
         </View>
         <View style={styles.switchContainer}>
@@ -380,7 +387,7 @@ const NotificationSettings = () => {
             }}
             color={Color.primary}
             thumbColor={isRemainderSwitchOn ? Color.primary : '#f5f5f5'}
-            trackColor={{false: '#767577', true: '#81b0ff'}}
+            trackColor={{ false: '#767577', true: '#81b0ff' }}
           />
         </View>
       </View>
@@ -402,17 +409,17 @@ const NotificationSettings = () => {
           marginVertical: 10,
         }}>
         <View
-          style={{flex: 3, justifyContent: 'center', alignItems: 'flex-start'}}>
+          style={{ flex: 3, justifyContent: 'center', alignItems: 'flex-start' }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 16,
               textAlign: 'justify',
               color: Color.black,
               fontFamily: Mulish.SemiBold,
               letterSpacing: 0.5,
               padding: 3,
             }}>
-            Community Updates
+            {t("NotificationSettings.Community Updates")}
           </Text>
         </View>
         <View style={styles.switchContainer}>
@@ -423,7 +430,7 @@ const NotificationSettings = () => {
             }}
             color={Color.primary}
             thumbColor={isCommunitySwitchOn ? Color.primary : '#f5f5f5'}
-            trackColor={{false: '#767577', true: '#81b0ff'}}
+            trackColor={{ false: '#767577', true: '#81b0ff' }}
           />
         </View>
       </View>
@@ -435,7 +442,7 @@ const NotificationSettings = () => {
           borderRadius: 10,
           marginVertical: 5,
         }}></View>
-      <View style={{padding: 20, backgroundColor: '#fff'}}></View>
+      <View style={{ padding: 20, backgroundColor: '#fff' }}></View>
       {/* <TouchableOpacity
         style={{
           backgroundColor: '#4254B6',
@@ -444,9 +451,9 @@ const NotificationSettings = () => {
           justifyContent: 'center',
           borderRadius: 100,
         }}>
-        <Text style={{color: '#fff', fontSize: 20}}>Update Settings</Text>
+        <Text style={{color: '#fff', fontSize: 16}}>Update Settings</Text>
       </TouchableOpacity> */}
-      <View style={{padding: 50, backgroundColor: '#fff'}}></View>
+      <View style={{ padding: 50, backgroundColor: '#fff' }}></View>
     </ScrollView>
   );
 };
@@ -460,11 +467,11 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#333',
   },
   switchContainer: {
-    transform: [{scale: 1.2}], // Increase the size of the switch
+    transform: [{ scale: 1.2 }], // Increase the size of the switch
   },
 });
 

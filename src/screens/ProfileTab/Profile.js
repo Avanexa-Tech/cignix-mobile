@@ -1,51 +1,38 @@
-//import liraries
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
   Animated,
   View,
-  ScrollView,
   Image,
   SafeAreaView,
   TouchableOpacity,
-  Platform,
-  Dimensions,
-  LogBox,
   StatusBar,
-  FlatList,
-  PermissionsAndroid,
-  Modal,
-  NativeEventEmitter,
-  NativeModules,
-  TextInput,
-  ImageBackground,
   Linking,
-  ToastAndroid,
   Alert,
 } from 'react-native';
 
-import {Iconviewcomponent} from '../../Components/Icontag';
+import { Iconviewcomponent } from '../../Components/Icontag';
 import Color from '../../Global/Color';
-import {Mulish} from '../../Global/FontFamily';
-import {Badge} from 'react-native-paper';
-import Feather from 'react-native-vector-icons/Feather';
-import {useNavigation} from '@react-navigation/native';
-import {scr_height} from '../../Components/Dimensions';
+import { Mulish } from '../../Global/FontFamily';
+import { scr_height } from '../../Components/Dimensions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
-import {useFocusEffect} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext'
 
-// create a component
-const Profile = ({navigation}) => {
-  // const navigation = useNavigation();
+const Profile = ({ navigation }) => {
   const [Uservalue, setuserdata] = useState(null);
   const [shopSection] = useState([
-    {id: 1, title: 'Profile', data: ['Profile']},
-    {id: 2, title: 'Account', data: ['Account']},
-    {id: 3, title: 'Other Settings', data: ['Other Settings']},
+    { id: 1, title: 'Profile', data: ['Profile'] },
+    { id: 2, title: 'Account', data: ['Account'] },
+    { id: 3, title: 'Other Settings', data: ['Other Settings'] },
+    { id: 4, title: 'Logout', data: ['Logout'] },
   ]);
+  const { t, i18n } = useTranslation();
+
   const User_Function = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
@@ -63,31 +50,51 @@ const Profile = ({navigation}) => {
   useFocusEffect(
     React.useCallback(() => {
       User_Function();
-      return () => {};
+      return () => { };
     }, []),
   );
   useEffect(() => {
     User_Function();
   }, []);
-
   const Logout = async () => {
-    try {
-      const logout = await fetchData?.Logout();
-      console.log('logout', logout);
-      if (logout?.success == true) {
-        await AsyncStorage.removeItem('ACCESS_TOKEN');
-        await AsyncStorage.removeItem('USERDATA');
-        navigation.reset({
-          index: 0,
-          routes: [{name: 'Auth'}],
-        });
-      } else {
-        console.log('error');
-        common_fn.showToast(logout?.message);
-      }
-    } catch (error) {
-      console.log('Catch in Logout', error);
-    }
+    Alert.alert(
+      `${t('profile.Confirm Logout')}`,
+      `${t('profile.Are you sure you want to logout?')}`,
+      [
+        {
+          text: `${t('profile.Cancel')}`,
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: `${t('profile.OK')}`,
+          onPress: async () => {
+            try {
+              const logout = await fetchData?.Logout();
+              console.log('logout', logout);
+              if (logout?.success == true) {
+                await AsyncStorage.removeItem('ACCESS_TOKEN');
+                await AsyncStorage.removeItem('USERDATA');
+                await AsyncStorage.setItem('selectedLanguage','en');
+                await i18n.changeLanguage("en");
+                await AsyncStorage.removeItem('skipWhatsappVerification');
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Auth' }],
+                });
+              } else {
+                console.log('error');
+                const translatedMessage = await translateText(logout?.message);
+                common_fn.showToast(translatedMessage);
+              }
+            } catch (error) {
+              console.log('Catch in Logout', error);
+            }
+          },
+        },
+      ],
+      { cancelable: false },
+    );
   };
   const RemoveAccount = async () => {
     try {
@@ -96,14 +103,14 @@ const Profile = ({navigation}) => {
       let v = `https://test.cignix.com/user-delete?token=${token}`;
       console.log('access token', v);
 
-      Alert.alert('Alert', 'Are you sure you want to Remove/Delete account?', [
+      Alert.alert(`${t('profile.Alert')}`, `${t('profile.Are you sure you want to Remove/Delete account?')}`, [
         {
-          text: 'Cancel',
+          text: `${t('profile.Cancel')}`,
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
         {
-          text: 'OK',
+          text: `${t('profile.OK')}`,
           onPress: async () => {
             Linking.openURL(
               `https://test.cignix.com/user-delete?token=${token}`,
@@ -111,7 +118,7 @@ const Profile = ({navigation}) => {
             await AsyncStorage.clear();
             navigation.reset({
               index: 0,
-              routes: [{name: 'Auth'}],
+              routes: [{ name: 'Auth' }],
             });
           },
         },
@@ -123,8 +130,8 @@ const Profile = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
-        hidden={false} // Hides the status bar
-        backgroundColor={Color.white} // Matches background color
+        hidden={false}
+        backgroundColor={Color.white}
         translucent={true}
         barStyle={'dark-content'}
       />
@@ -136,49 +143,53 @@ const Profile = ({navigation}) => {
           alignItems: 'center',
           padding: 15,
           paddingHorizontal: 15,
-        }}>
+        }}
+      >
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
+            viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
             Icontag="Ionicons"
             icon_size={30}
             icon_color={Color.black}
             iconname="chevron-back"
           />
         </TouchableOpacity>
-        <View>
+        <View style={{ fontSize: 16, color: Color.black, fontFamily: Mulish.Bold, flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
           <Text
-            style={{fontSize: 20, color: Color.black, fontFamily: Mulish.Bold}}>
-            Profile
+            style={{
+              fontSize: 16,
+              color: Color.black,
+              fontFamily: Mulish.Bold,
+              textAlign: 'center',
+            }}
+          >
+            {t("profile.Profile")}
           </Text>
         </View>
-        <TouchableOpacity
-          style={{marginHorizontal: 10}}
-          onPress={() => navigation.navigate('NotificationsList')}>
-          <View style={{position: 'absolute', zIndex: 999, top: -5, right: -5}}>
-            {/* <Badge
-              badgeStyle={{
-                position: 'absolute',
-                zIndex: 999,
-                backgroundColor: Color.red,
-                color: Color.white,
-                // fontFamily: Manrope.Bold,
-                fontSize: 12,
-              }}
-              maxLength={3}>
-              10
-            </Badge> */}
-          </View>
-          <Iconviewcomponent
-            viewstyle={{alignItems: 'center', justifyContent: 'center'}}
-            Icontag="Ionicons"
-            icon_size={30}
-            icon_color={Color.black}
-            iconname="notifications-outline"
-          />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('NotificationsList')}
+          >
+            <Iconviewcomponent
+              viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
+              Icontag="Ionicons"
+              icon_size={30}
+              icon_color={Color.black}
+              iconname="notifications-outline"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ marginHorizontal: 10 }}
+            onPress={() => navigation.navigate("LanguageSelector")}
+          >
+           <Iconviewcomponent
+                         Icontag="Entypo"
+                         icon_size={24}
+                         icon_color={Color?.black}
+                         iconname={"language"} />
+          </TouchableOpacity>
+        </View>
       </View>
-
       <Animated.SectionList
         sections={shopSection}
         scrollEnabled={true}
@@ -187,12 +198,13 @@ const Profile = ({navigation}) => {
         scrollEventThrottle={1}
         nestedScrollEnabled
         initialNumToRender={5}
-        renderItem={({item}) => {
+        renderItem={({ item }) => {
           switch (item) {
             case 'Profile':
               return (
+
                 <View
-                  style={{width: '100%', alignItems: 'center', marginTop: 20}}>
+                  style={{ width: '100%', alignItems: 'center', marginTop: 20 }}>
                   <View
                     style={{
                       width: '95%',
@@ -214,8 +226,8 @@ const Profile = ({navigation}) => {
                         <Image
                           source={
                             Uservalue?.profile
-                              ? {uri: Uservalue?.profile}
-                              : require('../../assets/Logos/cignix_black.png')
+                              ? { uri: Uservalue?.profile }
+                              : require('../../assets/Gallery/profile.jpg')
                           }
                           style={{
                             width: 60,
@@ -239,7 +251,7 @@ const Profile = ({navigation}) => {
                       <Text
                         style={{
                           width: '100%',
-                          fontSize: 16,
+                          fontSize: 14,
                           textAlign: 'left',
                           color: Color.black,
                           fontFamily: Mulish.Bold,
@@ -286,10 +298,10 @@ const Profile = ({navigation}) => {
                             fontFamily: Mulish.Medium,
                           }}>
                           {Uservalue?.step == 1 ||
-                          Uservalue?.step == 2 ||
-                          Uservalue?.step == 3
-                            ? 'Free User'
-                            : 'Premium User'}
+                            Uservalue?.step == 2 ||
+                            Uservalue?.step == 3
+                            ? t('profile.Free User')
+                            : t('profile.Premium User')}
                         </Text>
                       </View>
                     </View>
@@ -305,17 +317,17 @@ const Profile = ({navigation}) => {
               );
             case 'Account':
               return (
-                <View style={{width: '100%', alignItems: 'center'}}>
-                  <View style={{width: '95%'}}>
+                <View style={{ width: '100%', alignItems: 'center' }}>
+                  <View style={{ width: '95%' }}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         textAlign: 'left',
                         color: Color.black,
                         fontFamily: Mulish.Bold,
                         letterSpacing: 0.5,
                       }}>
-                      Account Settings
+                      {t('profile.Account Settings')}
                     </Text>
 
                     <TouchableOpacity
@@ -353,12 +365,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Edit Profile
+                          {t('profile.Edit Profile')}
                         </Text>
                       </View>
                       <View
@@ -379,7 +391,6 @@ const Profile = ({navigation}) => {
                         />
                       </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                       onPress={() => navigation.navigate('Membership')}
                       style={{
@@ -415,12 +426,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Manage Subscription
+                          {t('profile.Manage Subscription')}
                         </Text>
                       </View>
                       <View
@@ -477,12 +488,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Change Password
+                          {t('profile.Change Password')}
                         </Text>
                       </View>
                       <View
@@ -541,12 +552,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Notification Settings
+                          {t('profile.Notification Settings')}
                         </Text>
                       </View>
                       <View
@@ -584,18 +595,18 @@ const Profile = ({navigation}) => {
                   style={{
                     width: '100%',
                     alignItems: 'center',
-                    paddingBottom: scr_height / 9,
+                    paddingBottom: scr_height / 7,
                   }}>
-                  <View style={{width: '95%', marginTop: 20}}>
+                  <View style={{ width: '95%', marginTop: 20 }}>
                     <Text
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         textAlign: 'left',
                         color: Color.black,
                         fontFamily: Mulish.Bold,
                         letterSpacing: 0.5,
                       }}>
-                      Other Settings
+                      {t('profile.Other Settings')}
                     </Text>
 
                     <TouchableOpacity
@@ -618,10 +629,10 @@ const Profile = ({navigation}) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
-                          icon_size={22}
+                          Icontag="FontAwesome5"
+                          icon_size={20}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="blog"
                         />
                       </View>
                       <View
@@ -633,12 +644,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                         Blogs
+                          {t('profile.Blogs')}
                         </Text>
                       </View>
                       <View
@@ -679,10 +690,10 @@ const Profile = ({navigation}) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
+                          Icontag="MaterialCommunityIcons"
                           icon_size={22}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="newspaper-variant-multiple"
                         />
                       </View>
                       <View
@@ -694,12 +705,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                         News and Media
+                          {t('profile.News and Media')}
                         </Text>
                       </View>
                       <View
@@ -740,10 +751,10 @@ const Profile = ({navigation}) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}
-                          Icontag="Feather"
+                          Icontag="AntDesign"
                           icon_size={22}
                           icon_color={Color.cloudyGrey}
-                          iconname="help-circle"
+                          iconname="infocirlceo"
                         />
                       </View>
                       <View
@@ -755,12 +766,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Help Center
+                          {t("profile.Help Center")}
                         </Text>
                       </View>
                       <View
@@ -816,12 +827,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Contact Support
+                          {t("profile.Contact Support")}
                         </Text>
                       </View>
                       <View
@@ -878,12 +889,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Privacy Policy
+                          {t("profile.Privacy Policy")}
                         </Text>
                       </View>
                       <View
@@ -904,7 +915,6 @@ const Profile = ({navigation}) => {
                         />
                       </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                       onPress={() => navigation.navigate('TermsandConditions')}
                       style={{
@@ -920,16 +930,9 @@ const Profile = ({navigation}) => {
                           justifyContent: 'center',
                           alignItems: 'center',
                         }}>
-                        {/* <Iconviewcomponent
-                                                    viewstyle={{ alignItems: 'center', justifyContent: 'center' }}
-                                                    Icontag="Ionicons"
-                                                    icon_size={25}
-                                                    icon_color={Color.cloudyGrey}
-                                                    iconname="notifications-outline"
-                                                /> */}
                         <Image
                           source={require('../../assets/Images/terms.png')}
-                          style={{width: 25, height: 25, resizeMode: 'contain'}}
+                          style={{ width: 25, height: 25, resizeMode: 'contain' }}
                         />
                       </View>
                       <View
@@ -941,12 +944,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Terms and Conditions
+                          {t("profile.Terms and Conditions")}
                         </Text>
                       </View>
                       <View
@@ -968,7 +971,7 @@ const Profile = ({navigation}) => {
                       </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() =>RemoveAccount()}
+                      onPress={() => RemoveAccount()}
                       style={{
                         width: '100%',
                         flexDirection: 'row',
@@ -1002,12 +1005,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                    Remove Account
+                          {t("profile.Remove Account")}
                         </Text>
                       </View>
                       <View
@@ -1028,13 +1031,16 @@ const Profile = ({navigation}) => {
                         />
                       </View>
                     </TouchableOpacity>
-
+                    <View
+                      style={{
+                        width: '100%',
+                        height: 3,
+                        backgroundColor: Color.softGrey,
+                        marginTop: 20,
+                      }}
+                    />
                     <TouchableOpacity
                       onPress={() =>
-                        // navigation.reset({
-                        //   index: 0,
-                        //   routes: [{name: 'Auth'}], // Replace 'Auth' with your desired route name
-                        // })
                         Logout()
                       }
                       style={{
@@ -1070,12 +1076,12 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                           style={{
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Color.lightBlack,
                             fontFamily: Mulish.SemiBold,
                             letterSpacing: 0.5,
                           }}>
-                          Logout
+                          {t("profile.Logout")}
                         </Text>
                       </View>
                       <View
@@ -1106,14 +1112,57 @@ const Profile = ({navigation}) => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: Color.white,
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 16,
+    marginBottom: 15,
+    fontFamily: Mulish.Bold,
+  },
+  languageOption: {
+    padding: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  languageText: {
+    fontSize: 14,
+    color: Color.lightBlack,
+  },
+  closeButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: Color.red,
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 14,
+  },
 });
 
-//make this component available to the app
 export default Profile;

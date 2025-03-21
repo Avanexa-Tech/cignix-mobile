@@ -46,7 +46,7 @@ const Videostep4 = ({
       setLoader(false);
 
       setTimeout(() => {
-        setPaused(false);
+        setPaused(true);
       }, 500);
     }
   }, [currentdata]);
@@ -111,12 +111,12 @@ const Videostep4 = ({
       clearTimeout(timer);
       overlayTimer = setTimeout(() => setOverlay(false), 3000);
     } else {
-      common_fn?.showToast("You can't go backward");
+      common_fn?.showToast(`${t("Homescreen.You can't go backward")}`);
     }
   };
 
   const forward = () => {
-    common_fn?.showToast("You can't go forward");
+    common_fn?.showToast(`${t("Homescreen.You can't go forward")}`);
   };
 
   const onslide = slide => {
@@ -223,7 +223,7 @@ const Videostep4 = ({
                           //   onPress={handleFullscreen}
                           name={fullscreen ? 'compress' : 'expand'}
                           style={{
-                            fontSize: 15,
+                            fontSize: 13,
                             marginLeft: 5,
                             zindex: 100,
                             color: 'white',
@@ -306,7 +306,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 16,
   },
   timer: {
     width: '100%',

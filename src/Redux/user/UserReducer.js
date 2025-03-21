@@ -7,6 +7,7 @@ import {
   SET_NOTIFICATION_COUNT,
   SET_ONBOARD,
   SET_USER_DATA,
+  SET_LANGUAGE,
 } from './UserActionTypes';
 
 const initialState = {
@@ -22,7 +23,8 @@ const initialState = {
   count: {
     wishlist: 0,
     cart: 0,
-  },
+  }, 
+  language:{}
 };
 
 const storeCartData = async UserState => {
@@ -36,6 +38,15 @@ const storeCartData = async UserState => {
 
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_LANGUAGE :
+      storeCartData({
+        ...state,
+        language: action.payload,
+      });
+      return {
+        ...state,
+        language: action.payload,
+      };
     case SET_USER_DATA:
       storeCartData({
         ...state,

@@ -28,12 +28,15 @@ import { Platform } from 'react-native';
 import fetchData from '../../Config/fetchData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {CommonActions} from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { useTranslation } from 'react-i18next';
+import { translateText } from '../Context/userContext';
+import { useSelector } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -43,7 +46,12 @@ const DismissKeyboard = ({ children }) => (
 
 // create a component
 const EmailPassword = () => {
+  const { t, i18n } = useTranslation();
   const navigation = useNavigation();
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   const refRBSheet = useRef();
   const dispatch = useDispatch();
   const routeName = useRoute();
@@ -64,19 +72,24 @@ const EmailPassword = () => {
   const handleValidEmail = val => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (val.length === 0) {
-      setEmailValidError('Email address must be enter');
+      setEmailValidError(`${t("Passwordlogin.Please enter your email")}`);
     } else if (reg.test(val) === false) {
-      setEmailValidError('Enter valid email address');
+      setEmailValidError(`${t("Passwordlogin.Please enter a valid email.")}`);
     } else if (reg.test(val) === true) {
       setEmailValidError('');
     }
   };
-    useEffect(() => {
-      GoogleSignin.configure({
-        webClientId:
-          '542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com',
-      });
-    }, []);
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '542915280674-ksrh2555r57pc5ml1gb09bsqft4fq7cn.apps.googleusercontent.com',
+    });
+  }, []);
+
+  useEffect(() => {
+    setEmailValidError(" ");
+    setMinPass(" ");
+  }, [language]);
 
   // LOGIN FUNCTION :
   const login = async () => {
@@ -97,7 +110,8 @@ const EmailPassword = () => {
             'USERDATA',
             JSON.stringify(Emailpassword?.data),
           );
-          common_fn.showToast(Emailpassword?.message);
+          const translatedMessage = await translateText(Emailpassword?.message);
+          common_fn.showToast(translatedMessage);
           navigation.reset({
             index: 0,
             routes: [{ name: 'Tab' }],
@@ -106,14 +120,15 @@ const EmailPassword = () => {
         } else {
           console.log('====================================');
           console.log(Emailpassword);
-          common_fn.showToast(Emailpassword?.message);
+          const translatedMessage = await translateText(Emailpassword?.message);
+          common_fn.showToast(translatedMessage);
           setLoading(false);
         }
       } else {
         console.log('====================================');
         console.log('333333');
         console.log('====================================');
-        common_fn.showToast('Please Enter your valid Email and Password');
+        common_fn.showToast(`${t('Passwordlogin.Please Enter your valid Email and Password')}`);
         setLoading(false);
       }
     } catch (error) {
@@ -127,10 +142,10 @@ const EmailPassword = () => {
       setChangepassowrdloader(true);
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!Changepassowrd || Changepassowrd.trim() === '') {
-        common_fn.showToast('Please enter your email.');
+        common_fn.showToast(`${t("Passwordlogin.Please enter your email")}`);
         setChangepassowrdloader(false);
       } else if (!emailRegex.test(Changepassowrd)) {
-        common_fn.showToast('Please enter a valid email.');
+        common_fn.showToast(`${t("Passwordlogin.Please enter a valid email.")}`);
         setChangepassowrdloader(false);
       } else {
         const data = {
@@ -139,12 +154,16 @@ const EmailPassword = () => {
         const EmailApi = await fetchData?.Forgetpassword(data);
         console.log('email', EmailApi);
         if (EmailApi?.success == true) {
-          common_fn.showToast('Mail sent successfully');
+          const translatedMessage = await translateText("Mail sent successfully");
+          common_fn.showToast(translatedMessage);
           setChangepassowrdloader(false);
+          console.log("jcb jhkb hjkv");
+          
           refRBSheet.current.close();
           setChangepassowrd('');
         } else {
-          common_fn.showToast(EmailApi?.message);
+          const translatedMessage = await translateText(EmailApi?.message);
+          common_fn.showToast(translatedMessage);
           setChangepassowrdloader(false);
         }
       }
@@ -159,31 +178,35 @@ const EmailPassword = () => {
       console.log('=========== Google singin =========== :');
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      let googleAuthPayload = {
-        email: userInfo?.data?.user?.email,
-        name: userInfo?.data?.user?.givenName,
-        mobile: '',
-        dob: '',
-        step: 0,
-        type: 'free',
-      };      
-      console.log('googleAuthPayload',googleAuthPayload)
-      const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
-      console.log('googleAuthPayload', googleLogin);
-      if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
-        await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(googleLogin?.token));
-        await AsyncStorage.setItem(
-          'USERDATA',
-          JSON.stringify(googleLogin?.data),
-        );
-        common_fn.showToast(googleLogin?.message); 
-        await GoogleSignin.signOut();
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 0, 
-            routes: [{ name: 'Tab' }], 
-          })
-        );
+      if(userInfo?.type =="success")
+      {
+        let googleAuthPayload = {
+          email: userInfo?.data?.user?.email,
+          name: userInfo?.data?.user?.givenName,
+          mobile: '',
+          dob: '',
+          step: 0,
+          type: 'free',
+        };
+        console.log('googleAuthPayload', googleAuthPayload)
+        const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
+        console.log('googleAuthPayload', googleLogin);
+        if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
+          await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(googleLogin?.token));
+          await AsyncStorage.setItem(
+            'USERDATA',
+            JSON.stringify(googleLogin?.data),
+          );
+          const translatedMessage = await translateText(googleLogin?.message);
+          common_fn.showToast(translatedMessage);
+          await GoogleSignin.signOut();
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: 'Tab' }],
+            })
+          );
+        }
       }
     } catch (error) {
       console.log('catch in signIn_login ----------: ', error);
@@ -202,6 +225,15 @@ const EmailPassword = () => {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}>
+           <View style={{ position: 'absolute', right: 25, top: 25 }}>
+                    <TouchableOpacity onPress={() => navigation.navigate("LanguageSelector")}>
+                      <Iconviewcomponent
+                        Icontag="Entypo"
+                        icon_size={24}
+                        icon_color={Color?.black}
+                        iconname={"language"} />
+                    </TouchableOpacity>
+                  </View>
         <StatusBar
           hidden={false} // Hides the status bar
           backgroundColor={Color.white} // Matches background color
@@ -252,15 +284,15 @@ const EmailPassword = () => {
                   fontFamily: Mulish.Bold,
                   paddingVertical: 5,
                 }}>
-                Welcome Back,
+                {t("Passwordlogin.Welcome Back")}
               </Text>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color.cloudyGrey,
                   fontFamily: Mulish.Medium,
                 }}>
-                Login with your Email and Password
+               {t("Passwordlogin.Welcome description")}
               </Text>
 
               <View style={{ marginTop: 30 }}>
@@ -285,7 +317,7 @@ const EmailPassword = () => {
                     />
                   </View>
                   <TextInput
-                    placeholder="Enter Your Email ID"
+                    placeholder={t("Passwordlogin.Enter Your Email ID")}
                     placeholderTextColor={Color.grey}
                     keyboardType="email-address"
                     value={email}
@@ -299,13 +331,15 @@ const EmailPassword = () => {
                 {emailValidError ? (
                   <Text
                     style={{
-                      width: '100%',
+                      width:scr_width-40,
                       textAlign: 'left',
                       fontFamily: Mulish.Medium,
                       paddingVertical: 5,
                       fontSize: 14,
                       color: 'red',
-                    }}>
+                      // backgroundColor:'red'
+                    }}
+                    numberOfLines={2}>
                     {emailValidError}
                   </Text>
                 ) : null}
@@ -337,14 +371,14 @@ const EmailPassword = () => {
                   </View>
                   <TextInput
                     style={styles.numberTextBox}
-                    placeholder="Password"
+                    placeholder={t("Passwordlogin.Password")}
                     placeholderTextColor={Color.grey}
                     secureTextEntry={!password_visible}
                     value={password}
                     keyboardType="name-phone-pad"
                     onChangeText={password => {
                       if (password.length < 6) {
-                        setMinPass('set minimum character as 6');
+                        setMinPass(`${t("Passwordlogin.set minimum character as 6")}`);
                         setPassword(password);
                       } else {
                         setPassword(password);
@@ -356,10 +390,12 @@ const EmailPassword = () => {
                 {minPass != 'null' ? (
                   <Text
                     style={{
-                      width: '95%',
+                      width:scr_width-40,
                       fontSize: 14,
                       color: 'red',
-                    }}>
+                    }}
+                    numberOfLines={2}
+                    >
                     {minPass}
                   </Text>
                 ) : null}
@@ -380,11 +416,11 @@ const EmailPassword = () => {
                 ) : (
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.white,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                    Log in
+                    {t("Passwordlogin.Log in")}
                   </Text>
                 )}
               </TouchableOpacity>
@@ -407,7 +443,7 @@ const EmailPassword = () => {
                       paddingHorizontal: 5,
                       letterSpacing: 0.2,
                     }}>
-                    Forgot Password?
+                   {t("Passwordlogin.forgot Password")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -417,9 +453,10 @@ const EmailPassword = () => {
                   width: scr_width,
                   flexDirection: 'row',
                   alignItems: 'center',
+                  justifyContent:'center',
                   marginVertical: 20,
                 }}>
-                <View
+                {/* <View
                   style={{
                     width: scr_width / 3.3,
                     height: 0.5,
@@ -427,7 +464,7 @@ const EmailPassword = () => {
                     borderWidth: 0.5,
                     backgroundColor: Color.softGrey,
                     borderRadius: 1,
-                  }}></View>
+                  }}></View> */}
                 <View>
                   <Text
                     style={{
@@ -436,10 +473,10 @@ const EmailPassword = () => {
                       fontFamily: Mulish.Medium,
                       paddingHorizontal: 5,
                     }}>
-                    Or Login With
+                 ------ {t("Passwordlogin.or Login With")} ------
                   </Text>
                 </View>
-                <View
+                {/* <View
                   style={{
                     width: scr_width / 3.3,
                     height: 0.5,
@@ -447,7 +484,7 @@ const EmailPassword = () => {
                     borderWidth: 0.5,
                     backgroundColor: Color.softGrey,
                     borderRadius: 1,
-                  }}></View>
+                  }}></View> */}
               </View>
 
               <View
@@ -469,20 +506,20 @@ const EmailPassword = () => {
                     borderWidth: 1,
                     borderColor: '#C5C5C5',
                   }}
-                  onPress={()=>signIn()}
-                  >
+                  onPress={() => signIn()}
+                >
                   <Image
                     source={require('../../assets/Images/google.png')}
                     style={{ width: 24, height: 24, resizeMode: 'contain' }}
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
                     }}>
-                    Google
+               {t("Passwordlogin.Google")}
                   </Text>
                 </TouchableOpacity>
                 <View
@@ -512,12 +549,12 @@ const EmailPassword = () => {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Color.cloudyGrey,
                       fontFamily: Mulish.SemiBold,
                       paddingHorizontal: 10,
                     }}>
-                    Phone
+                     {t("Passwordlogin.Phone")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -532,22 +569,22 @@ const EmailPassword = () => {
                 }}>
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color.Venus,
                     fontFamily: Mulish.Medium,
                     paddingHorizontal: 5,
                   }}>
-                  Don’t have an account?{' '}
+                   {t("Passwordlogin.Don't have an account?")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('SimTest')}>
                   <Text
                     style={{
-                      fontSize: 20,
+                      fontSize: 16,
                       color: Color.primary,
                       fontFamily: Mulish.SemiBold,
                     }}>
-                    Sign up
+                  {t("Passwordlogin.Sign Up")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -566,7 +603,7 @@ const EmailPassword = () => {
         ref={refRBSheet}
         closeOnDragDown={true}
         closeOnPressMask={true}
-        height={350}
+        height={450}
         customStyles={{
           wrapper: {
             backgroundColor: '#00000088',
@@ -588,15 +625,16 @@ const EmailPassword = () => {
                 fontFamily: Mulish.Bold,
                 paddingVertical: 5,
               }}>
-              Welcome Back,
+             {t("Passwordlogin.Welcome Back")}
             </Text>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: Color.cloudyGrey,
                 fontFamily: Mulish.Medium,
               }}>
-              Reset Password with your Email
+                {t("Passwordlogin.Reset Password with your Email")}
+              {/* Reset Password with your Email */}
             </Text>
             <View style={{ marginTop: scr_height / 50 }}>
               <View style={styles.NumberBoxConatiner}>
@@ -620,7 +658,7 @@ const EmailPassword = () => {
                   />
                 </View>
                 <TextInput
-                  placeholder="Enter Your Email ID"
+                  placeholder= {t("Passwordlogin.Enter Your Email ID")}
                   placeholderTextColor={Color.grey}
                   keyboardType="email-address"
                   value={Changepassowrd}
@@ -649,10 +687,10 @@ const EmailPassword = () => {
               <Text
                 style={{
                   color: Color?.white,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: Mulish?.SemiBold,
                 }}>
-                Send Password Reset Link
+              {t("Passwordlogin.Send Password Reset Link")}
               </Text>
             )}
           </TouchableOpacity>
@@ -693,7 +731,7 @@ const styles = StyleSheet.create({
   },
   numberCountryCode: {
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: Mulish.SemiBold,
     textAlign: 'center',
     alignItems: 'center',
@@ -713,7 +751,7 @@ const styles = StyleSheet.create({
     // borderLeftColor: Color.grey,
     // borderLeftWidth: 1,
     color: Color.black,
-    fontSize: 16,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
     paddingHorizontal: 10,

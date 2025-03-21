@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View,
   Image,
@@ -9,10 +9,11 @@ import {
 import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-import {Text} from 'react-native';
-import {Mulish} from '../Global/FontFamily';
+import { useSelector } from 'react-redux';
+import { Text } from 'react-native';
+import { Mulish } from '../Global/FontFamily';
 import common_fn from './common_fn';
+import { useTranslation } from "react-i18next";
 
 const VideoPlayerWithThumbnail = ({
   videoUri,
@@ -25,6 +26,7 @@ const VideoPlayerWithThumbnail = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const videoPlayerRef = useRef(null);
+  const { t } = useTranslation();
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -36,6 +38,14 @@ const VideoPlayerWithThumbnail = ({
   const handleLoad = meta => {
     setDuration(meta.duration);
   };
+
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
+
+  console.log("00000000000000",language);
+  
 
   const formatTime = time => {
     const minutes = Math.floor(time / 60);
@@ -51,10 +61,10 @@ const VideoPlayerWithThumbnail = ({
             if (data?.status == 'active' || data?.status == 'completed') {
               setCurrentdata(data);
             } else {
-              common_fn.showToast('This video is locked');
+              common_fn.showToast(`${t('Homescreen.This video is locked')}`);
             }
           }}>
-          <Image source={{uri: thumbnailUri}} style={styles.thumbnail} />
+          <Image source={{ uri: thumbnailUri }} style={styles.thumbnail} />
           {data?.status == 'inactive' ? (
             <View
               style={{
@@ -83,33 +93,36 @@ const VideoPlayerWithThumbnail = ({
                 if (data?.status == 'active' || data?.status == 'completed') {
                   setCurrentdata(data);
                 } else {
-                  common_fn.showToast('This video is locked');
+                  common_fn.showToast(`${t('Homescreen.This video is locked')}`);
                 }
               }}>
-              <Text style={{fontSize: 13, fontFamily: Mulish.Bold , color:'#000'}}>
-              {data?._id == currentdata?._id ? 'Current' : 'Watched'}
+              <Text style={{ fontSize: 13, fontFamily: Mulish.Bold, color: '#000' }}>
+                {data?._id == currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Watched')}
               </Text>
             </Pressable>
           ) : (
             <Pressable
               style={{
                 position: 'absolute',
-                left : data?._id == currentdata?._id ? '30%': '20%',
+                left: data?._id == currentdata?._id ? '30%' :language=='ta'||'ma'? '10%':"20%",
                 top: '35%',
                 backgroundColor: '#fff',
                 padding: 10,
                 alignItems: 'center',
                 borderRadius: 20,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
               onPress={() => {
                 if (data?.status == 'active' || data?.status == 'completed') {
                   setCurrentdata(data);
                 } else {
-                  common_fn.showToast('This video is locked');
+                  common_fn.showToast(`${t('Homescreen.This video is locked')}`);
                 }
               }}>
-              <Text style={{fontSize: 13, fontFamily: Mulish.Bold , color:'#000'}}>
-              {data?._id == currentdata?._id ? 'Current' : 'Recently Unlocked'} 
+              <Text style={{ fontSize: 13, fontFamily: Mulish.Bold, color: '#000' }}>
+                {data?._id == currentdata?._id ? t('Homescreen.Current') : t('Homescreen.Recently Unlocked')}
               </Text>
             </Pressable>
           )}
@@ -119,7 +132,7 @@ const VideoPlayerWithThumbnail = ({
         <>
           <Video
             ref={videoPlayerRef}
-            source={{uri: videoUri}}
+            source={{ uri: videoUri }}
             style={styles.video}
             controls={false}
             paused={!isPlaying}

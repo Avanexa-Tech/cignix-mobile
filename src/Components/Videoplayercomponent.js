@@ -14,41 +14,55 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Color from '../Global/Color';
 import common_fn from './common_fn';
-
+ 
 import Orientation from 'react-native-orientation-locker';
-
+import { useFocusEffect } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+ 
 const {width} = Dimensions.get('window');
+
 const Videoplayercomponent = ({
   source,
   cancel,
   onEnds,
   Videoendfun,
   currentdata,
+  navigation
 }) => {
+  const language = useSelector((state) => {
+    console.log('==================state values===>', state);
+    return state.UserReducer.language;
+  });
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0.1);
   const [paused, setPaused] = useState(true);
   const [overlay, setOverlay] = useState(false);
   const [loader, setLoader] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
-
+ 
   const videoRef = useRef(null);
   const overlayTimer = useRef(null);
   const lastTap = useRef(null);
-
+ 
   useEffect(() => {
     if (videoRef.current) {
       setPaused(true);
       setCurrentTime(0);
       videoRef?.current?.seek(0);
       setLoader(false);
-      
+     
       setTimeout(() => {
-        setPaused(false);  
+        setPaused(true);  
       }, 500);  
     }
   }, [currentdata]);
-
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {     
+        setPaused(true);
+      };
+    }, [language])
+  );
   const handleDoubleTap = (doubleTapCallback, singleTapCallback) => {
     const now = Date.now();
     const DOUBLE_PRESS_DELAY = 300;
@@ -62,7 +76,7 @@ const Videoplayercomponent = ({
       }, DOUBLE_PRESS_DELAY);
     }
   };
-
+ 
   const getTime = t => {
     const digit = n => (n < 10 ? `0${n}` : `${n}`);
     const sec = digit(Math.floor(t % 60));
@@ -70,12 +84,12 @@ const Videoplayercomponent = ({
     const hr = digit(Math.floor((t / 3600) % 60));
     return hr + ':' + min + ':' + sec;
   };  
-
+ 
   const load = ({duration}) => {
     console.log("duration",duration);
     setDuration(duration), setLoader(false)
   };
-
+ 
   const progress = ({currentTime}) => {
     // const exercises = currentdata?.lesson_details?.exercise || [];
     // const targetTime = Math.floor(currentTime);
@@ -99,7 +113,7 @@ const Videoplayercomponent = ({
       videoRef.current.seek(0);
     }
   };
-
+ 
   const backward = () => {
     if (Math.round(currentTime) >= 5) {
       videoRef.current.seek(currentTime - 5);
@@ -109,17 +123,17 @@ const Videoplayercomponent = ({
       common_fn?.showToast("You can't go backward");
     }
   };
-
+ 
   const forward = () => {
     common_fn?.showToast("You can't go forward");
   };
-
+ 
   const onslide = slide => {
     videoRef.current.seek(slide * duration);
     // clearTimeout(overlayTimer);
     overlayTimer = setTimeout(() => setOverlay(false), 10000);
   };
-
+ 
   const youtubeSeekLeft = () => {
     handleDoubleTap(
       () => {
@@ -131,7 +145,7 @@ const Videoplayercomponent = ({
       },
     );
   };
-
+ 
   const youtubeSeekRight = () => {
     handleDoubleTap(
       () => {
@@ -143,11 +157,11 @@ const Videoplayercomponent = ({
       },
     );
   };
-
+ 
   const handleFullscreen = () => {
     const newFullscreen = !fullscreen;
     console.log('newFullscreen', newFullscreen);
-
+ 
     if (newFullscreen) {
       Orientation.lockToLandscape();
     } else {
@@ -155,7 +169,7 @@ const Videoplayercomponent = ({
     }
     setFullscreen(newFullscreen);
   };
-
+ 
   return (
     <View style={style.container}>
       <View style={{position: 'absolute', top: 20, left: 20}}>
@@ -167,7 +181,7 @@ const Videoplayercomponent = ({
         </TouchableOpacity>
       </View>
       <View style={fullscreen ? style.fullscreenVideo : style.video}>
-        
+       
         <Video
           fullscreen={fullscreen}
           paused={paused}
@@ -177,17 +191,19 @@ const Videoplayercomponent = ({
           resizeMode="cover"
           onLoad={load}
           onProgress={progress}
+          controls={false}
+          onFullscreenPlayerDidDismiss={handleFullscreen}
           // onEnd={text => {
           //     if (currentdata?.status !== 'completed') {
           //         console.log("Data",currentdata);
-
+ 
           //         Videoendfun(currentdata);
           //     }
           //     console.log("G  Video has ended");
-
+ 
           //   }}
         />
-
+ 
         {!loader ? (
           <View style={style.overlay}>
             {overlay ? (
@@ -204,9 +220,9 @@ const Videoplayercomponent = ({
                   style={style.icon}
                   onPress={() => setPaused(!paused)}
                 />
-
+ 
                 <Icons name="forward-5" style={style.icon} onPress={forward} />
-
+ 
                 <View style={style.sliderCont}>
                   <View style={style.timer}>
                     <Text style={{color: 'white'}}>{getTime(currentTime)}</Text>
@@ -219,7 +235,7 @@ const Videoplayercomponent = ({
                           //   onPress={handleFullscreen}
                           name={fullscreen ? 'compress' : 'expand'}
                           style={{
-                            fontSize: 15,
+                            fontSize: 13,
                             marginLeft: 5,
                             zindex: 100,
                             color: 'white',
@@ -270,7 +286,7 @@ const Videoplayercomponent = ({
     </View>
   );
 };
-
+ 
 const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -302,7 +318,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 16,
   },
   timer: {
     width: '100%',
@@ -317,5 +333,5 @@ const style = StyleSheet.create({
     elevation: 1,
   },
 });
-
+ 
 export default Videoplayercomponent;
