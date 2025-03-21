@@ -103,14 +103,14 @@ const Profile = ({ navigation }) => {
       let v = `https://test.cignix.com/user-delete?token=${token}`;
       console.log('access token', v);
 
-      Alert.alert('Alert', 'Are you sure you want to Remove/Delete account?', [
+      Alert.alert(`${t('profile.Alert')}`, `${t('profile.Are you sure you want to Remove/Delete account?')}`, [
         {
-          text: 'Cancel',
+          text: `${t('profile.Cancel')}`,
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
         {
-          text: 'OK',
+          text: `${t('profile.OK')}`,
           onPress: async () => {
             Linking.openURL(
               `https://test.cignix.com/user-delete?token=${token}`,

@@ -1,4 +1,3 @@
-//import liraries
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import {
@@ -12,6 +11,7 @@ import {
   Pressable,
   Modal,
   ToastAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import Color from '../../Global/Color';
 import { Mulish } from '../../Global/FontFamily';
@@ -21,7 +21,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import fetchData from '../../Config/fetchData';
 import common_fn from '../../Components/common_fn';
 import RazorpayCheckout from 'react-native-razorpay';
-import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -40,11 +39,22 @@ const Membership = () => {
   const [failuremodal, setFailuremodal] = useState(false);
   const [userdata, setUserdata] = useState(null);
   const [currentplan, setcurrentplan] = useState(null);
+  const [loading, setLoading] = useState(true); // Added loading state
 
   useEffect(() => {
-    Get_Membership();
-    Userdata();
+    const fetchDataAsync = async () => {
+      try {
+        await Get_Membership();
+        await Userdata();
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDataAsync();
   }, []);
+
   // USERDATA :
   const Userdata = async () => {
     try {
@@ -59,6 +69,7 @@ const Membership = () => {
       console.log('Catch in Userdata', error);
     }
   };
+
   const Get_Membership = async () => {
     try {
       const GetMembership = await fetchData?.Get_Member_Screen();
@@ -66,9 +77,7 @@ const Membership = () => {
         const translatedPlans = await Promise.all(
           GetMembership?.data.map(async (plan) => {
             const translatedFeatures = await Promise.all(
-              plan.features.map((feature) =>
-                translateText(feature, t)
-              )
+              plan.features.map((feature) => translateText(feature, t))
             );
             return {
               ...plan,
@@ -90,6 +99,7 @@ const Membership = () => {
       console.log('Catch in Get_Membership', error);
     }
   };
+
   const getcurrentplan = async () => {
     try {
       const getcurrentplan = await fetchData?.Currentplan();
@@ -98,7 +108,8 @@ const Membership = () => {
       }
     } catch (error) { }
   };
-  //  Item :
+
+  // Item :
   const Item = ({ title, index }) => {
     const isSelected = selectedPlan?._id === title?._id;
 
@@ -109,7 +120,7 @@ const Membership = () => {
           if (title?.price != 0) {
             setSelectedPlan(title);
             setafterdiscountamt(
-              title?.special_price ? title?.special_price : title?.price,
+              title?.special_price ? title?.special_price : title?.price
             );
           }
         }}>
@@ -181,7 +192,7 @@ const Membership = () => {
                       fontSize: 12,
                       textTransform: 'capitalize',
                       fontWeight: '400',
-                      marginLeft: 5
+                      marginLeft: 5,
                     }}>
                     {item}
                   </Text>
@@ -215,6 +226,7 @@ const Membership = () => {
       </TouchableOpacity>
     );
   };
+
   const couponvalue = (planamount, coupondata, planid) => {
     try {
       if (coupondata?.type == 'off') {
@@ -231,7 +243,7 @@ const Membership = () => {
     }
   };
 
-  const gstFunction = async amt => {
+  const gstFunction = async (amt) => {
     try {
       if (amt) {
         const gstvalue = parseInt(amt) + (parseInt(amt) * 18) / 100;
@@ -242,7 +254,7 @@ const Membership = () => {
     }
   };
 
-  const Applycoupon = async item => {
+  const Applycoupon = async (item) => {
     try {
       let data = {
         code: item,
@@ -256,7 +268,7 @@ const Membership = () => {
               ? selectedPlan?.special_price
               : selectedPlan?.price,
             Apply_coupon?.data,
-            selectedPlan?._id,
+            selectedPlan?._id
           );
         }
       } else {
@@ -274,7 +286,7 @@ const Membership = () => {
         id: val?._id,
       };
       const requestApi = await fetchData?.Get_Refund_Request(
-        JSON.stringify(data),
+        JSON.stringify(data)
       );
       if (requestApi?.success == true) {
         const translatedMessage = await translateText(requestApi?.message);
@@ -284,6 +296,15 @@ const Membership = () => {
       console.log('ERROR IN CATCH IN REFUND REQUEST', error);
     }
   };
+
+  // Render loading indicator while fetching data
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#4254B6" />
+      </View>
+    );
+  }
 
   return (
     <ScrollView
@@ -344,10 +365,8 @@ const Membership = () => {
             </View>
             <FlatList
               data={plan ? plan : []}
-              keyExtractor={item => item?._id}
-              renderItem={({ item, index }) => (
-                <Item title={item} indxe={index} />
-              )}
+              keyExtractor={(item) => item?._id}
+              renderItem={({ item, index }) => <Item title={item} index={index} />}
               contentContainerStyle={styles.listContainer}
               ItemSeparatorComponent={() => <View style={styles.separator} />}
             />
@@ -425,7 +444,7 @@ const Membership = () => {
                     textTransform: 'capitalize',
                     fontWeight: '400',
                   }}>
-                  {t("Membership.Limited access to videos")}{' '}
+                  {t("Membership.Limited access to videos")}
                 </Text>
               </View>
             </View>
@@ -475,7 +494,7 @@ const Membership = () => {
                 maxLength={6}
                 value={Couponcode}
                 editable={Coupondata == '' ? true : false}
-                onChangeText={text => {
+                onChangeText={(text) => {
                   setCouponcode(text);
                 }}
               />
@@ -555,7 +574,7 @@ const Membership = () => {
                 if (razorPayBackend?.success == true) {
                   var razorpayOptions = razorPayBackend.data.payment;
                   RazorpayCheckout.open(razorpayOptions)
-                    .then(async data => {
+                    .then(async (data) => {
                       const payload = {
                         order_id: data?.razorpay_order_id,
                         payment_id: data?.razorpay_payment_id,
@@ -564,7 +583,7 @@ const Membership = () => {
                       try {
                         const url = 'https://api.cignix.com/user-plan/verify';
                         const ACCESS_TOKEN = await AsyncStorage.getItem(
-                          'ACCESS_TOKEN',
+                          'ACCESS_TOKEN'
                         );
                         const accesstoken = JSON.parse(ACCESS_TOKEN);
                         const response = await fetch(url, {
@@ -578,12 +597,14 @@ const Membership = () => {
                           body: JSON.stringify(payload),
                         });
                         const result = await response.json();
+                        console.log("================================>", result);
                         if (response.ok && result.success) {
+                          navigation.goBack();
                           navigation.dispatch(
                             CommonActions.reset({
                               index: 0,
                               routes: [{ name: 'Tab' }],
-                            }),
+                            })
                           );
                         } else {
                           console.error('Payment verification failed:', result);
@@ -593,7 +614,7 @@ const Membership = () => {
                         console.log('CATCH IN VERIFY API', error);
                       }
                     })
-                    .catch(error => {
+                    .catch((error) => {
                       console.log('ERROR', error);
                       setFailuremodal(true);
                     });
@@ -708,11 +729,14 @@ const Membership = () => {
                   color: '#666666CC',
                   fontFamily: Mulish?.Regular,
                 }}
-                onPress={() => {
+                onPress={async () => {
+                  const translatedMessage = await translateText("Refund request already requested");
+                  // common_fn?.showToast(translatedMessage);
                   currentplan?.status == 'refund_requested'
-                    ? ToastAndroid.show(
-                      'Refund request already requested',
-                      ToastAndroid.SHORT,
+                    ?
+                    ToastAndroid.show(
+                      translatedMessage,
+                      ToastAndroid.SHORT
                     )
                     : refundrequest(currentplan);
                 }}>
@@ -928,7 +952,6 @@ const Membership = () => {
   );
 };
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,

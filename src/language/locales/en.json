@@ -24,7 +24,12 @@
     "Are you sure you want to logout?":"Are you sure you want to logout?",
     "Confirm Logout":"Confirm Logout",
     "Cancel":"Cancel",
-    "OK":"OK"
+    "OK":"OK",
+    "Alert":"Alert",
+    "Are you sure you want to Remove/Delete account?":"Are you sure you want to Remove/Delete account?",
+    "Cancelled":"Cancelled",
+    "User cancelled image picker":"User cancelled image picker",
+    "User cancelled camera":"User cancelled camera"
   },
   "Editprofile": {
     "Edit Profile": "Edit Profile",

@@ -557,7 +557,7 @@ const TermsandConditions = () => {
                 lineHeight: 22,
                 paddingVertical: 10,
               }}>
-              {t("Fee Changes")}
+              {t("TermsandConditions.Fee Changes")}
             </Text>
             <Text
               style={{
@@ -2733,7 +2733,7 @@ const TermsandConditions = () => {
               {t("TermsandConditions.Terms and Conditions")}
             </Text>
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ position:'absolute',right:"10%" }}
             onPress={() => navigation.navigate("LanguageSelector")}
           >
@@ -2744,7 +2744,7 @@ const TermsandConditions = () => {
               icon_color={Color.black}
               iconname="language-outline"
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <View

@@ -20,14 +20,18 @@ import common_fn from '../../Components/common_fn';
 import { BottomSheet } from 'react-native-btr';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useTranslation } from 'react-i18next';
-import { translateText } from '../Context/userContext'
+import { translateText } from '../Context/userContext';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const EditProfile = ({ navigation }) => {
   const [isEditable, setIsEditable] = useState(false);
   const { t } = useTranslation();
-  const [selectGenderbottomSheetVisible, setSelectGenderbottomSheetVisible] =
-    useState(false);
+  const [selectGenderbottomSheetVisible, setSelectGenderbottomSheetVisible] = useState(false);
   const [profileOptionsVisible, setProfileOptionsVisible] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [selectGender, setSelectGender] = useState(null);
+
   const [Uservalue, setuservalue] = useState({
     Name: '',
     Email: '',
@@ -39,31 +43,41 @@ const EditProfile = ({ navigation }) => {
     Type: '',
     profile: '',
   });
+
   const [genderData, setGenderData] = useState([
-    {
-      id: '0',
-      gender: 'male',
-    },
-    {
-      id: '1',
-      gender: 'female',
-    }
+    { id: '0', gender: 'male' },
+    { id: '1', gender: 'female' },
   ]);
-  const [selectGender, setSelectGender] = useState(null);
+
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(false);
+    setDate(currentDate);
+
+    const formattedDate = currentDate.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    setuservalue({ ...Uservalue, DOB: formattedDate });
+  };
+
   const selectedItem = item => {
     try {
       setSelectGender(item.gender);
-      setuservalue({ ...Uservalue, Gender: item?.gender })
+      setuservalue({ ...Uservalue, Gender: item?.gender });
       setSelectGenderbottomSheetVisible(false);
     } catch (error) {
       console.log('catch in Register_selectedItem:', error);
     }
   };
+
   const handleEditInfo = () => {
-    console.log('Edit info data : ');
     setIsEditable(!isEditable);
   };
-  const handleUpdateProfile = () => {
+
+  const handleUpdateProfile = async () => {
     const UpdateProfile = async () => {
       try {
         const formData = new FormData();
@@ -75,15 +89,13 @@ const EditProfile = ({ navigation }) => {
         formData.append('step', Uservalue?.Step);
         formData.append('type', Uservalue?.Type);
         formData.append('gender', Uservalue?.Gender);
-        console.log('dddddddd', formData);
 
         const UpdateProfile = await fetchData?.UpdateProfile(formData);
-        console.log('UpdateProfile', UpdateProfile);
         if (UpdateProfile?.success == true) {
           const translatedMessage = await translateText(UpdateProfile?.message);
           common_fn.showToast(translatedMessage);
         } else {
-          const translatedMessage = await translateText(Updatepassword?.message);
+          const translatedMessage = await translateText(UpdateProfile?.message);
           common_fn.showToast(translatedMessage);
         }
       } catch (error) {
@@ -94,12 +106,15 @@ const EditProfile = ({ navigation }) => {
       UpdateProfile();
       setIsEditable(!isEditable);
     } else {
-      ToastAndroid.show('Please enter valid phone number', ToastAndroid.SHORT);
+      const translatedMessage = await translateText("Please enter valid phone number");
+      ToastAndroid.show(translatedMessage, ToastAndroid.SHORT);
     }
   };
+
   useEffect(() => {
     GETUSERDATA();
   }, []);
+
   const GETUSERDATA = async () => {
     try {
       const Userdata = await fetchData?.Getuserdata();
@@ -120,9 +135,11 @@ const EditProfile = ({ navigation }) => {
       console.log('DATA FROM GETUSERDATA', error);
     }
   };
+
   const toggleProfileOptions = () => {
     setProfileOptionsVisible(!profileOptionsVisible);
   };
+
   const pickImage = () => {
     try {
       launchImageLibrary(
@@ -132,12 +149,7 @@ const EditProfile = ({ navigation }) => {
         },
         async response => {
           if (response.didCancel) {
-            Alert.alert('Cancelled', 'User cancelled image picker');
-          } else if (response.errorCode) {
-            Alert.alert(
-              'Error',
-              response.errorMessage || 'Something went wrong',
-            );
+            Alert.alert(`${t("profile.Cancelled")}`, `${t("profile.User cancelled image picker")}`);
           } else {
             const asset = response.assets?.[0];
             console.log('aaaa', asset);
@@ -177,12 +189,7 @@ const EditProfile = ({ navigation }) => {
         },
         async response => {
           if (response.didCancel) {
-            Alert.alert('Cancelled', 'User cancelled camera');
-          } else if (response.errorCode) {
-            Alert.alert(
-              'Error',
-              response.errorMessage || 'Something went wrong',
-            );
+            Alert.alert(`${t("profile.Cancelled")}`, `${t("profile.User cancelled camera")}`);
           } else {
             const asset = response.assets?.[0];
             if (asset) {
@@ -255,9 +262,7 @@ const EditProfile = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <View style={styles.optionsContainer}>
-            <TouchableOpacity
-              style={styles.optionButton}
-              onPress={takePhoto}>
+            <TouchableOpacity style={styles.optionButton} onPress={takePhoto}>
               <Iconviewcomponent
                 Icontag="MaterialIcons"
                 icon_size={scr_width * 0.06}
@@ -267,9 +272,7 @@ const EditProfile = ({ navigation }) => {
               <Text style={styles.optionText}>{t("Editprofile.Take Photo")}</Text>
             </TouchableOpacity>
             <View style={styles.divider}></View>
-            <TouchableOpacity
-              style={styles.optionButton}
-              onPress={pickImage}>
+            <TouchableOpacity style={styles.optionButton} onPress={pickImage}>
               <Iconviewcomponent
                 Icontag="MaterialIcons"
                 icon_size={scr_width * 0.06}
@@ -281,9 +284,7 @@ const EditProfile = ({ navigation }) => {
             {Uservalue?.profile && (
               <>
                 <View style={styles.divider}></View>
-                <TouchableOpacity
-                  style={styles.optionButton}
-                  onPress={removeProfilePicture}>
+                <TouchableOpacity style={styles.optionButton} onPress={removeProfilePicture}>
                   <Iconviewcomponent
                     Icontag="MaterialIcons"
                     icon_size={scr_width * 0.06}
@@ -301,6 +302,7 @@ const EditProfile = ({ navigation }) => {
       </BottomSheet>
     );
   }
+
   function selectGender_toggleBottomView() {
     try {
       setSelectGenderbottomSheetVisible(!selectGenderbottomSheetVisible);
@@ -308,6 +310,7 @@ const EditProfile = ({ navigation }) => {
       console.log('catch in Register_toggleBottomView :', error);
     }
   }
+
   function selGender_BottomSheetmenu() {
     try {
       return (
@@ -410,9 +413,7 @@ const EditProfile = ({ navigation }) => {
       <View style={styles.headerContainer}>
         <Pressable
           style={styles.backButton}
-          onPress={() => {
-            navigation?.goBack();
-          }}>
+          onPress={() => navigation?.goBack()}>
           <Iconviewcomponent
             Icontag="Ionicons"
             icon_size={scr_width * 0.0625}
@@ -464,10 +465,7 @@ const EditProfile = ({ navigation }) => {
               {t("Editprofile.Profile Information")}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              handleEditInfo();
-            }}>
+          <TouchableOpacity onPress={handleEditInfo}>
             <Text style={styles.editInfoText}>
               {t("Editprofile.Edit Info")}
             </Text>
@@ -476,7 +474,7 @@ const EditProfile = ({ navigation }) => {
         <TextInput
           label={t("PlaceHolder.Full Name")}
           value={Uservalue?.Name}
-          editable={isEditable == true ? true : false}
+          editable={isEditable}
           onChangeText={text => setuservalue({ ...Uservalue, Name: text })}
           style={styles.textInput}
           cursorColor={Color.primary}
@@ -571,19 +569,29 @@ const EditProfile = ({ navigation }) => {
                   <Iconviewcomponent
                     Icontag="AntDesign"
                     icon_size={scr_width * 0.055}
-                    icon_color={Color.cloudyGrey}
+                    icon_color={isEditable ? Color.cloudyGrey : Color.Venus}
                     iconname={'calendar'}
                   />
                 </View>
               )}
               style={styles.rightIconContainer}
+              onPress={() => isEditable && setShowDatePicker(true)}
             />
           }
         />
+        {showDatePicker && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            onChange={onDateChange}
+            maximumDate={new Date()}
+          />
+        )}
         <TextInput
           label={t("PlaceHolder.Gender")}
-          value={Uservalue?.Gender}
-          editable={isEditable == true ? true : false}
+          value={Uservalue?.Gender || t("Editprofile.Select Gender")}
+          editable={isEditable}
           style={styles.textInput}
           autoCapitalize='characters'
           cursorColor={Color.primary}
@@ -605,26 +613,18 @@ const EditProfile = ({ navigation }) => {
                   <Iconviewcomponent
                     Icontag="AntDesign"
                     icon_size={scr_width * 0.05}
-                    icon_color={
-                      isEditable == true ? Color.lightBlack : Color.Venus
-                    }
+                    icon_color={isEditable ? Color.lightBlack : Color.Venus}
                     iconname={'caretdown'}
                   />
                 </View>
               )}
               style={styles.rightIconContainer}
-              onPress={() => {
-                isEditable == true ?
-                  selectGender_toggleBottomView() : null
-              }}
+              onPress={() => isEditable && selectGender_toggleBottomView()}
             />
           }
         />
-
         <TouchableOpacity
-          onPress={() => {
-            handleUpdateProfile();
-          }}
+          onPress={handleUpdateProfile}
           disabled={!isEditable}
           style={[
             styles.updateButton,

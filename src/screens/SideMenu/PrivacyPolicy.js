@@ -337,7 +337,7 @@ const PrivacyPolicy = () => {
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.You may review, change, or terminate your account at any time, depending on your country, province, or state of residence.")}</Text>
 
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.Withdrawing your consent")}:</Text>
-                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us using the contact details provided in the section")} <Text style={{ fontSize: 13, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>{t("'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.")}</Text></Text>
+                        <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us using the contact details provided in the section")} <Text style={{ fontSize: 13, color: Color.lightBlack, fontFamily: Mulish.SemiBold, letterSpacing: 0.5 }}>{t("PrivacyPolicy.'HOW CAN YOU CONTACT US ABOUT THIS NOTICE?' below.")}</Text></Text>
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.cloudyGrey, fontFamily: Mulish.Medium, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10 }}>{t("PrivacyPolicy.However, please note that this will not affect the lawfulness of the processing before its withdrawal nor when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.")}</Text>
 
                         <Text style={{ textAlign: 'justify', fontSize: 14, color: Color.black, fontFamily: Mulish.Bold, letterSpacing: 0.5, lineHeight: 22, paddingVertical: 10, marginTop: 10 }}>{t("PrivacyPolicy.Account Information")}</Text>
@@ -430,6 +430,7 @@ const PrivacyPolicy = () => {
                     width: scr_width / 2,
                     alignItems: 'center',
                     justifyContent: 'center',
+                    marginRight:'25%'
                 }}>
                     <Text
                         style={{
@@ -441,7 +442,7 @@ const PrivacyPolicy = () => {
                         {t("PrivacyPolicy.Privacy Policy")}
                     </Text>
                 </View>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     style={{
                         marginRight: 10,
                         width: scr_width / 5,
@@ -455,7 +456,7 @@ const PrivacyPolicy = () => {
                         icon_color={Color.black}
                         iconname="language-outline"
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
             <View style={{ width: '90%', height: scr_height / 1.24, justifyContent: 'center', alignItems: 'center', backgroundColor: Color.white, alignSelf: 'center', marginLeft: 5 }}>
                 <FlatList
