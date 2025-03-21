@@ -178,32 +178,35 @@ const EmailPassword = () => {
       console.log('=========== Google singin =========== :');
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      let googleAuthPayload = {
-        email: userInfo?.data?.user?.email,
-        name: userInfo?.data?.user?.givenName,
-        mobile: '',
-        dob: '',
-        step: 0,
-        type: 'free',
-      };
-      console.log('googleAuthPayload', googleAuthPayload)
-      const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
-      console.log('googleAuthPayload', googleLogin);
-      if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
-        await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(googleLogin?.token));
-        await AsyncStorage.setItem(
-          'USERDATA',
-          JSON.stringify(googleLogin?.data),
-        );
-        const translatedMessage = await translateText(googleLogin?.message);
-        common_fn.showToast(translatedMessage);
-        await GoogleSignin.signOut();
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 0,
-            routes: [{ name: 'Tab' }],
-          })
-        );
+      if(userInfo?.type =="success")
+      {
+        let googleAuthPayload = {
+          email: userInfo?.data?.user?.email,
+          name: userInfo?.data?.user?.givenName,
+          mobile: '',
+          dob: '',
+          step: 0,
+          type: 'free',
+        };
+        console.log('googleAuthPayload', googleAuthPayload)
+        const googleLogin = await fetchData?.googleLogin(googleAuthPayload);
+        console.log('googleAuthPayload', googleLogin);
+        if (googleLogin?.message == "Login Successfully" || googleLogin?.message == "User Created Successfully") {
+          await AsyncStorage.setItem('ACCESS_TOKEN', JSON.stringify(googleLogin?.token));
+          await AsyncStorage.setItem(
+            'USERDATA',
+            JSON.stringify(googleLogin?.data),
+          );
+          const translatedMessage = await translateText(googleLogin?.message);
+          common_fn.showToast(translatedMessage);
+          await GoogleSignin.signOut();
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: 'Tab' }],
+            })
+          );
+        }
       }
     } catch (error) {
       console.log('catch in signIn_login ----------: ', error);

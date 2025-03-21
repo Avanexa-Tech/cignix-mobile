@@ -273,7 +273,12 @@
     "New password and confirm password does not match.": "नया पासवर्ड और पुष्टि पासवर्ड मेल नहीं खाते।",
     "Network request failed. Please try again later.": "नेटवर्क अनुरोध विफल हुआ। कृपया बाद में पुनः प्रयास करें।",
     "Profile picture removed successfully": "प्रोफ़ाइल चित्र सफलतापूर्वक हटाया गया।",
-    "User Profile Updated Successfully": "यूज़र प्रोफ़ाइल सफलतापूर्वक अपडेट की गई।"
+    "User Profile Updated Successfully": "यूज़र प्रोफ़ाइल सफलतापूर्वक अपडेट की गई।",
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"यह स्कोर आपके द्वारा ऑनबोर्डिंग के दौरान दिए गए उत्तरों से उत्पन्न हुआ है। आगे बढ़ने के साथ अपनी प्रगति का ट्रैक करें!",
+    "Your Initial Score !":"आपका प्रारंभिक स्कोर!",
+    "Congratulations On Completing the Free Videos !":"मुफ्त वीडियोस को पूरा करने पर बधाई हो!",
+    "Take the test to track your progress on your smoke-free journey with Cignix":"सिग्निक्स के साथ अपनी धूम्रपान-मुक्त यात्रा पर अपनी प्रगति ट्रैक करने के लिए परीक्षण करें।"
+    
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "जानें कि हमसे कैसे संपर्क करें और हमारी सहायता टीम से कैसे जुड़ें",
@@ -726,7 +731,8 @@
     "Time for a Quick Exercise!": "एक त्वरित व्यायाम के लिए समय!",
     "Let’s reinforce what you learned! Complete": "आपने जो सीखा है उसे मजबूत करें! पूरा करें",
     "the short exercise below": "नीचे दिया गया छोटा व्यायाम",
-    "Submit & Continue": "सबमिट करें & जारी रखें"
+    "Submit & Continue": "सबमिट करें & जारी रखें",
+    "Please answer all the questions":"कृपया सभी प्रश्नों का उत्तर दें"
   },
   "Success": {
     "Congratulations on": "बधाई हो",
@@ -761,5 +767,20 @@
     "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "हर दिन एक सिगरेट आपकी ज़िंदगी को कम करती है। तंबाकू से मुक्त हो जाइए और आज ही बेहतर जीवन जीना शुरू करें!",
     "Get Started": "शुरू करें",
     "Already Have an Account?": "पहले से ही एक खाता है?"
-  }
+  },
+  "Step4":{
+    "Lessons": "पाठ",
+    "Day": "दिन",
+    "Upcoming": "आनेवाला",
+    "Video is Locked": "वीडियो लॉक किया गया है",
+    "Mins": "मिनट",
+    "Live Sessions": "लाइव सत्र",
+    "Unlock Your Potential With": "अपने क्षमता को खोलें",
+    "1-on-1 Sessions": "1-ऑन-1 सत्र",
+    "Personalized Guidance Tailored just for You !": "आपके लिए व्यक्तिगत मार्गदर्शन!",
+    "Date": "तारीख",
+    "Time": "समय",
+    "Enroll Now": "अभी नामांकन करें",
+    "Currently you have access to watch till day":"वर्तमान में आपके पास दिन तक देखने तक पहुँच है।"
+}
 }

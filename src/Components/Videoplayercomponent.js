@@ -52,13 +52,13 @@ const Videoplayercomponent = ({
       setLoader(false);
      
       setTimeout(() => {
-        setPaused(false);  
+        setPaused(true);  
       }, 500);  
     }
   }, [currentdata]);
   useFocusEffect(
     React.useCallback(() => {
-      return () => {
+      return () => {     
         setPaused(true);
       };
     }, [language])

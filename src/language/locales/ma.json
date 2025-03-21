@@ -222,7 +222,11 @@
     "New password and confirm password does not match.": "പുതിയ പാസ്‌വേഡും സ്ഥിരീകരണ പാസ്‌വേഡും പൊരുത്തപ്പെടുന്നില്ല.",
     "Network request failed. Please try again later.": "നെറ്റ്‌വർക്കിനുള്ള അഭ്യർത്ഥന പരാജയപ്പെട്ടു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.",
     "Profile picture removed successfully": "പ്രൊഫൈൽ ചിത്രം വിജയകരമായി നീക്കം ചെയ്തു",
-    "User Profile Updated Successfully": "ഉപയോക്തൃ പ്രൊഫൈൽ വിജയകരമായി അപ്‌ഡേറ്റ് ചെയ്തു"
+    "User Profile Updated Successfully": "ഉപയോക്തൃ പ്രൊഫൈൽ വിജയകരമായി അപ്‌ഡേറ്റ് ചെയ്തു",
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"ഈ സ്കോർ നിങ്ങൾ ഓൺബോർഡിങ്ങ് സമയത്ത് നൽകിയ ഉത്തരങ്ങൾ അടിസ്ഥാനമാക്കി സൃഷ്ടിക്കപ്പെട്ടതാണ്. മുന്നോട്ട് പോകുമ്പോൾ നിങ്ങളുടെ പുരോഗതി ട്രാക്ക് ചെയ്യൂ",
+    "Your Initial Score !":"നിങ്ങളുടെ പ്രാരംഭ സ്കോറ്!",
+    "Congratulations On Completing the Free Videos !":"ഫ്രീ വീഡിയോസ് പൂർത്തിയാക്കുന്നതിന് അഭിനന്ദനങ്ങൾ!",
+    "Take the test to track your progress on your smoke-free journey with Cignix":"സിഗ്നിക്സുമായി നിങ്ങളുടെ പുകരഹിത യാത്രയിൽ നിങ്ങളുടെ പുരോഗതി ട്രാക്ക് ചെയ്യാൻ പരീക്ഷണം നടത്തൂ."
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "ഞങ്ങളുമായി എങ്ങനെ ബന്ധപ്പെടാമെന്ന് കണ്ടെത്തുക, ഞങ്ങളുടെ പിന്തുണാ ടീമുമായി ബന്ധപ്പെടുക",
@@ -675,7 +679,8 @@
     "Time for a Quick Exercise!": "ഒരു വേഗത്തിലുള്ള വ്യായാമത്തിന് സമയം!",
     "Let’s reinforce what you learned! Complete": "നിങ്ങൾ പഠിച്ചതു ശക്തിപ്പെടുത്താം! പൂർത്തിയാക്കുക",
     "the short exercise below": "കീഴിലുള്ള ചെറുവ്യായാമം",
-    "Submit & Continue": "സമർപ്പിക്കുക & തുടരുക"
+    "Submit & Continue": "സമർപ്പിക്കുക & തുടരുക",
+    "Please answer all the questions":"ദയവായി എല്ലാ ചോദ്യങ്ങളിലും ഉത്തരം നല്‍കുക"
   },
   "Success": {
     "Congratulations on": "ആശംസകൾ",
@@ -731,5 +736,20 @@
     "Mail sent successfully": "മെയിൽ വിജയകരമായി അയച്ചു",
     "set minimum character as 6": "കുറഞ്ഞത് 6 അക്ഷരങ്ങൾ ആയി ക്രമീകരിക്കുക",
     "Please Enter your valid Email and Password": "ദയവായി നിങ്ങളുടെ സാധുവായ ഇമെയിലും പാസ്‌വേർഡും നൽകുക"
-  }
+  },
+  "Step4":{
+    "Lessons": "പാഠങ്ങൾ",
+    "Day": "ദിവസം",
+    "Upcoming": "ര próxima",
+    "Video is Locked": "വീഡിയോ ലോക്ക് ചെയ്തിരിക്കുന്നു",
+    "Mins": "മിനിറ്റ്",
+    "Live Sessions": "ലൈവ് സെഷനുകൾ",
+    "Unlock Your Potential With": "നിന്റെ ശേഷി തുറക്കൂ",
+    "1-on-1 Sessions": "1-ഓൺ-1 സെഷനുകൾ",
+    "Personalized Guidance Tailored just for You !": "നിനക്കായി പേഴ്‌സണലൈസ്ഡ് ഗൈഡൻസ്!",
+    "Date": "തീയതി",
+    "Time": "സമയം",
+    "Enroll Now": "ഇപ്പോൾ ചേരുക",
+    "Currently you have access to watch till day":"നിലവിൽ നിങ്ങൾക്ക് ദിവസവരെ കാണാനുള്ള പ്രവേശനം ഉണ്ട്."
+}
 }

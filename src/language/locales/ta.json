@@ -255,7 +255,11 @@
     "New password and confirm password does not match.": "புதிய கடவுச்சொல் மற்றும் உறுதிப்படுத்திய கடவுச்சொல் பொருந்தவில்லை.",
     "Network request failed. Please try again later.": "பிணைய கோரிக்கை தோல்வியடைந்தது. தயவுசெய்து பிறகு முயற்சிக்கவும்.",
     "Profile picture removed successfully": "சுயவிவரப் படம் வெற்றிகரமாக நீக்கப்பட்டது",
-    "User Profile Updated Successfully": "பயனர் சுயவிவரம் வெற்றிகரமாக புதுப்பிக்கப்பட்டது"
+    "User Profile Updated Successfully": "பயனர் சுயவிவரம் வெற்றிகரமாக புதுப்பிக்கப்பட்டது",
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"இந்த மதிப்பெண் நீங்கள் ஆன்போர்டிங் நேரத்தில் அளித்த பதில்களிலிருந்து உருவாக்கப்பட்டது. நீங்கள் முன்னேறும்போதே உங்கள் முன்னேற்றத்தை கண்காணிக்கவும்!",
+    "Your Initial Score !":"உங்கள் தொடக்க மதிப்பெண்!",
+    "Congratulations On Completing the Free Videos !":"மூலமாக்கப்பட்ட வீடியோக்களை முடித்ததற்கு வாழ்த்துக்கள்!",
+    "Take the test to track your progress on your smoke-free journey with Cignix":"சிக்னிக்ஸ் மூலம் உங்கள் புகையில்லா பயணத்தில் உங்கள் முன்னேற்றத்தை கண்காணிக்க பரிசோதனை செய்யவும்."
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "எங்களை எவ்வாறு அணுகுவது மற்றும் எங்கள் ஆதரவு குழுவுடன் எவ்வாறு இணைவது என்பதை கண்டறியவும்",
@@ -708,7 +712,8 @@
     "Time for a Quick Exercise!": "ஒரு விரைவான பயிற்சிக்கான நேரம்!",
     "Let’s reinforce what you learned! Complete": "நீங்கள் கற்றதை உறுதிப்படுத்துவோம்! முடிக்கவும்",
     "the short exercise below": "கீழே உள்ள குறுகிய பயிற்சியை",
-    "Submit & Continue": "சமர்ப்பிக்கவும் & தொடரவும்"
+    "Submit & Continue": "சமர்ப்பிக்கவும் & தொடரவும்",
+    "Please answer all the questions":"தயவுசெய்து அனைத்து கேள்விகளுக்கும் பதில் அளிக்கவும்"
   },
   "Success": {
     "Congratulations on": "அவதரிப்புக்கு வாழ்த்துக்கள்",
@@ -743,5 +748,21 @@
     "A cigarette a day takes your life away. Break free from tobacco and start living better today!": "ஒவ்வொரு நாளும் ஒரு சிகரெட் உங்கள் வாழ்க்கையை பறிக்கிறது. புகையிலை alışத்தை உடைத்து, இன்று மேல் வாழத் தொடங்குங்கள்!",
     "Get Started": "தொடங்கவும்",
     "Already Have an Account?": "ஏற்கனவே ஒரு கணக்கு உள்ளதா?"
-  }
+  },
+  "Step4":
+  {
+    "Lessons": "பாடங்கள்",
+    "Day": "நாள்",
+    "Upcoming": "வாங்கும்",
+    "Video is Locked": "வீடியோ பூட்டப்பட்டது",
+    "Mins": "நிமிடங்கள்",
+    "Live Sessions": "நேரடி அமர்வுகள்",
+    "Unlock Your Potential With": "உங்கள் திறனை திறக்கவும்",
+    "1-on-1 Sessions": "1-ஆன்-1 அமர்வுகள்",
+    "Personalized Guidance Tailored just for You !": "உங்களுக்கான தனிப்பட்ட வழிகாட்டி!",
+    "Date": "திகதி",
+    "Time": "நேரம்",
+    "Enroll Now": "இப்போது பதிவு செய்யவும்",
+    "Currently you have access to watch till day":"தற்போதைய நிலையில் உங்களிடம் நாள் வரை காணும் அனுமதி உள்ளது."
+}
 }

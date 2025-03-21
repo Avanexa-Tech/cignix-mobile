@@ -228,7 +228,11 @@
     "New password and confirm password does not match.": "కొత్త పాస్‌వర్డ్ మరియు ధృవీకరణ పాస్‌వర్డ్ సరిపోలడం లేదు.",
     "Network request failed. Please try again later.": "నెట్‌వర్క్ అభ్యర్థన విఫలమైంది. దయచేసి తర్వాత ప్రయత్నించండి.",
     "Profile picture removed successfully": "ప్రొఫైల్ చిత్రం విజయవంతంగా తొలగించబడింది",
-    "User Profile Updated Successfully": "యూజర్ ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది"
+    "User Profile Updated Successfully": "యూజర్ ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది",
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"ఈ స్కోరు మీరు ఆన్‌బోర్డింగ్ సమయంలో ఇచ్చిన సమాధానాల నుండి రూపొందించబడింది. మీరు ముందుకు పోతూ మీ పురోగతిని ట్రాక్ చేయండి!",
+    "Your Initial Score !":"మీ ప్రాథమిక స్కోర్!",
+    "Congratulations On Completing the Free Videos !":"ఫ్రీ వీడియోలు పూర్తిచేసినందుకు అభినందనలు!",
+    "Take the test to track your progress on your smoke-free journey with Cignix":"సిగ్నిక్స్‌తో మీ పొగరహిత ప్రయాణంలో మీ పురోగతిని ట్రాక్ చేయడానికి పరీక్ష చేయండి."
   },
   "HelpCenter": {
     "Discover how to reach us and connect with our support team": "మమ్మల్ని ఎలా చేరుకోవాలో మరియు మా మద్దతు బృందంతో ఎలా కనెక్ట్ కావాలో కనుగొనండి",
@@ -681,7 +685,8 @@
     "Time for a Quick Exercise!": "ఒక తక్షణ వ్యాయామానికి సమయం!",
     "Let’s reinforce what you learned! Complete": "మీరు నేర్చుకున్నది పునరుద్ధరించుకుందాం! పూర్తి చేయండి",
     "the short exercise below": "కింద ఉన్న చిన్న వ్యాయామం",
-    "Submit & Continue": "సమర్పించండి & కొనసాగించండి"
+    "Submit & Continue": "సమర్పించండి & కొనసాగించండి",
+    "Please answer all the questions":"దయచేసి అన్ని ప్రశ్నలకు సమాధానం ఇవ్వండి"
   },
   "Success": {
     "Congratulations on": "శుభాకాంక్షలు",
@@ -737,5 +742,20 @@
     "Mail sent successfully": "మెయిల్ విజయవంతంగా పంపబడింది",
     "set minimum character as 6": "కనీస అక్షరాలను 6 గా సెటప్ చేయండి",
     "Please Enter your valid Email and Password": "దయచేసి మీ చెల్లుబాటు అయ్యే ఇమెయిల్ మరియు పాస్‌వర్డ్‌ను నమోదు చేయండి"
-  }
+  },
+  "Step4":{
+    "Lessons": "పాఠాలు",
+    "Day": "రోజు",
+    "Upcoming": "రాబోయే",
+    "Video is Locked": "వీడియో లాక్ చేయబడింది",
+    "Mins": "నిమిషాలు",
+    "Live Sessions": "లైవ్ సెషన్లు",
+    "Unlock Your Potential With": "మీ సామర్థ్యాన్ని మిమ్మల్ని తేలికగా గుర్తించండి",
+    "1-on-1 Sessions": "1-ఆన్-1 సెషన్లు",
+    "Personalized Guidance Tailored just for You !": "మీకు అనుగుణంగా వ్యక్తిగత మార్గదర్శనం!",
+    "Date": "తేదీ",
+    "Time": "సమయం",
+    "Enroll Now": "ఇప్పుడు నమోదు చేసుకోండి",
+    "Currently you have access to watch till day":"ప్రస్తుతం మీకు రోజుకు వరకు చూడటానికి యాక్సెస్ ఉంది."
+}
 }

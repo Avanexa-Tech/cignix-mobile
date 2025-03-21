@@ -25,6 +25,7 @@ import RazorpayCheckout from 'react-native-razorpay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Videostep4 from './Videostep4';
 import { useTranslation } from "react-i18next";
+import { translateText } from '../screens/Context/userContext';
 
 
 
@@ -43,7 +44,7 @@ const Step4 = ({navigation}) => {
   const [length, setLength] = useState(null);
   const [getonline, setGetonline] = useState(null);
   const [userdata, setUserdata] = useState(null);
-  const [paused, setPaused] = useState(true);
+  const [paused, setPaused] = useState(false);
   // USERDATA :
 
   const Userdata = async () => {
@@ -58,8 +59,6 @@ const Step4 = ({navigation}) => {
     }
   };
 
-  // GETVIDEO :
-
   const Getvideo = async () => {
     try {
       const Getvideo = await fetchData?.UserLesson();
@@ -70,7 +69,22 @@ const Step4 = ({navigation}) => {
           (a, b) =>
             a?.lesson_details?.video_order - b?.lesson_details?.video_order,
         );
-        setVideo(filterdata);
+        const translatedData = await Promise.all(
+                filterdata.map(async (item) => {
+                  const translatedTitle = await translateText(item.lesson_details.title);
+                  const translatedContent = await translateText(item.lesson_details.content);
+        
+                  return {
+                    ...item,
+                    lesson_details: {
+                      ...item.lesson_details,
+                      title: translatedTitle,
+                      content: translatedContent,
+                    },
+                  };
+                })
+              );
+        setVideo(translatedData);
         // if()
         if (
           Getvideo?.data[0]?.user?.current_day ==
@@ -84,7 +98,7 @@ const Step4 = ({navigation}) => {
         } else {
           console.log('fffffffffffffail');
         }
-        setCurrentvideo(Getvideo?.data[0]);
+        setCurrentvideo(translatedData[0]);
         const totalday = parseInt(Getvideo?.data[0]?.lesson_details?.day) + 1;
         if (Getvideo?.total_days == Getvideo?.data[0]?.lesson_details?.day) {
           Getdayvideo(1);
@@ -105,7 +119,22 @@ const Step4 = ({navigation}) => {
       if (Getdayvideo?.success == true) {
         console.log('rrrrrrrrrrrrrrrrrr', Getdayvideo);
         setLength(Getdayvideo?.total_days);
-        setDayvideo(Getdayvideo?.data);
+        const translatedData = await Promise.all(
+          Getdayvideo?.data.map(async (item) => {
+            const translatedTitle = await translateText(item.lesson_details.title);
+            const translatedContent = await translateText(item.lesson_details.content);
+  
+            return {
+              ...item,
+              lesson_details: {
+                ...item.lesson_details,
+                title: translatedTitle,
+                content: translatedContent,
+              },
+            };
+          })
+        );
+        setDayvideo(translatedData);
       }
     } catch (error) {
       console.log('CATCH IN GETDAYVIDEO', error);
@@ -129,7 +158,7 @@ const Step4 = ({navigation}) => {
 
       if (Currentvideo?.user?.current_day < item) {
         ToastAndroid.show(
-          `Currently you have access to watch till day ${Currentvideo?.user?.current_day} lessons `,
+          `${t("Step4.Currently you have access to watch till day")} ${Currentvideo?.user?.current_day} ${t("Step4.Lessons")} `,
           ToastAndroid.SHORT,
         );
       } else {
@@ -137,13 +166,29 @@ const Step4 = ({navigation}) => {
         const getcurrent = await fetchData?.Getdayvideo(item);
         if (getcurrent?.success == true) {
           console.log('GETDAYVIDEO', getcurrent?.data);
+          
           setCurrentvideo(getcurrent?.data[0]);
           setVideo(getcurrent?.data);
           const value = parseInt(item) + 1;
           const getnextday = await fetchData?.Getdayvideo(value);
           console.log('getnextday', getnextday);
           if (getnextday?.success == true) {
-            setDayvideo(getnextday?.data);
+            const translatedData = await Promise.all(
+              getnextday?.data.map(async (item) => {
+                const translatedTitle = await translateText(item.lesson_details.title);
+                const translatedContent = await translateText(item.lesson_details.content);
+      
+                return {
+                  ...item,
+                  lesson_details: {
+                    ...item.lesson_details,
+                    title: translatedTitle,
+                    content: translatedContent,
+                  },
+                };
+              })
+            );
+            setDayvideo(translatedData);
             console.log('ggggg', getnextday?.data);
           }
         }
@@ -272,7 +317,7 @@ const Step4 = ({navigation}) => {
       {/* LIVE SESSION */}
       {getonline !== null ? (
         <View style={{marginTop: 5, gap: 20, marginBottom: 15}}>
-          <Text style={{fontSize: 16, color: '#000'}}>Live Sessions</Text>
+          <Text style={{fontSize: 16, color: '#000'}}> {`${t("Step4.Live Sessions")}`}</Text>
           {getonline?.length &&
             getonline?.map((item, index) => {
               console.log('<===> item <====>', item);
@@ -300,7 +345,7 @@ const Step4 = ({navigation}) => {
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
                         }}>
-                        Unlock Your Potential With
+                        {`${t("Step4.Unlock Your Potential With")}`}
                       </Text>
                       <Text
                         style={{
@@ -309,7 +354,7 @@ const Step4 = ({navigation}) => {
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
                         }}>
-                        1-on-1 Sessions
+                      {`${t("Step4.1-on-1 Sessions")}`}
                       </Text>
                     </View>
                     <View>
@@ -319,7 +364,7 @@ const Step4 = ({navigation}) => {
                           color: '#000',
                           fontFamily: Mulish?.SemiBold,
                         }}>
-                        Personalized Guidance Tailored just for You !
+                        {`${t("Step4.Personalized Guidance Tailored just for You !")}`}
                       </Text>
                     </View>
                   </View>
@@ -331,7 +376,7 @@ const Step4 = ({navigation}) => {
                           color: '#fff',
                           fontFamily: Mulish?.SemiBold,
                         }}>
-                        Date
+                        {`${t("Step4.Date")}`}
                       </Text>
                       <Text
                         style={{
@@ -349,7 +394,7 @@ const Step4 = ({navigation}) => {
                           color: '#fff',
                           fontFamily: Mulish?.SemiBold,
                         }}>
-                        Time
+                        {`${t("Step4.Time")}`}
                       </Text>
                       <Text
                         style={{
@@ -380,7 +425,7 @@ const Step4 = ({navigation}) => {
                           fontFamily: Mulish?.Bold,
                           textTransform: 'capitalize',
                         }}>
-                        Enroll Now
+                         {`${t("Step4.Enroll Now")}`}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -442,7 +487,7 @@ const Step4 = ({navigation}) => {
               fontFamily: Mulish.Regular,
               textTransform: 'capitalize',
             }}>
-            {`Day - ${Currentvideo?.lesson_details?.day}`}
+            {`${t("Step4.Day")} - ${Currentvideo?.lesson_details?.day}`}
           </Text>
         </View>
         <View
@@ -464,7 +509,7 @@ const Step4 = ({navigation}) => {
             fontFamily: Mulish.SemiBold,
             color: Color?.black,
           }}>
-          {`Upcoming Day - ${Currentvideo?.lesson_details?.day} Lessons`}
+          {`${t("Step4.Upcoming")} ${t("Step4.Day")} - ${Currentvideo?.lesson_details?.day} ${t("Step4.Lessons")}`}
         </Text>
         <FlatList
           data={video}
@@ -566,7 +611,7 @@ const Step4 = ({navigation}) => {
                     color: selected ? Color?.white : '#787882',
                     textTransform: 'capitalize',
                   }}>
-                  {`Day - ${index + 1}`}
+                  {`${t("Step4.Day")} - ${index + 1}`}
                 </Text>
               </TouchableOpacity>
             );
@@ -583,7 +628,7 @@ const Step4 = ({navigation}) => {
               color: Color?.black,
               fontSize: 16,
               fontFamily: Mulish?.SemiBold,
-            }}>{`Day - ${Dayvideo[0]?.lesson_details?.day} Lessons`}</Text>
+            }}>{`${t("Step4.Day")} - ${Dayvideo[0]?.lesson_details?.day} ${t("Step4.Lessons")}`}</Text>
         </View>
         <FlatList
           data={Dayvideo}
@@ -601,7 +646,7 @@ const Step4 = ({navigation}) => {
                   onPress={() => {
                     if (item?.status == 'inactive') {
                       ToastAndroid.show(
-                        `Day ${Dayvideo[0]?.lesson_details?.day} Video is Locked`,
+                        `${t("Step4.Day")} ${Dayvideo[0]?.lesson_details?.day} ${t("Step4.Video is Locked")}`,
                         ToastAndroid.SHORT,
                       );
                     }
@@ -655,7 +700,7 @@ const Step4 = ({navigation}) => {
                               fontFamily: Mulish?.Regular,
                               color: '#666666',
                             }}>
-                            {`${item?.lesson_details?.total_duration} Mins`}
+                            {`${item?.lesson_details?.total_duration} ${t("Step4.Mins")}`}
                           </Text>
                         </View>
                       </View>

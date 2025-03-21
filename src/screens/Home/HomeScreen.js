@@ -175,7 +175,15 @@ const HomeScreen = () => {
         Getquestion,
       );
       if (Getquestion?.success == true) {
-        setgetQuestion(Getquestion?.data);
+        const translatedData = await Promise.all(
+          Getquestion?.data.map(async (item) => {
+            const translatedQuestion = await translateText(item.question);
+            return { ...item, question: translatedQuestion };
+          })
+        );
+        console.log('ddddddddddddd', translatedData);
+        
+        setgetQuestion(translatedData);
         setHomeSection([{ id: 2, title: 'SimTest', data: ['SimTest'] }]);
         setLoading(false);
         console.log('checked', Getquestion?.data);
@@ -416,7 +424,7 @@ const HomeScreen = () => {
               color: '#4254B6',
               fontFamily: Mulish.Regular,
             }}>
-            {`Question ${index + 1} of ${getQuestion?.length}`}
+           {t('Sim1.Question')} {index + 1} {t("Sim1.of")} {getQuestion?.length}
           </Text>
           <Text
             style={{
@@ -499,7 +507,7 @@ const HomeScreen = () => {
                   SIMTEST_UPDATE_SCORE(total);
                 } else {
                   console.log('selctedAnswer', selctedAnswer);
-                  common_fn.showToast(`${t('Homescreen.Please Answer All Questions')}`);
+                  common_fn.showToast(`${t('Sim1.Please Answer All Questions')}`);
                 }
               }}>
               <Text
@@ -525,7 +533,7 @@ const HomeScreen = () => {
       console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       if (SIMTEST_UPDATE_SCORE?.success == true) {
         await UserStep();
-        common_fn.showToast(`${t('Homescreen.Answer Submited Successfully')}`);
+        common_fn.showToast(`${t('Sim1.Answer Submited Successfully')}`);
       } else {
         console.log('SIMTEST_UPDATE_SCORE', SIMTEST_UPDATE_SCORE);
       }
@@ -1856,7 +1864,7 @@ const HomeScreen = () => {
               alignItems: 'center',
               backgroundColor: '#fff',
               width: scr_width / 1.1,
-              height: scr_height / 1.8,
+              height: scr_height / 1.6,
               borderRadius: 20,
             }}>
             <View
@@ -1874,11 +1882,15 @@ const HomeScreen = () => {
                 source={require('../../assets/Images/score.png')}
                 style={{
                   width: '100%',
-                  height: '100%',
+                  height: '70%',
                   resizeMode: 'stretch',
                   borderRadius: 15,
                 }}
               />
+              <View style={{justifyContent:'center',alignItems:'center',gap:10,padding:10}}>
+                <Text style={{color:Color?.primary,fontSize:14,fontFamily:Mulish?.Medium}}>{t("Homescreen.Your Initial Score !")}</Text>
+                <Text style={{color:Color?.black,fontSize:14,fontFamily:Mulish?.Medium}}>{t("Homescreen.This score is generated from the answers you provided during onboarding. Track your progress as you move forward!")}</Text>
+              </View>
               <TouchableOpacity
                 style={{
                   backgroundColor: '#4254B6',
@@ -1941,7 +1953,7 @@ const HomeScreen = () => {
               alignItems: 'center',
               backgroundColor: '#fff',
               width: scr_width / 1.1,
-              height: scr_height / 1.8,
+              height: scr_height / 1.6,
               borderRadius: 20,
             }}>
             <View
@@ -1959,11 +1971,15 @@ const HomeScreen = () => {
                 source={require('../../assets/Images/testpopimage.png')}
                 style={{
                   width: '100%',
-                  height: '100%',
+                  height: '70%',
                   resizeMode: 'stretch',
                   borderRadius: 15,
                 }}
               />
+                <View style={{justifyContent:'center',alignItems:'center',gap:10,padding:10}}>
+                <Text style={{color:Color?.primary,fontSize:14,fontFamily:Mulish?.Medium}}>{t("Homescreen.Congratulations On Completing the Free Videos !")}</Text>
+                <Text style={{color:Color?.black,fontSize:14,fontFamily:Mulish?.Medium}}>{t("Homescreen.Take the test to track your progress on your smoke-free journey with Cignix")}</Text>
+              </View>
               <TouchableOpacity
                 style={{
                   backgroundColor: '#4254B6',

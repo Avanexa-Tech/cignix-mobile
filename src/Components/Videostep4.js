@@ -46,7 +46,7 @@ const Videostep4 = ({
       setLoader(false);
 
       setTimeout(() => {
-        setPaused(false);
+        setPaused(true);
       }, 500);
     }
   }, [currentdata]);

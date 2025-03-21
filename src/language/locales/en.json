@@ -272,7 +272,11 @@
     "New password and confirm password does not match.":"New password and confirm password does not match.",
     "Network request failed. Please try again later.":"Network request failed. Please try again later.",
     "Profile picture removed successfully":"Profile picture removed successfully",
-    "User Profile Updated Successfully":"User Profile Updated Successfully"
+    "User Profile Updated Successfully":"User Profile Updated Successfully",
+    "This score is generated from the answers you provided during onboarding. Track your progress as you move forward!":"This score is generated from the answers you provided during onboarding. Track your progress as you move forward!",
+    "Your Initial Score !":"Your Initial Score !",
+    "Congratulations On Completing the Free Videos !":"Congratulations On Completing the Free Videos !",
+    "Take the test to track your progress on your smoke-free journey with Cignix":"Take the test to track your progress on your smoke-free journey with Cignix"
   },
   "Sim2": {
     "Sim Test 2": "SIM Test 2",
@@ -729,7 +733,9 @@
     "Time for a Quick Exercise!":"Time for a Quick Exercise!",
     "Let’s reinforce what you learned! Complete":"Let’s reinforce what you learned! Complete",
     "the short exercise below":"the short exercise below",
-    "Submit & Continue":"Submit & Continue"
+    "Submit & Continue":"Submit & Continue",
+    "Please answer all the questions":"Please answer all the questions"
+
   },
   "Success":{
     "Congratulations on":"Congratulations on",
@@ -764,5 +770,20 @@
     "A cigarette a day takes your life away. Break free from tobacco and start living better today!":"A cigarette a day takes your life away. Break free from tobacco and start living better today!",
     "Get Started":"Get Started",
     "Already Have an Account?":"Already Have an Account?"
+  },
+  "Step4":{
+    "Lessons":"Lessons",
+    "Day":"Day",
+    "Upcoming":"Upcoming",
+    "Video is Locked":"Video is Locked",
+    "Mins":"Mins",
+    "Live Sessions":"Live Sessions",
+    "Unlock Your Potential With":"Unlock Your Potential With",
+    "1-on-1 Sessions":"1-on-1 Sessions",
+    "Personalized Guidance Tailored just for You !":"Personalized Guidance Tailored just for You !",
+    "Date":"Date",
+    "Time":"Time",
+    "Enroll Now":"Enroll Now",
+    "Currently you have access to watch till day":"Currently you have access to watch till day"
   }
 }

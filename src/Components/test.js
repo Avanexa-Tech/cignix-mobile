@@ -22,6 +22,7 @@ import { scr_height } from './Dimensions';
 const { width, height } = Dimensions.get('window');
 import { useTranslation } from 'react-i18next';
 import {translateText} from '../screens/Context/userContext'
+import common_fn from './common_fn';
 
 const Test = ({ data, close }) => {
   const [points, setPoints] = useState([]);
@@ -130,7 +131,8 @@ const Test = ({ data, close }) => {
       const response = await fetchData?.ExerciseAnswers(payload);
       console.log('RESPONSE==================>', response);
       if (response?.success) {
-        ToastAndroid.show(response?.message, ToastAndroid.SHORT);
+        const translatedMessage = await translateText(response?.message);
+            common_fn.showToast(translatedMessage);
         close();
       }
     } catch (error) {
@@ -182,7 +184,7 @@ const Test = ({ data, close }) => {
                   fontFamily: Mulish?.Regular,
                   fontSize: 14,
                 }}>
-                {t("Test.Let's reinforce what you learned! Complete")}
+                {t("Test.Let’s reinforce what you learned! Complete")}
               </Text>
               <Text
                 style={{
@@ -376,7 +378,7 @@ const Test = ({ data, close }) => {
               if (data?.length == points?.length) {
                 handleSubmit();
               } else {
-                ToastAndroid.show('Please answer all the questions', ToastAndroid.SHORT);
+                ToastAndroid.show(`${t("Test.Please answer all the questions")}`, ToastAndroid.SHORT);
               }
             }}>
             <Text
